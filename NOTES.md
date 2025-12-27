@@ -34,15 +34,3 @@
 - [data/testimonials.json](data/testimonials.json): JSON data source for the Testimonials section.
 
 ### Assets (Used - in `assets/` folder)
-
-- **Branding**: [assets/glorix.png](assets/glorix.png) (Logo).
-- **Audio**: [assets/glorix music.mp3](assets/glorix music.mp3) (Background music).
-- **Hero Section**: [assets/Poster.png](assets/Poster.png) (Carousel images).
-- **Testimonials**: `assets/r1.jpg` through `assets/r8.jpg` (Reviewer profile pictures).
-- **Artists**: `assets/glor.jpg`, `assets/c1.jpg`, `assets/w2.jpg`, `assets/n7.jpg`, `assets/n4.jpg` (Artist profile images).
-
-### Unused / Backup Files (in `temp/` folder)
-
-- [temp/index.html.old](temp/index.html.old): Backup of the previous index page version.
-- [temp/Academic Writing PPT.pdf](temp/Academic Writing PPT.pdf): Unrelated document.
-- **Unused Images**: Moved to `temp/` folder.

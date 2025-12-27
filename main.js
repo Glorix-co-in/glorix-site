@@ -46,7 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("data/testimonials.json")
       .then((response) => response.json())
       .then((testimonials) => {
-        testimonials.forEach((testimonial, index) => {
+        // Store testimonials count for dot calculation
+        const totalTestimonials = testimonials.length;
+
+        testimonials.forEach((testimonial) => {
           // Create Slide
           const clone = testimonialTemplate.content.cloneNode(true);
           clone.querySelector(".reviewer-img").src = testimonial.image;
@@ -57,51 +60,84 @@ document.addEventListener("DOMContentLoaded", function () {
           clone.querySelector(".reviewer-name").textContent = testimonial.name;
           clone.querySelector(".reviewer-role").textContent = testimonial.role;
           testimonialSlides.appendChild(clone);
-
-          // Create Dot
-          const dot = document.createElement("span");
-          dot.classList.add("dot");
-          if (index === 0) dot.classList.add("active");
-          testimonialDots.appendChild(dot);
         });
-        initTestimonialSlider();
+
+        initTestimonialSlider(totalTestimonials);
       })
       .catch((error) => console.error("Error loading testimonials:", error));
   }
 
-  function initTestimonialSlider() {
+  function initTestimonialSlider(totalTestimonials) {
     const reviewSlides = document.getElementById("testimonialSlides");
-    const dots = document.querySelectorAll("#testimonialDots .dot");
-    if (reviewSlides && dots.length > 0) {
-      let currentReview = 0;
-      let isMobile = window.innerWidth <= 768;
-      let totalPages = isMobile ? dots.length : Math.ceil(dots.length / 2);
+    const dotsContainer = document.getElementById("testimonialDots");
 
-      function updateReviewSlider(index) {
-        currentReview = index;
-        const transformPercent = currentReview * 100;
-        reviewSlides.style.transform = `translateX(-${transformPercent}%)`;
+    if (!reviewSlides || !dotsContainer) return;
 
-        dots.forEach((dot, i) => {
-          dot.classList.toggle("active", i === currentReview);
-        });
+    let currentPage = 0;
+
+    function getItemsPerPage() {
+      return window.innerWidth <= 768 ? 1 : 2;
+    }
+
+    function getTotalPages() {
+      return Math.ceil(totalTestimonials / getItemsPerPage());
+    }
+
+    function createDots() {
+      dotsContainer.innerHTML = "";
+      const totalPages = getTotalPages();
+
+      for (let i = 0; i < totalPages; i++) {
+        const dot = document.createElement("span");
+        dot.classList.add("dot");
+        if (i === currentPage) dot.classList.add("active");
+        dot.addEventListener("click", () => goToPage(i));
+        dotsContainer.appendChild(dot);
       }
+    }
 
+    function updateSlider() {
+      const itemsPerPage = getItemsPerPage();
+      // Each item is 50% on desktop (2 per view) or 100% on mobile (1 per view)
+      const slidePercent = itemsPerPage === 1 ? 100 : 50;
+      const transformPercent = currentPage * itemsPerPage * slidePercent;
+      reviewSlides.style.transform = `translateX(-${transformPercent}%)`;
+
+      // Update dots active state
+      const dots = dotsContainer.querySelectorAll(".dot");
       dots.forEach((dot, i) => {
-        dot.addEventListener("click", () => updateReviewSlider(i));
-      });
-
-      setInterval(() => {
-        let next = (currentReview + 1) % totalPages;
-        updateReviewSlider(next);
-      }, 4000);
-
-      window.addEventListener("resize", () => {
-        isMobile = window.innerWidth <= 768;
-        totalPages = isMobile ? dots.length : Math.ceil(dots.length / 2);
-        if (currentReview >= totalPages) updateReviewSlider(0);
+        dot.classList.toggle("active", i === currentPage);
       });
     }
+
+    function goToPage(pageIndex) {
+      const totalPages = getTotalPages();
+      currentPage = ((pageIndex % totalPages) + totalPages) % totalPages;
+      updateSlider();
+    }
+
+    // Initial setup
+    createDots();
+    updateSlider();
+
+    // Auto-advance
+    setInterval(() => {
+      goToPage(currentPage + 1);
+    }, 4000);
+
+    // Handle resize - recreate dots and adjust position
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const totalPages = getTotalPages();
+        if (currentPage >= totalPages) {
+          currentPage = 0;
+        }
+        createDots();
+        updateSlider();
+      }, 150);
+    });
   }
 
   // ===== Load Artists Dynamically =====

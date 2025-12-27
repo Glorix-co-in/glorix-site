@@ -42,7 +42,7 @@
     <!-- Theme Color -->
     <meta name="theme-color" content="#000000" />
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="global.css" />
     <link rel="stylesheet" href="bookings.css" />
     <link
       rel="stylesheet"
@@ -141,62 +141,8 @@
       <section class="events-section">
         <h2 class="events-section__title">Upcoming Events</h2>
 
-        <div class="events-container">
-          <!-- Event Card 1: BALI PERFORMING LIVE -->
-          <div class="event-card">
-            <div class="event-card__image">
-              <img src="assets/b2.jpg" alt="BALI PERFORMING LIVE" />
-            </div>
-            <div class="event-card__content">
-              <h3 class="event-card__title">BALI PERFORMING LIVE</h3>
-              <p class="event-card__date">24<sup>th</sup> December 2025</p>
-              <button class="event-card__btn event-card__btn--closed" disabled>
-                Bookings Closed
-              </button>
-            </div>
-          </div>
-
-          <!-- Event Card 2: SEASONS -->
-          <div class="event-card">
-            <div class="event-card__image">
-              <img src="assets/s.jpg" alt="SEASONS 2025" />
-            </div>
-            <div class="event-card__content">
-              <h3 class="event-card__title">SEASONS 2025</h3>
-              <p class="event-card__date">22<sup>nd</sup> November 2025</p>
-              <button class="event-card__btn event-card__btn--closed" disabled>
-                Bookings Closed
-              </button>
-            </div>
-          </div>
-
-          <!-- Event Card 3: FLAIR -->
-          <div class="event-card">
-            <div class="event-card__image">
-              <img src="assets/FLAIR Poster.png" alt="FLAIR 2025" />
-            </div>
-            <div class="event-card__content">
-              <h3 class="event-card__title">FLAIR 2025</h3>
-              <p class="event-card__date">20<sup>th</sup> September 2025</p>
-              <button class="event-card__btn event-card__btn--closed" disabled>
-                Bookings Closed
-              </button>
-            </div>
-          </div>
-
-          <!-- Event Card 4: BLOOM -->
-          <div class="event-card">
-            <div class="event-card__image">
-              <img src="assets/P1.jpg" alt="BLOOM 2025" />
-            </div>
-            <div class="event-card__content">
-              <h3 class="event-card__title">BLOOM 2025</h3>
-              <p class="event-card__date">31<sup>st</sup> July 2025</p>
-              <button class="event-card__btn event-card__btn--closed" disabled>
-                Bookings Closed
-              </button>
-            </div>
-          </div>
+        <div class="events-container" id="eventsContainer">
+          <!-- Event cards will be loaded dynamically -->
         </div>
 
         <!-- Mobile Arrows -->
@@ -206,6 +152,20 @@
         </div>
       </section>
     </main>
+
+    <!-- Event Card Template -->
+    <template id="eventCardTemplate">
+      <div class="event-card">
+        <div class="event-card__image">
+          <img src="" alt="" />
+        </div>
+        <div class="event-card__content">
+          <h3 class="event-card__title"></h3>
+          <p class="event-card__date"></p>
+          <button class="event-card__btn"></button>
+        </div>
+      </div>
+    </template>
 
     <!-- Footer -->
     <footer>

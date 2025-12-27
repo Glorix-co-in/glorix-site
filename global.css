@@ -1,0 +1,291 @@
+/* ===== Global CSS - Common styles shared across all pages ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Base Styles ===== */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #111;
+  color: #fff;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+button,
+a {
+  font-family: "Times New Roman", Times, serif;
+}
+
+@media (min-width: 769px) {
+  body {
+    padding-top: 80px;
+  }
+}
+
+/* ===== Navbar ===== */
+header.navbar {
+  background: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding-inline: 3rem;
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  width: 100%;
+  max-width: 100vw;
+  left: 0;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo a {
+  height: 60px;
+  overflow: hidden;
+}
+
+.logo img {
+  translate: 0 -45px;
+  transition: translate 1s ease;
+  @starting-style {
+    translate: 0px;
+  }
+}
+
+.logo p {
+  margin: 0;
+  font-size: 0.65rem;
+  color: #fff;
+  letter-spacing: 1px;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+/* ===== Nav Menu ===== */
+.nav-center ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-center ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: color 0.3s;
+}
+
+.nav-center ul li a.active {
+  color: #ffbf00;
+}
+
+.nav-center ul li a:hover {
+  color: #00c3ff;
+}
+
+/* ===== Call Button ===== */
+.call-btn {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 6px 18px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background, transform 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.call-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 217, 0, 0.5);
+}
+
+/* ===== Hamburger Menu ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.hamburger span {
+  height: 2px;
+  width: 24px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: #111;
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 1px solid #222;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-links a {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #ffbf00;
+}
+
+.copyright {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ===== Music Player ===== */
+.music-player {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 1000;
+}
+
+#musicBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: #ffbf00;
+  color: #000;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+}
+
+#musicBtn:hover {
+  transform: scale(1.1);
+}
+
+/* ===== Offer Ticker ===== */
+.offer-ticker {
+  background: #d32f2f;
+  color: #fff;
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+}
+
+.offer-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: scrollLoop 10s linear infinite;
+}
+
+.offer-ticker__content {
+  display: flex;
+}
+
+.offer-ticker__track span {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  padding: 0 3rem;
+}
+
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.offer-ticker__static {
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+.offer-ticker .mobile {
+  display: none;
+}
+.offer-ticker .desktop {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .offer-ticker .desktop {
+    display: none;
+  }
+  .offer-ticker .mobile {
+    display: block;
+  }
+}
+
+/* ===== Mobile Responsive - Common ===== */
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+
+  header.navbar {
+    padding: 0 2rem;
+    height: 60px;
+  }
+
+  .navbar .logo p {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-center {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    position: fixed;
+    top: 60px;
+    left: -100%;
+    padding: 1.5rem 2.7rem;
+    height: 100%;
+    background: #000;
+    transition: left 0.3s ease;
+    text-align: center;
+  }
+
+  .nav-center.active {
+    left: 0;
+  }
+
+  .nav-center ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+  }
+}
