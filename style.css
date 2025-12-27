@@ -240,7 +240,7 @@ section {
 }
 
 /* ===== New About Us Section ===== */
-.about-new {
+.about {
   padding: 80px 20px 100px;
   background-color: transparent;
 }
@@ -652,7 +652,7 @@ footer {
 
 /* ===== Mobile Responsive ===== */
 @media (max-width: 768px) {
-  .about-new {
+  .about {
     padding: 0px 24px 80px;
   }
 

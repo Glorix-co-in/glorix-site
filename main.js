@@ -164,4 +164,154 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => console.error("Error loading artists:", error));
   }
+
+  // ===== GSAP Animations =====
+  if (typeof gsap !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger, Flip);
+
+    // Set initial states for elements that will animate in
+    gsap.set(".navbar .logo", { y: -30 });
+    gsap.set(".nav-center ul li", { y: -20 });
+    gsap.set(".call-btn", { x: 30 });
+    gsap.set(".section-title", { y: 40 });
+    gsap.set(".review-slider-wrapper, .artists-grid", { y: 50 });
+    gsap.set(".contact-container > *", { y: 30 });
+
+    // Header Animations (on load)
+    const headerTl = gsap.timeline();
+    headerTl
+      .to(".navbar .logo", {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      })
+      .to(
+        ".nav-center ul li",
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.3,
+          stagger: 0.05,
+          ease: "power2.out",
+        },
+        "-=0.3"
+      )
+      .to(
+        ".call-btn",
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        "-=0.2"
+      );
+
+    // Hero Carousel Animation
+    gsap.to(".carousel-wrapper", {
+      autoAlpha: 1,
+      duration: 0.6,
+      delay: 0.2,
+      ease: "power1.inOut",
+    });
+
+    // Section Titles
+    const sections = [
+      ".about",
+      ".testimonials",
+      ".artists-section",
+      ".contact-section",
+    ];
+
+    sections.forEach((section) => {
+      gsap.to(`${section} .section-title`, {
+        scrollTrigger: {
+          trigger: section,
+          start: "top 85%",
+          once: true,
+        },
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    });
+
+    // About Content - Simplified and robust entry
+    const aboutMain = document.querySelector(".about-main-card");
+    const statCards = gsap.utils.toArray(".stat-card");
+
+    if (aboutMain) {
+      const aboutTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".about",
+          start: "top 75%",
+          once: true,
+        },
+      });
+
+      aboutTl
+        .to(aboutMain, {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          onStart: () => gsap.set(aboutMain, { x: -40 }), // Ensure start position
+        })
+        .to(
+          statCards,
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "back.out(1.2)",
+            onStart: () => gsap.set(statCards, { y: 30, scale: 0.9 }), // Ensure start position
+          },
+          "-=0.4"
+        );
+    }
+
+    // Testimonials Content
+    gsap.to(".review-slider-wrapper", {
+      scrollTrigger: {
+        trigger: ".testimonials",
+        start: "top 75%",
+        once: true,
+      },
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+    });
+
+    // Artists Grid
+    gsap.to(".artists-grid", {
+      scrollTrigger: {
+        trigger: ".artists-section",
+        start: "top 75%",
+        once: true,
+      },
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+    });
+
+    // Contact Content
+    gsap.to(".contact-container > *", {
+      scrollTrigger: {
+        trigger: ".contact-section",
+        start: "top 75%",
+        once: true,
+      },
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.4,
+      stagger: 0.1,
+      ease: "power2.out",
+    });
+  }
 });
