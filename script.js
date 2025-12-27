@@ -1,57 +1,187 @@
-const slides = document.querySelectorAll('.carousel-slide');
-const track = document.querySelector('.carousel-track');
-const carousel = document.querySelector('.carousel');
+document.addEventListener("DOMContentLoaded", function () {
+  // ===== Navbar Toggle =====
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("navMenu");
 
-let currentIndex = 0;
-let autoplayInterval;
-const totalSlides = slides.length;
-const intervalTime = 4000; // every 4 seconds
-const transitionTime = 800; // must match CSS transition
+  if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    });
+  }
 
-function showSlide(index) {
-  // Keep it looping
-  currentIndex = (index + totalSlides) % totalSlides;
-  track.style.transition = `transform ${transitionTime}ms ease-in-out`;
-  track.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
+  // ===== Navbar Active Link =====
+  const navLinks = document.querySelectorAll(".nav-center a");
+  let currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-function startAutoplay() {
-  autoplayInterval = setInterval(() => {
-    showSlide(currentIndex + 1);
-  }, intervalTime);
-}
+  navLinks.forEach((link) => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
 
-function stopAutoplay() {
-  clearInterval(autoplayInterval);
-}
+  // ===== Carousel =====
+  const carouselTrack = document.getElementById("carouselTrack");
+  const carouselTemplate = document.getElementById("carouselTemplate");
 
-// Optional: seamless reset to first slide after last
-track.addEventListener('transitionend', () => {
-  if (currentIndex >= totalSlides) {
-    track.style.transition = 'none';
-    currentIndex = 0;
-    track.style.transform = 'translateX(0)';
+  if (carouselTrack && carouselTemplate) {
+    fetch("data/carousel.json")
+      .then((response) => response.json())
+      .then((slidesData) => {
+        slidesData.forEach((slide) => {
+          const clone = carouselTemplate.content.cloneNode(true);
+          const img = clone.querySelector("img");
+          img.src = slide.image;
+          img.alt = slide.alt;
+          carouselTrack.appendChild(clone);
+        });
+        initCarousel();
+      })
+      .catch((error) => console.error("Error loading carousel:", error));
+  }
+
+  function initCarousel() {
+    const track = document.getElementById("carouselTrack");
+    const slides = Array.from(track.querySelectorAll(".carousel-slide"));
+    if (slides.length > 0) {
+      let currentSlide = 0;
+      const slideDuration = 3000;
+
+      function moveToSlide(index) {
+        currentSlide = (index + slides.length) % slides.length;
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+
+      setInterval(() => {
+        moveToSlide(currentSlide + 1);
+      }, slideDuration);
+    }
+  }
+
+  // ===== Testimonials Slider =====
+  const testimonialSlides = document.getElementById("testimonialSlides");
+  const testimonialDots = document.getElementById("testimonialDots");
+  const testimonialTemplate = document.getElementById("testimonialTemplate");
+
+  if (testimonialSlides && testimonialDots && testimonialTemplate) {
+    fetch("data/testimonials.json")
+      .then((response) => response.json())
+      .then((testimonials) => {
+        testimonials.forEach((testimonial, index) => {
+          // Create Slide
+          const clone = testimonialTemplate.content.cloneNode(true);
+          clone.querySelector(".reviewer-img").src = testimonial.image;
+          clone.querySelector(".reviewer-img").alt = testimonial.name;
+          clone.querySelector(
+            ".review-text"
+          ).textContent = `"${testimonial.text}"`;
+          clone.querySelector(".reviewer-name").textContent = testimonial.name;
+          clone.querySelector(".reviewer-role").textContent = testimonial.role;
+          testimonialSlides.appendChild(clone);
+
+          // Create Dot
+          const dot = document.createElement("span");
+          dot.classList.add("dot");
+          if (index === 0) dot.classList.add("active");
+          testimonialDots.appendChild(dot);
+        });
+        initTestimonialSlider();
+      })
+      .catch((error) => console.error("Error loading testimonials:", error));
+  }
+
+  function initTestimonialSlider() {
+    const reviewSlides = document.getElementById("testimonialSlides");
+    const dots = document.querySelectorAll("#testimonialDots .dot");
+    if (reviewSlides && dots.length > 0) {
+      let currentReview = 0;
+      let isMobile = window.innerWidth <= 768;
+      let totalPages = isMobile ? dots.length : Math.ceil(dots.length / 2);
+
+      function updateReviewSlider(index) {
+        currentReview = index;
+        const transformPercent = currentReview * 100;
+        reviewSlides.style.transform = `translateX(-${transformPercent}%)`;
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === currentReview);
+        });
+      }
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => updateReviewSlider(i));
+      });
+
+      setInterval(() => {
+        let next = (currentReview + 1) % totalPages;
+        updateReviewSlider(next);
+      }, 4000);
+
+      window.addEventListener("resize", () => {
+        isMobile = window.innerWidth <= 768;
+        totalPages = isMobile ? dots.length : Math.ceil(dots.length / 2);
+        if (currentReview >= totalPages) updateReviewSlider(0);
+      });
+    }
+  }
+
+  // ===== Music Player =====
+  const music = document.getElementById("bgMusic");
+  const musicBtn = document.getElementById("musicBtn");
+
+  if (music && musicBtn) {
+    const savedState = localStorage.getItem("musicPlaying");
+    const savedTime = parseFloat(localStorage.getItem("musicTime")) || 0;
+
+    music.currentTime = savedTime;
+    if (savedState === "true") {
+      music.play().catch(() => {
+        // Autoplay might be blocked
+        localStorage.setItem("musicPlaying", "false");
+        musicBtn.innerHTML = "▶";
+      });
+      musicBtn.innerHTML = "⏸";
+    }
+
+    musicBtn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        musicBtn.innerHTML = "⏸";
+        localStorage.setItem("musicPlaying", "true");
+      } else {
+        music.pause();
+        musicBtn.innerHTML = "▶";
+        localStorage.setItem("musicPlaying", "false");
+      }
+    });
+
+    music.addEventListener("timeupdate", () => {
+      localStorage.setItem("musicTime", music.currentTime);
+    });
+  }
+
+  // ===== Load Artists Dynamically =====
+  const artistsGrid = document.getElementById("artistsGrid");
+  const artistTemplate = document.getElementById("artistTemplate");
+
+  if (artistsGrid && artistTemplate) {
+    fetch("data/artists.json")
+      .then((response) => response.json())
+      .then((artists) => {
+        artists.forEach((artist) => {
+          const clone = artistTemplate.content.cloneNode(true);
+          const card = clone.querySelector(".artist-card");
+          const img = clone.querySelector("img");
+          const name = clone.querySelector("h3");
+
+          card.href = artist.link || "#";
+          img.src = artist.image;
+          img.alt = artist.name;
+          name.textContent = artist.name;
+
+          artistsGrid.appendChild(clone);
+        });
+      })
+      .catch((error) => console.error("Error loading artists:", error));
   }
 });
-
-// Prevent mobile swipe/scroll interference
-carousel.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
-
-// Pause autoplay on hover (desktop)
-carousel.addEventListener('mouseenter', stopAutoplay);
-carousel.addEventListener('mouseleave', startAutoplay);
-
-// Init slider
-showSlide(0);
-startAutoplay();
-
-// ===== Hamburger (safe toggle) =====
-const hamburger = document.querySelector('.hamburger');
-const nav = document.querySelector('.nav-center');
-if (hamburger && nav) {
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    nav.classList.toggle('active');
-  });
-}
-
