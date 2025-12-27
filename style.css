@@ -766,3 +766,64 @@ footer {
     font-size: 0.75rem;
   }
 }
+
+/* ===== Offer Ticker ===== */
+.offer-ticker {
+  background: #d32f2f;
+  color: #fff;
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+}
+
+.offer-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: scrollLoop 10s linear infinite;
+}
+
+.offer-ticker__content {
+  display: flex;
+}
+
+.offer-ticker__track span {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  padding: 0 3rem;
+}
+
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.offer-ticker__static {
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+.offer-ticker .mobile {
+  display: none;
+}
+.offer-ticker .desktop {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .offer-ticker .desktop {
+    display: none;
+  }
+  .offer-ticker .mobile {
+    display: block;
+  }
+}
