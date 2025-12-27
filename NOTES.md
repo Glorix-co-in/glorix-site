@@ -12,12 +12,6 @@
 8. contact
 9. Footer page
 
-## Bookings Page
-
-<!-- Navbar has padding issues fix that -->
-
-<!-- we want best responsive -->
-
 ## File Organization
 
 ### Core Files (Used)
