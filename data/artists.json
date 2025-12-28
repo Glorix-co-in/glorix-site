@@ -35,13 +35,8 @@
     "link": "#"
   },
   {
-    "name": "Bali(1)",
+    "name": "Bali",
     "image": "assets/artists/Bali(1).jpg",
-    "link": "#"
-  },
-  {
-    "name": "bali",
-    "image": "assets/artists/bali.jpg",
     "link": "#"
   },
   {
@@ -50,7 +45,7 @@
     "link": "#"
   },
   {
-    "name": "BHAV",
+    "name": "Bhav",
     "image": "assets/artists/BHAV.jpg",
     "link": "#"
   },
@@ -75,12 +70,12 @@
     "link": "#"
   },
   {
-    "name": "Flash wrld",
+    "name": "Flash Wrld",
     "image": "assets/artists/Flash wrld.jpg",
     "link": "#"
   },
   {
-    "name": "God s child",
+    "name": "God's Child",
     "image": "assets/artists/Gods_Child.jpeg",
     "link": "#"
   },
@@ -110,14 +105,14 @@
     "link": "#"
   },
   {
-    "name": "hitserv",
+    "name": "Hitserv",
     "image": "assets/artists/hitserv.jpg",
     "link": "#"
   },
   {
     "name": "IMG-20250724-WA0011",
     "image": "assets/artists/IMG-20250724-WA0011.jpg",
-    "link": "#"
+    "link": "#."
   },
   {
     "name": "Kaizer",
@@ -192,7 +187,7 @@
   {
     "name": "Rap Ryder",
     "image": "assets/artists/Rap Ryder_.jpg",
-    "link": "#"
+    "link": "#."
   },
   {
     "name": "Rapo",
@@ -217,7 +212,7 @@
   {
     "name": "Sankiii",
     "image": "assets/artists/Sankiii.jpg",
-    "link": "#"
+    "link": "#."
   },
   {
     "name": "Sherdill",
@@ -240,17 +235,17 @@
     "link": "#"
   },
   {
-    "name": "Toshi music",
+    "name": "Toshi Music",
     "image": "assets/artists/Toshi music_.jpg",
     "link": "#"
   },
   {
-    "name": "Trapsouls",
+    "name": "Trap Souls",
     "image": "assets/artists/Trapsouls_.jpg",
     "link": "#"
   },
   {
-    "name": "ustola",
+    "name": "Ustola",
     "image": "assets/artists/ustola_.jpg",
     "link": "#"
   },
