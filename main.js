@@ -9,9 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((slidesData) => {
         slidesData.forEach((slide) => {
           const clone = carouselTemplate.content.cloneNode(true);
-          const img = clone.querySelector("img");
-          img.src = slide.image;
-          img.alt = slide.alt;
+          const images = clone.querySelectorAll("img");
+          images.forEach((img) => {
+            img.src = slide.image;
+            img.alt = slide.alt;
+          });
           carouselTrack.appendChild(clone);
         });
         initCarousel();
@@ -316,8 +318,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Section Titles
-    const sectionTitles = gsap.utils.toArray(".section-title");
+    // Section Titles (Excluding About Section Title which is handled by its card)
+    const sectionTitles = gsap.utils.toArray(".section-title:not(.about .section-title)");
     sectionTitles.forEach((title) => {
       gsap.to(title, {
         scrollTrigger: {
@@ -337,10 +339,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const statCards = gsap.utils.toArray(".stat-card");
 
     if (aboutMain) {
+      const aboutTitle = aboutMain.querySelector(".section-title");
+      const aboutDesc = aboutMain.querySelector(".about-description");
+
+      // Set initial state immediately to avoid jumps
+      gsap.set(aboutMain, { x: -40, autoAlpha: 0 });
+      gsap.set(aboutTitle, { y: 20, autoAlpha: 0 });
+      gsap.set(aboutDesc, { y: 20, autoAlpha: 0 });
+      gsap.set(statCards, { y: 30, scale: 0.9, autoAlpha: 0 });
+
       const aboutTl = gsap.timeline({
         scrollTrigger: {
           trigger: "#about",
-          start: "top 75%",
+          start: "top bottom-=150", // Trigger earlier so it's visible on load/slight scroll
           once: true,
         },
       });
@@ -351,8 +362,18 @@ document.addEventListener("DOMContentLoaded", function () {
           x: 0,
           duration: 0.8,
           ease: "power2.out",
-          onStart: () => gsap.set(aboutMain, { x: -40 }), // Ensure start position
         })
+        .to(
+          [aboutTitle, aboutDesc],
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        )
         .to(
           statCards,
           {
@@ -362,7 +383,6 @@ document.addEventListener("DOMContentLoaded", function () {
             duration: 0.6,
             stagger: 0.1,
             ease: "back.out(1.2)",
-            onStart: () => gsap.set(statCards, { y: 30, scale: 0.9 }), // Ensure start position
           },
           "-=0.4"
         );
