@@ -2,6 +2,12 @@
   --content-max-width: 1200px;
   --viewport-padding: 16px;
 
+  /* Standardized Spacing Variables */
+  --section-padding-y: 100px;
+  --section-padding-y-mobile: 60px;
+  --section-title-margin: 40px;
+  --section-title-margin-mobile: 30px;
+
   display: grid;
   grid-template-columns:
     minmax(var(--viewport-padding), 1fr)
@@ -23,7 +29,7 @@
 .carousel-wrapper {
   max-width: 1400px;
   height: 70vh;
-  margin: 0 auto;
+  margin: 0 auto 30px;
 }
 .carousel {
   width: 100%;
@@ -45,19 +51,19 @@
 .carousel-slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain cover;
+  object-fit: cover;
 }
 
 /* ===== Sections ===== */
 section {
-  padding-block: 80px;
+  padding-block: var(--section-padding-y);
   padding-inline: var(--viewport-padding, 20px);
 }
 
 .section-title {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 40px;
+  margin-bottom: var(--section-title-margin);
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -128,7 +134,7 @@ section {
 
 /* ===== New About Us Section ===== */
 .about {
-  padding-block: 80px 100px;
+  padding-bottom: calc(var(--section-padding-y) / 2);
   background-color: transparent;
   max-width: var(--content-max-width, 1200px);
   margin: 0 auto;
@@ -148,20 +154,19 @@ section {
   grid-row: 1 / 2;
   background: #1a1a1a;
   color: #fff;
-  padding: clamp(40px, 5vw, 60px);
-  padding-right: clamp(30px, 4vw, 50px);
+  padding: clamp(25px, 4vw, 45px);
   border-radius: 30px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
 .about-description {
-  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
   line-height: 1.7;
   color: #bbb;
   font-family: "Open Sans", sans-serif;
   margin: 0;
-  max-width: 480px;
+  max-width: 600px;
 }
 
 /* Right Side Stats Column */
@@ -246,7 +251,7 @@ section {
 
 /* ===== Gallery Section ===== */
 .gallery-section {
-  padding-block: 60px;
+  padding-top: calc(var(--section-padding-y) / 2);
 }
 
 .gallery-grid {
@@ -354,9 +359,7 @@ section {
   }
 
   .gallery-logo {
-    order: -1;
-    height: auto;
-    padding-block: 20px;
+    display: none;
   }
 
   .item-tall {
@@ -368,24 +371,37 @@ section {
 .testimonials {
   background: #0d0d0d;
   padding: 80px 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .review-slider-wrapper {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
   max-width: 1000px;
   margin: 0 auto;
+  display: block;
+}
+
+.review-slider-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .review-slides {
   display: flex;
-  transition: transform 0.6s ease-in-out;
+  align-items: stretch;
+  /* transition: transform 0.6s ease-in-out; */ /* Removed as we use scroll behavior */
 }
 
 .review-item {
   flex: 0 0 50%;
   padding: 0 15px;
   box-sizing: border-box;
+  scroll-snap-align: start;
+  display: flex;
 }
 
 .review-box {
@@ -397,6 +413,7 @@ section {
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
 }
 
 .reviewer-img {
@@ -499,7 +516,6 @@ section {
 /* ===== Contact Section ===== */
 .contact-section {
   background: #0d0d0d;
-  padding: 80px 20px;
   text-align: center;
 }
 
@@ -548,7 +564,6 @@ section {
 
 /* ===== Artists Section ===== */
 .artists-section {
-  padding: 80px 20px;
   text-align: center;
   background: #111;
 }
@@ -599,21 +614,62 @@ section {
   font-size: 1.2rem;
 }
 
+/* ===== Team Section ===== */
+.team-section {
+  text-align: center;
+  background: #0d0d0d;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .team-section .artist-card img {
+    height: 200px;
+  }
+}
+
 @media (max-width: 1400px) {
   .carousel img {
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
 /* ===== Mobile Responsive - Index Page ===== */
 @media (max-width: 768px) {
+  section {
+    padding-block: var(--section-padding-y-mobile);
+  }
+
   .about {
-    padding: 0px 24px 80px;
+    padding-top: var(--section-padding-y-mobile);
+    padding-bottom: calc(var(--section-padding-y-mobile) / 2);
+    padding-inline: 8px;
+  }
+
+  .gallery-section {
+    padding-top: calc(var(--section-padding-y-mobile) / 2);
+    padding-bottom: var(--section-padding-y-mobile);
+  }
+
+  .testimonials,
+  .team-section {
+    /* Inherits from section baseline */
   }
 
   .about-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     place-items: center;
     gap: 36px 16px;
   }
@@ -644,12 +700,17 @@ section {
     border-radius: 20px;
   }
 
+  .carousel-wrapper {
+    height: 60vh;
+  }
+
   .carousel {
-    height: auto;
+    height: 100%;
   }
 
   .section-title {
     font-size: 2rem;
+    margin-bottom: var(--section-title-margin-mobile);
   }
 
   .review-item {
@@ -662,16 +723,17 @@ section {
 
   .contact-description {
     font-size: 1rem;
-    max-inline-size: 55ch;
+    max-inline-size: 32ch;
+    line-height: 1.5;
   }
 
   .artists-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 
   .artist-card img {
-    height: 150px;
+    height: 200px;
   }
 
   .artist-info {
@@ -679,7 +741,7 @@ section {
   }
 
   .artist-info h3 {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -692,7 +754,9 @@ section {
 .about-main-card,
 .stat-card,
 .review-slider-wrapper,
+.gallery-grid,
 .artists-grid,
+.team-grid,
 .contact-container > * {
   opacity: 0;
   visibility: hidden;

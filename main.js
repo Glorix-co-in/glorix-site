@@ -70,10 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function initTestimonialSlider(totalTestimonials) {
     const reviewSlides = document.getElementById("testimonialSlides");
     const dotsContainer = document.getElementById("testimonialDots");
+    const sliderWrapper = document.querySelector(".review-slider-wrapper");
 
-    if (!reviewSlides || !dotsContainer) return;
+    if (!reviewSlides || !dotsContainer || !sliderWrapper) return;
 
     let currentPage = 0;
+    let isProgrammaticScroll = false;
+    let autoScrollInterval;
 
     function getItemsPerPage() {
       return window.innerWidth <= 768 ? 1 : 2;
@@ -97,17 +100,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateSlider() {
-      const itemsPerPage = getItemsPerPage();
-      // Each item is 50% on desktop (2 per view) or 100% on mobile (1 per view)
-      const slidePercent = itemsPerPage === 1 ? 100 : 50;
-      const transformPercent = currentPage * itemsPerPage * slidePercent;
-      reviewSlides.style.transform = `translateX(-${transformPercent}%)`;
+      const scrollAmount = currentPage * sliderWrapper.clientWidth;
+
+      isProgrammaticScroll = true;
+      sliderWrapper.scrollTo({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
 
       // Update dots active state
       const dots = dotsContainer.querySelectorAll(".dot");
       dots.forEach((dot, i) => {
         dot.classList.toggle("active", i === currentPage);
       });
+
+      // Reset programmatic flag after animation
+      setTimeout(() => {
+        isProgrammaticScroll = false;
+      }, 800);
     }
 
     function goToPage(pageIndex) {
@@ -116,14 +126,43 @@ document.addEventListener("DOMContentLoaded", function () {
       updateSlider();
     }
 
+    // Manual scroll detection
+    sliderWrapper.addEventListener("scroll", () => {
+      if (isProgrammaticScroll) return;
+
+      const newPage = Math.round(
+        sliderWrapper.scrollLeft / sliderWrapper.clientWidth
+      );
+
+      if (newPage !== currentPage) {
+        currentPage = newPage;
+        const dots = dotsContainer.querySelectorAll(".dot");
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === currentPage);
+        });
+      }
+    });
+
     // Initial setup
     createDots();
-    updateSlider();
 
     // Auto-advance
-    setInterval(() => {
-      goToPage(currentPage + 1);
-    }, 4000);
+    function startAutoScroll() {
+      autoScrollInterval = setInterval(() => {
+        goToPage(currentPage + 1);
+      }, 4000);
+    }
+
+    startAutoScroll();
+
+    // Pause auto-scroll on user interaction
+    sliderWrapper.addEventListener("touchstart", () => {
+      clearInterval(autoScrollInterval);
+    });
+
+    sliderWrapper.addEventListener("mousedown", () => {
+      clearInterval(autoScrollInterval);
+    });
 
     // Handle resize - recreate dots and adjust position
     let resizeTimeout;
@@ -174,7 +213,10 @@ document.addEventListener("DOMContentLoaded", function () {
     gsap.set(".nav-center ul li", { y: -20 });
     gsap.set(".call-btn", { x: 30 });
     gsap.set(".section-title", { y: 40 });
-    gsap.set(".review-slider-wrapper, .artists-grid", { y: 50 });
+    gsap.set(
+      ".review-slider-wrapper, .gallery-grid, .artists-grid, .team-grid",
+      { y: 50 }
+    );
     gsap.set(".contact-container > *", { y: 30 });
 
     // Header Animations (on load)
@@ -218,24 +260,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Section Titles
     const sections = [
-      ".about",
-      ".testimonials",
-      ".artists-section",
-      ".contact-section",
+      "#about",
+      "#gallery",
+      "#artists",
+      "#team",
+      "#testimonials",
+      "#contact",
     ];
 
-    sections.forEach((section) => {
-      gsap.to(`${section} .section-title`, {
-        scrollTrigger: {
-          trigger: section,
-          start: "top 85%",
-          once: true,
-        },
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out",
-      });
+    sections.forEach((sectionId) => {
+      const section = document.querySelector(sectionId);
+      if (section) {
+        const title = section.querySelector(".section-title");
+        if (title) {
+          gsap.to(title, {
+            scrollTrigger: {
+              trigger: section,
+              start: "top 85%",
+              once: true,
+            },
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        }
+      }
     });
 
     // About Content - Simplified and robust entry
@@ -245,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (aboutMain) {
       const aboutTl = gsap.timeline({
         scrollTrigger: {
-          trigger: ".about",
+          trigger: "#about",
           start: "top 75%",
           once: true,
         },
@@ -277,7 +327,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Testimonials Content
     gsap.to(".review-slider-wrapper", {
       scrollTrigger: {
-        trigger: ".testimonials",
+        trigger: "#testimonials",
         start: "top 75%",
         once: true,
       },
@@ -290,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Artists Grid
     gsap.to(".artists-grid", {
       scrollTrigger: {
-        trigger: ".artists-section",
+        trigger: "#artists",
         start: "top 75%",
         once: true,
       },
@@ -300,10 +350,37 @@ document.addEventListener("DOMContentLoaded", function () {
       ease: "power2.out",
     });
 
+    // Team Grid
+    gsap.to(".team-grid", {
+      scrollTrigger: {
+        trigger: "#team",
+        start: "top 75%",
+        once: true,
+      },
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+    });
+    // Gallery Grid
+    const galleryGrid = document.querySelector(".gallery-grid");
+    if (galleryGrid) {
+      gsap.to(galleryGrid, {
+        scrollTrigger: {
+          trigger: galleryGrid,
+          start: "top 90%",
+          once: true,
+        },
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    }
     // Contact Content
     gsap.to(".contact-container > *", {
       scrollTrigger: {
-        trigger: ".contact-section",
+        trigger: "#contact",
         start: "top 75%",
         once: true,
       },
