@@ -18,6 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (link.getAttribute("href") === currentPage) {
       link.classList.add("active");
     }
+
+    link.addEventListener("click", () => {
+      if (hamburger && navMenu) {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+      }
+    });
   });
 
   // ===== Music Player =====
