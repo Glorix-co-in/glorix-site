@@ -35,7 +35,36 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Close menu when clicking a link
-      link.addEventListener("click", () => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+
+        // Handle internal links
+        if (href.includes("#")) {
+          const [page, hash] = href.split("#");
+          // Check if we are already on the target page
+          const isSamePage = page === "" || page === currentPage;
+
+          if (isSamePage) {
+            if (hash) {
+              const targetElement = document.getElementById(hash);
+              if (targetElement) {
+                e.preventDefault();
+                window.scrollTo({
+                  top: targetElement.offsetTop - 80,
+                  behavior: "smooth",
+                });
+              }
+            } else if (href === "#") {
+              // Handle "Home" or top of page links
+              e.preventDefault();
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }
+          }
+        }
+
         if (hamburger.classList.contains("active")) {
           hamburger.classList.remove("active");
           navMenu.classList.remove("active");
@@ -43,6 +72,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
+  }
+
+  // ===== Handle Hash Scroll on Load =====
+  if (window.location.hash) {
+    const targetId = window.location.hash.substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      // Use a timeout to ensure the page has rendered and GSAP has set initial states
+      setTimeout(() => {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80, // Adjust for navbar height
+          behavior: "smooth",
+        });
+      }, 500);
+    }
   }
 
   // ===== Music Player =====

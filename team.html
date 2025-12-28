@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Artists | GLORIX</title>
+    <title>Team | GLORIX</title>
     <link rel="stylesheet" href="global.css" />
     <link rel="stylesheet" href="index.css" />
     <link
@@ -17,12 +17,12 @@
       rel="stylesheet"
     />
     <style>
-      .artists-page-header {
+      .team-page-header {
         padding-top: 0px;
         padding-bottom: 40px;
         text-align: center;
       }
-      .artists-grid {
+      .team-grid {
         padding-bottom: 100px;
       }
     </style>
@@ -53,8 +53,8 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="index.html#gallery">Gallery</a></li>
           <li><a href="bookings.html">Bookings</a></li>
-          <li><a href="artists.html" class="active">Artists</a></li>
-          <li><a href="team.html">Team</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="team.html" class="active">Team</a></li>
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </nav>
@@ -71,28 +71,46 @@
     </div>
 
     <main class="main-content">
-      <section class="artists-page-header">
-        <h2 class="section-title"><span>OUR</span> ARTISTS</h2>
+      <section class="team-page-header">
+        <h2 class="section-title"><span>OUR</span> TEAM</h2>
         <p style="color: #888; max-width: 600px; margin: 0 auto">
-          Discover the talented artists who bring the GLORIX vision to life.
+          Meet the dedicated professionals behind the GLORIX vision.
         </p>
       </section>
 
-      <section id="artists" class="artists-section" style="padding-top: 0">
-        <div class="artists-grid" id="artistsGrid">
-          <!-- Artists will be loaded dynamically here -->
+      <section id="team" class="team-section" style="padding-top: 0">
+        <div class="team-grid">
+          <div class="artist-card">
+            <img src="assets/t11.jpg" alt="Manager" loading="lazy" />
+            <div class="artist-info">
+              <h3>Manager</h3>
+            </div>
+          </div>
+          <div class="artist-card">
+            <img
+              src="assets/t3.jpg"
+              alt="Social Media Manager"
+              loading="lazy"
+            />
+            <div class="artist-info">
+              <h3>Social Media Manager</h3>
+            </div>
+          </div>
+          <div class="artist-card">
+            <img src="assets/t4.jpg" alt="Co-Manager" loading="lazy" />
+            <div class="artist-info">
+              <h3>Co-Manager</h3>
+            </div>
+          </div>
+          <div class="artist-card">
+            <img src="assets/t2.jpg" alt="Marketing Head" loading="lazy" />
+            <div class="artist-info">
+              <h3>Marketing Head</h3>
+            </div>
+          </div>
         </div>
       </section>
     </main>
-
-    <template id="artistTemplate">
-      <a href="" class="artist-card" target="_blank" rel="noopener noreferrer">
-        <img src="" alt="" loading="lazy" />
-        <div class="artist-info">
-          <h3></h3>
-        </div>
-      </a>
-    </template>
 
     <!-- Footer -->
     <footer>
