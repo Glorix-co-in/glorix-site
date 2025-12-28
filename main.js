@@ -263,6 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ".gallery-grid",
       ".artists-grid",
       ".team-grid",
+      ".marquee",
     ];
     gridElements.forEach((selector) => {
       if (document.querySelector(selector)) {
@@ -420,6 +421,23 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power2.out",
       });
     }
+
+    // Collaboration Section
+    const marquee = document.querySelector(".marquee");
+    if (marquee) {
+      gsap.to(marquee, {
+        scrollTrigger: {
+          trigger: ".collaboration-section",
+          start: "top 75%",
+          once: true,
+        },
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    }
+
     // Gallery Grid
     const galleryGrid = document.querySelector(".gallery-grid");
     if (galleryGrid) {

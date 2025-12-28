@@ -714,6 +714,82 @@ section {
   }
 }
 
+/* ===== Collaboration Section ===== */
+.collaboration-section {
+  background: #111;
+  padding-block: var(--section-padding-y);
+  overflow: hidden;
+}
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 50px;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+  min-width: 100%;
+  animation: scroll 30s linear infinite;
+}
+
+.marquee-content i {
+  font-size: 4rem;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  transition: -webkit-text-stroke 0.3s ease, transform 0.3s ease;
+}
+
+.marquee-content i:hover {
+  -webkit-text-stroke: 1px #ffbf00;
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 50px));
+  }
+}
+
+@media (max-width: 768px) {
+  .marquee-content i {
+    font-size: 2.5rem;
+  }
+  .marquee,
+  .marquee-content {
+    gap: 30px;
+  }
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 30px));
+    }
+  }
+}
+
 /* GSAP Initial States to prevent FOUC */
 .navbar .logo,
 .nav-center ul li,
@@ -726,6 +802,7 @@ section {
 .gallery-grid,
 .artists-grid,
 .team-grid,
+.marquee,
 .contact-container > * {
   opacity: 0;
   visibility: hidden;
