@@ -244,6 +244,33 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error loading artists:", error));
   }
 
+  // ===== Collaboration Marquee =====
+  const collabMarquee = document.getElementById("collaborationMarquee");
+  const collabTemplate = document.getElementById("collaborationTemplate");
+
+  if (collabMarquee && collabTemplate) {
+    fetch("data/collaborations.json")
+      .then((response) => response.json())
+      .then((collabs) => {
+        // Create two marquee-content divs for infinite scroll
+        for (let i = 0; i < 2; i++) {
+          const marqueeContent = document.createElement("div");
+          marqueeContent.classList.add("marquee-content");
+
+          collabs.forEach((collab) => {
+            const clone = collabTemplate.content.cloneNode(true);
+            clone.querySelector(".collab-logo").src = collab.logo;
+            clone.querySelector(".collab-logo").alt = collab.name;
+            clone.querySelector(".collab-name").textContent = collab.name;
+            marqueeContent.appendChild(clone);
+          });
+
+          collabMarquee.appendChild(marqueeContent);
+        }
+      })
+      .catch((error) => console.error("Error loading collaborations:", error));
+  }
+
   // ===== GSAP Animations =====
   if (typeof gsap !== "undefined") {
     const plugins = [];
@@ -319,7 +346,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Section Titles (Excluding About Section Title which is handled by its card)
-    const sectionTitles = gsap.utils.toArray(".section-title:not(.about .section-title)");
+    const sectionTitles = gsap.utils.toArray(
+      ".section-title:not(.about .section-title)"
+    );
     sectionTitles.forEach((title) => {
       gsap.to(title, {
         scrollTrigger: {

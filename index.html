@@ -174,27 +174,8 @@
       <!-- Collaboration Section -->
       <section id="collaboration" class="collaboration-section full-bleed">
         <h2 class="section-title"><span>OUR</span> COLLABORATION</h2>
-        <div class="marquee">
-          <div class="marquee-content">
-            <i class="fab fa-spotify"></i>
-            <i class="fab fa-apple"></i>
-            <i class="fab fa-amazon"></i>
-            <i class="fab fa-youtube"></i>
-            <i class="fab fa-soundcloud"></i>
-            <i class="fab fa-deezer"></i>
-            <i class="fab fa-tidal"></i>
-            <i class="fab fa-napster"></i>
-          </div>
-          <div class="marquee-content">
-            <i class="fab fa-spotify"></i>
-            <i class="fab fa-apple"></i>
-            <i class="fab fa-amazon"></i>
-            <i class="fab fa-youtube"></i>
-            <i class="fab fa-soundcloud"></i>
-            <i class="fab fa-deezer"></i>
-            <i class="fab fa-tidal"></i>
-            <i class="fab fa-napster"></i>
-          </div>
+        <div class="marquee" id="collaborationMarquee">
+          <!-- Marquee content will be loaded dynamically here -->
         </div>
       </section>
 
@@ -271,6 +252,13 @@
           <h3></h3>
         </div>
       </a>
+    </template>
+
+    <template id="collaborationTemplate">
+      <div class="collaboration-item">
+        <img src="" alt="" class="collab-logo" loading="lazy" />
+        <span class="collab-name"></span>
+      </div>
     </template>
 
     <!-- Footer -->
