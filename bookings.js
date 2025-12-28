@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const eventsContainer = document.getElementById("eventsContainer");
   const eventCardTemplate = document.getElementById("eventCardTemplate");
 
-  let currentIndex = 0;
   let cards = [];
 
   // Load events from JSON
@@ -54,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
       gsap.set(".call-btn", { x: 30 });
       gsap.set(".bookings-hero", { scale: 1.05 });
       gsap.set(".offer-ticker", { y: 20 });
-      gsap.set(".events-section__title", { y: 30 });
+      gsap.set(".section-title", { y: 30 });
       gsap.set(".event-card", { y: 40 });
 
       // Header Animations (on load)
@@ -106,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       // Events Title
-      gsap.to(".events-section__title", {
+      gsap.to(".section-title", {
         scrollTrigger: {
           trigger: ".events-section",
           start: "top 85%",
@@ -136,36 +135,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initMobileCarousel() {
     cards = document.querySelectorAll(".event-card");
-    const totalCards = cards.length;
-
-    function showCard(index) {
-      cards.forEach((card, i) => {
-        card.classList.toggle("active", i === index);
-      });
-    }
 
     window.prevCard = function () {
-      currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-      showCard(currentIndex);
+      if (eventsContainer) {
+        const cardWidth = cards[0]?.offsetWidth || 300;
+        eventsContainer.scrollBy({
+          left: -(cardWidth + 40),
+          behavior: "smooth",
+        });
+      }
     };
 
     window.nextCard = function () {
-      currentIndex = (currentIndex + 1) % totalCards;
-      showCard(currentIndex);
-    };
-
-    // Initialize for mobile
-    if (window.innerWidth <= 768) {
-      showCard(currentIndex);
-    }
-
-    window.addEventListener("resize", () => {
-      if (window.innerWidth <= 768) {
-        showCard(currentIndex);
-      } else {
-        // Reset for desktop view where all cards are shown via grid
-        cards.forEach((card) => card.classList.remove("active"));
+      if (eventsContainer) {
+        const cardWidth = cards[0]?.offsetWidth || 300;
+        eventsContainer.scrollBy({
+          left: cardWidth + 40,
+          behavior: "smooth",
+        });
       }
-    });
+    };
   }
 });

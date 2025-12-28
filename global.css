@@ -294,6 +294,9 @@ footer {
 }
 
 @media (max-width: 767px) {
+  .offer-ticker {
+    padding: 5px 0;
+  }
   .offer-ticker .desktop {
     display: none;
   }
