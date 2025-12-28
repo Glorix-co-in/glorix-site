@@ -73,6 +73,35 @@ section {
   color: #ffbf00;
 }
 
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto var(--section-title-margin);
+  padding-inline: var(--viewport-padding);
+}
+
+.section-header .section-title {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.see-all-btn {
+  color: #ffbf00;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.see-all-btn:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+
 /* ===== Grid & Cards ===== */
 .grid {
   display: grid;
@@ -562,58 +591,6 @@ section {
   font-size: 1.5rem;
 }
 
-/* ===== Artists Section ===== */
-.artists-section {
-  text-align: center;
-  background: #111;
-}
-
-.artists-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.artist-card {
-  background: #1a1a1a;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  display: block;
-  text-decoration: none;
-}
-
-.artist-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(255, 191, 0, 0.15);
-}
-
-.artist-card img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  display: block;
-}
-
-.artist-info {
-  padding: 15px;
-  background: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  box-sizing: border-box;
-  transition: background 0.3s ease;
-}
-
-.artist-info h3 {
-  margin: 0;
-  color: #ffbf00;
-  font-size: 1.2rem;
-}
-
 /* ===== Team Section ===== */
 .team-section {
   text-align: center;
@@ -652,7 +629,7 @@ section {
   }
 
   .about {
-    padding-top: var(--section-padding-y-mobile);
+    padding-top: 0px;
     padding-bottom: calc(var(--section-padding-y-mobile) / 2);
     padding-inline: 8px;
   }
@@ -698,10 +675,19 @@ section {
     max-width: none;
     width: 100%;
     border-radius: 20px;
+    padding: 40px 20px;
+  }
+
+  .stat-number {
+    font-size: 2.8rem;
+  }
+
+  .stat-label {
+    font-size: 1.1rem;
   }
 
   .carousel-wrapper {
-    height: 60vh;
+    height: 65vh;
   }
 
   .carousel {
@@ -723,25 +709,8 @@ section {
 
   .contact-description {
     font-size: 1rem;
-    max-inline-size: 32ch;
+    max-inline-size: 40ch;
     line-height: 1.5;
-  }
-
-  .artists-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-
-  .artist-card img {
-    height: 200px;
-  }
-
-  .artist-info {
-    padding: 8px 5px;
-  }
-
-  .artist-info h3 {
-    font-size: 0.9rem;
   }
 }
 

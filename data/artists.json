@@ -1,42 +1,272 @@
 [
   {
-    "name": "Artist Name",
-    "image": "assets/glor.jpg",
+    "name": "Aastik",
+    "image": "assets/artists/Aastik_.jpg",
     "link": "#"
   },
   {
-    "name": "Artist Name",
-    "image": "assets/c1.jpg",
+    "name": "Advit",
+    "image": "assets/artists/Advit.jpg",
     "link": "#"
   },
   {
-    "name": "Artist Name",
-    "image": "assets/w2.jpg",
+    "name": "Agyat Music",
+    "image": "assets/artists/Agyat Music_.jpg",
     "link": "#"
   },
   {
-    "name": "Artist Name",
-    "image": "assets/n7.jpg",
+    "name": "Aksh",
+    "image": "assets/artists/Aksh.jpg",
     "link": "#"
   },
   {
-    "name": "Artist Name",
-    "image": "assets/n4.jpg",
+    "name": "Arshit",
+    "image": "assets/artists/Arshit.jpg",
     "link": "#"
   },
   {
-    "name": "Artist Name",
-    "image": "assets/glor.jpg",
+    "name": "Asadhya",
+    "image": "assets/artists/Asadhya_.jpg",
     "link": "#"
   },
   {
-    "name": "Artist Name",
-    "image": "assets/c1.jpg",
+    "name": "Avneesh",
+    "image": "assets/artists/Avneesh.jpg",
     "link": "#"
   },
   {
-    "name": "Artist Name",
-    "image": "assets/w2.jpg",
+    "name": "Bali(1)",
+    "image": "assets/artists/Bali(1).jpg",
+    "link": "#"
+  },
+  {
+    "name": "bali",
+    "image": "assets/artists/bali.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Benzu",
+    "image": "assets/artists/Benzu.jpg",
+    "link": "#"
+  },
+  {
+    "name": "BHAV",
+    "image": "assets/artists/BHAV.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Biggy brat",
+    "image": "assets/artists/Biggy brat_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Boi Mustafa",
+    "image": "assets/artists/Boi Mustafa_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Divvay",
+    "image": "assets/artists/Divvay.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Ekaantx",
+    "image": "assets/artists/Ekaantx_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Flash wrld",
+    "image": "assets/artists/Flash wrld.jpg",
+    "link": "#"
+  },
+  {
+    "name": "God s child",
+    "image": "assets/artists/Gods_Child.jpeg",
+    "link": "#"
+  },
+  {
+    "name": "Ha3t",
+    "image": "assets/artists/Ha3t.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Harshit & Utkarsh",
+    "image": "assets/artists/Harshit & Utkarsh_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Harshit",
+    "image": "assets/artists/Harshit.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Hashant",
+    "image": "assets/artists/Hashant.webp",
+    "link": "#"
+  },
+  {
+    "name": "Hemlooo",
+    "image": "assets/artists/Hemlooo.jpg",
+    "link": "#"
+  },
+  {
+    "name": "hitserv",
+    "image": "assets/artists/hitserv.jpg",
+    "link": "#"
+  },
+  {
+    "name": "IMG-20250724-WA0011",
+    "image": "assets/artists/IMG-20250724-WA0011.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Kaizer",
+    "image": "assets/artists/Kaizer_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Kalamkar lucky",
+    "image": "assets/artists/Kalamkar lucky.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Kirdaar",
+    "image": "assets/artists/Kirdaar.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Lil Broke",
+    "image": "assets/artists/Lil Broke.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Lil Edward",
+    "image": "assets/artists/Lil Edward.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Mrityu",
+    "image": "assets/artists/Mrityu_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Nagity",
+    "image": "assets/artists/Nagity.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Oddi",
+    "image": "assets/artists/Oddi.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Og Tehran",
+    "image": "assets/artists/Og Tehran.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Paras",
+    "image": "assets/artists/Paras.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Poetic kc",
+    "image": "assets/artists/Poetic kc.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Prodxraj",
+    "image": "assets/artists/Prodxraj_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "PSV",
+    "image": "assets/artists/PSV.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Raavn",
+    "image": "assets/artists/Raavn.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Rap Ryder",
+    "image": "assets/artists/Rap Ryder_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Rapo",
+    "image": "assets/artists/Rapo.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Real Tanishk",
+    "image": "assets/artists/Real Tanishk_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Rinisha",
+    "image": "assets/artists/Rinisha_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Rohansbed",
+    "image": "assets/artists/Rohansbed_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Sankiii",
+    "image": "assets/artists/Sankiii.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Sherdill",
+    "image": "assets/artists/Sherdill.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Spidy J",
+    "image": "assets/artists/Spidy J.webp",
+    "link": "#"
+  },
+  {
+    "name": "Swagy",
+    "image": "assets/artists/Swagy.jpg",
+    "link": "#"
+  },
+  {
+    "name": "The Harxhz",
+    "image": "assets/artists/The Harxhz.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Toshi music",
+    "image": "assets/artists/Toshi music_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Trapsouls",
+    "image": "assets/artists/Trapsouls_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "ustola",
+    "image": "assets/artists/ustola_.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Utkarsh",
+    "image": "assets/artists/Utkarsh.jpg",
+    "link": "#"
+  },
+  {
+    "name": "Volt",
+    "image": "assets/artists/Volt.jpg",
+    "link": "#"
+  },
+  {
+    "name": "WrigVedd",
+    "image": "assets/artists/WrigVedd.webp",
     "link": "#"
   }
 ]

@@ -184,40 +184,95 @@ document.addEventListener("DOMContentLoaded", function () {
   const artistTemplate = document.getElementById("artistTemplate");
 
   if (artistsGrid && artistTemplate) {
+    const seeAllBtn = document.querySelector(".see-all-btn");
+
     fetch("data/artists.json")
       .then((response) => response.json())
       .then((artists) => {
-        artists.forEach((artist) => {
-          const clone = artistTemplate.content.cloneNode(true);
-          const card = clone.querySelector(".artist-card");
-          const img = clone.querySelector("img");
-          const name = clone.querySelector("h3");
+        function renderArtists() {
+          artistsGrid.innerHTML = "";
+          let limit = null;
 
-          card.href = artist.link || "#";
-          img.src = artist.image;
-          img.alt = artist.name;
-          name.textContent = artist.name;
+          if (seeAllBtn) {
+            if (window.innerWidth <= 768) {
+              limit = 8;
+            } else {
+              // Let the browser calculate the columns first, then count them
+              // We temporarily add one item to ensure the grid layout is computed
+              const temp = document.createElement("div");
+              temp.style.visibility = "hidden";
+              artistsGrid.appendChild(temp);
 
-          artistsGrid.appendChild(clone);
-        });
+              const style = window.getComputedStyle(artistsGrid);
+              const gridCols = style
+                .getPropertyValue("grid-template-columns")
+                .split(" ").length;
+              artistsGrid.removeChild(temp);
+
+              limit = Math.max(gridCols * 2, 4); // Show at least 2 rows, minimum 4 items
+            }
+          }
+
+          const artistsToShow = limit ? artists.slice(0, limit) : artists;
+          artistsToShow.forEach((artist) => {
+            const clone = artistTemplate.content.cloneNode(true);
+            const card = clone.querySelector(".artist-card");
+            const img = clone.querySelector("img");
+            const name = clone.querySelector("h3");
+
+            card.href = artist.link || "#";
+            img.src = artist.image;
+            img.alt = artist.name;
+            name.textContent = artist.name;
+
+            artistsGrid.appendChild(clone);
+          });
+        }
+
+        renderArtists();
+
+        if (seeAllBtn) {
+          let resizeTimeout;
+          window.addEventListener("resize", () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(renderArtists, 200);
+          });
+        }
       })
       .catch((error) => console.error("Error loading artists:", error));
   }
 
   // ===== GSAP Animations =====
   if (typeof gsap !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger, Flip);
+    const plugins = [];
+    if (typeof ScrollTrigger !== "undefined") plugins.push(ScrollTrigger);
+    if (typeof Flip !== "undefined") plugins.push(Flip);
+
+    if (plugins.length > 0) {
+      gsap.registerPlugin(...plugins);
+    }
 
     // Set initial states for elements that will animate in
     gsap.set(".navbar .logo", { y: -30 });
     gsap.set(".nav-center ul li", { y: -20 });
     gsap.set(".call-btn", { x: 30 });
     gsap.set(".section-title", { y: 40 });
-    gsap.set(
-      ".review-slider-wrapper, .gallery-grid, .artists-grid, .team-grid",
-      { y: 50 }
-    );
-    gsap.set(".contact-container > *", { y: 30 });
+
+    const gridElements = [
+      ".review-slider-wrapper",
+      ".gallery-grid",
+      ".artists-grid",
+      ".team-grid",
+    ];
+    gridElements.forEach((selector) => {
+      if (document.querySelector(selector)) {
+        gsap.set(selector, { y: 50 });
+      }
+    });
+
+    if (document.querySelector(".contact-container")) {
+      gsap.set(".contact-container > *", { y: 30 });
+    }
 
     // Header Animations (on load)
     const headerTl = gsap.timeline();
@@ -251,41 +306,29 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
     // Hero Carousel Animation
-    gsap.to(".carousel-wrapper", {
-      autoAlpha: 1,
-      duration: 0.6,
-      delay: 0.2,
-      ease: "power1.inOut",
-    });
+    if (document.querySelector(".carousel-wrapper")) {
+      gsap.to(".carousel-wrapper", {
+        autoAlpha: 1,
+        duration: 0.6,
+        delay: 0.2,
+        ease: "power1.inOut",
+      });
+    }
 
     // Section Titles
-    const sections = [
-      "#about",
-      "#gallery",
-      "#artists",
-      "#team",
-      "#testimonials",
-      "#contact",
-    ];
-
-    sections.forEach((sectionId) => {
-      const section = document.querySelector(sectionId);
-      if (section) {
-        const title = section.querySelector(".section-title");
-        if (title) {
-          gsap.to(title, {
-            scrollTrigger: {
-              trigger: section,
-              start: "top 85%",
-              once: true,
-            },
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.5,
-            ease: "power2.out",
-          });
-        }
-      }
+    const sectionTitles = gsap.utils.toArray(".section-title");
+    sectionTitles.forEach((title) => {
+      gsap.to(title, {
+        scrollTrigger: {
+          trigger: title,
+          start: "top 90%",
+          once: true,
+        },
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      });
     });
 
     // About Content - Simplified and robust entry
@@ -325,43 +368,58 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Testimonials Content
-    gsap.to(".review-slider-wrapper", {
-      scrollTrigger: {
-        trigger: "#testimonials",
-        start: "top 75%",
-        once: true,
-      },
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.6,
-      ease: "power2.out",
-    });
+    if (
+      document.querySelector("#testimonials") &&
+      document.querySelector(".review-slider-wrapper")
+    ) {
+      gsap.to(".review-slider-wrapper", {
+        scrollTrigger: {
+          trigger: "#testimonials",
+          start: "top 75%",
+          once: true,
+        },
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    }
 
     // Artists Grid
-    gsap.to(".artists-grid", {
-      scrollTrigger: {
-        trigger: "#artists",
-        start: "top 75%",
-        once: true,
-      },
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.6,
-      ease: "power2.out",
-    });
+    if (
+      document.querySelector("#artists") &&
+      document.querySelector(".artists-grid")
+    ) {
+      gsap.to(".artists-grid", {
+        scrollTrigger: {
+          trigger: "#artists",
+          start: "top 75%",
+          once: true,
+        },
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    }
 
     // Team Grid
-    gsap.to(".team-grid", {
-      scrollTrigger: {
-        trigger: "#team",
-        start: "top 75%",
-        once: true,
-      },
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.6,
-      ease: "power2.out",
-    });
+    if (
+      document.querySelector("#team") &&
+      document.querySelector(".team-grid")
+    ) {
+      gsap.to(".team-grid", {
+        scrollTrigger: {
+          trigger: "#team",
+          start: "top 75%",
+          once: true,
+        },
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    }
     // Gallery Grid
     const galleryGrid = document.querySelector(".gallery-grid");
     if (galleryGrid) {
@@ -378,17 +436,22 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
     // Contact Content
-    gsap.to(".contact-container > *", {
-      scrollTrigger: {
-        trigger: "#contact",
-        start: "top 75%",
-        once: true,
-      },
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.4,
-      stagger: 0.1,
-      ease: "power2.out",
-    });
+    if (
+      document.querySelector("#contact") &&
+      document.querySelector(".contact-container")
+    ) {
+      gsap.to(".contact-container > *", {
+        scrollTrigger: {
+          trigger: "#contact",
+          start: "top 75%",
+          once: true,
+        },
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.4,
+        stagger: 0.1,
+        ease: "power2.out",
+      });
+    }
   }
 });
