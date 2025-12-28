@@ -1,6 +1,7 @@
 [
   {
-    "image": "assets/Glorix New Year Poster.png",
-    "alt": "Slide 1"
+    "desktopImage": "assets/new year desktop.png",
+    "mobileImage": "assets/Glorix New Year Poster.png",
+    "alt": "Happy New Year 2026"
   }
 ]

@@ -7,20 +7,37 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("data/carousel.json")
       .then((response) => response.json())
       .then((slidesData) => {
-        slidesData.forEach((slide) => {
-          const clone = carouselTemplate.content.cloneNode(true);
-          const images = clone.querySelectorAll("img");
-          images.forEach((img) => {
-            img.src = slide.image;
-            img.alt = slide.alt;
+        function renderCarousel() {
+          carouselTrack.innerHTML = "";
+          const isMobile = window.innerWidth <= 768;
+
+          slidesData.forEach((slide) => {
+            const clone = carouselTemplate.content.cloneNode(true);
+            const images = clone.querySelectorAll("img");
+            const imgSrc = isMobile ? slide.mobileImage : slide.desktopImage;
+
+            images.forEach((img) => {
+              img.src = imgSrc;
+              img.alt = slide.alt;
+            });
+            carouselTrack.appendChild(clone);
           });
-          carouselTrack.appendChild(clone);
+          initCarousel();
+        }
+
+        renderCarousel();
+
+        // Re-render on resize to switch images if needed
+        let resizeTimeout;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(renderCarousel, 250);
         });
-        initCarousel();
       })
       .catch((error) => console.error("Error loading carousel:", error));
   }
 
+  let carouselInterval;
   function initCarousel() {
     const track = document.getElementById("carouselTrack");
     const slides = Array.from(track.querySelectorAll(".carousel-slide"));
@@ -28,12 +45,14 @@ document.addEventListener("DOMContentLoaded", function () {
       let currentSlide = 0;
       const slideDuration = 3000;
 
+      if (carouselInterval) clearInterval(carouselInterval);
+
       function moveToSlide(index) {
         currentSlide = (index + slides.length) % slides.length;
         track.style.transform = `translateX(-${currentSlide * 100}%)`;
       }
 
-      setInterval(() => {
+      carouselInterval = setInterval(() => {
         moveToSlide(currentSlide + 1);
       }, slideDuration);
     }
