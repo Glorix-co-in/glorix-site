@@ -1,31 +1,49 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // ===== Navbar Toggle =====
+  // ===== Navbar Toggle & Active Link =====
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("navMenu");
-
-  if (hamburger && navMenu) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      navMenu.classList.toggle("active");
-    });
-  }
-
-  // ===== Navbar Active Link =====
   const navLinks = document.querySelectorAll(".nav-center a");
   let currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-  navLinks.forEach((link) => {
-    if (link.getAttribute("href") === currentPage) {
-      link.classList.add("active");
-    }
+  if (hamburger && navMenu) {
+    const spans = hamburger.querySelectorAll("span");
+    const tl = gsap.timeline({ paused: true, reversed: true });
 
-    link.addEventListener("click", () => {
-      if (hamburger && navMenu) {
-        hamburger.classList.remove("active");
-        navMenu.classList.remove("active");
+    tl.to(spans[0], { y: 6, rotation: 45, duration: 0.3, ease: "power2.inOut" })
+      .to(spans[1], { opacity: 0, duration: 0.3, ease: "power2.inOut" }, "<")
+      .to(
+        spans[2],
+        { y: -6, rotation: -45, duration: 0.3, ease: "power2.inOut" },
+        "<"
+      );
+
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+
+      if (hamburger.classList.contains("active")) {
+        tl.play();
+      } else {
+        tl.reverse();
       }
     });
-  });
+
+    navLinks.forEach((link) => {
+      // Set active class
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+
+      // Close menu when clicking a link
+      link.addEventListener("click", () => {
+        if (hamburger.classList.contains("active")) {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");
+          tl.reverse();
+        }
+      });
+    });
+  }
 
   // ===== Music Player =====
   const music = document.getElementById("bgMusic");
