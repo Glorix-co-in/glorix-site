@@ -25,6 +25,82 @@ a {
   }
 }
 
+/* ===== Layout & Common Sections ===== */
+.main-content {
+  --content-max-width: 1200px;
+  --viewport-padding: 16px;
+
+  /* Standardized Spacing Variables */
+  --section-padding-y: 60px;
+  --section-padding-y-mobile: 30px;
+  --section-title-margin: 25px;
+  --section-title-margin-mobile: 15px;
+
+  display: grid;
+  grid-template-columns:
+    minmax(var(--viewport-padding), 1fr) min(
+      var(--content-max-width),
+      100% - var(--viewport-padding) * 2
+    )
+    minmax(var(--viewport-padding), 1fr);
+}
+
+/* All direct children go to center column by default */
+.main-content > * {
+  grid-column: 2;
+}
+
+/* Full-bleed elements span all columns */
+.main-content > .full-bleed {
+  grid-column: 1 / -1;
+}
+
+section {
+  padding-block: var(--section-padding-y);
+  padding-inline: var(--viewport-padding, 20px);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: var(--section-title-margin);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.section-title span {
+  color: #ffbf00;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto var(--section-title-margin);
+}
+
+.section-header .section-title {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.see-all-btn {
+  color: #ffbf00;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.see-all-btn:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+
 /* ===== Navbar ===== */
 header.navbar {
   background: #000;
@@ -306,6 +382,11 @@ footer {
 @media (max-width: 768px) {
   body {
     padding-top: 60px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: var(--section-title-margin-mobile);
   }
 
   header.navbar {
