@@ -177,9 +177,13 @@ document.addEventListener("DOMContentLoaded", function () {
     startAutoScroll();
 
     // Pause auto-scroll on user interaction
-    sliderWrapper.addEventListener("touchstart", () => {
-      clearInterval(autoScrollInterval);
-    });
+    sliderWrapper.addEventListener(
+      "touchstart",
+      () => {
+        clearInterval(autoScrollInterval);
+      },
+      { passive: true }
+    );
 
     sliderWrapper.addEventListener("mousedown", () => {
       clearInterval(autoScrollInterval);

@@ -24,6 +24,21 @@
       media="print"
       onload="this.media='all'"
     />
+    <!-- Preload Hero Images -->
+    <link
+      rel="preload"
+      href="assets/new%20year%20desktop-op.png"
+      as="image"
+      fetchpriority="high"
+      media="(min-width: 769px)"
+    />
+    <link
+      rel="preload"
+      href="assets/Glorix%20New%20Year%20Poster-op.png"
+      as="image"
+      fetchpriority="high"
+      media="(max-width: 768px)"
+    />
   </head>
 
   <body>
@@ -41,7 +56,8 @@
             src="assets/cropped_logo.png"
             alt="GLORIX Logo"
             height="100%"
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
           />
         </a>
         <p>&nbsp;The X Factor In Everything !</p>
@@ -292,10 +308,22 @@
     <template id="carouselTemplate">
       <div class="carousel-slide">
         <div class="carousel-bg-blur">
-          <img src="" alt="" class="bg-img" loading="lazy" />
+          <img
+            src=""
+            alt=""
+            class="bg-img"
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
         <div class="carousel-content">
-          <img src="" alt="" class="main-img" loading="lazy" />
+          <img
+            src=""
+            alt=""
+            class="main-img"
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
       </div>
     </template>
