@@ -469,6 +469,84 @@
   border-radius: 6px;
 }
 
+/* ===== Email Section ===== */
+.email-section {
+  background: #0d0d0d;
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.email-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.email-section h4 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #4f5d6a;
+}
+
+.email-description {
+  color: #ccc;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+  text-wrap: balance;
+  max-inline-size: 70ch;
+  justify-self: center;
+}
+
+.email-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.email-form input {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.email-form input:focus {
+  border-color: #ffbf00;
+}
+
+.email-btn {
+  padding: 12px 30px;
+  background: #ffbf00;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.email-btn:hover {
+  background: #e6ac00;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .email-form {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  .email-btn {
+    width: 100%;
+  }
+}
+
 /* ===== Contact Section ===== */
 .contact-section {
   background: #0d0d0d;
@@ -764,6 +842,7 @@
 .artists-grid,
 .team-grid,
 .marquee,
+.email-container > *,
 .contact-container > * {
   opacity: 0;
   visibility: hidden;

@@ -348,6 +348,10 @@ document.addEventListener("DOMContentLoaded", function () {
       gsap.set(".contact-container > *", { y: 30 });
     }
 
+    if (document.querySelector(".email-container")) {
+      gsap.set(".email-container > *", { y: 30 });
+    }
+
     // Header Animations (on load)
     const headerTl = gsap.timeline();
     headerTl
@@ -546,12 +550,31 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power2.out",
       });
     }
+    // Email Section
+    if (
+      document.querySelector("#email-subscription") &&
+      document.querySelector(".email-container")
+    ) {
+      gsap.to(".email-container > *:not(.section-title)", {
+        scrollTrigger: {
+          trigger: "#email-subscription",
+          start: "top 75%",
+          once: true,
+        },
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.4,
+        stagger: 0.1,
+        ease: "power2.out",
+      });
+    }
+
     // Contact Content
     if (
       document.querySelector("#contact") &&
       document.querySelector(".contact-container")
     ) {
-      gsap.to(".contact-container > *", {
+      gsap.to(".contact-container > *:not(.section-title)", {
         scrollTrigger: {
           trigger: "#contact",
           start: "top 75%",
@@ -562,6 +585,29 @@ document.addEventListener("DOMContentLoaded", function () {
         duration: 0.4,
         stagger: 0.1,
         ease: "power2.out",
+      });
+    }
+
+    // Email Form Handler
+    const emailForm = document.getElementById("emailForm");
+    if (emailForm) {
+      emailForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const email = document.getElementById("userEmail").value;
+        const subject = encodeURIComponent("Inquiry from Glorix Website");
+        const body = encodeURIComponent(
+          `Hi Glorix Team,\n\nI am interested in connecting with you. My email is: ${email}\n\n[Please add your message here]`
+        );
+
+        const mailtoUrl = `mailto:queries.glorix@gmail.com?subject=${subject}&body=${body}`;
+
+        // Create a hidden link and click it for a more "native" browser response
+        const tempLink = document.createElement("a");
+        tempLink.href = mailtoUrl;
+        tempLink.style.display = "none";
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
       });
     }
   }
