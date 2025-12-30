@@ -79,37 +79,24 @@
       </section>
 
       <section id="team" class="team-section" style="padding-top: 0">
-        <div class="team-grid">
-          <div class="artist-card">
-            <img src="assets/t11.jpg" alt="Manager" loading="lazy" />
-            <div class="artist-info">
-              <h3>Manager</h3>
-            </div>
-          </div>
-          <div class="artist-card">
-            <img
-              src="assets/t3.jpg"
-              alt="Social Media Manager"
-              loading="lazy"
-            />
-            <div class="artist-info">
-              <h3>Social Media Manager</h3>
-            </div>
-          </div>
-          <div class="artist-card">
-            <img src="assets/t4.jpg" alt="Co-Manager" loading="lazy" />
-            <div class="artist-info">
-              <h3>Co-Manager</h3>
-            </div>
-          </div>
-          <div class="artist-card">
-            <img src="assets/t2.jpg" alt="Marketing Head" loading="lazy" />
-            <div class="artist-info">
-              <h3>Marketing Head</h3>
-            </div>
-          </div>
+        <div class="team-grid" id="teamGrid">
+          <!-- Team members will be loaded dynamically here -->
         </div>
       </section>
+
+      <template id="teamTemplate">
+        <a
+          href=""
+          class="artist-card"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="" alt="" loading="lazy" />
+          <div class="artist-info">
+            <h3></h3>
+          </div>
+        </a>
+      </template>
     </main>
 
     <!-- Footer -->

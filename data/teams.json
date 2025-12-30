@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Piyush",
+    "image": "assets/team/Piyush.jpg",
+    "role": "Manager",
+    "link": "https://www.instagram.com/piyush_jha_2006?igsh=MTcxMDI2YnVyZ3ljYg=="
+  },
+  {
+    "name": "Aranyak",
+    "image": "assets/team/Aranyak.jpg",
+    "role": "Member",
+    "link": "https://www.instagram.com/aranyak_08?igsh=ODdqM3FobHF3bWVj"
+  },
+  {
+    "name": "Purv",
+    "image": "assets/team/Purv.jpg",
+    "role": "Member",
+    "link": "https://www.instagram.com/purv.sehgall?igsh=MTdoMXA0czk1bTV1dQ=="
+  },
+  {
+    "name": "Prajjwal",
+    "image": "assets/team/Prajjwal.jpg",
+    "role": "Member",
+    "link": "https://www.instagram.com/prajjwal.vatss?igsh=MTljbXNxYjY1ZGdhaA=="
+  },
+  {
+    "name": "Rudra",
+    "image": "assets/team/Rudra.jpg",
+    "role": "Member",
+    "link": "https://www.instagram.com/rudra.tiwari05?igsh=czA5ZnU3bjVhNXo2"
+  },
+  {
+    "name": "Saksham",
+    "image": "assets/team/Saksham.jpg",
+    "role": "Member",
+    "link": "https://www.instagram.com/areesaksham?igsh=MWNjMmE4NXJnZDhjZQ=="
+  }
+]

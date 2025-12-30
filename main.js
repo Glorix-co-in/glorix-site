@@ -263,6 +263,31 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error loading artists:", error));
   }
 
+  // ===== Load Team Dynamically =====
+  const teamGrid = document.getElementById("teamGrid");
+  const teamTemplate = document.getElementById("teamTemplate");
+
+  if (teamGrid && teamTemplate) {
+    fetch("data/teams.json")
+      .then((response) => response.json())
+      .then((teams) => {
+        teams.forEach((member) => {
+          const clone = teamTemplate.content.cloneNode(true);
+          const card = clone.querySelector(".artist-card");
+          const img = clone.querySelector("img");
+          const name = clone.querySelector("h3");
+
+          card.href = member.link || "#";
+          img.src = member.image;
+          img.alt = member.role;
+          name.textContent = member.name;
+
+          teamGrid.appendChild(clone);
+        });
+      })
+      .catch((error) => console.error("Error loading team:", error));
+  }
+
   // ===== Collaboration Marquee =====
   const collabMarquee = document.getElementById("collaborationMarquee");
   const collabTemplate = document.getElementById("collaborationTemplate");
