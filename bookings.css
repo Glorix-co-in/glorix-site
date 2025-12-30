@@ -2,29 +2,23 @@
 
 /* Hero Banner */
 .bookings-hero {
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  display: grid;
+  place-items: center;
   background: #000;
   position: relative;
   overflow: hidden;
 }
 
 .bookings-hero img {
+  grid-area: 1 / 1;
   width: 100%;
   height: 150px;
-  display: block;
   object-fit: fill;
-  margin: 0;
-  padding: 0;
 }
 
 .bookings-hero__overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
+  grid-area: 1 / 1;
+  z-index: 1;
   text-align: center;
   padding: 0 10px;
 }
@@ -44,37 +38,17 @@
 
 /* Events Section */
 .events-section {
-  text-align: center;
   background: #000;
-  padding: 10px 20px 80px 20px;
+  padding-block: var(--section-padding-y, 60px);
   font-family: "Open Sans", sans-serif;
-  box-sizing: border-box;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 700;
-}
-
-.section-title span {
-  color: #ffbf00;
 }
 
 /* Events Container */
 .events-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-  align-items: stretch;
-  justify-content: center;
-  gap: 20px;
-  padding: 10px 10px 30px 10px;
-  margin: 0 auto;
-  max-width: 1400px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding-block: 20px;
 }
 
 /* Event Cards */
@@ -82,17 +56,13 @@
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  min-width: 280px;
-  max-width: 360px;
-  flex: 0 0 auto;
 }
 
 .event-card__image {
-  height: 20vh;
-  aspect-ratio: 9 / 16;
+  height: 350px;
   overflow: hidden;
 }
 
@@ -103,25 +73,26 @@
 }
 
 .event-card__content {
-  padding: 20px;
-  text-align: center;
+  padding: 24px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
   flex-grow: 1;
 }
 
 .event-card__title {
   font-size: 1.5rem;
   color: #000;
-  margin: 0 0 10px 0;
+  margin: 0;
   font-weight: 700;
 }
 
 .event-card__date {
   color: #666;
-  margin: 0 0 auto 0;
   font-size: 1rem;
-  padding-bottom: 15px;
+  margin-bottom: auto;
 }
 
 .event-card__btn {
@@ -174,12 +145,7 @@
 /* ===== Responsive Styles ===== */
 @media (max-width: 768px) {
   .events-section {
-    padding: 5px 10px 30px 10px;
-  }
-
-  .section-title {
-    margin-bottom: 10px;
-    font-size: 1.8rem;
+    padding-block: var(--section-padding-y-mobile, 30px);
   }
 
   .events-container {
@@ -190,7 +156,7 @@
     -webkit-overflow-scrolling: touch;
     gap: 40px;
     padding-block: 10px;
-    padding-inline: 8vw;
+    padding-inline: 15vw;
     scroll-padding: 0 10px;
     justify-content: flex-start;
     align-items: stretch;
@@ -202,42 +168,33 @@
   }
 
   .event-card {
-    display: flex;
     flex: 0 0 100%;
     scroll-snap-align: center;
-    margin: 0;
     min-width: 0;
     max-width: none;
-    max-height: 60vh; /* Limit height to fit in viewport */
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
   }
 
   .event-card__image {
-    height: 45vh;
+    height: 40vh;
+    max-height: none;
+    aspect-ratio: unset;
   }
+
   .event-card__content {
-    padding: 10px;
+    padding: 20px;
   }
 
   .event-card__title {
     font-size: 1.2rem;
-    margin-bottom: 5px;
   }
 
   .event-card__date {
     font-size: 0.9rem;
-    padding-bottom: 10px;
   }
 
   .event-card__btn {
     padding: 10px;
     font-size: 0.9rem;
-  }
-
-  .mobile-arrows {
-    display: flex !important;
   }
 
   .bookings-hero img {
@@ -248,18 +205,18 @@
     font-size: 1.8rem;
     -webkit-text-stroke: 1px #000;
   }
+
+  .mobile-arrows {
+    display: flex;
+  }
 }
 
 @media (max-width: 480px) {
-  .section-title {
-    font-size: 1.6rem !important;
+  .bookings-hero__title {
+    font-size: 1.5rem;
   }
 
   .event-card__title {
-    font-size: 1.1rem !important;
-  }
-
-  .event-card {
-    flex: 0 0 100%;
+    font-size: 1.1rem;
   }
 }
