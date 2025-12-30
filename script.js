@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active");
       navMenu.classList.toggle("active");
+      document.body.classList.toggle("no-scroll");
 
       if (hamburger.classList.contains("active")) {
         tl.play();
@@ -28,12 +29,74 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    navLinks.forEach((link) => {
-      // Set active class
-      if (link.getAttribute("href") === currentPage) {
-        link.classList.add("active");
-      }
+    const updateActiveLink = () => {
+      if (currentPage === "index.html" || currentPage === "") {
+        const sections = ["home", "gallery", "contact"];
+        const visibilityMap = {};
 
+        const observerOptions = {
+          root: null,
+          rootMargin: "-10% 0px -20% 0px",
+          threshold: [0, 0.1, 0.5, 0.9],
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            visibilityMap[entry.target.id] = entry.intersectionRatio;
+          });
+
+          // Find the section with the highest visibility ratio
+          let mostVisible = null;
+          let maxRatio = -1;
+
+          for (const id in visibilityMap) {
+            if (visibilityMap[id] > maxRatio) {
+              maxRatio = visibilityMap[id];
+              mostVisible = id;
+            }
+          }
+
+          if (mostVisible && maxRatio > 0) {
+            navLinks.forEach((link) => {
+              const href = link.getAttribute("href");
+              link.classList.remove("active");
+              if (
+                href === `#${mostVisible}` ||
+                href === `index.html#${mostVisible}` ||
+                (mostVisible === "home" &&
+                  (href === "#" ||
+                    href === "#home" ||
+                    href === "index.html" ||
+                    href === "index.html#home"))
+              ) {
+                link.classList.add("active");
+              }
+            });
+          }
+        }, observerOptions);
+
+        sections.forEach((id) => {
+          const section = document.getElementById(id);
+          if (section) observer.observe(section);
+        });
+      } else {
+        navLinks.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (
+            href === currentPage ||
+            (href.includes(currentPage) && currentPage !== "index.html")
+          ) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
+        });
+      }
+    };
+
+    updateActiveLink();
+
+    navLinks.forEach((link) => {
       // Close menu when clicking a link
       link.addEventListener("click", (e) => {
         const href = link.getAttribute("href");
@@ -68,9 +131,22 @@ document.addEventListener("DOMContentLoaded", function () {
         if (hamburger.classList.contains("active")) {
           hamburger.classList.remove("active");
           navMenu.classList.remove("active");
+          document.body.classList.remove("no-scroll");
           tl.reverse();
         }
       });
+    });
+
+    // Close menu on resize if window becomes desktop size
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768) {
+        if (hamburger.classList.contains("active")) {
+          hamburger.classList.remove("active");
+          navMenu.classList.remove("active");
+          document.body.classList.remove("no-scroll");
+          tl.reverse();
+        }
+      }
     });
   }
 

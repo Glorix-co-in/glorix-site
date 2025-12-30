@@ -350,6 +350,9 @@
 
 /* Responsive Gallery */
 @media (max-width: 768px) {
+  .about {
+    translate: 0;
+  }
   .gallery-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;

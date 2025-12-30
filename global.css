@@ -14,6 +14,10 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
+
+body.no-scroll {
+  overflow: hidden;
+}
 button,
 a {
   font-family: "Times New Roman", Times, serif;
