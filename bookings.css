@@ -156,7 +156,6 @@
     -webkit-overflow-scrolling: touch;
     gap: 40px;
     padding-block: 10px;
-    padding-inline: 15vw;
     scroll-padding: 0 10px;
     justify-content: flex-start;
     align-items: stretch;
