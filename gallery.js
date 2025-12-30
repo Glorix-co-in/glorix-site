@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // GSAP Animation for gallery items
       gsap.to(".gallery-grid", {
         autoAlpha: 1,
-        y: 0,
         duration: 0.8,
         ease: "power3.out",
         scrollTrigger: {
@@ -55,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
       gsap.from(".gallery-item", {
         duration: 0.8,
         opacity: 0,
-        y: 50,
         stagger: 0.05,
         ease: "power3.out",
         scrollTrigger: {

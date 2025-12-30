@@ -283,11 +283,6 @@
   align-items: center;
 }
 
-.gallery-logo img {
-  max-height: 100px;
-  width: auto;
-}
-
 /* Precise Hardcoded Spans for Staggered Effect */
 
 /* Left Column */
@@ -304,6 +299,9 @@
 .item-l3 {
   grid-column: 1;
   grid-row: 7 / 10;
+  img {
+    object-position: 0px -40px;
+  }
 }
 
 .item-l4 {
@@ -341,6 +339,9 @@
 .item-r3 {
   grid-column: 3;
   grid-row: 7 / 10;
+  img {
+    object-position: 0px 0px;
+  }
 }
 
 .item-r4 {
