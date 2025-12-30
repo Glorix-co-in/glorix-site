@@ -254,7 +254,7 @@
   display: grid;
   /* 3 main columns, but we use a 12-row grid for precise staggering */
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(12, 60px);
+  grid-template-rows: repeat(12, 70px);
   gap: 15px;
   max-width: 1000px;
   margin: 0 auto;
