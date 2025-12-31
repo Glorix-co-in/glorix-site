@@ -1,98 +1,182 @@
 [
-  { "src": "assets/gallery/IMG-20251030-WA0006.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251030-WA0017.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0054.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0055.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0056.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0057.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0059.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0060.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0061.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0063.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0064.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0078.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0082.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09207.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09210.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09213.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09214.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09236.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09237.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09239.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09242.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09248.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09251.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09270.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09308.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09310.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09312.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/bali photos/DSC09345.jpg", "alt": "Gallery Image" },
   {
-    "src": "assets/gallery/seasons photos/SKP05627.JPG",
+    "src": "assets/gallery/IMG-20251030-WA0006.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05630.JPG",
+    "src": "assets/gallery/IMG-20251030-WA0017.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05639.JPG",
+    "src": "assets/gallery/IMG-20251230-WA0054.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05672.JPG",
+    "src": "assets/gallery/IMG-20251230-WA0055.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05677.JPG",
+    "src": "assets/gallery/IMG-20251230-WA0056.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05696.JPG",
+    "src": "assets/gallery/IMG-20251230-WA0057.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05708.JPG",
+    "src": "assets/gallery/IMG-20251230-WA0059.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05711.JPG",
+    "src": "assets/gallery/IMG-20251230-WA0060.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05743.JPG",
+    "src": "assets/gallery/IMG-20251230-WA0061.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05762.JPG",
+    "src": "assets/gallery/IMG-20251230-WA0063.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05796.JPG",
+    "src": "assets/gallery/IMG-20251230-WA0064.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05829.JPG",
+    "src": "assets/gallery/IMG-20251230-WA0078.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05836.JPG",
+    "src": "assets/gallery/IMG-20251230-WA0082.jpg",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05858.JPG",
+    "src": "assets/gallery/bali photos/DSC09207.webp",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05882.JPG",
+    "src": "assets/gallery/bali photos/DSC09210.webp",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05888.JPG",
+    "src": "assets/gallery/bali photos/DSC09213.webp",
     "alt": "Gallery Image"
   },
   {
-    "src": "assets/gallery/seasons photos/SKP05926.JPG",
+    "src": "assets/gallery/bali photos/DSC09214.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bali photos/DSC09236.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bali photos/DSC09237.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bali photos/DSC09239.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bali photos/DSC09242.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bali photos/DSC09248.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bali photos/DSC09251.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bali photos/DSC09270.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bali photos/DSC09308.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bali photos/DSC09310.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bali photos/DSC09312.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bali photos/DSC09345.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05627.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05630.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05639.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05672.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05677.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05696.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05708.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05711.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05743.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05762.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05796.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05829.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05836.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05858.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05882.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05888.webp",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05926.webp",
     "alt": "Gallery Image"
   },
   {
