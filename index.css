@@ -378,7 +378,6 @@
 /* ===== Testimonials ===== */
 .testimonials {
   background: #0d0d0d;
-  padding: 80px 20px;
   position: relative;
   z-index: 1;
 }
@@ -472,9 +471,12 @@
 
 /* ===== Email Section ===== */
 .email-section {
-  background: #0d0d0d;
+  background: #1a1a1a;
   text-align: center;
-  padding-bottom: 0;
+  padding-block: 20px 30px;
+  h2 {
+    margin-top: 0;
+  }
 }
 
 .email-container {
@@ -482,69 +484,77 @@
   margin: 0 auto;
 }
 
-.email-section h4 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #4f5d6a;
-}
-
 .email-description {
-  color: #ccc;
+  color: #919191;
   line-height: 1.8;
-  margin-bottom: 40px;
-  font-size: 1.1rem;
-  text-wrap: balance;
-  max-inline-size: 70ch;
-  justify-self: center;
+  margin-bottom: 30px;
+  font-size: 1rem;
 }
 
 .email-form {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr auto;
   max-width: 500px;
   margin: 0 auto;
+  width: 100%;
 }
 
-.email-form input {
-  flex: 1;
-  padding: 12px 20px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background: #1a1a1a;
+.email-display {
+  padding: 16px 20px;
+  border: 1px solid #fff;
+  background: transparent;
   color: #fff;
   font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s ease;
-}
-
-.email-form input:focus {
-  border-color: #ffbf00;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  word-break: break-all;
 }
 
 .email-btn {
-  padding: 12px 30px;
-  background: #ffbf00;
-  color: #000;
+  padding: 16px 32px;
+  background: #4f5d6a;
+  color: #fff;
   border: none;
-  border-radius: 8px;
   font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  white-space: nowrap;
   cursor: pointer;
-  transition: transform 0.3s ease, background 0.3s ease;
+  background: hsl(209, 10%, 25%);
+  color: #ffbf00;
+  font-weight: bold;
 }
 
 .email-btn:hover {
-  background: #e6ac00;
-  transform: translateY(-2px);
+  background: hsl(209, 10%, 20%);
+  scale: 0.98;
 }
 
 @media (max-width: 600px) {
   .email-form {
-    flex-direction: column;
-    padding: 0 20px;
+    box-sizing: border-box;
+    padding-inline: 2rem;
+    gap: 1rem;
+    grid-template-columns: 1fr;
   }
+
+  .email-display {
+    justify-content: center;
+    text-align: center;
+    padding: 18px 15px;
+  }
+
   .email-btn {
-    width: 100%;
+    padding: 18px 15px;
+    white-space: normal;
   }
 }
 
