@@ -52,9 +52,14 @@ Artists json still has some fixes with LINKs insta ke
 Gallery -> Bali ki shows, seasons ki shows -> more priority photos
 Bali ki photo replace in artists from new drive link
 
-## TODO
+<!-- 31/12/2025 -->
 
 home poster loading fix
+BOOKING PAGE CARD SIZE HEIGHT SHORT HO JAYE more small
+EMAIL US BOX MAI HO JAISE PHELE THA
+GALLERY MAI BAKI IMAGES ADD KARDO
+
+## TODO
 
 ## THINK FOR FUTURE
 

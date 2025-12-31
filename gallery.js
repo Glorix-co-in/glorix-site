@@ -6,24 +6,62 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("data/gallery.json")
       .then((response) => response.json())
       .then((galleryData) => {
-        galleryData.forEach((item) => {
-          const clone = galleryTemplate.content.cloneNode(true);
-          const img = clone.querySelector("img");
-          img.src = item.src;
-          img.alt = item.alt;
-
-          // Add click event for lightbox (optional)
-          clone.querySelector(".gallery-item").addEventListener("click", () => {
-            console.log("Viewing image:", item.src);
-          });
-
-          galleryGrid.appendChild(clone);
-        });
-
-        // Initialize animations after items are loaded
-        initGalleryAnimations();
+        renderGallery(galleryData);
       })
       .catch((error) => console.error("Error loading gallery data:", error));
+  }
+
+  function renderGallery(data) {
+    const observerOptions = {
+      root: null,
+      rootMargin: "400px 0px", // Load images 400px before they enter viewport
+      threshold: 0.01,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const item = entry.target;
+        const index = item.dataset.index;
+        const itemData = data[index];
+
+        if (entry.isIntersecting) {
+          // Load content
+          if (!item.querySelector("img")) {
+            const img = document.createElement("img");
+            img.src = itemData.src;
+            img.alt = itemData.alt;
+            img.loading = "lazy";
+            item.appendChild(img);
+
+            // Fade in effect
+            gsap.fromTo(img, { opacity: 0 }, { opacity: 1, duration: 0.4 });
+          }
+        } else {
+          // Unload content to save memory (Virtualization)
+          const img = item.querySelector("img");
+          if (img) {
+            img.remove();
+          }
+        }
+      });
+    }, observerOptions);
+
+    data.forEach((item, index) => {
+      const container = document.createElement("div");
+      container.className = "gallery-item";
+      container.dataset.index = index;
+
+      // Add click event for lightbox (optional)
+      container.addEventListener("click", () => {
+        console.log("Viewing image:", item.src);
+      });
+
+      galleryGrid.appendChild(container);
+      observer.observe(container);
+    });
+
+    // Initialize animations after items are loaded
+    initGalleryAnimations();
   }
 
   function initGalleryAnimations() {

@@ -11,5 +11,128 @@
   { "src": "assets/gallery/IMG-20251230-WA0063.jpg", "alt": "Gallery Image" },
   { "src": "assets/gallery/IMG-20251230-WA0064.jpg", "alt": "Gallery Image" },
   { "src": "assets/gallery/IMG-20251230-WA0078.jpg", "alt": "Gallery Image" },
-  { "src": "assets/gallery/IMG-20251230-WA0082.jpg", "alt": "Gallery Image" }
+  { "src": "assets/gallery/IMG-20251230-WA0082.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09207.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09210.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09213.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09214.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09236.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09237.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09239.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09242.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09248.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09251.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09270.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09308.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09310.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09312.jpg", "alt": "Gallery Image" },
+  { "src": "assets/gallery/bali photos/DSC09345.jpg", "alt": "Gallery Image" },
+  {
+    "src": "assets/gallery/seasons photos/SKP05627.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05630.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05639.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05672.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05677.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05696.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05708.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05711.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05743.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05762.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05796.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05829.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05836.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05858.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05882.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05888.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/seasons photos/SKP05926.JPG",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bloom photos/IMG-20250803-WA0077.jpg",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bloom photos/IMG-20250804-WA0034.jpg",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bloom photos/Screenshot 2025-12-31 165428.png",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/bloom photos/Screenshot_20250802-003957.1Gallery.png",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/flair photos/IMG-20250921-WA0025.jpg",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/flair photos/IMG-20250921-WA0030.jpg",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/flair photos/Screenshot 2025-12-31 165734.png",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/flair photos/Screenshot 2025-12-31 165820.png",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/flair photos/Screenshot 2025-12-31 165858.png",
+    "alt": "Gallery Image"
+  },
+  {
+    "src": "assets/gallery/flair photos/Screenshot 2025-12-31 165922.png",
+    "alt": "Gallery Image"
+  }
 ]
