@@ -1,27 +1,27 @@
 [
   {
-    "name": "Piyush",
-    "image": "assets/team/Piyush.jpg",
-    "role": "Manager",
-    "link": "https://www.instagram.com/piyush_jha_2006?igsh=MTcxMDI2YnVyZ3ljYg=="
-  },
-  {
     "name": "Aranyak",
     "image": "assets/team/Aranyak.jpg",
     "role": "Member",
     "link": "https://www.instagram.com/aranyak_08?igsh=ODdqM3FobHF3bWVj"
   },
   {
-    "name": "Purv",
-    "image": "assets/team/Purv.jpg",
-    "role": "Member",
-    "link": "https://www.instagram.com/purv.sehgall?igsh=MTdoMXA0czk1bTV1dQ=="
+    "name": "Piyush",
+    "image": "assets/team/Piyush.jpg",
+    "role": "Manager",
+    "link": "https://www.instagram.com/piyush_jha_2006?igsh=MTcxMDI2YnVyZ3ljYg=="
   },
   {
     "name": "Prajjwal",
     "image": "assets/team/Prajjwal.jpg",
     "role": "Member",
     "link": "https://www.instagram.com/prajjwal.vatss?igsh=MTljbXNxYjY1ZGdhaA=="
+  },
+  {
+    "name": "Purv",
+    "image": "assets/team/Purv.jpg",
+    "role": "Member",
+    "link": "https://www.instagram.com/purv.sehgall?igsh=MTdoMXA0czk1bTV1dQ=="
   },
   {
     "name": "Rudra",
