@@ -5,42 +5,76 @@ document.addEventListener("DOMContentLoaded", function () {
   let cards = [];
 
   // Load events from JSON
-  if (eventsContainer && eventCardTemplate) {
-    fetch("data/events.json")
-      .then((response) => response.json())
-      .then((events) => {
-        events.forEach((event) => {
-          const clone = eventCardTemplate.content.cloneNode(true);
+  const upcomingContainer = document.getElementById("upcomingEventsContainer");
+  const pastContainer = document.getElementById("pastEventsContainer");
 
-          const img = clone.querySelector(".event-card__image img");
-          img.src = event.image;
-          img.alt = event.title;
+  if (upcomingContainer && pastContainer) {
+    const isMobile = window.innerWidth <= 768;
+    const templateId = isMobile ? "mobileEventCardTemplate" : "eventCardTemplate";
+    const eventCardTemplate = document.getElementById(templateId);
 
-          clone.querySelector(".event-card__title").textContent = event.title;
-          clone.querySelector(".event-card__date").textContent = event.date;
+    if (eventCardTemplate) {
+      fetch("data/events.json")
+        .then((response) => response.json())
+        .then((events) => {
+          let upcomingCount = 0;
+          let pastCount = 0;
 
-          const btn = clone.querySelector(".event-card__btn");
+          events.forEach((event) => {
+            const isUpcoming = event.status === "open";
+            const container = isUpcoming ? upcomingContainer : pastContainer;
 
-          if (event.status === "open" && event.bookingLink) {
-            btn.textContent = "Book Now";
-            btn.classList.add("event-card__btn--open");
-            btn.addEventListener("click", () => {
-              window.open(event.bookingLink, "_blank");
-            });
-          } else {
-            btn.textContent = "Bookings Closed";
-            btn.classList.add("event-card__btn--closed");
-            btn.disabled = true;
+            if (isUpcoming) upcomingCount++;
+            else pastCount++;
+
+            const clone = eventCardTemplate.content.cloneNode(true);
+            const prefix = isMobile ? ".event-card-mobile" : ".event-card";
+
+            const img = clone.querySelector(`${prefix}__image img`);
+            img.src = event.image;
+            img.alt = event.title;
+
+            clone.querySelector(`${prefix}__title`).textContent = event.title;
+
+            let dateText = event.date;
+            if (isMobile) {
+              // Extract day (e.g., 24th) and short month (e.g., Dec)
+              const match = event.date.match(/(\d+(?:st|nd|rd|th))\s+([A-Za-z]+)/);
+              if (match) {
+                dateText = `${match[1]} ${match[2].substring(0, 3)}`;
+              }
+            }
+            clone.querySelector(`${prefix}__date`).textContent = dateText;
+
+            const btn = clone.querySelector(`${prefix}__btn`);
+
+            if (event.status === "open" && event.bookingLink) {
+              btn.textContent = "Book Now";
+              btn.classList.add(`${prefix.substring(1)}__btn--open`);
+              btn.addEventListener("click", () => {
+                window.open(event.bookingLink, "_blank");
+              });
+            } else {
+              btn.textContent = isMobile ? "Closed" : "Bookings Closed";
+              btn.classList.add(`${prefix.substring(1)}__btn--closed`);
+              btn.disabled = true;
+            }
+
+            container.appendChild(clone);
+          });
+
+          // Show messages if no events
+          if (upcomingCount === 0) {
+            upcomingContainer.innerHTML = '<p style="color: #666; text-align: center; grid-column: 1/-1; padding: 40px;">No upcoming events at the moment. Stay tuned!</p>';
+          }
+          if (pastCount === 0) {
+            pastContainer.innerHTML = '<p style="color: #666; text-align: center; grid-column: 1/-1; padding: 40px;">No past events to show.</p>';
           }
 
-          eventsContainer.appendChild(clone);
-        });
-
-        // Initialize mobile carousel after cards are loaded
-        initMobileCarousel();
-        initGSAPAnimations();
-      })
-      .catch((error) => console.error("Error loading events:", error));
+          initGSAPAnimations();
+        })
+        .catch((error) => console.error("Error loading events:", error));
+    }
   }
 
   function initGSAPAnimations() {
@@ -131,29 +165,5 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power2.out",
       });
     }
-  }
-
-  function initMobileCarousel() {
-    cards = document.querySelectorAll(".event-card");
-
-    window.prevCard = function () {
-      if (eventsContainer) {
-        const cardWidth = cards[0]?.offsetWidth || 300;
-        eventsContainer.scrollBy({
-          left: -(cardWidth + 40),
-          behavior: "smooth",
-        });
-      }
-    };
-
-    window.nextCard = function () {
-      if (eventsContainer) {
-        const cardWidth = cards[0]?.offsetWidth || 300;
-        eventsContainer.scrollBy({
-          left: cardWidth + 40,
-          behavior: "smooth",
-        });
-      }
-    };
   }
 });
