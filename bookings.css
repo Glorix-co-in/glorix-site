@@ -145,6 +145,17 @@
   background: #e6c700;
 }
 
+.event-card__btn--view {
+  background: #111;
+  color: #ffbf00;
+  transition: all 0.3s ease;
+}
+
+.event-card__btn--view:hover {
+  background: #ffbf00;
+  color: #000;
+}
+
 /* Mobile Arrows */
 .mobile-arrows {
   display: none;
@@ -267,6 +278,18 @@
     background: #333;
     color: #888;
     cursor: not-allowed;
+  }
+
+  .event-card-mobile__btn--view {
+    background: #111;
+    color: #ffbf00;
+    box-shadow: 0 2px 8px rgba(255, 191, 0, 0.2);
+  }
+
+  .event-card-mobile__btn--view:hover {
+    background: #ffbf00;
+    color: #000;
+    box-shadow: 0 4px 12px rgba(255, 191, 0, 0.3);
   }
 
   .bookings-hero img {

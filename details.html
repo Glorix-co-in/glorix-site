@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Details - GLORIX</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="View event details for GLORIX events. Get all information about upcoming shows, venues, timings, and book your tickets." />
+  <meta name="keywords" content="GLORIX, event details, live music, underground music, concerts, events India" />
+  <meta name="author" content="GLORIX" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://glorix.in/details" />
+  <meta property="og:title" content="Event Details - GLORIX" />
+  <meta property="og:description"
+    content="View event details for GLORIX events. Get all information about upcoming shows, venues, timings, and book your tickets." />
+  <meta property="og:image" content="assets/Poster.png" />
+  <meta property="og:site_name" content="GLORIX" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://glorix.in/details" />
+  <meta name="twitter:title" content="Event Details - GLORIX" />
+  <meta name="twitter:description"
+    content="View event details for GLORIX events. Get all information about upcoming shows, venues, timings, and book your tickets." />
+  <meta name="twitter:image" content="assets/Poster.png" />
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#000000" />
+
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="details.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;800&display=swap"
+    as="style" fetchpriority="high" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;800&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'" />
+</head>
+
+<body>
+  <!-- Header with Back Button -->
+  <header class="details-header">
+    <button class="back-btn" id="backBtn" aria-label="Go back">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <h1 class="header-title" id="headerTitle">EVENT DETAILS</h1>
+    <button class="share-btn" id="shareBtn" aria-label="Share event">
+      <i class="fas fa-share-alt"></i>
+    </button>
+  </header>
+
+  <main class="details-main">
+    <!-- Event Image -->
+    <div class="event-image-container">
+      <img src="" alt="" id="eventImage" class="event-image" />
+    </div>
+
+    <div class="details-content-wrapper">
+      <div class="details-scroll-content">
+        <!-- Tags Section -->
+        <div class="event-tags" id="eventTags">
+          <!-- Tags will be loaded dynamically -->
+        </div>
+
+
+        <!-- Event Details List -->
+        <div class="event-details-list">
+          <div class="detail-item" id="dateItem">
+            <i class="far fa-calendar"></i>
+            <span id="eventDate"></span>
+          </div>
+          <div class="detail-item" id="timeItem">
+            <i class="far fa-clock"></i>
+            <span id="eventTime"></span>
+          </div>
+          <div class="detail-item" id="durationItem">
+            <i class="fas fa-hourglass-half"></i>
+            <span id="eventDuration"></span>
+          </div>
+          <div class="detail-item" id="ageItem">
+            <i class="fas fa-users"></i>
+            <span>Age Limit - <span id="eventAge"></span></span>
+          </div>
+          <div class="detail-item" id="languageItem">
+            <i class="fas fa-language"></i>
+            <span id="eventLanguage"></span>
+          </div>
+          <div class="detail-item" id="genreItem">
+            <i class="fas fa-music"></i>
+            <span id="eventGenre"></span>
+          </div>
+          <div class="detail-item venue-item" id="venueItem">
+            <i class="fas fa-location-dot"></i>
+            <span id="eventVenue"></span>
+            <a href="" id="venueLink" class="venue-direction" target="_blank" aria-label="Get directions">
+              <i class="fas fa-location-arrow"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about-section">
+          <h2 class="about-title">About The Event</h2>
+          <p class="about-text" id="aboutText"></p>
+        </div>
+
+        <!-- Terms & Conditions -->
+        <div class="terms-section" id="termsSection">
+          <span class="terms-text">Terms & Conditions</span>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+
+      <div class="sticky-bottom-bar">
+        <div class="price-info">
+          <span class="price-label">₹<span id="priceFrom">149</span> onwards</span>
+          <span class="availability" id="availability">Available</span>
+        </div>
+        <button class="book-now-btn" id="bookNowBtn">Book Now</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="details.js"></script>
+
+  <!-- Terms & Conditions Modal -->
+  <div class="modal-overlay" id="termsModal">
+    <div class="bottom-sheet">
+      <div class="bottom-sheet__header">
+        <h2 class="bottom-sheet__title">Terms & Conditions</h2>
+        <button class="bottom-sheet__close" id="closeTerms">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="bottom-sheet__content">
+        <ol class="terms-list">
+          <li>Tickets are valid only for the date, time, and event mentioned.</li>
+          <li>Each ticket is non-transferable and meant for single-person use.</li>
+          <li>Tickets once booked cannot be refunded or exchanged.</li>
+          <li>In case of event cancellation or rescheduling, updates will be sent via registered email or phone.</li>
+          <li>Entry is allowed only with a valid ticket.</li>
+          <li>Organizers reserve the right to deny entry for security or policy reasons.</li>
+          <li>Outside food, drinks, alcohol, and prohibited items are not allowed inside the venue.</li>
+          <li>Late entry may be restricted or delayed as per event guidelines.</li>
+          <li>Misbehavior, damage, or misconduct may lead to removal without refund.</li>
+          <li>Glorix is not responsible for loss or theft of personal belongings at the venue.</li>
+          <li>Unauthorized resale or duplication of tickets is strictly prohibited.</li>
+          <li>Attendees must follow all event and venue safety instructions.</li>
+          <li>Terms are subject to change without prior notice at the discretion of Glorix.</li>
+        </ol>
+      </div>
+      <div class="bottom-sheet__footer">
+        <button class="got-it-btn" id="gotItBtn">Okay, Got It</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

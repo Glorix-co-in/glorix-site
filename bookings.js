@@ -51,13 +51,36 @@ document.addEventListener("DOMContentLoaded", function () {
             if (event.status === "open" && event.bookingLink) {
               btn.textContent = "Book Now";
               btn.classList.add(`${prefix.substring(1)}__btn--open`);
-              btn.addEventListener("click", () => {
+              btn.addEventListener("click", (e) => {
+                e.stopPropagation();
                 window.open(event.bookingLink, "_blank");
               });
             } else {
-              btn.textContent = isMobile ? "Closed" : "Bookings Closed";
-              btn.classList.add(`${prefix.substring(1)}__btn--closed`);
-              btn.disabled = true;
+              // On mobile, show "View" button that navigates to details page
+              if (isMobile) {
+                btn.textContent = "View";
+                btn.classList.add(`${prefix.substring(1)}__btn--view`);
+                btn.addEventListener("click", (e) => {
+                  e.stopPropagation();
+                  window.location.href = `details.html?id=${event.id}`;
+                });
+              } else {
+                btn.textContent = "View Details";
+                btn.classList.add(`${prefix.substring(1)}__btn--view`);
+                btn.addEventListener("click", (e) => {
+                  e.stopPropagation();
+                  window.location.href = `details.html?id=${event.id}`;
+                });
+              }
+            }
+
+            // Make entire card clickable
+            const card = clone.querySelector(prefix);
+            if (card) {
+              card.style.cursor = "pointer";
+              card.addEventListener("click", () => {
+                window.location.href = `details.html?id=${event.id}`;
+              });
             }
 
             container.appendChild(clone);

@@ -1,26 +1,30 @@
 [
   {
-    "title": "BALI PERFORMING LIVE!!",
+    "id": "bali-2025",
+    "title": "BALI PERFORMING LIVE",
     "image": "assets/events/bali.jpg",
     "date": "24th December 2025",
     "status": "closed",
     "bookingLink": null
   },
   {
-    "title": "SEASONS 2025",
+    "id": "seasons-2025",
+    "title": "SEASONS",
     "image": "assets/events/seasons.jpg",
     "date": "22nd November 2025",
     "status": "closed",
     "bookingLink": null
   },
   {
-    "title": "FLAIR 2025",
+    "id": "flair-2025",
+    "title": "FLAIR",
     "image": "assets/events/flair.png",
     "date": "20th September 2025",
     "status": "closed",
     "bookingLink": null
   },
   {
+    "id": "bloom-2025",
     "title": "BLOOM 2025",
     "image": "assets/events/bloom.jpg",
     "date": "31st July 2025",

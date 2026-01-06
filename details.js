@@ -1,0 +1,260 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Get event ID from URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const eventId = urlParams.get("id");
+
+  if (!eventId) {
+    showError("No event specified");
+    return;
+  }
+
+  // Load event details
+  loadEventDetails(eventId);
+
+  // Back button handler
+  const backBtn = document.getElementById("backBtn");
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "bookings.html";
+      }
+    });
+  }
+
+  // Share button handler
+  const shareBtn = document.getElementById("shareBtn");
+  if (shareBtn) {
+    shareBtn.addEventListener("click", shareEvent);
+  }
+
+
+  // Terms & Conditions Modal handlers
+  const termsSection = document.getElementById("termsSection");
+  const termsModal = document.getElementById("termsModal");
+  const closeTerms = document.getElementById("closeTerms");
+  const gotItBtn = document.getElementById("gotItBtn");
+
+  const openModal = () => {
+    termsModal.classList.add("active");
+    document.body.classList.add("modal-open");
+  };
+
+  const closeModal = () => {
+    termsModal.classList.remove("active");
+    document.body.classList.remove("modal-open");
+  };
+
+  if (termsSection && termsModal) {
+    termsSection.addEventListener("click", openModal);
+  }
+
+  if (closeTerms) {
+    closeTerms.addEventListener("click", closeModal);
+  }
+
+  if (gotItBtn) {
+    gotItBtn.addEventListener("click", closeModal);
+  }
+
+  // Close modal when clicking outside the bottom sheet
+  if (termsModal) {
+    termsModal.addEventListener("click", (e) => {
+      if (e.target === termsModal) {
+        closeModal();
+      }
+    });
+  }
+});
+
+async function loadEventDetails(eventId) {
+  try {
+    const response = await fetch("data/event-details.json");
+    if (!response.ok) {
+      throw new Error("Failed to load event details");
+    }
+
+    const events = await response.json();
+    const event = events.find((e) => e.id === eventId);
+
+    if (!event) {
+      showError("Event not found");
+      return;
+    }
+
+    populateEventDetails(event);
+  } catch (error) {
+    console.error("Error loading event details:", error);
+    showError("Failed to load event details");
+  }
+}
+
+function populateEventDetails(event) {
+  // Update page title
+  document.title = `${event.title} - GLORIX`;
+
+  // Header title
+  const headerTitle = document.getElementById("headerTitle");
+  if (headerTitle) {
+    headerTitle.textContent = event.title;
+  }
+
+  // Event image
+  const eventImage = document.getElementById("eventImage");
+  if (eventImage) {
+    eventImage.src = event.image;
+    eventImage.alt = event.title;
+  }
+
+  // Tags
+  const tagsContainer = document.getElementById("eventTags");
+  if (tagsContainer && event.tags) {
+    tagsContainer.innerHTML = event.tags
+      .map((tag) => `<span class="event-tag">${tag}</span>`)
+      .join("");
+  }
+
+
+  // Date
+  const eventDate = document.getElementById("eventDate");
+  if (eventDate) {
+    if (event.dateRange) {
+      eventDate.textContent = event.dateRange;
+    } else {
+      eventDate.textContent = event.date;
+    }
+  }
+
+  // Time
+  const eventTime = document.getElementById("eventTime");
+  if (eventTime) {
+    eventTime.textContent = event.time;
+  }
+
+  // Duration
+  const eventDuration = document.getElementById("eventDuration");
+  if (eventDuration) {
+    eventDuration.textContent = event.duration;
+  }
+
+  // Age limit
+  const eventAge = document.getElementById("eventAge");
+  if (eventAge) {
+    eventAge.textContent = event.ageLimit;
+  }
+
+  // Languages
+  const eventLanguage = document.getElementById("eventLanguage");
+  if (eventLanguage) {
+    eventLanguage.textContent = event.languages;
+  }
+
+  // Genre
+  const eventGenre = document.getElementById("eventGenre");
+  if (eventGenre) {
+    eventGenre.textContent = event.genre;
+  }
+
+  // Venue
+  const eventVenue = document.getElementById("eventVenue");
+  if (eventVenue) {
+    eventVenue.textContent = event.venue;
+  }
+
+  // Venue link
+  const venueLink = document.getElementById("venueLink");
+  if (venueLink) {
+    if (event.venueLink) {
+      venueLink.href = event.venueLink;
+      venueLink.style.display = "flex";
+    } else {
+      venueLink.style.display = "none";
+    }
+  }
+
+  // About text
+  const aboutText = document.getElementById("aboutText");
+  if (aboutText) {
+    aboutText.textContent = event.aboutEvent;
+  }
+
+
+  // Price
+  const priceFrom = document.getElementById("priceFrom");
+  if (priceFrom) {
+    priceFrom.textContent = event.priceFrom || "TBA";
+  }
+
+  // Availability and booking button
+  const availability = document.getElementById("availability");
+  const bookNowBtn = document.getElementById("bookNowBtn");
+
+  if (event.status === "open" && event.bookingLink) {
+    if (availability) {
+      availability.textContent = "Available";
+      availability.classList.remove("closed");
+    }
+    if (bookNowBtn) {
+      bookNowBtn.textContent = "Book Now";
+      bookNowBtn.disabled = false;
+      bookNowBtn.addEventListener("click", () => {
+        window.open(event.bookingLink, "_blank");
+      });
+    }
+  } else {
+    if (availability) {
+      availability.textContent = "Bookings Closed";
+      availability.classList.add("closed");
+    }
+    if (bookNowBtn) {
+      bookNowBtn.textContent = "Bookings Closed";
+      bookNowBtn.disabled = true;
+    }
+  }
+}
+
+function showError(message) {
+  const main = document.querySelector(".details-main");
+  if (main) {
+    main.innerHTML = `
+      <div class="error-state">
+        <i class="fas fa-exclamation-circle"></i>
+        <h2>Oops!</h2>
+        <p>${message}</p>
+        <a href="bookings.html" style="margin-top: 16px; color: #1877f2; text-decoration: none;">
+          ← Back to Events
+        </a>
+      </div>
+    `;
+  }
+
+  // Hide sticky bar on error
+  const stickyBar = document.querySelector(".sticky-bottom-bar");
+  if (stickyBar) {
+    stickyBar.style.display = "none";
+  }
+}
+
+function shareEvent() {
+  const title = document.getElementById("headerTitle")?.textContent || "Event";
+  const url = window.location.href;
+
+  if (navigator.share) {
+    navigator
+      .share({
+        title: `${title} - GLORIX`,
+        text: `Check out this event: ${title}`,
+        url: url,
+      })
+      .catch((err) => console.log("Share cancelled or failed:", err));
+  } else {
+    // Fallback: copy to clipboard
+    navigator.clipboard
+      .writeText(url)
+      .then(() => {
+        alert("Link copied to clipboard!");
+      })
+      .catch((err) => console.error("Failed to copy:", err));
+  }
+}
