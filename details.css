@@ -355,8 +355,8 @@ body {
 
   .details-main {
     max-width: 1100px;
-    margin: 20px auto;
-    height: calc(100vh - 120px);
+    margin: 10px auto;
+    height: calc(100vh - 86px);
     max-height: 900px;
     background: #111;
     border-radius: 20px;
