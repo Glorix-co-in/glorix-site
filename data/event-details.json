@@ -1,118 +1,102 @@
 [
-    {
-        "id": "bloom-2025",
-        "title": "BLOOM",
-        "image": "assets/events/bloom.jpg",
-        "tags": [
-            "Rap Event",
-            "Underground Music",
-            "Live Performance"
-        ],
-        "date": "31st July 2025",
-        "dateRange": null,
-        "time": "3:00 PM",
-        "duration": "6 Hours",
-        "ageLimit": "18+",
-        "languages": "Hindi, English",
-        "genre": "Rap",
-        "venue": "The Beer Cafe: Faridabad",
-        "venueLink": "https://maps.app.goo.gl/KcASp71JRrgEc6fHA",
-        "aboutEvent": "An electrifying rap battle that promises to ignite your passion for hip-hop and leave you in awe. Experience the best underground rap artists perform live, showcasing their lyrical prowess. An evening with music, energy, and unforgettable performances awaits you.",
-        "highlights": [
-            "Live performances by top underground artists",
-            "Exclusive rap battles",
-            "Food and drinks available",
-            "Meet and greet opportunities"
-        ],
-        "priceFrom": 149,
-        "status": "closed",
-        "bookingLink": null
-    },
-    {
-        "id": "bali-2025",
-        "title": "BALI PERFORMING LIVE",
-        "image": "assets/events/bali.jpg",
-        "tags": [
-            "Live Performance",
-            "Hindi",
-            "English"
-        ],
-        "date": "24th December 2025",
-        "dateRange": null,
-        "time": "6:00 PM",
-        "duration": "4 Hours",
-        "ageLimit": "16+",
-        "languages": "Hindi, English",
-        "genre": "Live Performance",
-        "venue": "Panache Club: Dwarka",
-        "venueLink": "https://maps.app.goo.gl/BLoKAaXFBxhxCbok9",
-        "aboutEvent": "Experience the magic of BALI performing live! Get ready for an unforgettable night filled with chart-topping hits and electrifying performances. This is your chance to witness one of the most talented artists of our generation live on stage.",
-        "highlights": [
-            "Live performance by BALI",
-            "Chart-topping hits",
-            "VIP meet and greet",
-            "Premium sound experience"
-        ],
-        "priceFrom": 299,
-        "status": "closed",
-        "bookingLink": null
-    },
-    {
-        "id": "seasons-2025",
-        "title": "SEASONS",
-        "image": "assets/events/seasons.jpg",
-        "tags": [
-            "Music Festival",
-            "Multi-Artist",
-            "Cultural Event"
-        ],
-        "date": "22nd November 2025",
-        "dateRange": null,
-        "time": "4:00 PM",
-        "duration": "5 Hours",
-        "ageLimit": "18+",
-        "languages": "Hindi, English",
-        "genre": "Rap",
-        "venue": "Classy Cafe Bar: South Extension",
-        "venueLink": "https://maps.app.goo.gl/5Wfw58kaVakwSuMY7",
-        "aboutEvent": "SEASONS 2025 is the ultimate music festival featuring multiple artists across various genres. A celebration of music, art, and culture that brings together the best talent for an extraordinary experience.",
-        "highlights": [
-            "Multiple artist performances",
-            "Food stalls and vendors",
-            "Art installations",
-            "Interactive zones"
-        ],
-        "priceFrom": 199,
-        "status": "closed",
-        "bookingLink": null
-    },
-    {
-        "id": "flair-2025",
-        "title": "FLAIR",
-        "image": "assets/events/flair.png",
-        "tags": [
-            "Rap Event",
-            "Live Music",
-            "Party"
-        ],
-        "date": "20th September 2025",
-        "dateRange": null,
-        "time": "4:00 PM",
-        "duration": "6 Hours",
-        "ageLimit": "18+",
-        "languages": "Hindi, English",
-        "genre": "Rap",
-        "venue": "Studio One.6: Kailash Colony",
-        "venueLink": "https://maps.app.goo.gl/SAdGuaQCo99vWxzr7",
-        "aboutEvent": "FLAIR brings you an evening of dance, music, and pure entertainment. Get ready to groove to the beats of the best DJs and live performances.",
-        "highlights": [
-            "DJ performances",
-            "Live music acts",
-            "Dance floor experience",
-            "Premium bar service"
-        ],
-        "priceFrom": 249,
-        "status": "closed",
-        "bookingLink": null
-    }
+  {
+    "id": "bloom-2025",
+    "title": "BLOOM",
+    "image": "assets/events/bloom.jpg",
+    "tags": ["Rap Event", "Underground Music", "Live Performance"],
+    "date": "31st July 2025",
+    "dateRange": null,
+    "time": "3:00 PM",
+    "duration": "6 Hours",
+    "ageLimit": "18+",
+    "languages": "Hindi, English",
+    "genre": "Rap",
+    "venue": "The Beer Cafe: Faridabad",
+    "venueLink": "https://maps.app.goo.gl/KcASp71JRrgEc6fHA",
+    "aboutEvent": "An electrifying rap battle that promises to ignite your passion for hip-hop and leave you in awe. Experience the best underground rap artists perform live, showcasing their lyrical prowess. An evening with music, energy, and unforgettable performances awaits you.",
+    "highlights": [
+      "Live performances by top underground artists",
+      "Exclusive rap battles",
+      "Food and drinks available",
+      "Meet and greet opportunities"
+    ],
+    "priceFrom": 399,
+    "status": "closed",
+    "bookingLink": null
+  },
+  {
+    "id": "bali-2025",
+    "title": "BALI PERFORMING LIVE",
+    "image": "assets/events/bali.jpg",
+    "tags": ["Live Performance", "Hindi", "English"],
+    "date": "24th December 2025",
+    "dateRange": null,
+    "time": "6:00 PM",
+    "duration": "4 Hours",
+    "ageLimit": "16+",
+    "languages": "Hindi, English",
+    "genre": "Live Performance",
+    "venue": "Panache Club: Dwarka",
+    "venueLink": "https://maps.app.goo.gl/BLoKAaXFBxhxCbok9",
+    "aboutEvent": "Experience the magic of BALI performing live! Get ready for an unforgettable night filled with chart-topping hits and electrifying performances. This is your chance to witness one of the most talented artists of our generation live on stage.",
+    "highlights": [
+      "Live performance by BALI",
+      "Chart-topping hits",
+      "VIP meet and greet",
+      "Premium sound experience"
+    ],
+    "priceFrom": 999,
+    "status": "closed",
+    "bookingLink": null
+  },
+  {
+    "id": "seasons-2025",
+    "title": "SEASONS",
+    "image": "assets/events/seasons.jpg",
+    "tags": ["Music Festival", "Multi-Artist", "Cultural Event"],
+    "date": "22nd November 2025",
+    "dateRange": null,
+    "time": "4:00 PM",
+    "duration": "5 Hours",
+    "ageLimit": "18+",
+    "languages": "Hindi, English",
+    "genre": "Rap",
+    "venue": "Classy Cafe Bar: South Extension",
+    "venueLink": "https://maps.app.goo.gl/5Wfw58kaVakwSuMY7",
+    "aboutEvent": "SEASONS 2025 is the ultimate music festival featuring multiple artists across various genres. A celebration of music, art, and culture that brings together the best talent for an extraordinary experience.",
+    "highlights": [
+      "Multiple artist performances",
+      "Food stalls and vendors",
+      "Art installations",
+      "Interactive zones"
+    ],
+    "priceFrom": 249,
+    "status": "closed",
+    "bookingLink": null
+  },
+  {
+    "id": "flair-2025",
+    "title": "FLAIR",
+    "image": "assets/events/flair.png",
+    "tags": ["Rap Event", "Live Music", "Party"],
+    "date": "20th September 2025",
+    "dateRange": null,
+    "time": "4:00 PM",
+    "duration": "6 Hours",
+    "ageLimit": "18+",
+    "languages": "Hindi, English",
+    "genre": "Rap",
+    "venue": "Studio One.6: Kailash Colony",
+    "venueLink": "https://maps.app.goo.gl/SAdGuaQCo99vWxzr7",
+    "aboutEvent": "FLAIR brings you an evening of dance, music, and pure entertainment. Get ready to groove to the beats of the best DJs and live performances.",
+    "highlights": [
+      "DJ performances",
+      "Live music acts",
+      "Dance floor experience",
+      "Premium bar service"
+    ],
+    "priceFrom": 399,
+    "status": "closed",
+    "bookingLink": null
+  }
 ]
