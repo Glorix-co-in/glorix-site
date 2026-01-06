@@ -1,184 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Event Tickets - GLORIX</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book Event Tickets - GLORIX</title>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Book tickets for upcoming GLORIX events. Experience underground music, live performances, and immersive cultural events in India."
+    />
+    <meta
+      name="keywords"
+      content="GLORIX, event tickets, book tickets, live music, underground music, concerts, events India"
+    />
+    <meta name="author" content="GLORIX" />
+    <meta name="robots" content="index, follow" />
 
-  <!-- SEO Meta Tags -->
-  <meta name="description"
-    content="Book tickets for upcoming GLORIX events. Experience underground music, live performances, and immersive cultural events in India." />
-  <meta name="keywords"
-    content="GLORIX, event tickets, book tickets, live music, underground music, concerts, events India" />
-  <meta name="author" content="GLORIX" />
-  <meta name="robots" content="index, follow" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://glorix.in/bookings" />
+    <meta property="og:title" content="Book Event Tickets - GLORIX" />
+    <meta
+      property="og:description"
+      content="Book tickets for upcoming GLORIX events. Experience underground music, live performances, and immersive cultural events."
+    />
+    <meta property="og:image" content="assets/Poster.png" />
+    <meta property="og:site_name" content="GLORIX" />
+    <meta property="og:locale" content="en_IN" />
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://glorix.in/bookings" />
-  <meta property="og:title" content="Book Event Tickets - GLORIX" />
-  <meta property="og:description"
-    content="Book tickets for upcoming GLORIX events. Experience underground music, live performances, and immersive cultural events." />
-  <meta property="og:image" content="assets/Poster.png" />
-  <meta property="og:site_name" content="GLORIX" />
-  <meta property="og:locale" content="en_IN" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://glorix.in/bookings" />
+    <meta name="twitter:title" content="Book Event Tickets - GLORIX" />
+    <meta
+      name="twitter:description"
+      content="Book tickets for upcoming GLORIX events. Experience underground music, live performances, and immersive cultural events."
+    />
+    <meta name="twitter:image" content="assets/Poster.png" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://glorix.in/bookings" />
-  <meta name="twitter:title" content="Book Event Tickets - GLORIX" />
-  <meta name="twitter:description"
-    content="Book tickets for upcoming GLORIX events. Experience underground music, live performances, and immersive cultural events." />
-  <meta name="twitter:image" content="assets/Poster.png" />
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#000000" />
 
-  <!-- Theme Color -->
-  <meta name="theme-color" content="#000000" />
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="bookings.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;800&display=swap"
+      as="style"
+      fetchpriority="high"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+  </head>
 
-  <link rel="stylesheet" href="global.css" />
-  <link rel="stylesheet" href="bookings.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;800&display=swap"
-    as="style" fetchpriority="high" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;800&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'" />
-</head>
-
-<body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <div class="logo">
-      <a href="index.html">
-        <img src="assets/cropped_logo.png" alt="GLORIX Logo" height="100%" loading="eager" fetchpriority="high" />
-      </a>
-      <p>&nbsp;The X Factor In Everything !</p>
-    </div>
-
-    <nav class="nav-center" id="navMenu">
-      <ul>
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="bookings.html">Bookings</a></li>
-        <li><a href="artists.html">Artists</a></li>
-        <li><a href="team.html">Teams</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <a href="bookings.html" class="call-btn">Book Now</a>
-  </header>
-
-  <!-- Music Player -->
-  <div class="music-player">
-    <button id="musicBtn">▶</button>
-    <audio id="bgMusic" loop>
-      <source src="assets/glorix music.mp3" type="audio/mpeg" />
-    </audio>
-  </div>
-
-  <!-- Bookings Section -->
-  <main class="main-content">
-    <!-- Hero Banner -->
-    <div class="bookings-hero full-bleed" role="img" aria-label="Gradient banner">
-      <div class="bookings-hero__overlay">
-        <h1 class="bookings-hero__title">BOOK YOUR TICKETS NOW!</h1>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
+
+      <div class="logo">
+        <a href="index.html">
+          <img
+            src="assets/cropped_logo.png"
+            alt="GLORIX Logo"
+            height="100%"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </a>
+        <p>&nbsp;The X Factor In Everything !</p>
+      </div>
+
+      <nav class="nav-center" id="navMenu">
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="bookings.html">Bookings</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="bookings.html" class="call-btn">Book Now</a>
+    </header>
+
+    <!-- Music Player -->
+    <div class="music-player">
+      <button id="musicBtn">▶</button>
+      <audio id="bgMusic" loop>
+        <source src="assets/glorix music.mp3" type="audio/mpeg" />
+      </audio>
     </div>
 
-    <!-- Offer Ticker -->
-    <div class="offer-ticker full-bleed">
-      <div class="offer-ticker__track desktop">
-        <div class="offer-ticker__content">
-          <span>• HAPPY NEW YEAR 2026 •</span>
-          <span>• TEAM GLORIX •</span>
-          <span>• HAPPY NEW YEAR 2026 •</span>
-          <span>• TEAM GLORIX •</span>
-          <span>• HAPPY NEW YEAR 2026 •</span>
-          <span>• TEAM GLORIX •</span>
+    <!-- Bookings Section -->
+    <main class="main-content">
+      <!-- Hero Banner -->
+      <div
+        class="bookings-hero full-bleed"
+        role="img"
+        aria-label="Gradient banner"
+      >
+        <div class="bookings-hero__overlay">
+          <h1 class="bookings-hero__title">BOOK YOUR TICKETS NOW!</h1>
         </div>
-        <div class="offer-ticker__content">
-          <span>• HAPPY NEW YEAR 2026 •</span>
-          <span>• TEAM GLORIX •</span>
-          <span>• HAPPY NEW YEAR 2026 •</span>
-          <span>• TEAM GLORIX •</span>
-          <span>• HAPPY NEW YEAR 2026 •</span>
-          <span>• TEAM GLORIX •</span>
+      </div>
+
+      <!-- Offer Ticker -->
+      <div class="offer-ticker full-bleed">
+        <div class="offer-ticker__track desktop">
+          <div class="offer-ticker__content">
+            <span>• HAPPY NEW YEAR 2026 •</span>
+            <span>• TEAM GLORIX •</span>
+            <span>• HAPPY NEW YEAR 2026 •</span>
+            <span>• TEAM GLORIX •</span>
+            <span>• HAPPY NEW YEAR 2026 •</span>
+            <span>• TEAM GLORIX •</span>
+          </div>
+          <div class="offer-ticker__content">
+            <span>• HAPPY NEW YEAR 2026 •</span>
+            <span>• TEAM GLORIX •</span>
+            <span>• HAPPY NEW YEAR 2026 •</span>
+            <span>• TEAM GLORIX •</span>
+            <span>• HAPPY NEW YEAR 2026 •</span>
+            <span>• TEAM GLORIX •</span>
+          </div>
+        </div>
+        <div class="offer-ticker__static mobile">
+          • HAPPY NEW YEAR 2026 • TEAM GLORIX •
         </div>
       </div>
-      <div class="offer-ticker__static mobile">
-        • HAPPY NEW YEAR 2026 • TEAM GLORIX •
-      </div>
-    </div>
 
-    <!-- Events Section -->
-    <section class="events-section">
-      <h2 class="section-title"><span>UPCOMING</span> EVENTS</h2>
-      <div class="events-container" id="upcomingEventsContainer">
-        <!-- Upcoming cards will be loaded dynamically -->
-      </div>
-
-      <h2 class="section-title past-title"><span>PAST</span> EVENTS</h2>
-      <div class="events-container" id="pastEventsContainer">
-        <!-- Past cards will be loaded dynamically -->
-      </div>
-    </section>
-  </main>
-
-  <!-- Event Card Template -->
-  <template id="eventCardTemplate">
-    <div class="event-card">
-      <div class="event-card__image">
-        <img src="" alt="" loading="lazy" />
-      </div>
-      <div class="event-card__content">
-        <h3 class="event-card__title"></h3>
-        <p class="event-card__date"></p>
-        <button class="event-card__btn"></button>
-      </div>
-    </div>
-  </template>
-
-  <!-- Event Card Template (Mobile) -->
-  <template id="mobileEventCardTemplate">
-    <div class="event-card-mobile">
-      <div class="event-card-mobile__image">
-        <img src="" alt="" loading="lazy" />
-      </div>
-      <div class="event-card-mobile__info">
-        <div class="event-card-mobile__text">
-          <h3 class="event-card-mobile__title"></h3>
-          <p class="event-card-mobile__date"></p>
+      <!-- Events Section -->
+      <section class="events-section">
+        <h2 class="section-title"><span>UPCOMING</span> EVENTS</h2>
+        <div class="events-container" id="upcomingEventsContainer">
+          <!-- Upcoming cards will be loaded dynamically -->
         </div>
-        <button class="event-card-mobile__btn"></button>
+
+        <h2 class="section-title past-title"><span>PAST</span> EVENTS</h2>
+        <div class="events-container" id="pastEventsContainer">
+          <!-- Past cards will be loaded dynamically -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Event Card Template -->
+    <template id="eventCardTemplate">
+      <div class="event-card">
+        <div class="event-card__image">
+          <img src="" alt="" loading="lazy" />
+        </div>
+        <div class="event-card__content">
+          <h3 class="event-card__title"></h3>
+          <p class="event-card__date"></p>
+          <button class="event-card__btn"></button>
+        </div>
       </div>
-    </div>
-  </template>
+    </template>
 
-  <!-- Footer -->
-  <footer>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/company/glorix-events/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.instagram.com/_glorix._" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://x.com/Glorix_events" target="_blank"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.youtube.com/@GLORIX_events" target="_blank"><i class="fab fa-youtube"></i></a>
-    </div>
-    <p class="copyright">Copyright © 2026 GLORIX - All Rights Reserved.</p>
-  </footer>
+    <!-- Event Card Template (Mobile) -->
+    <template id="mobileEventCardTemplate">
+      <div class="event-card-mobile">
+        <div class="event-card-mobile__image">
+          <img src="" alt="" loading="lazy" />
+        </div>
+        <div class="event-card-mobile__info">
+          <div class="event-card-mobile__text">
+            <h3 class="event-card-mobile__title"></h3>
+            <p class="event-card-mobile__date"></p>
+          </div>
+          <button class="event-card-mobile__btn"></button>
+        </div>
+      </div>
+    </template>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
-  <script src="script.js"></script>
-  <script src="bookings.js"></script>
-</body>
+    <!-- Footer -->
+    <footer>
+      <div class="social-links">
+        <a
+          href="https://www.linkedin.com/company/glorix-events/"
+          target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="https://www.instagram.com/_glorix._" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="https://x.com/Glorix_events" target="_blank"
+          ><i class="fab fa-x-twitter"></i
+        ></a>
+        <a href="https://www.youtube.com/@GLORIX_events" target="_blank"
+          ><i class="fab fa-youtube"></i
+        ></a>
+      </div>
+      <p class="copyright">Copyright © 2026 GLORIX - All Rights Reserved.</p>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+    <script src="bookings.js"></script>
+  </body>
 </html>
