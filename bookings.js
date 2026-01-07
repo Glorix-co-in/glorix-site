@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
         video.muted = true;
         video.loop = true;
         video.playsinline = true;
+        video.preload = "auto";
+        video.setAttribute("fetchpriority", "high");
         video.style.width = "100%";
         video.style.height = "100%";
         video.style.objectFit = "cover";

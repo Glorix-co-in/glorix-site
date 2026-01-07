@@ -300,6 +300,8 @@ function updateEventMedia(event) {
       const newSrcUrl = new URL(videoSrc, window.location.href).href;
       if (eventVideo.src !== newSrcUrl) {
         eventVideo.src = videoSrc;
+        eventVideo.preload = "auto";
+        eventVideo.setAttribute("fetchpriority", "high");
       }
 
       eventVideo.style.display = "block";
