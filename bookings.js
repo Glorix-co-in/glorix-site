@@ -47,32 +47,19 @@ document.addEventListener("DOMContentLoaded", function () {
             clone.querySelector(`${prefix}__date`).textContent = dateText;
 
             const btn = clone.querySelector(`${prefix}__btn`);
-
-            if (event.status === "open" && event.bookingLink) {
-              btn.textContent = "Book Now";
-              btn.classList.add(`${prefix.substring(1)}__btn--open`);
-              btn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                window.open(event.bookingLink, "_blank");
-              });
+            
+            // Always show view button that navigates to details page
+            if (isMobile) {
+              btn.textContent = "View";
             } else {
-              // On mobile, show "View" button that navigates to details page
-              if (isMobile) {
-                btn.textContent = "View";
-                btn.classList.add(`${prefix.substring(1)}__btn--view`);
-                btn.addEventListener("click", (e) => {
-                  e.stopPropagation();
-                  window.location.href = `details.html?id=${event.id}`;
-                });
-              } else {
-                btn.textContent = "View Details";
-                btn.classList.add(`${prefix.substring(1)}__btn--view`);
-                btn.addEventListener("click", (e) => {
-                  e.stopPropagation();
-                  window.location.href = `details.html?id=${event.id}`;
-                });
-              }
+              btn.textContent = "View Details";
             }
+            
+            btn.classList.add(`${prefix.substring(1)}__btn--view`);
+            btn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              window.location.href = `details.html?id=${event.id}`;
+            });
 
             // Make entire card clickable
             const card = clone.querySelector(prefix);
