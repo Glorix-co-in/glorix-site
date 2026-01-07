@@ -87,8 +87,10 @@
 }
 
 .event-card__image {
-  height: 20em;
+  width: 100%;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
+  background: #1a1a1a;
 }
 
 .event-card__image img {
@@ -195,17 +197,17 @@
   }
 
   .event-card-mobile {
-    height: 35vh;
     display: flex;
     flex-direction: column;
     background: transparent;
     overflow: hidden;
     position: relative;
+    width: 100%;
   }
 
   .event-card-mobile__image {
-    height: 75%;
     width: 100%;
+    aspect-ratio: 4 / 5;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
@@ -319,7 +321,12 @@
   }
 
   #upcomingEventsContainer .event-card-mobile {
-    height: 45vh;
+    height: auto;
+  }
+
+  #upcomingEventsContainer .event-card-mobile__image {
+    aspect-ratio: 3 / 4.5;
+    /* Slightly taller for upcoming videos */
   }
 }
 
