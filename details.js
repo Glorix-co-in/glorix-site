@@ -102,11 +102,26 @@ function populateEventDetails(event) {
     headerTitle.textContent = event.title;
   }
 
-  // Event image
+  // Event Media (Image or Video)
   const eventImage = document.getElementById("eventImage");
-  if (eventImage) {
-    eventImage.src = event.image;
+  const eventVideo = document.getElementById("eventVideo");
+
+  if (details.detailsVideo) {
+    if (eventVideo) {
+      eventVideo.src = details.detailsVideo;
+      eventVideo.style.display = "block";
+    }
+    if (eventImage) {
+      eventImage.style.display = "none";
+    }
+  } else if (eventImage) {
+    // Priority: detailsImage > image
+    eventImage.src = details.detailsImage || event.image;
     eventImage.alt = event.title;
+    eventImage.style.display = "block";
+    if (eventVideo) {
+      eventVideo.style.display = "none";
+    }
   }
 
   // Tags
@@ -131,7 +146,11 @@ function populateEventDetails(event) {
   // Time
   const eventTime = document.getElementById("eventTime");
   if (eventTime) {
-    eventTime.textContent = details.time;
+    if (Array.isArray(details.time)) {
+      eventTime.textContent = details.time.join(" | ");
+    } else {
+      eventTime.textContent = details.time || "TBA";
+    }
   }
 
   // Duration
