@@ -13,13 +13,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
           slidesData.forEach((slide) => {
             const clone = carouselTemplate.content.cloneNode(true);
-            const images = clone.querySelectorAll("img");
-            const imgSrc = isMobile ? slide.mobileImage : slide.desktopImage;
+            const isVideo = !!(slide.desktopVideo || slide.mobileVideo || slide.video);
 
-            images.forEach((img) => {
-              img.src = imgSrc;
-              img.alt = slide.alt;
-            });
+            if (isVideo) {
+              const mainImg = clone.querySelector(".main-img");
+              const bgImg = clone.querySelector(".bg-img");
+              const mainVideo = clone.querySelector(".main-video");
+              const bgVideo = clone.querySelector(".bg-video");
+
+              if (mainImg) mainImg.style.display = "none";
+              if (bgImg) bgImg.style.display = "none";
+
+              const videoSrc = isMobile
+                ? (slide.mobileVideo || slide.video)
+                : (slide.desktopVideo || slide.video);
+
+              if (mainVideo) {
+                mainVideo.src = videoSrc;
+                mainVideo.style.display = "block";
+              }
+              if (bgVideo) {
+                bgVideo.src = videoSrc;
+                bgVideo.style.display = "block";
+              }
+            } else {
+              const images = clone.querySelectorAll("img");
+              const imgSrc = isMobile ? slide.mobileImage : slide.desktopImage;
+
+              images.forEach((img) => {
+                img.src = imgSrc;
+                img.alt = slide.alt || "Carousel Image";
+              });
+            }
             carouselTrack.appendChild(clone);
           });
           initCarousel();
