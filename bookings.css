@@ -9,7 +9,7 @@
   background-position: center;
   position: relative;
   overflow: hidden;
-  min-height: 260px;
+  min-height: 100px;
   /* desktop default */
 }
 
@@ -22,7 +22,7 @@
 
 .bookings-hero__title {
   color: #ff0000;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -88,7 +88,7 @@
 
 .event-card__image {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #1a1a1a;
 }
@@ -222,12 +222,12 @@
   }
 
   .event-card-mobile__info {
-    height: 25%;
+    min-height: 25%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 4px;
-    gap: 8px;
+    padding: 10px 4px;
+    gap: 10px;
   }
 
   .event-card-mobile__text {
@@ -325,8 +325,7 @@
   }
 
   #upcomingEventsContainer .event-card-mobile__image {
-    aspect-ratio: 3 / 4.5;
-    /* Slightly taller for upcoming videos */
+    aspect-ratio: 4 / 5;
   }
 }
 
