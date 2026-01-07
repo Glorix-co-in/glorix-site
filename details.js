@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function loadEventDetails(eventId) {
   try {
-    const response = await fetch("data/event-details.json");
+    const response = await fetch("data/events.json");
     if (!response.ok) {
       throw new Error("Failed to load event details");
     }
@@ -91,6 +91,8 @@ async function loadEventDetails(eventId) {
 }
 
 function populateEventDetails(event) {
+  const details = event.details || {};
+
   // Update page title
   document.title = `${event.title} - GLORIX`;
 
@@ -109,8 +111,8 @@ function populateEventDetails(event) {
 
   // Tags
   const tagsContainer = document.getElementById("eventTags");
-  if (tagsContainer && event.tags) {
-    tagsContainer.innerHTML = event.tags
+  if (tagsContainer && details.tags) {
+    tagsContainer.innerHTML = details.tags
       .map((tag) => `<span class="event-tag">${tag}</span>`)
       .join("");
   }
@@ -119,8 +121,8 @@ function populateEventDetails(event) {
   // Date
   const eventDate = document.getElementById("eventDate");
   if (eventDate) {
-    if (event.dateRange) {
-      eventDate.textContent = event.dateRange;
+    if (details.dateRange) {
+      eventDate.textContent = details.dateRange;
     } else {
       eventDate.textContent = event.date;
     }
@@ -129,44 +131,44 @@ function populateEventDetails(event) {
   // Time
   const eventTime = document.getElementById("eventTime");
   if (eventTime) {
-    eventTime.textContent = event.time;
+    eventTime.textContent = details.time;
   }
 
   // Duration
   const eventDuration = document.getElementById("eventDuration");
   if (eventDuration) {
-    eventDuration.textContent = event.duration;
+    eventDuration.textContent = details.duration;
   }
 
   // Age limit
   const eventAge = document.getElementById("eventAge");
   if (eventAge) {
-    eventAge.textContent = event.ageLimit;
+    eventAge.textContent = details.ageLimit;
   }
 
   // Languages
   const eventLanguage = document.getElementById("eventLanguage");
   if (eventLanguage) {
-    eventLanguage.textContent = event.languages;
+    eventLanguage.textContent = details.languages;
   }
 
   // Genre
   const eventGenre = document.getElementById("eventGenre");
   if (eventGenre) {
-    eventGenre.textContent = event.genre;
+    eventGenre.textContent = details.genre;
   }
 
   // Venue
   const eventVenue = document.getElementById("eventVenue");
   if (eventVenue) {
-    eventVenue.textContent = event.venue;
+    eventVenue.textContent = details.venue;
   }
 
   // Venue link
   const venueLink = document.getElementById("venueLink");
   if (venueLink) {
-    if (event.venueLink) {
-      venueLink.href = event.venueLink;
+    if (details.venueLink) {
+      venueLink.href = details.venueLink;
       venueLink.style.display = "flex";
     } else {
       venueLink.style.display = "none";
@@ -176,14 +178,14 @@ function populateEventDetails(event) {
   // About text
   const aboutText = document.getElementById("aboutText");
   if (aboutText) {
-    aboutText.textContent = event.aboutEvent;
+    aboutText.textContent = details.aboutEvent;
   }
 
 
   // Price
   const priceFrom = document.getElementById("priceFrom");
   if (priceFrom) {
-    priceFrom.textContent = event.priceFrom || "TBA";
+    priceFrom.textContent = details.priceFrom || "TBA";
   }
 
   // Availability and booking button
