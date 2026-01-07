@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  let currentEvent;
+
   // Get event ID from URL parameter
   const urlParams = new URLSearchParams(window.location.search);
   const eventId = urlParams.get("id");
@@ -83,7 +85,9 @@ async function loadEventDetails(eventId) {
       return;
     }
 
+    currentEvent = event;
     populateEventDetails(event);
+
   } catch (error) {
     console.error("Error loading event details:", error);
     showError("Failed to load event details");
@@ -102,28 +106,6 @@ function populateEventDetails(event) {
     headerTitle.textContent = event.title;
   }
 
-  // Event Media (Image or Video)
-  const eventImage = document.getElementById("eventImage");
-  const eventVideo = document.getElementById("eventVideo");
-
-  if (details.detailsVideo) {
-    if (eventVideo) {
-      eventVideo.src = details.detailsVideo;
-      eventVideo.style.display = "block";
-    }
-    if (eventImage) {
-      eventImage.style.display = "none";
-    }
-  } else if (eventImage) {
-    // Priority: detailsImage > image
-    eventImage.src = details.detailsImage || event.image;
-    eventImage.alt = event.title;
-    eventImage.style.display = "block";
-    if (eventVideo) {
-      eventVideo.style.display = "none";
-    }
-  }
-
   // Tags
   const tagsContainer = document.getElementById("eventTags");
   if (tagsContainer && details.tags) {
@@ -131,6 +113,20 @@ function populateEventDetails(event) {
       .map((tag) => `<span class="event-tag">${tag}</span>`)
       .join("");
   }
+
+  // Update Media
+  updateEventMedia(event);
+
+  // Add resize listener for responsive video switching
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      if (currentEvent) { // Ensure currentEvent is loaded
+        updateEventMedia(currentEvent);
+      }
+    }, 250);
+  });
 
 
   // Date
@@ -220,7 +216,11 @@ function populateEventDetails(event) {
       bookNowBtn.textContent = "Book Now";
       bookNowBtn.disabled = false;
       bookNowBtn.addEventListener("click", () => {
-        window.open(event.bookingLink, "_blank");
+        if (event.bookingOptions && event.bookingOptions.length > 1) {
+          window.location.href = `select-slot.html?id=${event.id}`;
+        } else {
+          window.open(event.bookingLink, "_blank");
+        }
       });
     }
   } else {
@@ -277,5 +277,43 @@ function shareEvent() {
         alert("Link copied to clipboard!");
       })
       .catch((err) => console.error("Failed to copy:", err));
+  }
+}
+
+function updateEventMedia(event) {
+  const details = event.details || {};
+  const eventImage = document.getElementById("eventImage");
+  const eventVideo = document.getElementById("eventVideo");
+
+  if (details.detailsVideo) {
+    if (eventVideo) {
+      let videoSrc = "";
+      if (typeof details.detailsVideo === "object") {
+        const isLandscapeMode = window.innerWidth <= 1024;
+        // User requested: landscape for mobile & tablet, portrait for desktop
+        videoSrc = isLandscapeMode ? details.detailsVideo.landscape : details.detailsVideo.portrait;
+      } else {
+        videoSrc = details.detailsVideo;
+      }
+
+      // Only update if source changed to prevent flickering
+      const newSrcUrl = new URL(videoSrc, window.location.href).href;
+      if (eventVideo.src !== newSrcUrl) {
+        eventVideo.src = videoSrc;
+      }
+
+      eventVideo.style.display = "block";
+    }
+    if (eventImage) {
+      eventImage.style.display = "none";
+    }
+  } else if (eventImage) {
+    // Priority: detailsImage > image
+    eventImage.src = details.detailsImage || event.image;
+    eventImage.alt = event.title;
+    eventImage.style.display = "block";
+    if (eventVideo) {
+      eventVideo.style.display = "none";
+    }
   }
 }

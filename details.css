@@ -75,11 +75,17 @@ body {
   background: #1a1a1a;
 }
 
-.event-image,
-.event-video {
+.event-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
+}
+
+.event-video {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
   object-position: top center;
 }
 
@@ -441,6 +447,10 @@ body {
   .book-now-btn {
     padding: 14px 60px;
     font-size: 16px;
+  }
+
+  .event-video {
+    object-fit: fill;
   }
 }
 
