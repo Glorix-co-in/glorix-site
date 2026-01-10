@@ -7,11 +7,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Live Performance",
-        "Hindi",
-        "English"
-      ],
+      "tags": ["Live Performance", "Hindi", "English"],
       "dateRange": null,
       "time": "6:00 PM",
       "duration": "4 Hours",
@@ -38,11 +34,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Music Festival",
-        "Multi-Artist",
-        "Cultural Event"
-      ],
+      "tags": ["Music Festival", "Multi-Artist", "Cultural Event"],
       "dateRange": null,
       "time": "4:00 PM",
       "duration": "5 Hours",
@@ -69,11 +61,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Rap Event",
-        "Live Music",
-        "Party"
-      ],
+      "tags": ["Rap Event", "Live Music", "Party"],
       "date": "20th September 2025",
       "dateRange": null,
       "time": "4:00 PM",
@@ -101,11 +89,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Rap Event",
-        "Underground Music",
-        "Live Performance"
-      ],
+      "tags": ["Rap Event", "Underground Music", "Live Performance"],
       "dateRange": null,
       "time": "3:00 PM",
       "duration": "6 Hours",
@@ -132,19 +116,15 @@
     "status": "open",
     "bookingLink": "https://rzp.io/rzp/wWmT4o6",
     "details": {
-      "tags": [
-        "Live Performance",
-        "360 HH",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
       "dateRange": null,
       "time": "4:00 PM onwards",
       "duration": "3 Hours",
       "ageLimit": "16+",
       "languages": "Hindi, English",
       "genre": "Hip Hop / DJ",
-      "venue": "To be announced soon",
-      "venueLink": null,
+      "venue": "OSO - The Panda Club: Ansal Plaza, Delhi",
+      "venueLink": "https://maps.app.goo.gl/iTQuDJhCgu1m2cwj9",
       "promoVideo": "assets/events/videos/360 HH VOL 1 [FFD6462].mp4",
       "detailsVideo": {
         "landscape": "assets/events/videos/16_9 360 hh VOL 1 [5931A6C].mp4",
