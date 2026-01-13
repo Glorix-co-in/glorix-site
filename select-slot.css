@@ -118,12 +118,15 @@ body {
   font-size: 15px;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 2px;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .event-text p {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  line-height: 1.2;
 }
 
 /* Legend Styles */
