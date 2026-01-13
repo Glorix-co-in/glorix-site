@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  let carouselInterval;
   // ===== Carousel =====
   const carouselTrack = document.getElementById("carouselTrack");
   const carouselTemplate = document.getElementById("carouselTemplate");
@@ -13,7 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
           slidesData.forEach((slide) => {
             const clone = carouselTemplate.content.cloneNode(true);
-            const isVideo = !!(slide.desktopVideo || slide.mobileVideo || slide.video);
+            const isVideo = !!(
+              slide.desktopVideo ||
+              slide.mobileVideo ||
+              slide.video
+            );
 
             if (isVideo) {
               const mainImg = clone.querySelector(".main-img");
@@ -25,8 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
               if (bgImg) bgImg.style.display = "none";
 
               const videoSrc = isMobile
-                ? (slide.mobileVideo || slide.video)
-                : (slide.desktopVideo || slide.video);
+                ? slide.mobileVideo || slide.video
+                : slide.desktopVideo || slide.video;
 
               if (mainVideo) {
                 mainVideo.src = videoSrc;
@@ -47,7 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             carouselTrack.appendChild(clone);
           });
-          initCarousel();
+          if (carouselInterval) clearInterval(carouselInterval);
+          carouselInterval = GlorixCarousel.init(carouselTrack, 3000);
         }
 
         renderCarousel();
@@ -60,27 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       })
       .catch((error) => console.error("Error loading carousel:", error));
-  }
-
-  let carouselInterval;
-  function initCarousel() {
-    const track = document.getElementById("carouselTrack");
-    const slides = Array.from(track.querySelectorAll(".carousel-slide"));
-    if (slides.length > 0) {
-      let currentSlide = 0;
-      const slideDuration = 3000;
-
-      if (carouselInterval) clearInterval(carouselInterval);
-
-      function moveToSlide(index) {
-        currentSlide = (index + slides.length) % slides.length;
-        track.style.transform = `translateX(-${currentSlide * 100}%)`;
-      }
-
-      carouselInterval = setInterval(() => {
-        moveToSlide(currentSlide + 1);
-      }, slideDuration);
-    }
   }
 
   // ===== Testimonials Slider =====

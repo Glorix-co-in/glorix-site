@@ -83,18 +83,11 @@
     </header>
 
     <main class="details-main">
-      <!-- Event Image -->
+      <!-- Event Media Carousel -->
       <div class="event-image-container" id="mediaContainer">
-        <img src="" alt="" id="eventImage" class="event-image" />
-        <video
-          id="eventVideo"
-          class="event-video"
-          playsinline
-          autoplay
-          muted
-          loop
-          style="display: none"
-        ></video>
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Slides will be loaded dynamically -->
+        </div>
       </div>
 
       <div class="details-content-wrapper">
@@ -169,8 +162,48 @@
         </div>
       </div>
     </main>
-
+    <script src="carousel.js"></script>
     <script src="details.js"></script>
+
+    <!-- Templates -->
+    <template id="carouselTemplate">
+      <div class="carousel-slide">
+        <div class="carousel-bg-blur">
+          <img
+            src=""
+            alt=""
+            class="bg-img"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <video
+            class="bg-video"
+            autoplay
+            loop
+            muted
+            playsinline
+            style="display: none"
+          ></video>
+        </div>
+        <div class="carousel-content">
+          <img
+            src=""
+            alt=""
+            class="main-img"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <video
+            class="main-video"
+            autoplay
+            loop
+            muted
+            playsinline
+            style="display: none"
+          ></video>
+        </div>
+      </div>
+    </template>
 
     <!-- Terms & Conditions Modal -->
     <div class="modal-overlay" id="termsModal">

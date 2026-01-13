@@ -1,280 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GLORIX</title>
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <!-- Hero Video Preload can be added here if needed -->
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GLORIX</title>
-  <link rel="stylesheet" href="global.css" />
-  <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;800&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'" />
-  <!-- Hero Video Preload can be added here if needed -->
-</head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-<body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+      <div class="logo">
+        <a href="index.html">
+          <img
+            src="assets/cropped_logo.png"
+            alt="GLORIX Logo"
+            height="100%"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </a>
+        <p>&nbsp;The X Factor In Everything !</p>
+      </div>
+
+      <nav class="nav-center" id="navMenu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="bookings.html">Bookings</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="bookings.html" class="call-btn">Book Now</a>
+    </header>
+
+    <!-- Music Player -->
+    <div class="music-player">
+      <button id="musicBtn">▶</button>
+      <audio id="bgMusic" loop>
+        <source src="assets/glorix music.mp3" type="audio/mpeg" />
+      </audio>
     </div>
 
-    <div class="logo">
-      <a href="index.html">
-        <img src="assets/cropped_logo.png" alt="GLORIX Logo" height="100%" loading="eager" fetchpriority="high" />
-      </a>
-      <p>&nbsp;The X Factor In Everything !</p>
-    </div>
+    <!-- Main Content Wrapper (Full-Bleed Grid Layout) -->
+    <main class="main-content">
+      <!-- Hero Carousel - Full Bleed -->
+      <div id="home" class="carousel-wrapper full-bleed">
+        <section class="carousel" style="padding: 0; max-width: 100%">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- Slides will be loaded dynamically here -->
+          </div>
+        </section>
+      </div>
 
-    <nav class="nav-center" id="navMenu">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="bookings.html">Bookings</a></li>
-        <li><a href="artists.html">Artists</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <a href="bookings.html" class="call-btn">Book Now</a>
-  </header>
-
-  <!-- Music Player -->
-  <div class="music-player">
-    <button id="musicBtn">▶</button>
-    <audio id="bgMusic" loop>
-      <source src="assets/glorix music.mp3" type="audio/mpeg" />
-    </audio>
-  </div>
-
-  <!-- Main Content Wrapper (Full-Bleed Grid Layout) -->
-  <main class="main-content">
-    <!-- Hero Carousel - Full Bleed -->
-    <div id="home" class="carousel-wrapper full-bleed">
-      <section class="carousel" style="padding: 0; max-width: 100%">
-        <div class="carousel-track" id="carouselTrack">
-          <!-- Slides will be loaded dynamically here -->
-        </div>
-      </section>
-    </div>
-
-    <!-- About Us Section -->
-    <section id="about" class="about">
-      <div class="about-container">
-        <!-- Main Content Area -->
-        <div class="about-main-card">
-          <h2 class="section-title"><span>ABOUT</span> US</h2>
-          <p class="about-description">
-            Glorix is a creative collective redefining the underground music
-            and event scene. We bridge artists, audiences, and brands through
-            immersive cultural experiences. Fusing music, fashion, and art,
-            Glorix embodies raw expression and originality.
-          </p>
-        </div>
-
-        <!-- Right Side Stats -->
-        <div class="stats-right">
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-microphone-alt"></i></div>
-            <h3 class="stat-number">55+</h3>
-            <p class="stat-label">
-              Artists in collaboration during our journey
+      <!-- About Us Section -->
+      <section id="about" class="about">
+        <div class="about-container">
+          <!-- Main Content Area -->
+          <div class="about-main-card">
+            <h2 class="section-title"><span>ABOUT</span> US</h2>
+            <p class="about-description">
+              Glorix is a creative collective redefining the underground music
+              and event scene. We bridge artists, audiences, and brands through
+              immersive cultural experiences. Fusing music, fashion, and art,
+              Glorix embodies raw expression and originality.
             </p>
           </div>
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-city"></i></div>
-            <h3 class="stat-number">10+</h3>
-            <p class="stat-label">Cities covered nationwide</p>
+
+          <!-- Right Side Stats -->
+          <div class="stats-right">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-microphone-alt"></i></div>
+              <h3 class="stat-number">55+</h3>
+              <p class="stat-label">
+                Artists in collaboration during our journey
+              </p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-city"></i></div>
+              <h3 class="stat-number">10+</h3>
+              <p class="stat-label">Cities covered nationwide</p>
+            </div>
+          </div>
+
+          <!-- Bottom Stats -->
+          <div class="stats-bottom">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-ticket-alt"></i></div>
+              <h3 class="stat-number">600+</h3>
+              <p class="stat-label">Tickets sold and counting</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-building"></i></div>
+              <h3 class="stat-number">15+</h3>
+              <p class="stat-label">Brand partners and counting</p>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- Bottom Stats -->
-        <div class="stats-bottom">
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-ticket-alt"></i></div>
-            <h3 class="stat-number">600+</h3>
-            <p class="stat-label">Tickets sold and counting</p>
+      <!-- Gallery Section -->
+      <section id="gallery" class="gallery-section">
+        <div class="section-header">
+          <h2 class="section-title"><span>OUR</span> GALLERY</h2>
+          <a href="gallery.html" class="see-all-btn"
+            >See All <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+        <div class="gallery-grid">
+          <!-- Left Column -->
+          <div class="gallery-item item-l1">
+            <img
+              src="assets/gallery/IMG-20251030-WA0006.jpg"
+              alt="Gallery Image 1"
+              loading="lazy"
+            />
           </div>
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-building"></i></div>
-            <h3 class="stat-number">15+</h3>
-            <p class="stat-label">Brand partners and counting</p>
+          <div class="gallery-item item-l2">
+            <img
+              src="assets/gallery/IMG-20251030-WA0017.jpg"
+              alt="Gallery Image 2"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item item-l3">
+            <img
+              src="assets/gallery/IMG-20251230-WA0054.jpg"
+              alt="Gallery Image 3"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item item-l4">
+            <img
+              src="assets/gallery/IMG-20251230-WA0055.jpg"
+              alt="Gallery Image 4"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Middle Column -->
+          <div class="gallery-item gallery-logo">
+            <img
+              src="assets/gallery/IMG-20251230-WA0056.jpg"
+              alt="Gallery Image"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item item-m1">
+            <img
+              src="assets/gallery/IMG-20251230-WA0078.jpg"
+              alt="Gallery Image 5"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item item-tall">
+            <img
+              src="assets/gallery/IMG-20251230-WA0082.jpg"
+              alt="Gallery Image 6"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Right Column -->
+          <div class="gallery-item item-r1">
+            <img
+              src="assets/gallery/IMG-20251230-WA0057.jpg"
+              alt="Gallery Image 7"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item item-r2">
+            <img
+              src="assets/gallery/IMG-20251230-WA0059.jpg"
+              alt="Gallery Image 8"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item item-r3">
+            <img
+              src="assets/gallery/IMG-20251230-WA0060.jpg"
+              alt="Gallery Image 9"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item item-r4">
+            <img
+              src="assets/gallery/IMG-20251230-WA0061.jpg"
+              alt="Gallery Image 10"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Collaboration Section -->
+      <section id="collaboration" class="collaboration-section full-bleed">
+        <h2 class="section-title"><span>OUR</span> COLLABORATION</h2>
+        <div class="marquee" id="collaborationMarquee">
+          <!-- Marquee content will be loaded dynamically here -->
+        </div>
+      </section>
+
+      <!-- Testimonials - Full Bleed -->
+      <section class="testimonials full-bleed" id="testimonials">
+        <h2 class="section-title"><span>TESTIMONIALS</span></h2>
+        <div class="review-slider-wrapper">
+          <div class="review-slides" id="testimonialSlides">
+            <!-- Testimonials will be loaded dynamically here -->
+          </div>
+        </div>
+        <div class="slider-dots" id="testimonialDots">
+          <!-- Dots will be loaded dynamically here -->
+        </div>
+      </section>
+
+      <!-- Email Section - Full Bleed -->
+      <section id="email-subscription" class="email-section full-bleed">
+        <div class="email-container">
+          <h2 class="section-title"><span>EMAIL</span> US</h2>
+          <p class="email-description">Mail Us For Any Query.</p>
+          <div class="email-form">
+            <div class="email-display">queries.glorix@gmail.com</div>
+            <a href="mailto:queries.glorix@gmail.com" class="email-btn"
+              >EMAIL</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section - Full Bleed -->
+      <section id="contact" class="contact-section full-bleed">
+        <div class="contact-container">
+          <h2 class="section-title"><span>CONTACT</span> US</h2>
+          <h4>Get Started Today</h4>
+          <p class="contact-description">
+            Need expert support to make your event extraordinary?
+            <br />
+            <br />
+            Glorix provides end-to-end event management services tailored to
+            your vision. From planning to execution, we handle every detail so
+            your event is seamless and unforgettable. Contact us today, and
+            let’s bring your ideas to life.
+          </p>
+          <a
+            href="https://wa.me/919311304040"
+            target="_blank"
+            class="whatsapp-btn"
+          >
+            <i class="fab fa-whatsapp"></i>
+            Message us on WhatsApp
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Templates (outside main content wrapper) -->
+    <template id="carouselTemplate">
+      <div class="carousel-slide">
+        <div class="carousel-bg-blur">
+          <img
+            src=""
+            alt=""
+            class="bg-img"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <video
+            class="bg-video"
+            autoplay
+            loop
+            muted
+            playsinline
+            style="display: none"
+          ></video>
+        </div>
+        <div class="carousel-content">
+          <img
+            src=""
+            alt=""
+            class="main-img"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <video
+            class="main-video"
+            autoplay
+            loop
+            muted
+            playsinline
+            style="display: none"
+          ></video>
+        </div>
+      </div>
+    </template>
+
+    <template id="testimonialTemplate">
+      <div class="review-item">
+        <div class="review-box">
+          <div>
+            <img src="" alt="" class="reviewer-img" loading="lazy" />
+            <p class="review-text"></p>
+          </div>
+          <div>
+            <h4 class="reviewer-name"></h4>
+            <span class="reviewer-role"></span>
           </div>
         </div>
       </div>
-    </section>
+    </template>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery-section">
-      <div class="section-header">
-        <h2 class="section-title"><span>OUR</span> GALLERY</h2>
-        <a href="gallery.html" class="see-all-btn">See All <i class="fas fa-arrow-right"></i></a>
+    <template id="artistTemplate">
+      <a href="" class="artist-card" target="_blank" rel="noopener noreferrer">
+        <img src="" alt="" loading="lazy" />
+        <div class="artist-info">
+          <h3></h3>
+        </div>
+      </a>
+    </template>
+
+    <template id="collaborationTemplate">
+      <div class="collaboration-item">
+        <img src="" alt="" class="collab-logo" loading="lazy" />
+        <span class="collab-name"></span>
       </div>
-      <div class="gallery-grid">
-        <!-- Left Column -->
-        <div class="gallery-item item-l1">
-          <img src="assets/gallery/IMG-20251030-WA0006.jpg" alt="Gallery Image 1" loading="lazy" />
-        </div>
-        <div class="gallery-item item-l2">
-          <img src="assets/gallery/IMG-20251030-WA0017.jpg" alt="Gallery Image 2" loading="lazy" />
-        </div>
-        <div class="gallery-item item-l3">
-          <img src="assets/gallery/IMG-20251230-WA0054.jpg" alt="Gallery Image 3" loading="lazy" />
-        </div>
-        <div class="gallery-item item-l4">
-          <img src="assets/gallery/IMG-20251230-WA0055.jpg" alt="Gallery Image 4" loading="lazy" />
-        </div>
+    </template>
 
-        <!-- Middle Column -->
-        <div class="gallery-item gallery-logo">
-          <img src="assets/gallery/IMG-20251230-WA0056.jpg" alt="Gallery Image" loading="lazy" />
-        </div>
-        <div class="gallery-item item-m1">
-          <img src="assets/gallery/IMG-20251230-WA0078.jpg" alt="Gallery Image 5" loading="lazy" />
-        </div>
-        <div class="gallery-item item-tall">
-          <img src="assets/gallery/IMG-20251230-WA0082.jpg" alt="Gallery Image 6" loading="lazy" />
-        </div>
-
-        <!-- Right Column -->
-        <div class="gallery-item item-r1">
-          <img src="assets/gallery/IMG-20251230-WA0057.jpg" alt="Gallery Image 7" loading="lazy" />
-        </div>
-        <div class="gallery-item item-r2">
-          <img src="assets/gallery/IMG-20251230-WA0059.jpg" alt="Gallery Image 8" loading="lazy" />
-        </div>
-        <div class="gallery-item item-r3">
-          <img src="assets/gallery/IMG-20251230-WA0060.jpg" alt="Gallery Image 9" loading="lazy" />
-        </div>
-        <div class="gallery-item item-r4">
-          <img src="assets/gallery/IMG-20251230-WA0061.jpg" alt="Gallery Image 10" loading="lazy" />
-        </div>
+    <!-- Footer -->
+    <footer>
+      <div class="social-links">
+        <a
+          href="https://www.linkedin.com/company/glorix-events/"
+          target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="https://www.instagram.com/_glorix._" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="https://x.com/Glorix_events" target="_blank"
+          ><i class="fab fa-x-twitter"></i
+        ></a>
+        <a href="https://www.youtube.com/@GLORIX_events" target="_blank"
+          ><i class="fab fa-youtube"></i
+        ></a>
       </div>
-    </section>
+      <p class="copyright">Copyright © 2026 GLORIX - All Rights Reserved.</p>
+    </footer>
 
-    <!-- Collaboration Section -->
-    <section id="collaboration" class="collaboration-section full-bleed">
-      <h2 class="section-title"><span>OUR</span> COLLABORATION</h2>
-      <div class="marquee" id="collaborationMarquee">
-        <!-- Marquee content will be loaded dynamically here -->
-      </div>
-    </section>
-
-    <!-- Testimonials - Full Bleed -->
-    <section class="testimonials full-bleed" id="testimonials">
-      <h2 class="section-title"><span>TESTIMONIALS</span></h2>
-      <div class="review-slider-wrapper">
-        <div class="review-slides" id="testimonialSlides">
-          <!-- Testimonials will be loaded dynamically here -->
-        </div>
-      </div>
-      <div class="slider-dots" id="testimonialDots">
-        <!-- Dots will be loaded dynamically here -->
-      </div>
-    </section>
-
-    <!-- Email Section - Full Bleed -->
-    <section id="email-subscription" class="email-section full-bleed">
-      <div class="email-container">
-        <h2 class="section-title"><span>EMAIL</span> US</h2>
-        <p class="email-description">Mail Us For Any Query.</p>
-        <div class="email-form">
-          <div class="email-display">queries.glorix@gmail.com</div>
-          <a href="mailto:queries.glorix@gmail.com" class="email-btn">EMAIL</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section - Full Bleed -->
-    <section id="contact" class="contact-section full-bleed">
-      <div class="contact-container">
-        <h2 class="section-title"><span>CONTACT</span> US</h2>
-        <h4>Get Started Today</h4>
-        <p class="contact-description">
-          Need expert support to make your event extraordinary?
-          <br />
-          <br />
-          Glorix provides end-to-end event management services tailored to
-          your vision. From planning to execution, we handle every detail so
-          your event is seamless and unforgettable. Contact us today, and
-          let’s bring your ideas to life.
-        </p>
-        <a href="https://wa.me/919311304040" target="_blank" class="whatsapp-btn">
-          <i class="fab fa-whatsapp"></i>
-          Message us on WhatsApp
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <!-- Templates (outside main content wrapper) -->
-  <template id="carouselTemplate">
-    <div class="carousel-slide">
-      <div class="carousel-bg-blur">
-        <img src="" alt="" class="bg-img" loading="eager" fetchpriority="high" />
-        <video class="bg-video" autoplay loop muted playsinline style="display: none;"></video>
-      </div>
-      <div class="carousel-content">
-        <img src="" alt="" class="main-img" loading="eager" fetchpriority="high" />
-        <video class="main-video" autoplay loop muted playsinline style="display: none;"></video>
-      </div>
-    </div>
-  </template>
-
-  <template id="testimonialTemplate">
-    <div class="review-item">
-      <div class="review-box">
-        <div>
-          <img src="" alt="" class="reviewer-img" loading="lazy" />
-          <p class="review-text"></p>
-        </div>
-        <div>
-          <h4 class="reviewer-name"></h4>
-          <span class="reviewer-role"></span>
-        </div>
-      </div>
-    </div>
-  </template>
-
-  <template id="artistTemplate">
-    <a href="" class="artist-card" target="_blank" rel="noopener noreferrer">
-      <img src="" alt="" loading="lazy" />
-      <div class="artist-info">
-        <h3></h3>
-      </div>
-    </a>
-  </template>
-
-  <template id="collaborationTemplate">
-    <div class="collaboration-item">
-      <img src="" alt="" class="collab-logo" loading="lazy" />
-      <span class="collab-name"></span>
-    </div>
-  </template>
-
-  <!-- Footer -->
-  <footer>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/company/glorix-events/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.instagram.com/_glorix._" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://x.com/Glorix_events" target="_blank"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.youtube.com/@GLORIX_events" target="_blank"><i class="fab fa-youtube"></i></a>
-    </div>
-    <p class="copyright">Copyright © 2026 GLORIX - All Rights Reserved.</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/Flip.min.js"></script>
-  <script src="script.js"></script>
-  <script src="main.js"></script>
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/Flip.min.js"></script>
+    <script src="carousel.js"></script>
+    <script src="script.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>

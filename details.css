@@ -67,15 +67,69 @@ body {
   padding-top: 56px;
 }
 
-/* ===== Event Image ===== */
+/* ===== Event Media Carousel ===== */
 .event-image-container {
   width: 100%;
   aspect-ratio: 16/7;
   overflow: hidden;
   background: #1a1a1a;
+  position: relative;
 }
 
-.event-image {
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-bg-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.carousel-bg-blur img,
+.carousel-bg-blur video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(50px) brightness(0.5) saturate(1.2);
+  transform: scale(1.1);
+}
+
+.carousel-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.carousel-content img,
+.carousel-content video {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.event-image,
+.event-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -83,10 +137,13 @@ body {
 }
 
 .event-video {
-  width: 100%;
-  height: 100%;
   object-fit: fill;
-  object-position: top center;
+}
+
+@media (max-width: 768px) {
+  .event-image-container {
+    aspect-ratio: 16/9;
+  }
 }
 
 /* ===== Tags Section ===== */

@@ -1,6 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
-  let currentEvent;
+let currentEvent;
+let carouselInterval;
 
+document.addEventListener("DOMContentLoaded", function () {
   // Get event ID from URL parameter
   const urlParams = new URLSearchParams(window.location.search);
   const eventId = urlParams.get("id");
@@ -302,8 +303,18 @@ function shareEvent() {
 
 function updateEventMedia(event) {
   const details = event.details || {};
-  const eventImage = document.getElementById("eventImage");
-  const eventVideo = document.getElementById("eventVideo");
+  const track = document.getElementById("carouselTrack");
+  const template = document.getElementById("carouselTemplate");
+
+  if (!track || !template) return;
+
+  // Clear existing carousel
+  track.innerHTML = "";
+  if (carouselInterval) clearInterval(carouselInterval);
+
+  let mediaItems = [];
+  // Use 1024 as the threshold as per previous code
+  const isMobile = window.innerWidth <= 1024;
 
   if (details.detailsVideo) {
     if (eventVideo) {
