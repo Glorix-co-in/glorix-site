@@ -154,5 +154,46 @@
       ],
       "priceFrom": 399
     }
+  },
+  {
+    "id": "aisi-ki-tesi-v1",
+    "title": "AISI KI TESI: VOL.01",
+    "image": "assets/events/aisi-ki-tesi.jpg",
+    "date": "31st January 2026",
+    "status": "open",
+    "bookingLink": "https://rzp.io/rzp/aisi-ki-tesi",
+    "bookingOptions": [
+      {
+        "date": "31st January 2026",
+        "time": "3:00 PM",
+        "link": "https://rzp.io/rzp/aisi-ki-tesi-3pm",
+        "status": "available"
+      },
+      {
+        "date": "31st January 2026",
+        "time": "6:00 PM",
+        "link": "https://rzp.io/rzp/aisi-ki-tesi-6pm",
+        "status": "available"
+      }
+    ],
+    "details": {
+      "tags": ["Stand Up", "Comedy", "Live"],
+      "dateRange": null,
+      "time": ["3:00 PM", "6:00 PM"],
+      "duration": "2 Hours",
+      "ageLimit": "13+",
+      "languages": "Hindi, English",
+      "genre": "Stand-Up / Live",
+      "venue": "Moonshine Cafe: Hauz Khas, Delhi",
+      "venueLink": "https://maps.app.goo.gl/bdLrR6Ey6rEJJHvd6",
+      "aboutEvent": "AISI KI TESI: VOL.01 is a premier stand-up comedy series bringing you the funniest acts in the city. Join us for an evening of laughter, sharp wit, and storytelling that will leave you in splits. Two shows available for double the fun!",
+      "highlights": [
+        "Professional Stand-up Comedy",
+        "Intimate Cafe Setting",
+        "Multiple Show Timings",
+        "Laugh-out-loud Experience"
+      ],
+      "priceFrom": 499
+    }
   }
 ]
