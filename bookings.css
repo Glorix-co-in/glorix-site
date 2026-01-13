@@ -311,7 +311,7 @@
     margin-top: 0px;
   }
 
-  #upcomingEventsContainer {
+  #upcomingEventsContainer:not(.is-multiple) {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
     justify-content: center;
@@ -320,11 +320,11 @@
     margin-inline: auto;
   }
 
-  #upcomingEventsContainer .event-card-mobile {
+  #upcomingEventsContainer:not(.is-multiple) .event-card-mobile {
     height: auto;
   }
 
-  #upcomingEventsContainer .event-card-mobile__image {
+  #upcomingEventsContainer:not(.is-multiple) .event-card-mobile__image {
     aspect-ratio: 4 / 5;
   }
 }
