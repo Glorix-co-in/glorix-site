@@ -66,33 +66,11 @@ document.addEventListener("DOMContentLoaded", function () {
         video.setAttribute("fetchpriority", "high");
         video.style.width = "100%";
         video.style.height = "100%";
-
-        if (isMobile) {
-          video.style.objectFit = "contain";
-          video.onloadedmetadata = () => {
-            if (video.videoWidth > video.videoHeight) {
-              video.style.objectFit = "cover";
-            } else {
-              video.style.objectFit = "contain";
-            }
-          };
-        } else {
-          video.style.objectFit = "cover";
-        }
+        video.style.objectFit = "cover";
 
         // Replace image with video
         imgContainer.replaceChild(video, imageEl);
       } else {
-        if (isMobile) {
-          imageEl.style.objectFit = "contain";
-          imageEl.onload = () => {
-            if (imageEl.naturalWidth > imageEl.naturalHeight) {
-              imageEl.style.objectFit = "cover";
-            } else {
-              imageEl.style.objectFit = "contain";
-            }
-          };
-        }
         imageEl.src = event.image;
         imageEl.alt = event.title;
       }
