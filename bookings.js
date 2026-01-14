@@ -19,11 +19,28 @@ document.addEventListener("DOMContentLoaded", function () {
     upcomingContainer.innerHTML = "";
     pastContainer.innerHTML = "";
 
+    const upcomingEvents = allEvents.filter(
+      (e) =>
+        e.status === "open" ||
+        e.status === "available" ||
+        e.status === "fast-filling" ||
+        e.status === "sold-out"
+    );
+    if (upcomingEvents.length > 1) {
+      upcomingContainer.classList.add("is-multiple");
+    } else {
+      upcomingContainer.classList.remove("is-multiple");
+    }
+
     let upcomingCount = 0;
     let pastCount = 0;
 
     allEvents.forEach((event) => {
-      const isUpcoming = event.status === "open";
+      const isUpcoming =
+        event.status === "open" ||
+        event.status === "available" ||
+        event.status === "fast-filling" ||
+        event.status === "sold-out";
       const container = isUpcoming ? upcomingContainer : pastContainer;
 
       if (isUpcoming) upcomingCount++;

@@ -207,30 +207,53 @@ function populateEventDetails(event) {
   const availability = document.getElementById("availability");
   const bookNowBtn = document.getElementById("bookNowBtn");
 
-  if (event.status === "open" && event.bookingLink) {
+  const status = event.status || "closed";
+  const isOpen = status !== "closed" && event.bookingLink;
+
+  if (isOpen) {
     if (availability) {
-      availability.textContent = "Available";
-      availability.classList.remove("closed");
+      let statusText = "Available";
+      let statusClass = "available";
+
+      if (status === "fast-filling") {
+        statusText = "Fast Filling";
+        statusClass = "fast-filling";
+      } else if (status === "sold-out") {
+        statusText = "Sold Out";
+        statusClass = "sold-out";
+      }
+
+      availability.textContent = statusText;
+      availability.className = `availability ${statusClass}`;
     }
+
     if (bookNowBtn) {
-      bookNowBtn.textContent = "Book Now";
-      bookNowBtn.disabled = false;
-      bookNowBtn.addEventListener("click", () => {
-        if (event.bookingOptions && event.bookingOptions.length > 1) {
-          window.location.href = `select-slot.html?id=${event.id}`;
-        } else {
-          window.open(event.bookingLink, "_blank");
-        }
-      });
+      if (status === "sold-out") {
+        bookNowBtn.textContent = "Sold Out";
+        bookNowBtn.disabled = true;
+        bookNowBtn.classList.add("disabled");
+      } else {
+        bookNowBtn.textContent = "Book Now";
+        bookNowBtn.disabled = false;
+        bookNowBtn.classList.remove("disabled");
+        bookNowBtn.addEventListener("click", () => {
+          if (event.bookingOptions && event.bookingOptions.length > 1) {
+            window.location.href = `select-slot.html?id=${event.id}`;
+          } else {
+            window.open(event.bookingLink, "_blank");
+          }
+        });
+      }
     }
   } else {
     if (availability) {
       availability.textContent = "Bookings Closed";
-      availability.classList.add("closed");
+      availability.className = "availability closed";
     }
     if (bookNowBtn) {
       bookNowBtn.textContent = "Bookings Closed";
       bookNowBtn.disabled = true;
+      bookNowBtn.classList.add("disabled");
     }
   }
 }

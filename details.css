@@ -246,6 +246,14 @@ body {
   font-weight: 500;
 }
 
+.availability.fast-filling {
+  color: #ff9800;
+}
+
+.availability.sold-out {
+  color: #9e9e9e;
+}
+
 .availability.closed {
   color: #666;
 }
