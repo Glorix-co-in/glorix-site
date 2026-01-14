@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
     shareBtn.addEventListener("click", shareEvent);
   }
 
-
   // Terms & Conditions Modal handlers
   const termsSection = document.getElementById("termsSection");
   const termsModal = document.getElementById("termsModal");
@@ -87,7 +86,6 @@ async function loadEventDetails(eventId) {
 
     currentEvent = event;
     populateEventDetails(event);
-
   } catch (error) {
     console.error("Error loading event details:", error);
     showError("Failed to load event details");
@@ -122,12 +120,12 @@ function populateEventDetails(event) {
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-      if (currentEvent) { // Ensure currentEvent is loaded
+      if (currentEvent) {
+        // Ensure currentEvent is loaded
         updateEventMedia(currentEvent);
       }
     }, 250);
   });
-
 
   // Date
   const eventDate = document.getElementById("eventDate");
@@ -196,7 +194,6 @@ function populateEventDetails(event) {
     aboutText.textContent = details.aboutEvent;
   }
 
-
   // Price
   const priceFrom = document.getElementById("priceFrom");
   if (priceFrom) {
@@ -215,9 +212,9 @@ function populateEventDetails(event) {
       let statusText = "Available";
       let statusClass = "available";
 
-      if (status === "fast-filling") {
-        statusText = "Fast Filling";
-        statusClass = "fast-filling";
+      if (status === "filling-fast") {
+        statusText = "Filling Fast";
+        statusClass = "filling-fast";
       } else if (status === "sold-out") {
         statusText = "Sold Out";
         statusClass = "sold-out";
@@ -314,7 +311,9 @@ function updateEventMedia(event) {
       if (typeof details.detailsVideo === "object") {
         const isLandscapeMode = window.innerWidth <= 1024;
         // User requested: landscape for mobile & tablet, portrait for desktop
-        videoSrc = isLandscapeMode ? details.detailsVideo.landscape : details.detailsVideo.portrait;
+        videoSrc = isLandscapeMode
+          ? details.detailsVideo.landscape
+          : details.detailsVideo.portrait;
       } else {
         videoSrc = details.detailsVideo;
       }

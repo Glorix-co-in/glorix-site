@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!upcomingContainer || !pastContainer) return;
 
     const isMobile = window.innerWidth <= 768;
-    const templateId = isMobile ? "mobileEventCardTemplate" : "eventCardTemplate";
+    const templateId = isMobile
+      ? "mobileEventCardTemplate"
+      : "eventCardTemplate";
     const eventCardTemplate = document.getElementById(templateId);
 
     if (!eventCardTemplate) return;
@@ -23,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       (e) =>
         e.status === "open" ||
         e.status === "available" ||
-        e.status === "fast-filling" ||
+        e.status === "filling-fast" ||
         e.status === "sold-out"
     );
     if (upcomingEvents.length > 1) {
@@ -39,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const isUpcoming =
         event.status === "open" ||
         event.status === "available" ||
-        event.status === "fast-filling" ||
+        event.status === "filling-fast" ||
         event.status === "sold-out";
       const container = isUpcoming ? upcomingContainer : pastContainer;
 
@@ -50,11 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const prefix = isMobile ? ".event-card-mobile" : ".event-card";
 
       const imgContainer = clone.querySelector(`${prefix}__image`);
-      const imageEl = imgContainer.querySelector('img');
+      const imageEl = imgContainer.querySelector("img");
 
       if (event.details && event.details.promoVideo) {
         // Create video element
-        const video = document.createElement('video');
+        const video = document.createElement("video");
         video.src = event.details.promoVideo;
         video.autoplay = true;
         video.muted = true;
@@ -114,10 +116,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Show messages if no events
     if (upcomingCount === 0) {
-      upcomingContainer.innerHTML = '<p style="color: #666; text-align: center; grid-column: 1/-1; padding: 40px;">No upcoming events at the moment. Stay tuned!</p>';
+      upcomingContainer.innerHTML =
+        '<p style="color: #666; text-align: center; grid-column: 1/-1; padding: 40px;">No upcoming events at the moment. Stay tuned!</p>';
     }
     if (pastCount === 0) {
-      pastContainer.innerHTML = '<p style="color: #666; text-align: center; grid-column: 1/-1; padding: 40px;">No past events to show.</p>';
+      pastContainer.innerHTML =
+        '<p style="color: #666; text-align: center; grid-column: 1/-1; padding: 40px;">No past events to show.</p>';
     }
 
     initGSAPAnimations();
