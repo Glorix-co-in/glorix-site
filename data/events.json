@@ -16,6 +16,10 @@
       "genre": "Live Performance",
       "venue": "Panache Club: Dwarka",
       "venueLink": "https://maps.app.goo.gl/BLoKAaXFBxhxCbok9",
+      "detailsImage": {
+        "mobile": "assets/events/bali.jpg",
+        "desktop": "assets/events/bali.jpg"
+      },
       "aboutEvent": "Experience the magic of BALI performing live! Get ready for an unforgettable night filled with chart-topping hits and electrifying performances. This is your chance to witness one of the most talented artists of our generation live on stage.",
       "highlights": [
         "Live performance by BALI",
@@ -43,6 +47,10 @@
       "genre": "Rap",
       "venue": "Classy Cafe Bar: South Extension",
       "venueLink": "https://maps.app.goo.gl/5Wfw58kaVakwSuMY7",
+      "detailsImage": {
+        "mobile": "assets/events/seasons.jpg",
+        "desktop": "assets/events/seasons.jpg"
+      },
       "aboutEvent": "SEASONS 2025 is the ultimate music festival featuring multiple artists across various genres. A celebration of music, art, and culture that brings together the best talent for an extraordinary experience.",
       "highlights": [
         "Multiple artist performances",
@@ -71,6 +79,10 @@
       "genre": "Rap",
       "venue": "Studio One.6: Kailash Colony",
       "venueLink": "https://maps.app.goo.gl/SAdGuaQCo99vWxzr7",
+      "detailsImage": {
+        "mobile": "assets/events/flair.png",
+        "desktop": "assets/events/flair.png"
+      },
       "aboutEvent": "FLAIR brings you an evening of dance, music, and pure entertainment. Get ready to groove to the beats of the best DJs and live performances.",
       "highlights": [
         "DJ performances",
@@ -98,6 +110,10 @@
       "genre": "Rap",
       "venue": "The Beer Cafe: Faridabad",
       "venueLink": "https://maps.app.goo.gl/KcASp71JRrgEc6fHA",
+      "detailsImage": {
+        "mobile": "assets/events/bloom.jpg",
+        "desktop": "assets/events/bloom.jpg"
+      },
       "aboutEvent": "An electrifying rap battle that promises to ignite your passion for hip-hop and leave you in awe. Experience the best underground rap artists perform live, showcasing their lyrical prowess. An evening with music, energy, and unforgettable performances awaits you.",
       "highlights": [
         "Live performances by top underground artists",
