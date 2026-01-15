@@ -332,8 +332,13 @@ function updateEventMedia(event) {
       eventImage.style.display = "none";
     }
   } else if (eventImage) {
-    // Priority: detailsImage > image
-    eventImage.src = details.detailsImage || event.image;
+    const isMobile = window.innerWidth <= 1024;
+    // Show horizontal image (detailsImage) on mobile, vertical (image) on desktop
+    if (isMobile) {
+      eventImage.src = details.detailsImage.mobile || event.image;
+    } else {
+      eventImage.src = details.detailsImage.desktop || event.image;
+    }
     eventImage.alt = event.title;
     eventImage.style.display = "block";
     if (eventVideo) {
