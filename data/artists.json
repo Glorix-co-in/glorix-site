@@ -30,9 +30,19 @@
     "link": "https://www.instagram.com/asadhyalekhak/"
   },
   {
+    "name": "Ashant",
+    "image": "assets/artists/Ashant.jpg",
+    "link": "https://www.instagram.com/prashantt_5?igsh=dm9zaGR3NG9zMzYz"
+  },
+  {
     "name": "Avneesh",
     "image": "assets/artists/Avneesh.jpg",
     "link": "https://www.instagram.com/avneshhh/"
+  },
+  {
+    "name": "Babbar",
+    "image": "assets/artists/Babbar.jpg",
+    "link": "https://www.instagram.com/babbarmuzic?igsh=bTZkaGoxMDRoZml1"
   },
   {
     "name": "Bali",
@@ -58,6 +68,11 @@
     "name": "Boi Mustafa",
     "image": "assets/artists/Boi Mustafa_.jpg",
     "link": "https://www.instagram.com/boimustafa/"
+  },
+  {
+    "name": "DJ Mayankk",
+    "image": "assets/artists/DJ_Mayankk.jpg",
+    "link": "https://www.instagram.com/dj.mayankk?igsh=ZGQ2cW8wcnhvZXRn"
   },
   {
     "name": "Divvay",
@@ -105,6 +120,11 @@
     "link": "https://www.instagram.com/mc._.serv/"
   },
   {
+    "name": "Jaze",
+    "image": "assets/artists/Jaze.jpg",
+    "link": "https://www.instagram.com/whatup_jaze?igsh=aDk0bTg2Y2MweXp5"
+  },
+  {
     "name": "aRawVerse",
     "image": "assets/artists/IMG-20250724-WA0011.jpg",
     "link": "https://www.instagram.com/arawverse"
@@ -133,6 +153,11 @@
     "name": "Lil Edward",
     "image": "assets/artists/Lil Edward.jpg",
     "link": "https://www.instagram.com/its_lil_edward/"
+  },
+  {
+    "name": "Nehal",
+    "image": "assets/artists/Nehal.jpg",
+    "link": "https://www.instagram.com/nehal_lol.07?igsh=cnVkOWg1czNtM294"
   },
   {
     "name": "Mrityu",
@@ -185,9 +210,24 @@
     "link": "https://www.instagram.com/official_rap_ryder/"
   },
   {
+    "name": "Red",
+    "image": "assets/artists/Red.jpg",
+    "link": "https://www.instagram.com/peace_my_way?igsh=MTZ0ZjR5NGpna3lwMw=="
+  },
+  {
     "name": "Rapo",
     "image": "assets/artists/Rapo.jpg",
     "link": "https://www.instagram.com/raporrate/"
+  },
+  {
+    "name": "Rudra",
+    "image": "assets/artists/Rudra.jpg",
+    "link": "https://www.instagram.com/ru_hawk?igsh=aDI4NXcxNnhxcWVk"
+  },
+  {
+    "name": "Shawn",
+    "image": "assets/artists/Shawn.jpg",
+    "link": "https://www.instagram.com/mohitkumar150?igsh=MWMxZ3pjZXJvcTI3Yw=="
   },
   {
     "name": "Real Tanishk",
@@ -218,6 +258,11 @@
     "name": "Spidy J",
     "image": "assets/artists/Spidy J.webp",
     "link": "https://www.instagram.com/spidyj.official/"
+  },
+  {
+    "name": "Ulti Zindagi",
+    "image": "assets/artists/Ulti_zindagi.jpg",
+    "link": "https://www.instagram.com/ulti_zindagi?igsh=MWh2cmJsajF4bjN6"
   },
   {
     "name": "Swagy",
