@@ -6,6 +6,13 @@ document.addEventListener("DOMContentLoaded", function () {
   let allEvents = [];
   let isMobileLocal = window.innerWidth <= 768;
 
+  function parseDate(dateStr) {
+    if (!dateStr) return new Date(0);
+    // Remove ordinal suffixes (st, nd, rd, th) from numbers
+    const cleanDate = dateStr.replace(/(\d+)(st|nd|rd|th)/, "$1");
+    return new Date(cleanDate);
+  }
+
   function renderEvents() {
     if (!upcomingContainer || !pastContainer) return;
 
@@ -21,34 +28,38 @@ document.addEventListener("DOMContentLoaded", function () {
     upcomingContainer.innerHTML = "";
     pastContainer.innerHTML = "";
 
-    const upcomingEvents = allEvents.filter(
-      (e) =>
-        e.status === "open" ||
-        e.status === "available" ||
-        e.status === "filling-fast" ||
-        e.status === "sold-out" ||
-        e.status === "soon",
-    );
+    const upcomingEvents = allEvents
+      .filter(
+        (e) =>
+          e.status === "open" ||
+          e.status === "available" ||
+          e.status === "filling-fast" ||
+          e.status === "sold-out" ||
+          e.status === "soon",
+      )
+      .sort((a, b) => parseDate(a.date) - parseDate(b.date));
+
+    const pastEvents = allEvents
+      .filter(
+        (e) =>
+          !(
+            e.status === "open" ||
+            e.status === "available" ||
+            e.status === "filling-fast" ||
+            e.status === "sold-out" ||
+            e.status === "soon"
+          ),
+      )
+      .sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
     if (upcomingEvents.length > 1) {
       upcomingContainer.classList.add("is-multiple");
     } else {
       upcomingContainer.classList.remove("is-multiple");
     }
 
-    let upcomingCount = 0;
-    let pastCount = 0;
-
-    allEvents.forEach((event) => {
-      const isUpcoming =
-        event.status === "open" ||
-        event.status === "available" ||
-        event.status === "filling-fast" ||
-        event.status === "sold-out" ||
-        event.status === "soon";
+    const processEvent = (event, isUpcoming) => {
       const container = isUpcoming ? upcomingContainer : pastContainer;
-
-      if (isUpcoming) upcomingCount++;
-      else pastCount++;
 
       const clone = eventCardTemplate.content.cloneNode(true);
       const prefix = isMobile ? ".event-card-mobile" : ".event-card";
@@ -114,14 +125,17 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       container.appendChild(clone);
-    });
+    };
+
+    upcomingEvents.forEach((event) => processEvent(event, true));
+    pastEvents.forEach((event) => processEvent(event, false));
 
     // Show messages if no events
-    if (upcomingCount === 0) {
+    if (upcomingEvents.length === 0) {
       upcomingContainer.innerHTML =
         '<p style="color: #666; text-align: center; grid-column: 1/-1; padding: 40px;">No upcoming events at the moment. Stay tuned!</p>';
     }
-    if (pastCount === 0) {
+    if (pastEvents.length === 0) {
       pastContainer.innerHTML =
         '<p style="color: #666; text-align: center; grid-column: 1/-1; padding: 40px;">No past events to show.</p>';
     }
