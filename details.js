@@ -206,7 +206,7 @@ function populateEventDetails(event) {
   const bookNowBtn = document.getElementById("bookNowBtn");
 
   const status = event.status || "closed";
-  const isOpen = status !== "closed" && event.bookingLink;
+  const isOpen = status !== "closed" && status !== "soon" && event.bookingLink;
 
   if (isOpen) {
     if (availability) {
@@ -242,6 +242,16 @@ function populateEventDetails(event) {
           }
         });
       }
+    }
+  } else if (status === "soon") {
+    if (availability) {
+      availability.textContent = "Opening Soon";
+      availability.className = "availability soon";
+    }
+    if (bookNowBtn) {
+      bookNowBtn.textContent = "Opening Soon";
+      bookNowBtn.disabled = true;
+      bookNowBtn.classList.add("disabled");
     }
   } else {
     if (availability) {

@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
         e.status === "open" ||
         e.status === "available" ||
         e.status === "filling-fast" ||
-        e.status === "sold-out"
+        e.status === "sold-out" ||
+        e.status === "soon",
     );
     if (upcomingEvents.length > 1) {
       upcomingContainer.classList.add("is-multiple");
@@ -42,7 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
         event.status === "open" ||
         event.status === "available" ||
         event.status === "filling-fast" ||
-        event.status === "sold-out";
+        event.status === "sold-out" ||
+        event.status === "soon";
       const container = isUpcoming ? upcomingContainer : pastContainer;
 
       if (isUpcoming) upcomingCount++;
@@ -189,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
             stagger: 0.05,
             ease: "power2.out",
           },
-          "-=0.3"
+          "-=0.3",
         )
         .to(
           ".call-btn",
@@ -199,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
             duration: 0.3,
             ease: "power2.out",
           },
-          "-=0.2"
+          "-=0.2",
         );
 
       // Hero Banner
