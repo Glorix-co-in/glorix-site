@@ -224,5 +224,36 @@
       ],
       "priceFrom": 499
     }
+  },
+  {
+    "id": "love-lies-2026",
+    "title": "LOVE LIES",
+    "image": "assets/events/360_vertical.jpg",
+    "date": "14th February 2026",
+    "status": "soon",
+    "bookingLink": null,
+    "details": {
+      "tags": ["Rap Event", "Live Music", "DJ Sets"],
+      "dateRange": null,
+      "time": ["02:00 PM", "05:00 PM"],
+      "duration": "6 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Rap",
+      "venue": "TBA",
+      "venueLink": "#",
+      "detailsImage": {
+        "mobile": "assets/events/360_vertical.jpg",
+        "desktop": "assets/events/360_vertical.jpg"
+      },
+      "aboutEvent": "Join us this Valentine's Day for LOVE LIES, a high-octane rap event featuring the rawest talent and electrifying DJ sets. Experience an afternoon and evening filled with music that speaks to the soul and energy that keeps you moving.",
+      "highlights": [
+        "Live Rap Performances",
+        "Elite DJ Sets",
+        "Valentine's Day Special",
+        "Unmatchable Vibe"
+      ],
+      "priceFrom": "TBA"
+    }
   }
 ]
