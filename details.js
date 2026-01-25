@@ -304,56 +304,59 @@ function shareEvent() {
 function updateEventMedia(event) {
   const details = event.details || {};
   const track = document.getElementById("carouselTrack");
-  const template = document.getElementById("carouselTemplate");
 
-  if (!track || !template) return;
+  if (!track) return;
 
-  // Clear existing carousel
+  // Clear existing content
   track.innerHTML = "";
   if (carouselInterval) clearInterval(carouselInterval);
 
-  let mediaItems = [];
-  // Use 1024 as the threshold as per previous code
   const isMobile = window.innerWidth <= 1024;
 
   if (details.detailsVideo) {
-    if (eventVideo) {
-      let videoSrc = "";
-      if (typeof details.detailsVideo === "object") {
-        const isLandscapeMode = window.innerWidth <= 1024;
-        // User requested: landscape for mobile & tablet, portrait for desktop
-        videoSrc = isLandscapeMode
-          ? details.detailsVideo.landscape
-          : details.detailsVideo.portrait;
-      } else {
-        videoSrc = details.detailsVideo;
-      }
+    const video = document.createElement("video");
+    let videoSrc = "";
 
-      // Only update if source changed to prevent flickering
-      const newSrcUrl = new URL(videoSrc, window.location.href).href;
-      if (eventVideo.src !== newSrcUrl) {
-        eventVideo.src = videoSrc;
-        eventVideo.preload = "auto";
-        eventVideo.setAttribute("fetchpriority", "high");
-      }
-
-      eventVideo.style.display = "block";
-    }
-    if (eventImage) {
-      eventImage.style.display = "none";
-    }
-  } else if (eventImage) {
-    const isMobile = window.innerWidth <= 1024;
-    // Show horizontal image (detailsImage) on mobile, vertical (image) on desktop
-    if (isMobile) {
-      eventImage.src = details.detailsImage.mobile || event.image;
+    if (typeof details.detailsVideo === "object") {
+      // landscape for mobile/tablet, portrait for desktop
+      videoSrc = isMobile
+        ? details.detailsVideo.landscape
+        : details.detailsVideo.portrait;
     } else {
-      eventImage.src = details.detailsImage.desktop || event.image;
+      videoSrc = details.detailsVideo;
     }
-    eventImage.alt = event.title;
-    eventImage.style.display = "block";
-    if (eventVideo) {
-      eventVideo.style.display = "none";
+
+    video.src = videoSrc;
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.className = "event-media";
+    video.style.width = "100%";
+    video.style.height = "100%";
+    video.style.objectFit = "cover";
+    video.setAttribute("fetchpriority", "high");
+
+    track.appendChild(video);
+  } else {
+    const img = document.createElement("img");
+    let imgSrc = "";
+
+    if (details.detailsImage) {
+      imgSrc = isMobile
+        ? details.detailsImage.mobile || event.image
+        : details.detailsImage.desktop || event.image;
+    } else {
+      imgSrc = event.image;
     }
+
+    img.src = imgSrc;
+    img.alt = event.title;
+    img.className = "event-media";
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.objectFit = "cover";
+
+    track.appendChild(img);
   }
 }
