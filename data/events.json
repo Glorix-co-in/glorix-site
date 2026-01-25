@@ -240,8 +240,8 @@
       "ageLimit": "16+",
       "languages": "Hindi, English",
       "genre": "Rap",
-      "venue": "TBA",
-      "venueLink": "#",
+      "venue": "Lara: New Delhi",
+      "venueLink": "https://maps.app.goo.gl/gseEXj2fQfyr9rna9",
       "detailsImage": {
         "mobile": "assets/events/360_vertical.jpg",
         "desktop": "assets/events/360_vertical.jpg"
@@ -253,7 +253,7 @@
         "Valentine's Day Special",
         "Unmatchable Vibe"
       ],
-      "priceFrom": "TBA"
+      "priceFrom": 399
     }
   }
 ]
