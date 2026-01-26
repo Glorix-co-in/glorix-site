@@ -199,8 +199,16 @@
     "title": "360 HIP HOP VOL 2",
     "image": "assets/events/360_vol2_vertical.jpg",
     "date": "28th February 2026",
-    "status": "soon",
-    "bookingLink": null,
+    "status": "open",
+    "bookingLink": "https://rzp.io/rzp/LU9sW6r",
+    "bookingOptions": [
+      {
+        "date": "28th February 2026",
+        "time": "4:00 PM",
+        "link": "https://rzp.io/rzp/LU9sW6r",
+        "status": "available"
+      }
+    ],
     "details": {
       "tags": ["Live Performance", "360 HH", "DJ Sets"],
       "dateRange": null,
