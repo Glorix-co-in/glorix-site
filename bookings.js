@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const eventsContainer = document.getElementById("eventsContainer");
   const upcomingContainer = document.getElementById("upcomingEventsContainer");
   const pastContainer = document.getElementById("pastEventsContainer");
+  const marqueeTrack = document.getElementById("marqueeTrack");
 
   let allEvents = [];
   let isMobileLocal = window.innerWidth <= 768;
@@ -152,6 +153,23 @@ document.addEventListener("DOMContentLoaded", function () {
         renderEvents();
       })
       .catch((error) => console.error("Error loading events:", error));
+  }
+
+  // Load marquee from JSON
+  if (marqueeTrack) {
+    fetch("data/marquee.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const marqueeContent = data
+          .map((item) => `<span>${item.text}</span>`)
+          .join("");
+        // Create duplicate content for seamless looping
+        marqueeTrack.innerHTML = `
+          <div class="offer-ticker__content">${marqueeContent}</div>
+          <div class="offer-ticker__content">${marqueeContent}</div>
+        `;
+      })
+      .catch((err) => console.error("Error loading marquee:", err));
   }
 
   // Debounced resize handler

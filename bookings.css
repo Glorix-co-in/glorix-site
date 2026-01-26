@@ -36,7 +36,7 @@
 /* Make the hero shorter on narrower screens */
 @media (max-width: 768px) {
   .bookings-hero {
-    min-height: 160px;
+    min-height: 90px;
   }
 
   .bookings-hero__title {
@@ -47,7 +47,7 @@
 
 @media (max-width: 480px) {
   .bookings-hero {
-    min-height: 120px;
+    min-height: 80px;
   }
 
   .bookings-hero__title {
@@ -183,7 +183,8 @@
 /* ===== Responsive Styles ===== */
 @media (max-width: 768px) {
   .events-section {
-    padding-block: var(--section-padding-y-mobile, 30px);
+    padding-top: 0;
+    padding-bottom: 30px;
     overflow: hidden;
   }
 

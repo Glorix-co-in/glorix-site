@@ -43,17 +43,20 @@ a {
 
   display: grid;
   grid-template-columns:
-    minmax(var(--viewport-padding), 1fr) min(var(--content-max-width),
-      100% - var(--viewport-padding) * 2) minmax(var(--viewport-padding), 1fr);
+    minmax(var(--viewport-padding), 1fr) min(
+      var(--content-max-width),
+      100% - var(--viewport-padding) * 2
+    )
+    minmax(var(--viewport-padding), 1fr);
 }
 
 /* All direct children go to center column by default */
-.main-content>* {
+.main-content > * {
   grid-column: 2;
 }
 
 /* Full-bleed elements span all columns */
-.main-content>.full-bleed {
+.main-content > .full-bleed {
   grid-column: 1 / -1;
 }
 
@@ -95,7 +98,9 @@ section {
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .see-all-btn:hover {
@@ -183,7 +188,9 @@ header.navbar {
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
-  transition: background, transform 0.3s ease;
+  transition:
+    background,
+    transform 0.3s ease;
   text-decoration: none;
   display: inline-block;
 }
@@ -257,7 +264,9 @@ footer {
   background: #1a1a1a;
   border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   position: relative;
   display: block;
   text-decoration: none;
@@ -332,7 +341,7 @@ footer {
 .offer-ticker__track {
   display: flex;
   width: max-content;
-  animation: scrollLoop 10s linear infinite;
+  animation: scrollLoop 30s linear infinite;
 }
 
 .offer-ticker__content {
@@ -357,31 +366,14 @@ footer {
   }
 }
 
-.offer-ticker__static {
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-}
-
-.offer-ticker .mobile {
-  display: none;
-}
-
-.offer-ticker .desktop {
-  display: flex;
-}
-
 @media (max-width: 767px) {
   .offer-ticker {
     padding: 5px 0;
   }
 
-  .offer-ticker .desktop {
-    display: none;
-  }
-
-  .offer-ticker .mobile {
-    display: block;
+  .offer-ticker__track span {
+    font-size: 14px;
+    padding: 0 1.5rem;
   }
 }
 
