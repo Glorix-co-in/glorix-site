@@ -197,7 +197,7 @@
   {
     "id": "360-hiphop-v2",
     "title": "360 HIP HOP VOL 2",
-    "image": "assets/events/360_vol2_vertical.png",
+    "image": "assets/events/360_vol2_vertical.jpg",
     "date": "28th February 2026",
     "status": "soon",
     "bookingLink": null,
@@ -212,8 +212,8 @@
       "venue": "TBA",
       "venueLink": "#",
       "detailsImage": {
-        "mobile": "assets/events/360_vol2_vertical.png",
-        "desktop": "assets/events/360_vol2_vertical.png"
+        "mobile": "assets/events/360_vol2_horizontal.jpg",
+        "desktop": "assets/events/360_vol2_vertical.jpg"
       },
       "aboutEvent": "360 HIP HOP is an inspirational hip hop series by TEAM GLORIX covering some of the best underground talents from Delhi and other regions. Volume 2 brings handpicked artists, DJs and a tight crowd into a 360 degree live experience. The format breaks the barrier between artists and the audience, with performers delivering their sets up close for a high energy connection.",
       "highlights": [
