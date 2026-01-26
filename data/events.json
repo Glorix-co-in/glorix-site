@@ -158,7 +158,7 @@
   {
     "id": "gulabi-kafan",
     "title": "GULABI KAFAN",
-    "image": "assets/events/gulabi-kafan.jpg",
+    "image": "assets/events/gulabi_kafan_vertical.jpg",
     "date": "7th February 2026",
     "status": "open",
     "bookingLink": "https://rzp.io/rzp/OklWFZ9",
@@ -181,8 +181,8 @@
       "venue": "Moonshine Cafe: Hauz Khas, Delhi",
       "venueLink": "https://maps.app.goo.gl/bdLrR6Ey6rEJJHvd6",
       "detailsImage": {
-        "mobile": "assets/events/gulabi-kafan.jpg",
-        "desktop": "assets/events/gulabi-kafan.jpg"
+        "mobile": "assets/events/gulabi_kafan_vertical.jpg",
+        "desktop": "assets/events/gulabi_kafan_horizontal.jpg"
       },
       "aboutEvent": "A new chapter begins with the official launch party of God’s Child. This night is a celebration of music, energy, and raw expression. The event will feature live performances, DJ sets, and an exclusive experience of God’s Child’s full EP “Gulabi Kafan”, performed live for the audience. The night will also be opened by some amazing artists, setting the vibe and bringing their own unique energy to the stage before the main act. From powerful tracks to immersive sounds, this isn’t just a show it’s a statement. If you’re here for authentic music and unforgettable vibes, this is where you belong.",
       "highlights": [
