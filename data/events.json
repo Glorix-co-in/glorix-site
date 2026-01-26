@@ -265,8 +265,8 @@
       "venue": "Lara: New Delhi",
       "venueLink": "https://maps.app.goo.gl/gseEXj2fQfyr9rna9",
       "detailsImage": {
-        "mobile": "assets/events/love_lies_vertical.jpg",
-        "desktop": "assets/events/love_lies_vertical.jpg"
+        "landscape": "assets/events/love_lies_horizontal.jpg",
+        "portrait": "assets/events/love_lies_vertical.jpg"
       },
       "aboutEvent": "Join us this Valentine's Day for LOVE LIES, a high-octane rap event featuring the rawest talent and electrifying DJ sets. Experience an afternoon and evening filled with music that speaks to the soul and energy that keeps you moving.",
       "highlights": [
