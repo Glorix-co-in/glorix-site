@@ -1,7 +1,12 @@
 [
   {
-    "desktopImage": "assets/events/360_horizontal.jpg",
-    "mobileImage": "assets/events/360_vertical.jpg",
-    "alt": "Glorix Promo"
+    "desktopImage": "assets/events/gulabi_kafan_horizontal.jpg",
+    "mobileImage": "assets/events/gulabi_kafan_vertical.jpg",
+    "alt": "Gulabi Kafan"
+  },
+  {
+    "desktopImage": "assets/events/360_vol2_horizontal.jpg",
+    "mobileImage": "assets/events/360_vol2_vertical.jpg",
+    "alt": "360 Hip Hop Vol 2"
   }
 ]
