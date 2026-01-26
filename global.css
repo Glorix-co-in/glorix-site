@@ -4,6 +4,12 @@ html {
   scroll-behavior: smooth;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* ===== Base Styles ===== */
 body {
   margin: 0;
@@ -331,7 +337,7 @@ footer {
   color: #fff;
   overflow: hidden;
   width: 100%;
-  padding: 10px 0;
+  padding: 2px 0;
   box-sizing: border-box;
   text-align: center;
   position: relative;
@@ -351,7 +357,7 @@ footer {
 .offer-ticker__track span {
   display: inline-block;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 14px;
   letter-spacing: 0.5px;
   padding: 0 3rem;
 }

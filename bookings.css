@@ -9,7 +9,7 @@
   background-position: center;
   position: relative;
   overflow: hidden;
-  min-height: 100px;
+  min-height: 80px;
   /* desktop default */
 }
 
@@ -58,8 +58,12 @@
 .events-section {
   grid-column: 1 / -1;
   background: #000;
-  padding-block: var(--section-padding-y, 60px);
+  padding-block: 0;
   font-family: "Open Sans", sans-serif;
+}
+
+.events-section .section-title:first-child {
+  margin-block: 15px 10px;
 }
 
 .section-title.past-title {
@@ -72,7 +76,7 @@
   grid-template-columns: repeat(auto-fit, 280px);
   place-content: center;
   gap: 30px;
-  padding-block: 20px;
+  padding-block: 10px;
 }
 
 /* Event Cards */
@@ -183,18 +187,18 @@
 /* ===== Responsive Styles ===== */
 @media (max-width: 768px) {
   .events-section {
-    padding-top: 0;
-    padding-bottom: 30px;
+    padding-block: 0;
     overflow: hidden;
   }
 
   .events-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 180px));
-    gap: 16px;
-    padding: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 182px));
+    gap: 12px;
+    padding: 16px 12px;
     width: 100%;
-    place-content: center;
+    justify-content: center;
+    margin: 0 auto;
   }
 
   .event-card-mobile {

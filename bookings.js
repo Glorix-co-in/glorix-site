@@ -163,10 +163,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const marqueeContent = data
           .map((item) => `<span>${item.text}</span>`)
           .join("");
+        // Repeat content multiple times to ensure it's wider than the screen
+        const repeatedContent = marqueeContent.repeat(4);
         // Create duplicate content for seamless looping
         marqueeTrack.innerHTML = `
-          <div class="offer-ticker__content">${marqueeContent}</div>
-          <div class="offer-ticker__content">${marqueeContent}</div>
+          <div class="offer-ticker__content">${repeatedContent}</div>
+          <div class="offer-ticker__content">${repeatedContent}</div>
         `;
       })
       .catch((err) => console.error("Error loading marquee:", err));
