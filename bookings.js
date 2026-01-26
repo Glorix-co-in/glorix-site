@@ -78,15 +78,16 @@ document.addEventListener("DOMContentLoaded", function () {
         video.playsinline = true;
         video.preload = "auto";
         video.setAttribute("fetchpriority", "high");
-        video.style.width = "100%";
-        video.style.height = "100%";
-        video.style.objectFit = "cover";
+
+        // Use a placeholder or thumbnail for the blur bg if video
+        imgContainer.style.setProperty("--bg-image", `url('${event.image}')`);
 
         // Replace image with video
         imgContainer.replaceChild(video, imageEl);
       } else {
         imageEl.src = event.image;
         imageEl.alt = event.title;
+        imgContainer.style.setProperty("--bg-image", `url('${event.image}')`);
       }
 
       clone.querySelector(`${prefix}__title`).textContent = event.title;

@@ -323,50 +323,83 @@ function updateEventMedia(event) {
 
   const isMobile = window.innerWidth <= 1024;
 
-  if (details.detailsVideo) {
-    const video = document.createElement("video");
-    let videoSrc = "";
+  const slides = [];
 
+  // Determine media to show
+  if (details.detailsVideo) {
+    let videoSrc = "";
     if (typeof details.detailsVideo === "object") {
-      // landscape for mobile/tablet, portrait for desktop
       videoSrc = isMobile
-        ? details.detailsVideo.landscape
-        : details.detailsVideo.portrait;
+        ? details.detailsVideo.landscape ||
+          details.detailsVideo.mobile ||
+          details.detailsVideo.portrait
+        : details.detailsVideo.portrait ||
+          details.detailsVideo.desktop ||
+          details.detailsVideo.landscape;
     } else {
       videoSrc = details.detailsVideo;
     }
-
-    video.src = videoSrc;
-    video.autoplay = true;
-    video.muted = true;
-    video.loop = true;
-    video.playsInline = true;
-    video.className = "event-media";
-    video.style.width = "100%";
-    video.style.height = "100%";
-    video.style.objectFit = "cover";
-    video.setAttribute("fetchpriority", "high");
-
-    track.appendChild(video);
+    slides.push({ type: "video", src: videoSrc });
   } else {
-    const img = document.createElement("img");
     let imgSrc = "";
-
     if (details.detailsImage) {
       imgSrc = isMobile
-        ? details.detailsImage.mobile || event.image
-        : details.detailsImage.desktop || event.image;
+        ? details.detailsImage.landscape ||
+          details.detailsImage.desktop ||
+          event.image
+        : details.detailsImage.portrait ||
+          details.detailsImage.mobile ||
+          event.image;
     } else {
       imgSrc = event.image;
     }
-
-    img.src = imgSrc;
-    img.alt = event.title;
-    img.className = "event-media";
-    img.style.width = "100%";
-    img.style.height = "100%";
-    img.style.objectFit = "cover";
-
-    track.appendChild(img);
+    slides.push({ type: "image", src: imgSrc });
   }
+
+  slides.forEach((slide) => {
+    const slideEl = document.createElement("div");
+    slideEl.className = "carousel-slide";
+
+    // 1. Background Blur Layer
+    const bgBlur = document.createElement("div");
+    bgBlur.className = "carousel-bg-blur";
+
+    if (slide.type === "video") {
+      const bgVideo = document.createElement("video");
+      bgVideo.src = slide.src;
+      bgVideo.muted = true;
+      bgVideo.loop = true;
+      bgVideo.autoplay = true;
+      bgVideo.playsInline = true;
+      bgBlur.appendChild(bgVideo);
+    } else {
+      const bgImg = document.createElement("img");
+      bgImg.src = slide.src;
+      bgBlur.appendChild(bgImg);
+    }
+
+    // 2. Foreground Content Layer
+    const content = document.createElement("div");
+    content.className = "carousel-content";
+
+    if (slide.type === "video") {
+      const mainVideo = document.createElement("video");
+      mainVideo.src = slide.src;
+      mainVideo.autoplay = true;
+      mainVideo.muted = true;
+      mainVideo.loop = true;
+      mainVideo.playsInline = true;
+      mainVideo.setAttribute("fetchpriority", "high");
+      content.appendChild(mainVideo);
+    } else {
+      const mainImg = document.createElement("img");
+      mainImg.src = slide.src;
+      mainImg.alt = event.title;
+      content.appendChild(mainImg);
+    }
+
+    slideEl.appendChild(bgBlur);
+    slideEl.appendChild(content);
+    track.appendChild(slideEl);
+  });
 }
