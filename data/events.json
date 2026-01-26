@@ -228,10 +228,24 @@
   {
     "id": "love-lies-2026",
     "title": "LOVE LIES",
-    "image": "assets/events/360_vertical.jpg",
+    "image": "assets/events/love_lies_vertical.jpg",
     "date": "14th February 2026",
-    "status": "soon",
-    "bookingLink": null,
+    "status": "open",
+    "bookingLink": "https://rzp.io/rzp/zuUIKITY",
+    "bookingOptions": [
+      {
+        "date": "14th February 2026",
+        "time": "02:00 PM",
+        "link": "https://rzp.io/rzp/zuUIKITY",
+        "status": "available"
+      },
+      {
+        "date": "14th February 2026",
+        "time": "05:00 PM",
+        "link": "#",
+        "status": "soon"
+      }
+    ],
     "details": {
       "tags": ["Rap Event", "Live Music", "DJ Sets"],
       "dateRange": null,
@@ -243,8 +257,8 @@
       "venue": "Lara: New Delhi",
       "venueLink": "https://maps.app.goo.gl/gseEXj2fQfyr9rna9",
       "detailsImage": {
-        "mobile": "assets/events/360_vertical.jpg",
-        "desktop": "assets/events/360_vertical.jpg"
+        "mobile": "assets/events/love_lies_vertical.jpg",
+        "desktop": "assets/events/love_lies_vertical.jpg"
       },
       "aboutEvent": "Join us this Valentine's Day for LOVE LIES, a high-octane rap event featuring the rawest talent and electrifying DJ sets. Experience an afternoon and evening filled with music that speaks to the soul and energy that keeps you moving.",
       "highlights": [
