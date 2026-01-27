@@ -204,7 +204,7 @@
     "bookingOptions": [
       {
         "date": "28th February 2026",
-        "time": "4:00 PM",
+        "time": "3:00 PM",
         "link": "https://rzp.io/rzp/LU9sW6r",
         "status": "available"
       }
@@ -212,12 +212,12 @@
     "details": {
       "tags": ["Live Performance", "360 HH", "DJ Sets"],
       "dateRange": null,
-      "time": "4:00 PM onwards",
+      "time": "3:00 PM onwards",
       "duration": "3 Hours",
       "ageLimit": "16+",
       "languages": "Hindi, English",
       "genre": "Hip Hop / DJ",
-      "venue": "Athenaa Luxe Club",
+      "venue": "Athenaa Luxe Club: Gurugram",
       "venueLink": "https://maps.app.goo.gl/yCXmR5ZSNQZmbX43A",
       "detailsImage": {
         "landscape": "assets/events/360_vol2_horizontal.jpg",
