@@ -1,5 +1,10 @@
 [
   {
+    "desktopImage": "assets/poster_2.jpg",
+    "mobileImage": "assets/poster_2.jpg",
+    "alt": "Upcoming Events Posters"
+  },
+  {
     "desktopImage": "assets/events/gulabi_kafan_horizontal.jpg",
     "mobileImage": "assets/events/gulabi_kafan_vertical.jpg",
     "alt": "Gulabi Kafan"
