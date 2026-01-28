@@ -160,14 +160,14 @@
     "title": "GULABI KAFAN",
     "image": "assets/events/gulabi_kafan_vertical.jpg",
     "date": "7th February 2026",
-    "status": "open",
+    "status": "filling-fast",
     "bookingLink": "https://rzp.io/rzp/OklWFZ9",
     "bookingOptions": [
       {
         "date": "7th February 2026",
         "time": "5:00 PM",
         "link": "https://rzp.io/rzp/OklWFZ9",
-        "status": "available"
+        "status": "filling-fast"
       }
     ],
     "details": {
