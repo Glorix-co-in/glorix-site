@@ -226,14 +226,28 @@ function populateEventDetails(event) {
     }
 
     if (bookNowBtn) {
+      const rzpContainer = document.getElementById("razorpayButtonContainer");
+
       if (status === "sold-out") {
         bookNowBtn.textContent = "Sold Out";
         bookNowBtn.disabled = true;
         bookNowBtn.classList.add("disabled");
+        bookNowBtn.style.display = "block";
+        if (rzpContainer) rzpContainer.style.display = "none";
+      } else if (event.id === "gulabi-kafan") {
+        // Test mode for Gulabi Kafan: Use the invisible Razorpay Button overlay
+        bookNowBtn.textContent = "Book Now";
+        bookNowBtn.disabled = false;
+        bookNowBtn.classList.remove("disabled");
+        bookNowBtn.style.display = "block";
+        if (rzpContainer) rzpContainer.style.display = "block";
       } else {
         bookNowBtn.textContent = "Book Now";
         bookNowBtn.disabled = false;
         bookNowBtn.classList.remove("disabled");
+        bookNowBtn.style.display = "block";
+        if (rzpContainer) rzpContainer.style.display = "none";
+
         bookNowBtn.addEventListener("click", () => {
           if (event.bookingOptions && event.bookingOptions.length > 1) {
             window.location.href = `select-slot.html?id=${event.id}`;
@@ -244,16 +258,21 @@ function populateEventDetails(event) {
       }
     }
   } else if (status === "soon") {
+    const rzpContainer = document.getElementById("razorpayButtonContainer");
+    if (rzpContainer) rzpContainer.style.display = "none";
     if (availability) {
       availability.textContent = "Opening Soon";
       availability.className = "availability soon";
     }
     if (bookNowBtn) {
+      bookNowBtn.style.display = "block";
       bookNowBtn.textContent = "Opening Soon";
       bookNowBtn.disabled = true;
       bookNowBtn.classList.add("disabled");
     }
   } else {
+    const rzpContainer = document.getElementById("razorpayButtonContainer");
+    if (rzpContainer) rzpContainer.style.display = "none";
     if (availability) {
       availability.textContent = "Bookings Closed";
       availability.className = "availability closed";

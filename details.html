@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -60,7 +60,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;800&display=swap"
       rel="stylesheet"
       media="print"
-      onload="this.media='all'"
+      onload="this.media = 'all'"
     />
     <link
       rel="preload"
@@ -158,7 +158,18 @@
             >
             <span class="availability" id="availability">---</span>
           </div>
-          <button class="book-now-btn" id="bookNowBtn">---</button>
+          <div class="booking-action-wrapper">
+            <button class="book-now-btn" id="bookNowBtn">---</button>
+            <div id="razorpayButtonContainer">
+              <form id="razorpayForm">
+                <script
+                  src="https://checkout.razorpay.com/v1/payment-button.js"
+                  data-payment_button_id="pl_SAmDfknZnXfWxP"
+                  async
+                ></script>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </main>
