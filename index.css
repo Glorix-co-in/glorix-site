@@ -68,6 +68,59 @@
   transform: scale(1.1);
 }
 
+/* ===== Join Banner ===== */
+.join-banner {
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px 20px;
+  backdrop-filter: blur(10px);
+}
+
+.join-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.join-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.join-link {
+  color: #00aaff;
+  text-decoration: underline;
+  margin-left: 5px;
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
+  font-weight: 600;
+}
+
+.join-link:hover {
+  color: #33bbff;
+  text-shadow: 0 0 8px rgba(0, 170, 255, 0.4);
+}
+
+@media (max-width: 600px) {
+  .join-banner {
+    padding: 10px 15px;
+  }
+
+  .join-container {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
 /* ===== Grid & Cards ===== */
 .grid {
   display: grid;
@@ -197,7 +250,9 @@
   border-radius: 22px;
   text-align: center;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   position: relative;
   flex: 1;
 }
@@ -601,7 +656,9 @@
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
-  transition: transform 0.3s, background 0.3s;
+  transition:
+    transform 0.3s,
+    background 0.3s;
 }
 
 .whatsapp-btn:hover {
@@ -734,16 +791,20 @@
   user-select: none;
   gap: 80px;
   padding-block: 20px;
-  mask-image: linear-gradient(to right,
-      transparent,
-      black 20%,
-      black 80%,
-      transparent);
-  -webkit-mask-image: linear-gradient(to right,
-      transparent,
-      black 20%,
-      black 80%,
-      transparent);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
 }
 
 .marquee-content {
@@ -849,8 +910,8 @@
 .artists-grid,
 .team-grid,
 .marquee,
-.email-container>*,
-.contact-container>* {
+.email-container > *,
+.contact-container > * {
   opacity: 0;
   visibility: hidden;
 }
