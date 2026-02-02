@@ -2,7 +2,7 @@
 .carousel-wrapper {
   width: 100%;
   height: clamp(500px, 70vh, 1000px);
-  margin-bottom: 30px;
+  margin-bottom: 0;
   background: #000;
   overflow: hidden;
 }
@@ -70,12 +70,10 @@
 
 /* ===== Join Banner ===== */
 .join-banner {
+  margin-top: 0;
   margin-bottom: 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 10px 20px;
-  backdrop-filter: blur(10px);
+  background: #ffbf00; /* Logo Golden */
+  padding: 8px 20px;
 }
 
 .join-container {
@@ -88,25 +86,25 @@
 
 .join-text {
   font-size: 0.95rem;
-  font-weight: 500;
-  color: #fff;
+  font-weight: 700;
+  color: #000; /* Black for contrast on gold */
   margin: 0;
   letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
-.join-link {
-  color: #00aaff;
+.join-link,
+.join-link:visited {
+  color: #800080; /* Logo Purple */
   text-decoration: underline;
   margin-left: 5px;
-  transition:
-    color 0.2s ease,
-    text-shadow 0.2s ease;
-  font-weight: 600;
+  transition: opacity 0.2s ease;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .join-link:hover {
-  color: #33bbff;
-  text-shadow: 0 0 8px rgba(0, 170, 255, 0.4);
+  opacity: 0.8;
 }
 
 @media (max-width: 600px) {
@@ -116,7 +114,7 @@
 
   .join-container {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     text-align: center;
   }
 }
