@@ -85,12 +85,12 @@
 }
 
 .join-text {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #fff;
   margin: 0;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .join-link {
@@ -101,7 +101,7 @@
     color 0.2s ease,
     text-shadow 0.2s ease;
   font-weight: 900;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .join-link:hover {
