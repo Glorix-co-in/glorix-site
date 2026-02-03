@@ -72,7 +72,7 @@
 .join-banner {
   margin-top: 0;
   margin-bottom: 20px;
-  background: #ffbf00; /* Logo Golden */
+  border-radius: 12px;
   padding: 8px 20px;
 }
 
@@ -87,24 +87,26 @@
 .join-text {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #000; /* Black for contrast on gold */
+  color: #fff;
   margin: 0;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
-.join-link,
-.join-link:visited {
-  color: #800080; /* Logo Purple */
+.join-link {
+  color: #00aaff;
   text-decoration: underline;
   margin-left: 5px;
-  transition: opacity 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
   font-weight: 900;
   text-transform: uppercase;
 }
 
 .join-link:hover {
-  opacity: 0.8;
+  color: #33bbff;
+  text-shadow: 0 0 8px rgba(0, 170, 255, 0.4);
 }
 
 @media (max-width: 600px) {
