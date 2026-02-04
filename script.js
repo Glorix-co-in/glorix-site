@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .to(
         spans[2],
         { y: -6, rotation: -45, duration: 0.3, ease: "power2.inOut" },
-        "<"
+        "<",
       );
 
     hamburger.addEventListener("click", () => {
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const updateActiveLink = () => {
       if (currentPage === "index.html" || currentPage === "") {
-        const sections = ["home", "gallery", "contact"];
+        const sections = ["home", "gallery", "email-subscription"];
         const visibilityMap = {};
 
         const observerOptions = {
