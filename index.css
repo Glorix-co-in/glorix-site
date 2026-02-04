@@ -619,57 +619,6 @@
   }
 }
 
-/* ===== Contact Section ===== */
-.contact-section {
-  background: #0d0d0d;
-  text-align: center;
-}
-
-.contact-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.contact-section h4 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #4f5d6a;
-}
-
-.contact-description {
-  color: #ccc;
-  line-height: 1.8;
-  margin-bottom: 40px;
-  font-size: 1.1rem;
-  text-wrap: balance;
-  max-inline-size: 70ch;
-  justify-self: center;
-}
-
-.whatsapp-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #25d366;
-  color: #fff;
-  padding: 15px 30px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  transition:
-    transform 0.3s,
-    background 0.3s;
-}
-
-.whatsapp-btn:hover {
-  background: #128c7e;
-  transform: translateY(-3px);
-}
-
-.whatsapp-btn i {
-  font-size: 1.5rem;
-}
-
 /* ===== Team Section ===== */
 .team-section {
   text-align: center;
@@ -770,12 +719,6 @@
 
   .review-item {
     flex: 0 0 100%;
-  }
-
-  .contact-description {
-    font-size: 1rem;
-    max-inline-size: 40ch;
-    line-height: 1.5;
   }
 }
 
@@ -910,8 +853,7 @@
 .artists-grid,
 .team-grid,
 .marquee,
-.email-container > *,
-.contact-container > * {
+.email-container > * {
   opacity: 0;
   visibility: hidden;
 }
