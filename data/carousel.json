@@ -5,11 +5,6 @@
     "alt": "Upcoming Events Posters"
   },
   {
-    "desktopImage": "assets/events/gulabi_kafan_horizontal.jpg",
-    "mobileImage": "assets/events/gulabi_kafan_vertical.jpg",
-    "alt": "Gulabi Kafan"
-  },
-  {
     "desktopImage": "assets/events/love_lies_horizontal.jpg",
     "mobileImage": "assets/events/love_lies_vertical.jpg",
     "alt": "Love Lies"
