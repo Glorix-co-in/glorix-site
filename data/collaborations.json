@@ -42,5 +42,9 @@
   {
     "name": "Oso",
     "logo": "assets/brands/oso.jpeg"
+  },
+  {
+    "name": "Moonshine",
+    "logo": "assets/brands/moonshine.jpeg"
   }
 ]
