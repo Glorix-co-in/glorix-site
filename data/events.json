@@ -7,7 +7,11 @@
     "status": "closed",
     "bookingLink": "null",
     "details": {
-      "tags": ["Live Performance", "360 HH", "DJ Sets"],
+      "tags": [
+        "Live Performance",
+        "360 HH",
+        "DJ Sets"
+      ],
       "dateRange": null,
       "time": "4:00 PM onwards",
       "duration": "3 Hours",
@@ -38,7 +42,11 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": ["Live Performance", "Hindi", "English"],
+      "tags": [
+        "Live Performance",
+        "Hindi",
+        "English"
+      ],
       "dateRange": null,
       "time": "6:00 PM",
       "duration": "4 Hours",
@@ -69,7 +77,11 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": ["Music Festival", "Multi-Artist", "Cultural Event"],
+      "tags": [
+        "Music Festival",
+        "Multi-Artist",
+        "Cultural Event"
+      ],
       "dateRange": null,
       "time": "4:00 PM",
       "duration": "5 Hours",
@@ -100,7 +112,11 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": ["Rap Event", "Live Music", "Party"],
+      "tags": [
+        "Rap Event",
+        "Live Music",
+        "Party"
+      ],
       "date": "20th September 2025",
       "dateRange": null,
       "time": "4:00 PM",
@@ -132,7 +148,11 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": ["Rap Event", "Underground Music", "Live Performance"],
+      "tags": [
+        "Rap Event",
+        "Underground Music",
+        "Live Performance"
+      ],
       "dateRange": null,
       "time": "3:00 PM",
       "duration": "6 Hours",
@@ -163,7 +183,11 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": ["Live Performance", "Success Party", "DJ Sets"],
+      "tags": [
+        "Live Performance",
+        "Success Party",
+        "DJ Sets"
+      ],
       "dateRange": null,
       "time": "5:00 PM onwards",
       "duration": "3 Hours",
@@ -202,7 +226,11 @@
       }
     ],
     "details": {
-      "tags": ["Live Performance", "360 HH", "DJ Sets"],
+      "tags": [
+        "Live Performance",
+        "360 HH",
+        "DJ Sets"
+      ],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -230,7 +258,7 @@
     "title": "LOVE LIES",
     "image": "assets/events/love_lies_vertical.jpg",
     "date": "14th February 2026",
-    "status": "open",
+    "status": "sold-out",
     "bookingLink": null,
     "bookingOptions": [
       {
@@ -247,9 +275,16 @@
       }
     ],
     "details": {
-      "tags": ["Rap Event", "Live Music", "DJ Sets"],
+      "tags": [
+        "Rap Event",
+        "Live Music",
+        "DJ Sets"
+      ],
       "dateRange": null,
-      "time": ["02:00 PM", "05:00 PM"],
+      "time": [
+        "02:00 PM",
+        "05:00 PM"
+      ],
       "duration": "6 Hours",
       "ageLimit": "16+",
       "languages": "Hindi, English",
