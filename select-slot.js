@@ -101,17 +101,32 @@ function updateTimeSlots(times) {
     .map(
       (opt) => `
         <div class="slot-card ${opt.status || "available"}" data-time="${
-        opt.time
-      }" data-link="${opt.link}">
+          opt.time
+        }" data-link="${opt.link}">
             <span class="slot-time">${opt.time}</span>
         </div>
-    `
+    `,
     )
     .join("");
 
   const timeCards = timeSlots.querySelectorAll(".slot-card");
+  let firstAvailable = null;
+
   timeCards.forEach((card) => {
+    if (
+      !card.classList.contains("sold-out") &&
+      !card.classList.contains("closed")
+    ) {
+      if (!firstAvailable) firstAvailable = card;
+    }
+
     card.addEventListener("click", () => {
+      if (
+        card.classList.contains("sold-out") ||
+        card.classList.contains("closed")
+      ) {
+        return;
+      }
       timeCards.forEach((c) => c.classList.remove("selected"));
       card.classList.add("selected");
       selectedTime = card.dataset.time;
@@ -123,8 +138,8 @@ function updateTimeSlots(times) {
     });
   });
 
-  if (times.length === 1) {
-    timeCards[0].click();
+  if (firstAvailable && times.length === 1) {
+    firstAvailable.click();
   } else {
     confirmBtn.disabled = true;
   }
@@ -162,7 +177,7 @@ function formatDate(dateStr) {
 
     return `${days[dateObj.getDay()]} ${String(dateObj.getDate()).padStart(
       2,
-      "0"
+      "0",
     )} ${months[dateObj.getMonth()]}`;
   } catch (e) {
     return dateStr;

@@ -206,19 +206,26 @@ function populateEventDetails(event) {
   const bookNowBtn = document.getElementById("bookNowBtn");
 
   const status = event.status || "closed";
-  const isOpen = status !== "closed" && status !== "soon" && event.bookingLink;
+  const hasBookingMethod =
+    event.bookingLink && event.bookingLink !== "null"
+      ? true
+      : event.bookingOptions && event.bookingOptions.length > 0;
 
-  if (isOpen) {
+  const isActuallyOpen =
+    status !== "closed" && status !== "soon" && hasBookingMethod;
+  const isSoldOut = status === "sold-out";
+
+  if (isActuallyOpen || isSoldOut) {
     if (availability) {
       let statusText = "Available";
       let statusClass = "available";
 
-      if (status === "filling-fast") {
-        statusText = "Filling Fast";
-        statusClass = "filling-fast";
-      } else if (status === "sold-out") {
+      if (isSoldOut) {
         statusText = "Sold Out";
         statusClass = "sold-out";
+      } else if (status === "filling-fast") {
+        statusText = "Filling Fast";
+        statusClass = "filling-fast";
       }
 
       availability.textContent = statusText;
@@ -226,7 +233,7 @@ function populateEventDetails(event) {
     }
 
     if (bookNowBtn) {
-      if (status === "sold-out") {
+      if (isSoldOut) {
         bookNowBtn.textContent = "Sold Out";
         bookNowBtn.disabled = true;
         bookNowBtn.classList.add("disabled");
