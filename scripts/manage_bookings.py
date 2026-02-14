@@ -18,13 +18,40 @@ def save_json(file_path, data):
         json.dump(data, f, indent=2, ensure_ascii=False)
         f.write('\n')
 
-def list_events(events):
-    print("\n--- Current Events ---")
+def list_events(events, marquee_data, carousel_data):
+    print("\n" + "="*80)
+    print(f"{'#':<3} | {'STATUS':<12} | {'EVENT TITLE':<25} | {'M':<2} | {'C':<2} | {'SLOTS STATUS'}")
+    print("-" * 80)
+    
     for i, event in enumerate(events):
-        print(f"{i + 1}. [{event['status'].upper()}] {event['title']} (ID: {event['id']})")
+        eid = event.get('id')
+        title = event.get('title', 'No Title')
+        status = event.get('status', 'unknown').upper()
+        
+        # Check Marquee
+        in_marquee = "✔" if any(m.get('id') == eid for m in marquee_data) else "✘"
+        
+        # Check Carousel (by ID or Alt text)
+        in_carousel = "✔" if any(c.get('id') == eid or c.get('alt', '').lower() == title.lower() for c in carousel_data) else "✘"
+        
+        # Slots summary
+        slots = event.get('bookingOptions', [])
+        if not slots:
+            slots_summary = "Single Link"
+        else:
+            slot_details = []
+            for s in slots:
+                time = s.get('time', '??')
+                s_stat = s.get('status', 'available')
+                slot_details.append(f"{time}({s_stat})")
+            slots_summary = " | ".join(slot_details)
+        
+        print(f"{i + 1:<3} | {status:<12} | {title[:25]:<25} | {in_marquee:<2} | {in_carousel:<2} | {slots_summary}")
+    print("="*80)
+    print("M: In Marquee | C: In Carousel\n")
 
 def manage_event_status(events_data, marquee_data, carousel_data):
-    list_events(events_data)
+    list_events(events_data, marquee_data, carousel_data)
     choice = input("\nEnter event number to manage (or 'b' to go back): ")
     if choice.lower() == 'b':
         return
@@ -138,7 +165,7 @@ def main():
         choice = input("\nSelect an option: ")
         
         if choice == '1':
-            list_events(events_data)
+            list_events(events_data, marquee_data, carousel_data)
         elif choice == '2':
             result = manage_event_status(events_data, marquee_data, carousel_data)
             if result:
@@ -147,7 +174,7 @@ def main():
             save_json(EVENTS_FILE, events_data)
             save_json(MARQUEE_FILE, marquee_data)
             save_json(CAROUSEL_FILE, carousel_data)
-            print("Changes saved successfully!")
+            print("\n[SUCCESS] All data files updated!")
             break
         elif choice == '4':
             print("Exiting without saving.")
