@@ -230,20 +230,20 @@
     "title": "LOVE LIES",
     "image": "assets/events/love_lies_vertical.jpg",
     "date": "14th February 2026",
-    "status": "filling-fast",
-    "bookingLink": "https://rzp.io/rzp/zuUIKITY",
+    "status": "open",
+    "bookingLink": null,
     "bookingOptions": [
       {
         "date": "14th February 2026",
         "time": "02:00 PM",
         "link": "https://rzp.io/rzp/zuUIKITY",
-        "status": "filling-fast"
+        "status": "closed"
       },
       {
         "date": "14th February 2026",
         "time": "05:00 PM",
         "link": "https://rzp.io/rzp/7zczXFc",
-        "status": "filling-fast"
+        "status": "closed"
       }
     ],
     "details": {
