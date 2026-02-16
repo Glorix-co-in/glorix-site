@@ -255,6 +255,7 @@ function populateEventDetails(event) {
   // Availability and booking button
   const availability = document.getElementById("availability");
   const bookNowBtn = document.getElementById("bookNowBtn");
+  const rzpContainer = document.getElementById("razorpayButtonContainer");
 
   const status = event.status || "closed";
   const hasBookingMethod =
@@ -290,13 +291,6 @@ function populateEventDetails(event) {
         bookNowBtn.classList.add("disabled");
         bookNowBtn.style.display = "block";
         if (rzpContainer) rzpContainer.style.display = "none";
-      } else if (event.id === "gulabi-kafan") {
-        // Test mode for Gulabi Kafan: Use the invisible Razorpay Button overlay
-        bookNowBtn.textContent = "Book Now";
-        bookNowBtn.disabled = false;
-        bookNowBtn.classList.remove("disabled");
-        bookNowBtn.style.display = "block";
-        if (rzpContainer) rzpContainer.style.display = "block";
       } else {
         bookNowBtn.textContent = "Book Now";
         bookNowBtn.disabled = false;
@@ -314,7 +308,6 @@ function populateEventDetails(event) {
       }
     }
   } else if (status === "soon") {
-    const rzpContainer = document.getElementById("razorpayButtonContainer");
     if (rzpContainer) rzpContainer.style.display = "none";
     if (availability) {
       availability.textContent = "Opening Soon";
@@ -327,7 +320,6 @@ function populateEventDetails(event) {
       bookNowBtn.classList.add("disabled");
     }
   } else {
-    const rzpContainer = document.getElementById("razorpayButtonContainer");
     if (rzpContainer) rzpContainer.style.display = "none";
     if (availability) {
       availability.textContent = "Bookings Closed";
