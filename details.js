@@ -124,7 +124,7 @@ function populateEventArtists(eventArtistNames, artistsData) {
   }
 
   section.style.display = "block";
-  container.innerHTML = featuredArtists
+  const artistHtml = featuredArtists
     .map(
       (artist) => `
     <a href="${artist.link || "#"}" class="event-artist-card" target="_blank" ${artist.link ? "" : 'onclick="return false;"'}>
@@ -136,6 +136,9 @@ function populateEventArtists(eventArtistNames, artistsData) {
   `,
     )
     .join("");
+
+  // Populate and duplicate for infinite scroll
+  container.innerHTML = artistHtml + artistHtml;
 }
 
 function populateEventDetails(event) {
