@@ -252,43 +252,41 @@ body {
 
 .artists-carousel-wrapper {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
   position: relative;
-  margin: 0 -16px;
-  width: calc(100% + 32px);
-  /* Add masking to fade the edges */
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
+
+  /* Standard Scrollbar for Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #333 #111;
+}
+
+/* Custom Styled Scrollbar for Chrome, Edge, Safari */
+.artists-carousel-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.artists-carousel-wrapper::-webkit-scrollbar-track {
+  background: #111;
+  border-radius: 10px;
+}
+
+.artists-carousel-wrapper::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+  border: 1px solid #444;
+}
+
+.artists-carousel-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #444;
 }
 
 .artists-grid {
   display: flex;
-  gap: 30px; /* Increased gap */
-  padding: 10px 0;
-  width: max-content;
-  animation: scroll-artists 40s linear infinite;
-  will-change: transform;
-}
-
-@keyframes scroll-artists {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  gap: 20px;
+  padding: 10px 16px;
+  width: max-con0;
 }
 
 .event-artist-card {
@@ -296,8 +294,13 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  flex: 0 0 100px; /* Fixed width, won't shrink */
+  flex: 0 0 100px;
   text-decoration: none;
+}
+
+/* Snap every 3rd card for better intervals */
+.event-artist-card:nth-child(3n + 1) {
+  scroll-snap-align: start;
 }
 
 .artist-img-wrapper {

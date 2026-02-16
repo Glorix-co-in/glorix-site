@@ -137,8 +137,8 @@ function populateEventArtists(eventArtistNames, artistsData) {
     )
     .join("");
 
-  // Populate and duplicate for infinite scroll
-  container.innerHTML = artistHtml + artistHtml;
+  // Populate container
+  container.innerHTML = artistHtml;
 }
 
 function populateEventDetails(event) {
