@@ -20,6 +20,16 @@
     "link": "https://www.instagram.com/05_aksh_/"
   },
   {
+    "name": "aRawVerse",
+    "image": "assets/artists/IMG-20250724-WA0011.jpg",
+    "link": "https://www.instagram.com/arawverse"
+  },
+  {
+    "name": "Armadok",
+    "image": "assets/artists/armadok.jpeg",
+    "link": "https://www.instagram.com/yatharth_lalwani?igsh=cDY2ZWtwdmdscDB0"
+  },
+  {
     "name": "Arshit",
     "image": "assets/artists/Arshit.jpg",
     "link": "https://www.instagram.com/arshhit.tt/"
@@ -65,14 +75,29 @@
     "link": "https://www.instagram.com/boimustafa/"
   },
   {
-    "name": "DJ Mayankk",
-    "image": "assets/artists/DJ_Mayankk.jpg",
-    "link": "https://www.instagram.com/dj.mayankk?igsh=ZGQ2cW8wcnhvZXRn"
+    "name": "Daggar",
+    "image": "assets/artists/Daggar.jpeg",
+    "link": "https://www.instagram.com/official_daggar?igsh=b3BuaDlhMWZvMmVp"
+  },
+  {
+    "name": "Dheeraj",
+    "image": "assets/artists/Dheeraj.jpeg",
+    "link": "https://www.instagram.com/dheeru.music?igsh=NnoyZGJiMzhwZTBy"
   },
   {
     "name": "Divvay",
     "image": "assets/artists/Divvay.jpg",
     "link": "https://www.instagram.com/d1vvay/"
+  },
+  {
+    "name": "DJ Mayankk",
+    "image": "assets/artists/DJ_Mayankk.jpg",
+    "link": "https://www.instagram.com/dj.mayankk?igsh=ZGQ2cW8wcnhvZXRn"
+  },
+  {
+    "name": "DJ Rick",
+    "image": "assets/artists/dj_rick.jpeg",
+    "link": "https://www.instagram.com/dj__rick_?igsh=ZWJrN28zejN0amQ="
   },
   {
     "name": "Ekaantx",
@@ -85,6 +110,11 @@
     "link": "https://www.instagram.com/flash_wrld/"
   },
   {
+    "name": "Gaurav",
+    "image": "assets/artists/Gaurav.jpeg",
+    "link": "https://www.instagram.com/gaurav_krishnadas?igsh=MWcweHdzbmUxdHZ2dA=="
+  },
+  {
     "name": "God's Child",
     "image": "assets/artists/Gods_Child.jpeg",
     "link": "https://www.instagram.com/parikshit.05/"
@@ -95,9 +125,19 @@
     "link": "https://www.instagram.com/ha3t.wav/"
   },
   {
+    "name": "Hardik",
+    "image": "assets/artists/Hardik.jpeg",
+    "link": "https://www.instagram.com/hardikkathuria2508?igsh=MXR2d3llNzUxcXZrbw=="
+  },
+  {
     "name": "Harshit",
     "image": "assets/artists/Harshit.jpg",
-    "link": "https://www.instagram.com/mr_harshitkumar/"
+    "link": "https://www.instagram.com/harshit_hans3?igsh=MWVlcXdpbWkxYmo3dA=="
+  },
+  {
+    "name": "Harshit Kumar",
+    "image": "assets/artists/harshit_kumar.jpeg",
+    "link": "https://www.instagram.com/mr_harshitkumar?igsh=bWthNHl6em12bWFu"
   },
   {
     "name": "Hashant",
@@ -120,11 +160,6 @@
     "link": "https://www.instagram.com/whatup_jaze?igsh=aDk0bTg2Y2MweXp5"
   },
   {
-    "name": "aRawVerse",
-    "image": "assets/artists/IMG-20250724-WA0011.jpg",
-    "link": "https://www.instagram.com/arawverse"
-  },
-  {
     "name": "Kaizer",
     "image": "assets/artists/Kaizer_.jpg",
     "link": "https://www.instagram.com/kaiz.erhere/"
@@ -133,6 +168,11 @@
     "name": "Kalamkar lucky",
     "image": "assets/artists/Kalamkar lucky.jpg",
     "link": "https://www.instagram.com/kalamkaar_lucky_/"
+  },
+  {
+    "name": "Karthetick",
+    "image": "assets/artists/Karthetick.jpeg",
+    "link": "https://www.instagram.com/karthetickmusic?igsh=MXdscW41eHVicXV6cg=="
   },
   {
     "name": "Kirdaar",
@@ -150,9 +190,24 @@
     "link": "https://www.instagram.com/its_lil_edward/"
   },
   {
-    "name": "Nehal",
-    "image": "assets/artists/Nehal.jpg",
-    "link": "https://www.instagram.com/nehal_lol.07?igsh=cnVkOWg1czNtM294"
+    "name": "Lucky",
+    "image": "assets/artists/Lucky.jpeg",
+    "link": "https://www.instagram.com/lucky_muzic?igsh=MWQ3YmY0dnpudWtyZA=="
+  },
+  {
+    "name": "Lucky Rathore",
+    "image": "assets/artists/Lucky_Rathore.jpeg",
+    "link": "https://www.instagram.com/lucky_rathore.77?igsh=MTF5cGpwM2VmZGFldQ=="
+  },
+  {
+    "name": "Mantra",
+    "image": "assets/artists/Mantra.jpeg",
+    "link": "https://www.instagram.com/mantrakebol?igsh=MXN6czZsYW0wemV5ZA=="
+  },
+  {
+    "name": "MC Serv",
+    "image": "assets/artists/mc_serv.jpeg",
+    "link": "https://www.instagram.com/mc._.serv?igsh=MXRhbDcwYWdtdTR6OA=="
   },
   {
     "name": "Mrityu",
@@ -161,8 +216,13 @@
   },
   {
     "name": "Nagity",
-    "image": "assets/artists/Nagity.jpg",
-    "link": "https://www.instagram.com/vikashnagity/"
+    "image": "assets/artists/Nagity.jpeg",
+    "link": "https://www.instagram.com/nagitybeats/"
+  },
+  {
+    "name": "Nehal",
+    "image": "assets/artists/Nehal.jpg",
+    "link": "https://www.instagram.com/nehal_lol.07?igsh=cnVkOWg1czNtM294"
   },
   {
     "name": "Og Tehran",
@@ -200,29 +260,19 @@
     "link": "https://www.instagram.com/official_rap_ryder/"
   },
   {
-    "name": "Red",
-    "image": "assets/artists/Red.jpg",
-    "link": "https://www.instagram.com/peace_my_way?igsh=MTZ0ZjR5NGpna3lwMw=="
-  },
-  {
     "name": "Rapo",
     "image": "assets/artists/Rapo.jpg",
     "link": "https://www.instagram.com/raporrate/"
   },
   {
-    "name": "Rudra",
-    "image": "assets/artists/Rudra.jpg",
-    "link": "https://www.instagram.com/ru_hawk?igsh=aDI4NXcxNnhxcWVk"
-  },
-  {
-    "name": "Shawn",
-    "image": "assets/artists/Shawn.jpg",
-    "link": "https://www.instagram.com/mohitkumar150?igsh=MWMxZ3pjZXJvcTI3Yw=="
-  },
-  {
     "name": "Real Tanishk",
     "image": "assets/artists/Real Tanishk_.jpg",
     "link": "https://www.instagram.com/realtanishk5/"
+  },
+  {
+    "name": "Red",
+    "image": "assets/artists/Red.jpg",
+    "link": "https://www.instagram.com/peace_my_way?igsh=MTZ0ZjR5NGpna3lwMw=="
   },
   {
     "name": "Rinisha",
@@ -235,9 +285,24 @@
     "link": "https://www.instagram.com/rohansbed/"
   },
   {
+    "name": "Rudra",
+    "image": "assets/artists/Rudra.jpg",
+    "link": "https://www.instagram.com/ru_hawk?igsh=aDI4NXcxNnhxcWVk"
+  },
+  {
+    "name": "Saksham",
+    "image": "assets/artists/Saksham.jpeg",
+    "link": ""
+  },
+  {
     "name": "Sankiii",
     "image": "assets/artists/Sankiii.jpg",
     "link": "https://www.instagram.com/__sankiii_/"
+  },
+  {
+    "name": "Shawn",
+    "image": "assets/artists/Shawn.jpg",
+    "link": "https://www.instagram.com/mohitkumar150?igsh=MWMxZ3pjZXJvcTI3Yw=="
   },
   {
     "name": "Sherdill",
@@ -250,14 +315,19 @@
     "link": "https://www.instagram.com/spidyj.official/"
   },
   {
-    "name": "Ulti Zindagi",
-    "image": "assets/artists/Ulti_zindagi.jpg",
-    "link": "https://www.instagram.com/ulti_zindagi?igsh=MWh2cmJsajF4bjN6"
+    "name": "Stoxy",
+    "image": "assets/artists/Stoxy.jpeg",
+    "link": "https://www.instagram.com/vivekstoxy?igsh=OWVyN2RsdnRpZjVz"
   },
   {
     "name": "Swagy",
     "image": "assets/artists/Swagy.jpg",
     "link": "https://www.instagram.com/swagymusix"
+  },
+  {
+    "name": "Tera Toxic",
+    "image": "assets/artists/Tera_Toxic.jpeg",
+    "link": "https://www.instagram.com/teratoxicc?igsh=MTVnaWd6YnVrM2ZmOQ=="
   },
   {
     "name": "The Harxhz",
@@ -275,6 +345,11 @@
     "link": "https://www.instagram.com/trapsouls._/"
   },
   {
+    "name": "Ulti Zindagi",
+    "image": "assets/artists/Ulti_zindagi.jpg",
+    "link": "https://www.instagram.com/ulti_zindagi?igsh=MWh2cmJsajF4bjN6"
+  },
+  {
     "name": "Ustola",
     "image": "assets/artists/ustola_.jpg",
     "link": "https://www.instagram.com/ustola_da_vinci/"
@@ -285,9 +360,19 @@
     "link": "https://www.instagram.com/utkxarshh"
   },
   {
+    "name": "vaक्य",
+    "image": "assets/artists/vakya.jpeg",
+    "link": "https://www.instagram.com/sarvagya_32?igsh=YTZranZzeXJpaDRl"
+  },
+  {
     "name": "Volt",
     "image": "assets/artists/Volt.jpg",
     "link": "https://www.instagram.com/tumhara_volt"
+  },
+  {
+    "name": "Wazandaar",
+    "image": "assets/artists/Wazandaar.jpeg",
+    "link": "https://www.instagram.com/wazandaar?igsh=MXFrd3JjMmlmZm8xaA=="
   },
   {
     "name": "WrigVedd",
