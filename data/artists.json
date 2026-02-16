@@ -122,7 +122,7 @@
   {
     "name": "Harshit",
     "image": "assets/artists/Harshit.jpg",
-    "link": "https://www.instagram.com/mr_harshitkumar/"
+    "link": "https://www.instagram.com/harshit_hans3?igsh=MWVlcXdpbWkxYmo3dA=="
   },
   {
     "name": "Hashant",
@@ -196,8 +196,8 @@
   },
   {
     "name": "Nagity",
-    "image": "assets/artists/Nagity.jpg",
-    "link": "https://www.instagram.com/vikashnagity/"
+    "image": "assets/artists/Nagity.jpeg",
+    "link": "https://www.instagram.com/nagitybeats/"
   },
   {
     "name": "Nehal",
@@ -353,5 +353,25 @@
     "name": "WrigVedd",
     "image": "assets/artists/WrigVedd.webp",
     "link": "https://www.instagram.com/wrigvedd/"
+  },
+  {
+    "name": "DJ Rick",
+    "image": "assets/artists/dj_rick.jpeg",
+    "link": "https://www.instagram.com/dj__rick_?igsh=ZWJrN28zejN0amQ="
+  },
+  {
+    "name": "Harshit Kumar",
+    "image": "assets/artists/harshit_kumar.jpeg",
+    "link": "https://www.instagram.com/mr_harshitkumar?igsh=bWthNHl6em12bWFu"
+  },
+  {
+    "name": "Armadok",
+    "image": "assets/artists/armadok.jpeg",
+    "link": "https://www.instagram.com/yatharth_lalwani?igsh=cDY2ZWtwdmdscDB0"
+  },
+  {
+    "name": "MC Serv",
+    "image": "assets/artists/mc_serv.jpeg",
+    "link": "https://www.instagram.com/mc._.serv?igsh=MXRhbDcwYWdtdTR6OA=="
   }
 ]
