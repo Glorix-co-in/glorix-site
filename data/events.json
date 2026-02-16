@@ -7,11 +7,7 @@
     "status": "closed",
     "bookingLink": "null",
     "details": {
-      "tags": [
-        "Live Performance",
-        "360 HH",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
       "dateRange": null,
       "time": "4:00 PM onwards",
       "duration": "3 Hours",
@@ -31,7 +27,8 @@
         "Intimate high energy connection",
         "Live DJ sets"
       ],
-      "priceFrom": 499
+      "priceFrom": 499,
+      "artists": []
     }
   },
   {
@@ -42,11 +39,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Live Performance",
-        "Hindi",
-        "English"
-      ],
+      "tags": ["Live Performance", "Hindi", "English"],
       "dateRange": null,
       "time": "6:00 PM",
       "duration": "4 Hours",
@@ -66,7 +59,8 @@
         "VIP meet and greet",
         "Premium sound experience"
       ],
-      "priceFrom": 999
+      "priceFrom": 999,
+      "artists": ["Bali"]
     }
   },
   {
@@ -77,11 +71,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Music Festival",
-        "Multi-Artist",
-        "Cultural Event"
-      ],
+      "tags": ["Music Festival", "Multi-Artist", "Cultural Event"],
       "dateRange": null,
       "time": "4:00 PM",
       "duration": "5 Hours",
@@ -101,7 +91,8 @@
         "Art installations",
         "Interactive zones"
       ],
-      "priceFrom": 249
+      "priceFrom": 249,
+      "artists": []
     }
   },
   {
@@ -112,11 +103,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Rap Event",
-        "Live Music",
-        "Party"
-      ],
+      "tags": ["Rap Event", "Live Music", "Party"],
       "date": "20th September 2025",
       "dateRange": null,
       "time": "4:00 PM",
@@ -137,7 +124,8 @@
         "Dance floor experience",
         "Premium bar service"
       ],
-      "priceFrom": 399
+      "priceFrom": 399,
+      "artists": []
     }
   },
   {
@@ -148,11 +136,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Rap Event",
-        "Underground Music",
-        "Live Performance"
-      ],
+      "tags": ["Rap Event", "Underground Music", "Live Performance"],
       "dateRange": null,
       "time": "3:00 PM",
       "duration": "6 Hours",
@@ -172,7 +156,8 @@
         "Food and drinks available",
         "Meet and greet opportunities"
       ],
-      "priceFrom": 399
+      "priceFrom": 399,
+      "artists": []
     }
   },
   {
@@ -183,11 +168,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Live Performance",
-        "Success Party",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "Success Party", "DJ Sets"],
       "dateRange": null,
       "time": "5:00 PM onwards",
       "duration": "3 Hours",
@@ -207,7 +188,8 @@
         "DJ Sets",
         "Premium Event Experience"
       ],
-      "priceFrom": 99
+      "priceFrom": 99,
+      "artists": []
     }
   },
   {
@@ -226,11 +208,7 @@
       }
     ],
     "details": {
-      "tags": [
-        "Live Performance",
-        "360 HH",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -250,7 +228,8 @@
         "Intimate high energy connection",
         "Live DJ sets"
       ],
-      "priceFrom": 499
+      "priceFrom": 499,
+      "artists": []
     }
   },
   {
@@ -275,16 +254,9 @@
       }
     ],
     "details": {
-      "tags": [
-        "Rap Event",
-        "Live Music",
-        "DJ Sets"
-      ],
+      "tags": ["Rap Event", "Live Music", "DJ Sets"],
       "dateRange": null,
-      "time": [
-        "02:00 PM",
-        "05:00 PM"
-      ],
+      "time": ["02:00 PM", "05:00 PM"],
       "duration": "6 Hours",
       "ageLimit": "16+",
       "languages": "Hindi, English",
@@ -302,7 +274,8 @@
         "Valentine's Day Special",
         "Unmatchable Vibe"
       ],
-      "priceFrom": 249
+      "priceFrom": 249,
+      "artists": []
     }
   }
 ]

@@ -242,6 +242,63 @@ body {
   line-height: 1.7;
 }
 
+/* ===== Artists Section ===== */
+.artists-section {
+  padding: 20px 16px;
+  background: transparent;
+  border-top: 1px solid #222;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffbf00;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.event-artist-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 120px;
+  text-decoration: none;
+}
+
+.artist-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #333;
+  background: #222;
+}
+
+.artist-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-name {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #eee;
+  text-align: center;
+  text-transform: capitalize;
+}
+
 /* ===== Terms Section ===== */
 .terms-section {
   display: flex;
