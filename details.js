@@ -125,16 +125,19 @@ function populateEventArtists(eventArtistNames, artistsData) {
 
   section.style.display = "block";
   const artistHtml = featuredArtists
-    .map(
-      (artist) => `
-    <a href="${artist.link || "#"}" class="event-artist-card" target="_blank" ${artist.link ? "" : 'onclick="return false;"'}>
-      <div class="artist-img-wrapper">
+    .map((artist) => {
+      const isFeatured = constantArtists.includes(artist.name);
+      return `
+    <a href="${artist.link || "#"}" class="event-artist-card" target="_blank" ${
+      artist.link ? "" : 'onclick="return false;"'
+    }>
+      <div class="artist-img-wrapper ${isFeatured ? "featured" : ""}">
         <img src="${artist.image}" alt="${artist.name}" loading="lazy">
       </div>
       <span class="artist-name">${artist.name}</span>
     </a>
-  `,
-    )
+  `;
+    })
     .join("");
 
   // Populate container

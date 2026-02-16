@@ -285,8 +285,8 @@ body {
 .artists-grid {
   display: flex;
   gap: 20px;
-  padding: 10px 16px;
-  width: max-con0;
+  padding: 10px 0;
+  width: max-content;
 }
 
 .event-artist-card {
@@ -310,6 +310,14 @@ body {
   overflow: hidden;
   border: 1px solid #333;
   background: #222;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.artist-img-wrapper.featured {
+  border: 2px solid #ffbf00;
+  box-shadow: 0 0 10px rgba(255, 191, 0, 0.3);
 }
 
 .artist-img-wrapper img {
