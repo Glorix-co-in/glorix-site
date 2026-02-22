@@ -62,7 +62,7 @@ GALLERY MAI BAKI IMAGES ADD KARDO
 ## TODO
 
 - [x] Add "BHV" to `data.artists.json` (now using existing `Bhav`)
-- [ ] Add "BC Gang" to `data.artists.json` (confirm canonical name and link)
+- [x] Add "BC Gang" to `data.artists.json` (entry added)
 - [x] Add "Akki" to `data.artists.json` (entry added)
 
 ## THINK FOR FUTURE
