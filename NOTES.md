@@ -61,7 +61,32 @@ GALLERY MAI BAKI IMAGES ADD KARDO
 
 ## TODO
 
+- [x] Add "BHV" to `data.artists.json` (now using existing `Bhav`)
+- [ ] Add "BC Gang" to `data.artists.json` (confirm canonical name and link)
+- [x] Add "Akki" to `data.artists.json` (entry added)
+
 ## THINK FOR FUTURE
 
 RAZORPAY SETUP
 BACKEND INTEGRATION FOR TICKET BOOKING
+
+### Razorpay Integration Logic (Testing Phase)
+
+Currently testing an invisible overlay method for the Razorpay Payment Button.
+The container is styled in `details.css` to be an invisible overlay (opacity 0) that sits
+directly on top of the "Book Now" button.
+When a user clicks "Book Now", they are actually clicking the hidden Razorpay button.
+This is a temporary solution until a full backend/API integration is ready.
+
+**Code removed from details.js (for future reference):**
+
+```javascript
+} else if (event.id === "gulabi-kafan") {
+  // Test mode for Gulabi Kafan: Use the invisible Razorpay Button overlay
+  bookNowBtn.textContent = "Book Now";
+  bookNowBtn.disabled = false;
+  bookNowBtn.classList.remove("disabled");
+  bookNowBtn.style.display = "block";
+  if (rzpContainer) rzpContainer.style.display = "block";
+}
+```

@@ -7,11 +7,7 @@
     "status": "closed",
     "bookingLink": "null",
     "details": {
-      "tags": [
-        "Live Performance",
-        "360 HH",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
       "dateRange": null,
       "time": "4:00 PM onwards",
       "duration": "3 Hours",
@@ -31,7 +27,23 @@
         "Intimate high energy connection",
         "Live DJ sets"
       ],
-      "priceFrom": 499
+      "priceFrom": 499,
+      "artists": [
+        "Nagity",
+        "Biggy brat",
+        "Armadok",
+        "Babbar",
+        "Ashant",
+        "Shawn",
+        "Ulti Zindagi",
+        "Mrityu",
+        "Red",
+        "Sherdill",
+        "Jaze",
+        "Volt",
+        "Rudra",
+        "DJ Mayankk"
+      ]
     }
   },
   {
@@ -42,11 +54,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Live Performance",
-        "Hindi",
-        "English"
-      ],
+      "tags": ["Live Performance", "Hindi", "English"],
       "dateRange": null,
       "time": "6:00 PM",
       "duration": "4 Hours",
@@ -66,7 +74,18 @@
         "VIP meet and greet",
         "Premium sound experience"
       ],
-      "priceFrom": 999
+      "priceFrom": 999,
+      "artists": [
+        "Bali",
+        "Saksham",
+        "God's Child",
+        "Poetic kc",
+        "Swagy",
+        "Biggy brat",
+        "Sherdill",
+        "Divvay",
+        "Real Tanishk"
+      ]
     }
   },
   {
@@ -77,11 +96,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Music Festival",
-        "Multi-Artist",
-        "Cultural Event"
-      ],
+      "tags": ["Music Festival", "Multi-Artist", "Cultural Event"],
       "dateRange": null,
       "time": "4:00 PM",
       "duration": "5 Hours",
@@ -101,7 +116,33 @@
         "Art installations",
         "Interactive zones"
       ],
-      "priceFrom": 249
+      "priceFrom": 249,
+      "artists": [
+        "Harshit",
+        "Utkarsh",
+        "Bhav",
+        "Biggy brat",
+        "Poetic kc",
+        "Asadhya",
+        "Arshit",
+        "Agyat Music",
+        "Paras",
+        "Aksh",
+        "Divvay",
+        "Toshi Music",
+        "Sherdill",
+        "Freestyle Session",
+        "Real Tanishk",
+        "God's Child",
+        "Mrityu",
+        "Rinisha",
+        "Sankiii",
+        "Raavn",
+        "Rap Ryder",
+        "Kaizer",
+        "Trap Souls",
+        "Ha3t"
+      ]
     }
   },
   {
@@ -112,11 +153,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Rap Event",
-        "Live Music",
-        "Party"
-      ],
+      "tags": ["Rap Event", "Live Music", "Party"],
       "date": "20th September 2025",
       "dateRange": null,
       "time": "4:00 PM",
@@ -137,7 +174,33 @@
         "Dance floor experience",
         "Premium bar service"
       ],
-      "priceFrom": 399
+      "priceFrom": 399,
+      "artists": [
+        "Prodxraj",
+        "Bhav",
+        "Rinisha",
+        "PSV",
+        "Hitserv",
+        "Arshit",
+        "Advit",
+        "SLID",
+        "God's Child",
+        "Spidy J",
+        "Rohansbed",
+        "Hemlooo",
+        "Mrityu",
+        "Toshi Music",
+        "Ha3t",
+        "The Harxhz",
+        "Hashant",
+        "Flash Wrld",
+        "Ekaantx",
+        "Boi Mustafa",
+        "Ustola",
+        "WrigVedd",
+        "Paras",
+        "Chirag"
+      ]
     }
   },
   {
@@ -148,11 +211,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Rap Event",
-        "Underground Music",
-        "Live Performance"
-      ],
+      "tags": ["Rap Event", "Underground Music", "Live Performance"],
       "dateRange": null,
       "time": "3:00 PM",
       "duration": "6 Hours",
@@ -172,7 +231,31 @@
         "Food and drinks available",
         "Meet and greet opportunities"
       ],
-      "priceFrom": 399
+      "priceFrom": 399,
+      "artists": [
+        "Prodxraj",
+        "Aastik",
+        "Hitserv",
+        "Lil Broke",
+        "Lil Edward",
+        "Kalamkar lucky",
+        "Volt",
+        "Tushar",
+        "Kirdaar",
+        "Advit",
+        "Aksh",
+        "Paras",
+        "Ha3t",
+        "Og Tehran",
+        "Chirag",
+        "Mrityu",
+        "Rohansbed",
+        "Avneesh",
+        "aRawVerse",
+        "Toshi Music",
+        "Arshit",
+        "Yusuf"
+      ]
     }
   },
   {
@@ -183,11 +266,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Live Performance",
-        "Success Party",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "Success Party", "DJ Sets"],
       "dateRange": null,
       "time": "5:00 PM onwards",
       "duration": "3 Hours",
@@ -207,7 +286,18 @@
         "DJ Sets",
         "Premium Event Experience"
       ],
-      "priceFrom": 99
+      "priceFrom": 99,
+      "artists": [
+        "Saksham",
+        "Nagity",
+        "DJ Rick",
+        "God's Child",
+        "Rinisha",
+        "Poetic kc",
+        "Biggy brat",
+        "Babbar",
+        "Bhav"
+      ]
     }
   },
   {
@@ -226,11 +316,7 @@
       }
     ],
     "details": {
-      "tags": [
-        "Live Performance",
-        "360 HH",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -250,7 +336,21 @@
         "Intimate high energy connection",
         "Live DJ sets"
       ],
-      "priceFrom": 499
+      "priceFrom": 499,
+      "artists": [
+        "Saksham",
+        "Nagity",
+        "DJ Rick",
+        "God's Child",
+        "Rinisha",
+        "Poetic kc",
+        "Divvay",
+        "Mrityu",
+        "Toshi Music",
+        "Jaze",
+        "BC Gang",
+        "Akki"
+      ]
     }
   },
   {
@@ -275,16 +375,9 @@
       }
     ],
     "details": {
-      "tags": [
-        "Rap Event",
-        "Live Music",
-        "DJ Sets"
-      ],
+      "tags": ["Rap Event", "Live Music", "DJ Sets"],
       "dateRange": null,
-      "time": [
-        "02:00 PM",
-        "05:00 PM"
-      ],
+      "time": ["02:00 PM", "05:00 PM"],
       "duration": "6 Hours",
       "ageLimit": "16+",
       "languages": "Hindi, English",
@@ -302,7 +395,25 @@
         "Valentine's Day Special",
         "Unmatchable Vibe"
       ],
-      "priceFrom": 249
+      "priceFrom": 249,
+      "artists": [
+        "Stoxy",
+        "Daggar",
+        "Gaurav",
+        "Tera Toxic",
+        "Dheeraj",
+        "Lucky",
+        "Armadok",
+        "Harshit",
+        "Utkarsh",
+        "Hardik",
+        "vaक्य",
+        "Aksh",
+        "Paras",
+        "Wazandaar",
+        "Mantra",
+        "Karthetick"
+      ]
     }
   }
 ]

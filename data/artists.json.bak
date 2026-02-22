@@ -75,11 +75,6 @@
     "link": "https://www.instagram.com/boimustafa/"
   },
   {
-    "name": "Chirag",
-    "image": "assets/artists/Chirag.jpeg",
-    "link": "https://www.instagram.com/chirag_parjan?igsh=MTBmOTgwdnNxODZ0ZA=="
-  },
-  {
     "name": "Daggar",
     "image": "assets/artists/Daggar.jpeg",
     "link": "https://www.instagram.com/official_daggar?igsh=b3BuaDlhMWZvMmVp"
@@ -315,11 +310,6 @@
     "link": "https://www.instagram.com/officialsherdill/"
   },
   {
-    "name": "SLID",
-    "image": "assets/artists/SLID.jpeg",
-    "link": "https://www.instagram.com/slidinit?igsh=MTU3cTcwZXBicXN4ag=="
-  },
-  {
     "name": "Spidy J",
     "image": "assets/artists/Spidy J.webp",
     "link": "https://www.instagram.com/spidyj.official/"
@@ -353,11 +343,6 @@
     "name": "Trap Souls",
     "image": "assets/artists/Trapsouls_.jpg",
     "link": "https://www.instagram.com/trapsouls._/"
-  },
-  {
-    "name": "Tushar",
-    "image": "assets/artists/Tushar.jpeg",
-    "link": "https://www.instagram.com/livingasanartist_?igsh=MXBheGc5cWVkYnhseQ=="
   },
   {
     "name": "Ulti Zindagi",
@@ -395,9 +380,19 @@
     "link": "https://www.instagram.com/wrigvedd/"
   },
   {
-    "name": "Akki",
-    "image": "assets/artists/Akki.jpeg",
-    "link": "https://www.instagram.com/akki_nindhaniya?igsh=MWZ0ZjN0MnhsZGM3cw=="
+    "name": "SLID",
+    "image": "assets/artists/SLID.jpeg",
+    "link": "https://www.instagram.com/slidinit?igsh=MTU3cTcwZXBicXN4ag=="
+  },
+  {
+    "name": "Chirag",
+    "image": "assets/artists/Chirag.jpeg",
+    "link": "https://www.instagram.com/chirag_parjan?igsh=MTBmOTgwdnNxODZ0ZA=="
+  },
+  {
+    "name": "Tushar",
+    "image": "assets/artists/Tushar.jpeg",
+    "link": "https://www.instagram.com/livingasanartist_?igsh=MXBheGc5cWVkYnhseQ=="
   },
   {
     "name": "Yusuf",

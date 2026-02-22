@@ -72,12 +72,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function loadEventDetails(eventId) {
   try {
-    const response = await fetch("data/events.json");
-    if (!response.ok) {
-      throw new Error("Failed to load event details");
+    const [eventsResponse, artistsResponse] = await Promise.all([
+      fetch("data/events.json"),
+      fetch("data/artists.json"),
+    ]);
+
+    if (!eventsResponse.ok || !artistsResponse.ok) {
+      throw new Error("Failed to load required data");
     }
 
-    const events = await response.json();
+    const events = await eventsResponse.json();
+    const artistsData = await artistsResponse.json();
     const event = events.find((e) => e.id === eventId);
 
     if (!event) {
@@ -87,10 +92,56 @@ async function loadEventDetails(eventId) {
 
     currentEvent = event;
     populateEventDetails(event);
+    populateEventArtists(event.details?.artists || [], artistsData);
   } catch (error) {
     console.error("Error loading event details:", error);
     showError("Failed to load event details");
   }
+}
+
+function populateEventArtists(eventArtistNames, artistsData) {
+  const section = document.getElementById("artistsSection");
+  const container = document.getElementById("eventArtists");
+
+  if (!section || !container) return;
+
+  // These 3 artists are always at the start
+  const constantArtists = ["Saksham", "Nagity", "DJ Rick"];
+
+  // Combine with event-specific artists and remove duplicates
+  const allArtistNames = [
+    ...new Set([...constantArtists, ...(eventArtistNames || [])]),
+  ];
+
+  // Map names to artist data to preserve the desired order
+  const featuredArtists = allArtistNames
+    .map((name) => artistsData.find((a) => a.name === name))
+    .filter((a) => a !== undefined); // Remove if artist not found in master data
+
+  if (featuredArtists.length === 0) {
+    section.style.display = "none";
+    return;
+  }
+
+  section.style.display = "block";
+  const artistHtml = featuredArtists
+    .map((artist) => {
+      const isFeatured = constantArtists.includes(artist.name);
+      return `
+    <a href="${artist.link || "#"}" class="event-artist-card" target="_blank" ${
+      artist.link ? "" : 'onclick="return false;"'
+    }>
+      <div class="artist-img-wrapper ${isFeatured ? "featured" : ""}">
+        <img src="${artist.image}" alt="${artist.name}" loading="lazy">
+      </div>
+      <span class="artist-name">${artist.name}</span>
+    </a>
+  `;
+    })
+    .join("");
+
+  // Populate container
+  container.innerHTML = artistHtml;
 }
 
 function populateEventDetails(event) {
@@ -204,6 +255,7 @@ function populateEventDetails(event) {
   // Availability and booking button
   const availability = document.getElementById("availability");
   const bookNowBtn = document.getElementById("bookNowBtn");
+  const rzpContainer = document.getElementById("razorpayButtonContainer");
 
   const status = event.status || "closed";
   const hasBookingMethod =
@@ -237,10 +289,15 @@ function populateEventDetails(event) {
         bookNowBtn.textContent = "Sold Out";
         bookNowBtn.disabled = true;
         bookNowBtn.classList.add("disabled");
+        bookNowBtn.style.display = "block";
+        if (rzpContainer) rzpContainer.style.display = "none";
       } else {
         bookNowBtn.textContent = "Book Now";
         bookNowBtn.disabled = false;
         bookNowBtn.classList.remove("disabled");
+        bookNowBtn.style.display = "block";
+        if (rzpContainer) rzpContainer.style.display = "none";
+
         bookNowBtn.addEventListener("click", () => {
           if (event.bookingOptions && event.bookingOptions.length > 1) {
             window.location.href = `select-slot.html?id=${event.id}`;
@@ -251,16 +308,19 @@ function populateEventDetails(event) {
       }
     }
   } else if (status === "soon") {
+    if (rzpContainer) rzpContainer.style.display = "none";
     if (availability) {
       availability.textContent = "Opening Soon";
       availability.className = "availability soon";
     }
     if (bookNowBtn) {
+      bookNowBtn.style.display = "block";
       bookNowBtn.textContent = "Opening Soon";
       bookNowBtn.disabled = true;
       bookNowBtn.classList.add("disabled");
     }
   } else {
+    if (rzpContainer) rzpContainer.style.display = "none";
     if (availability) {
       availability.textContent = "Bookings Closed";
       availability.className = "availability closed";

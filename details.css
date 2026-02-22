@@ -242,6 +242,103 @@ body {
   line-height: 1.7;
 }
 
+/* ===== Artists Section ===== */
+.artists-section {
+  padding: 24px 16px;
+  background: transparent;
+  border-top: 1px solid #222;
+  overflow: hidden;
+}
+
+.artists-carousel-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+
+  /* Standard Scrollbar for Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #333 #111;
+}
+
+/* Custom Styled Scrollbar for Chrome, Edge, Safari */
+.artists-carousel-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.artists-carousel-wrapper::-webkit-scrollbar-track {
+  background: #111;
+  border-radius: 10px;
+}
+
+.artists-carousel-wrapper::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+  border: 1px solid #444;
+}
+
+.artists-carousel-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+.artists-grid {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0;
+  width: max-content;
+}
+
+.event-artist-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 100px;
+  text-decoration: none;
+}
+
+/* Snap every 3rd card for better intervals */
+.event-artist-card:nth-child(3n + 1) {
+  scroll-snap-align: start;
+}
+
+.artist-img-wrapper {
+  width: 100px; /* Consistent size */
+  height: 100px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #333;
+  background: #222;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.artist-img-wrapper.featured {
+  border: 2px solid #ffbf00;
+  box-shadow: 0 0 10px rgba(255, 191, 0, 0.3);
+}
+
+.artist-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artist-name {
+  font-family: "Inter", sans-serif;
+  font-size: 13px; /* Slightly smaller for better fit */
+  font-weight: 600;
+  color: #eee;
+  text-align: center;
+  text-transform: capitalize;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ===== Terms Section ===== */
 .terms-section {
   display: flex;
@@ -333,7 +430,8 @@ body {
   box-shadow: 0 4px 12px rgba(255, 191, 0, 0.2);
 }
 
-.book-now-btn:hover {
+.book-now-btn:hover,
+.booking-action-wrapper:hover .book-now-btn {
   transform: translateY(-2px);
   background: #fff;
 }
@@ -748,4 +846,50 @@ body.modal-open {
   .modal-overlay.active .bottom-sheet {
     transform: translateY(0);
   }
+}
+
+/* Razorpay Button Styling Override - Invisible Overlay */
+.booking-action-wrapper {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+#razorpayButtonContainer {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  opacity: 0;
+}
+
+#razorpayButtonContainer form,
+#razorpayButtonContainer .razorpay-embed-container {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  display: block !important;
+}
+
+#razorpayButtonContainer .razorpay-payment-button {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  cursor: pointer !important;
+}
+
+/* Ensure the Razorpay script-injected elements are also stretched */
+#razorpayButtonContainer iframe {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
 }
