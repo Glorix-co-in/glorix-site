@@ -15,6 +15,11 @@
     "link": "https://www.instagram.com/spxrsh.raps/"
   },
   {
+    "name": "Akki",
+    "image": "assets/artists/Akki.jpeg",
+    "link": "https://www.instagram.com/akki_nindhaniya?igsh=MWZ0ZjN0MnhsZGM3cw=="
+  },
+  {
     "name": "Aksh",
     "image": "assets/artists/Aksh.jpg",
     "link": "https://www.instagram.com/84_aksh_?igsh=MTlnOHZhbHR3ZHBy"
@@ -58,6 +63,11 @@
     "name": "Bali",
     "image": "assets/artists/Bali(1).jpg",
     "link": "https://www.instagram.com/theofficialbali"
+  },
+  {
+    "name": "BC Gang",
+    "image": "assets/artists/bc_gang.jpeg",
+    "link": "https://www.instagram.com/bcgang.records?igsh=MXJzOXZnZWo3cnpsOA=="
   },
   {
     "name": "Bhav",
@@ -395,18 +405,13 @@
     "link": "https://www.instagram.com/wrigvedd/"
   },
   {
-    "name": "Akki",
-    "image": "assets/artists/Akki.jpeg",
-    "link": "https://www.instagram.com/akki_nindhaniya?igsh=MWZ0ZjN0MnhsZGM3cw=="
-  },
-  {
-    "name": "BC Gang",
-    "image": "assets/artists/bc_gang.jpeg",
-    "link": "https://www.instagram.com/bcgang.records?igsh=MXJzOXZnZWo3cnpsOA=="
-  },
-  {
     "name": "Yusuf",
     "image": "assets/artists/Yusuf.jpeg",
     "link": "https://www.instagram.com/heyyusuf__?igsh=cWt0Z3BmYzdoYjVw"
+  },
+  {
+    "name": "Davedevv",
+    "image": "assets/artists/Davedevv.jpeg",
+    "link": "https://www.instagram.com/davedevv?igsh=bzRpbWl4MTlyNjk4"
   }
 ]

@@ -95,6 +95,11 @@
     "link": "https://www.instagram.com/official_daggar?igsh=b3BuaDlhMWZvMmVp"
   },
   {
+    "name": "Davedevv",
+    "image": "assets/artists/Davedevv.jpeg",
+    "link": "https://www.instagram.com/davedevv?igsh=bzRpbWl4MTlyNjk4"
+  },
+  {
     "name": "Dheeraj",
     "image": "assets/artists/Dheeraj.jpeg",
     "link": "https://www.instagram.com/dheeru.music?igsh=NnoyZGJiMzhwZTBy"
@@ -408,10 +413,5 @@
     "name": "Yusuf",
     "image": "assets/artists/Yusuf.jpeg",
     "link": "https://www.instagram.com/heyyusuf__?igsh=cWt0Z3BmYzdoYjVw"
-  },
-  {
-    "name": "Davedevv",
-    "image": "assets/artists/Davedevv.jpeg",
-    "link": "https://www.instagram.com/davedevv?igsh=bzRpbWl4MTlyNjk4"
   }
 ]
