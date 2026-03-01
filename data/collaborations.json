@@ -48,7 +48,11 @@
     "logo": "assets/brands/moonshine.jpeg"
   },
   {
-    "name": "Lara Club",
+    "name": "Lara",
     "logo": "assets/brands/lara.jpg"
+  },
+  {
+    "name": "Tizoe",
+    "logo": "assets/brands/Tizoe.jpg"
   }
 ]
