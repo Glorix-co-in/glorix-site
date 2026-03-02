@@ -8,47 +8,83 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("data/carousel.json")
       .then((response) => response.json())
       .then((slidesData) => {
+        // make sure slidesData is always an array
+        if (!Array.isArray(slidesData)) {
+          slidesData = [];
+        }
+
+        // add YouTube slide at beginning
+        slidesData.unshift({
+          youtube: "https://www.youtube.com/embed/agFeZEmPKL4",
+          alt: "GLORIX Promo Video",
+        });
+
         function renderCarousel() {
           carouselTrack.innerHTML = "";
           const isMobile = window.innerWidth <= 768;
 
           slidesData.forEach((slide) => {
             const clone = carouselTemplate.content.cloneNode(true);
-            const isVideo = !!(
-              slide.desktopVideo ||
-              slide.mobileVideo ||
-              slide.video
-            );
 
-            if (isVideo) {
+            // handle YouTube embed specially
+            if (slide.youtube) {
+              // hide other media elements
               const mainImg = clone.querySelector(".main-img");
               const bgImg = clone.querySelector(".bg-img");
               const mainVideo = clone.querySelector(".main-video");
               const bgVideo = clone.querySelector(".bg-video");
+              const ytContainer = clone.querySelector(".youtube-container");
+              const ytIframe = ytContainer && ytContainer.querySelector("iframe");
 
               if (mainImg) mainImg.style.display = "none";
               if (bgImg) bgImg.style.display = "none";
+              if (mainVideo) mainVideo.style.display = "none";
+              if (bgVideo) bgVideo.style.display = "none";
 
-              const videoSrc = isMobile
-                ? slide.mobileVideo || slide.video
-                : slide.desktopVideo || slide.video;
-
-              if (mainVideo) {
-                mainVideo.src = videoSrc;
-                mainVideo.style.display = "block";
-              }
-              if (bgVideo) {
-                bgVideo.src = videoSrc;
-                bgVideo.style.display = "block";
+              if (ytContainer && ytIframe) {
+                ytContainer.style.display = "block";
+                ytIframe.src = slide.youtube;
+                ytIframe.title = slide.alt || "YouTube video";
               }
             } else {
-              const images = clone.querySelectorAll("img");
-              const imgSrc = isMobile ? slide.mobileImage : slide.desktopImage;
+              const isVideo = !!(
+                slide.desktopVideo ||
+                slide.mobileVideo ||
+                slide.video
+              );
 
-              images.forEach((img) => {
-                img.src = imgSrc;
-                img.alt = slide.alt || "Carousel Image";
-              });
+              if (isVideo) {
+                const mainImg = clone.querySelector(".main-img");
+                const bgImg = clone.querySelector(".bg-img");
+                const mainVideo = clone.querySelector(".main-video");
+                const bgVideo = clone.querySelector(".bg-video");
+
+                if (mainImg) mainImg.style.display = "none";
+                if (bgImg) bgImg.style.display = "none";
+
+                const videoSrc = isMobile
+                  ? slide.mobileVideo || slide.video
+                  : slide.desktopVideo || slide.video;
+
+                if (mainVideo) {
+                  mainVideo.src = videoSrc;
+                  mainVideo.style.display = "block";
+                }
+                if (bgVideo) {
+                  bgVideo.src = videoSrc;
+                  bgVideo.style.display = "block";
+                }
+              } else {
+                const images = clone.querySelectorAll("img");
+                const imgSrc = isMobile
+                  ? slide.mobileImage
+                  : slide.desktopImage;
+
+                images.forEach((img) => {
+                  img.src = imgSrc;
+                  img.alt = slide.alt || "Carousel Image";
+                });
+              }
             }
             carouselTrack.appendChild(clone);
           });

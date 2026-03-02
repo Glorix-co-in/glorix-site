@@ -165,24 +165,6 @@ src="https://www.facebook.com/tr?id=1510496373740012&ev=PageView&noscript=1"
         </div>
       </section>
 
-      <div style="display: flex; justify-content: center; margin: 20px 0">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/agFeZEmPKL4"
-          title="YouTube video player"
-          frameborder="0"
-          allow="
-            accelerometer;
-            clipboard-write;
-            encrypted-media;
-            gyroscope;
-            picture-in-picture;
-            web-share;
-          "
-          allowfullscreen
-        ></iframe>
-      </div>
 
       <!-- Gallery Section -->
       <section id="gallery" class="gallery-section">
@@ -351,6 +333,17 @@ src="https://www.facebook.com/tr?id=1510496373740012&ev=PageView&noscript=1"
             playsinline
             style="display: none"
           ></video>
+          <!-- container for YouTube embeds -->
+          <div class="youtube-container" style="display: none; width:100%; height:100%;">
+            <iframe
+              src=""
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+              style="width:100%; height:100%;"
+            ></iframe>
+          </div>
         </div>
       </div>
     </template>
