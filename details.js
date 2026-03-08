@@ -105,8 +105,8 @@ function populateEventArtists(eventArtistNames, artistsData) {
 
   if (!section || !container) return;
 
-  // These 2 artists are always at the start
-  const constantArtists = ["Nagity", "DJ Rick"];
+  // These 3 artists are always at the start
+  const constantArtists = ["Saksham", "Nagity", "DJ Rick"];
 
   // Combine with event-specific artists and remove duplicates
   const allArtistNames = [

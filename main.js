@@ -223,6 +223,9 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("data/artists.json")
       .then((response) => response.json())
       .then((artists) => {
+        // exclude entries marked hidden (e.g. Saksham)
+        const visibleArtists = artists.filter((a) => !a.hidden);
+
         function renderArtists() {
           artistsGrid.innerHTML = "";
           let limit = null;
@@ -247,7 +250,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
 
-          const artistsToShow = limit ? artists.slice(0, limit) : artists;
+          const artistsToShow = limit
+            ? visibleArtists.slice(0, limit)
+            : visibleArtists;
           artistsToShow.forEach((artist) => {
             const clone = artistTemplate.content.cloneNode(true);
             const card = clone.querySelector(".artist-card");
