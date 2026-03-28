@@ -356,14 +356,14 @@
     "title": "360 HIP HOP VOL 3",
     "image": "assets/events/360_vol3_vertical.jpeg",
     "date": "28th March 2026",
-    "status": "filling-fast",
-    "bookingLink": "https://rzp.io/rzp/2K7aZ7XQ",
+    "status": "closed",
+    "bookingLink": null,
     "bookingOptions": [
       {
         "date": "28th March 2026",
         "time": "3:00 PM",
         "link": "https://rzp.io/rzp/2K7aZ7XQ",
-        "status": "available"
+        "status": "closed"
       }
     ],
     "details": {
