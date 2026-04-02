@@ -10,8 +10,33 @@ document.addEventListener("DOMContentLoaded", function () {
   function parseDate(dateStr) {
     if (!dateStr) return new Date(0);
     // Remove ordinal suffixes (st, nd, rd, th) from numbers
-    const cleanDate = dateStr.replace(/(\d+)(st|nd|rd|th)/, "$1");
+    const cleanDate = dateStr.replace(/(\d+)(st|nd|rd|th)/g, "$1").trim();
     return new Date(cleanDate);
+  }
+
+  function getEventDate(event, allEvents) {
+    if (!event) return new Date(0);
+
+    // For split events, use first child's date for ordering.
+    if (event.isSplitEvent && event.variantIds && event.variantIds.length > 0) {
+      const firstVariant = allEvents.find((e) => e.id === event.variantIds[0]);
+      if (firstVariant) return getEventDate(firstVariant, allEvents);
+    }
+
+    let dateStr = event.date || "";
+    if (!dateStr) return new Date(0);
+
+    // Handle multipart date strings like "18th & 19th April 2026" and "18th - 19th April 2026"
+    if (dateStr.includes("&")) {
+      dateStr = dateStr.split("&")[0].trim();
+    } else if (dateStr.includes("-")) {
+      const dashParts = dateStr.split("-");
+      if (dashParts.length > 0) {
+        dateStr = dashParts[0].trim();
+      }
+    }
+
+    return parseDate(dateStr);
   }
 
   function renderEvents() {
@@ -32,17 +57,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const upcomingEvents = allEvents
       .filter(
         (e) =>
-          e.status === "open" ||
-          e.status === "available" ||
-          e.status === "filling-fast" ||
-          e.status === "sold-out" ||
-          e.status === "soon",
+          e.hiddenFromBookings !== true &&
+          (e.status === "open" ||
+            e.status === "available" ||
+            e.status === "filling-fast" ||
+            e.status === "sold-out" ||
+            e.status === "soon"),
       )
-      .sort((a, b) => parseDate(a.date) - parseDate(b.date));
+      .sort((a, b) => getEventDate(a, allEvents) - getEventDate(b, allEvents));
 
     const pastEvents = allEvents
       .filter(
         (e) =>
+          e.hiddenFromBookings !== true &&
           !(
             e.status === "open" ||
             e.status === "available" ||
@@ -51,13 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
             e.status === "soon"
           ),
       )
-      .sort((a, b) => parseDate(b.date) - parseDate(a.date));
-
-    if (upcomingEvents.length > 1) {
-      upcomingContainer.classList.add("is-multiple");
-    } else {
-      upcomingContainer.classList.remove("is-multiple");
-    }
+      .sort((a, b) => getEventDate(b, allEvents) - getEventDate(a, allEvents));
 
     const processEvent = (event, isUpcoming) => {
       const container = isUpcoming ? upcomingContainer : pastContainer;
@@ -103,21 +124,15 @@ document.addEventListener("DOMContentLoaded", function () {
       clone.querySelector(`${prefix}__date`).textContent = dateText;
 
       const btn = clone.querySelector(`${prefix}__btn`);
-
-      // Always show view button that navigates to details page
-      if (isMobile) {
-        btn.textContent = "View";
-      } else {
-        btn.textContent = "View Details";
+      if (btn) {
+        btn.textContent = isMobile ? "View" : "View Details";
+        btn.classList.add(`${prefix.substring(1)}__btn--view`);
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          window.location.href = `details.html?id=${event.id}`;
+        });
       }
 
-      btn.classList.add(`${prefix.substring(1)}__btn--view`);
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        window.location.href = `details.html?id=${event.id}`;
-      });
-
-      // Make entire card clickable
       const card = clone.querySelector(prefix);
       if (card) {
         card.style.cursor = "pointer";

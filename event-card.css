@@ -1,0 +1,121 @@
+/* Shared Event Card styles used across bookings + details */
+.events-section {
+  grid-column: 1 / -1;
+  background: #000;
+  padding-block: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+.events-section .section-title:first-child {
+  margin-block: 15px 10px;
+}
+
+.section-title.past-title {
+  margin-top: 60px;
+}
+
+.events-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 280px);
+  place-content: center;
+  gap: 30px;
+  padding-block: 10px;
+}
+
+.event-card {
+  font-size: 10px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card__image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #1a1a1a;
+  position: relative;
+}
+
+.event-card__image img,
+.event-card__image video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.event-card__image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(0.6);
+  z-index: 0;
+  transform: scale(1.1);
+}
+
+.event-card__content {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1em;
+  flex-grow: 1;
+}
+
+.event-card__title {
+  font-size: 1.75em;
+  color: #000;
+  margin: 0;
+  font-weight: 700;
+}
+
+.event-card__date {
+  color: #666;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.event-card__btn {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.event-card__btn--view {
+  background: #111;
+  color: #ffbf00;
+  transition: all 0.3s ease;
+}
+
+.event-card__btn--view:hover {
+  background: #ffbf00;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .events-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 182px));
+    gap: 12px;
+    padding: 16px 12px;
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}

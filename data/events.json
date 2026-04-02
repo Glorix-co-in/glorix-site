@@ -479,6 +479,96 @@
     }
   },
   {
+    "id": "dark-room",
+    "title": "DARK ROOM SERIES",
+    "image": "assets/events/dark_room_combo.jpg",
+    "date": "18th & 19th April 2026",
+    "status": "soon",
+    "bookingLink": null,
+    "isSplitEvent": true,
+    "variantIds": ["dark-room-vol1", "dark-room-vol2"],
+    "details": {
+      "tags": ["Dark Room", "Live Performance", "Underground"],
+      "dateRange": null,
+      "time": "3:00 PM onwards",
+      "duration": "4 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Darkroom Performance",
+      "venue": "Bar Exchange: Hauz Khas",
+      "venueLink": "https://maps.app.goo.gl/za2H946uHZm8DPns8",
+      "detailsImage": {
+        "landscape": "assets/events/dark_room_horizontal.jpg",
+        "portrait": "assets/events/dark_room_vertical.jpg"
+      },
+      "aboutEvent": "Click to choose Dark Room Vol 1 or Vol 2 at the event selector page.",
+      "highlights": [
+        "2-night curated series",
+        "Click to choose your volume",
+        "Dark-themed live sets",
+        "Exclusive underground talent"
+      ],
+      "priceFrom": 399,
+      "artists": []
+    }
+  },
+  {
+    "id": "dark-room-vol1",
+    "title": "DARK ROOM VOL 1",
+    "image": "assets/events/dark_room_v1_vertical.jpg",
+    "date": "18th April 2026",
+    "status": "soon",
+    "bookingLink": null,
+    "hiddenFromBookings": true,
+    "details": {
+      "tags": ["Dark Room", "Live Performance"],
+      "dateRange": null,
+      "time": "3:00 PM onwards",
+      "duration": "4 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Darkroom Experience",
+      "venue": "Bar Exchange: Hauz Khas",
+      "venueLink": "https://maps.app.goo.gl/za2H946uHZm8DPns8",
+      "detailsImage": {
+        "landscape": "assets/events/dark_room_v1_horizontal.jpg",
+        "portrait": "assets/events/dark_room_v1_vertical.jpg"
+      },
+      "aboutEvent": "Dark Room Volume 1 focuses on intimate spotlight performances and underground heavy hitters.",
+      "highlights": ["Spotlight freestyle", "VIP vibes", "Unique visuals"],
+      "priceFrom": 399,
+      "artists": ["Artist A", "Artist B", "Artist C"]
+    }
+  },
+  {
+    "id": "dark-room-vol2",
+    "title": "DARK ROOM VOL 2",
+    "image": "assets/events/dark_room_v2_vertical.jpg",
+    "date": "19th April 2026",
+    "status": "soon",
+    "bookingLink": null,
+    "hiddenFromBookings": true,
+    "details": {
+      "tags": ["Dark Room", "Live Performance"],
+      "dateRange": null,
+      "time": "3:00 PM onwards",
+      "duration": "4 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Darkroom Experience",
+      "venue": "Bar Exchange: Hauz Khas",
+      "venueLink": "https://maps.app.goo.gl/za2H946uHZm8DPns8",
+      "detailsImage": {
+        "landscape": "assets/events/dark_room_v2_horizontal.jpg",
+        "portrait": "assets/events/dark_room_v2_vertical.jpg"
+      },
+      "aboutEvent": "Dark Room Volume 2 has alternate selection of performers and a fresh darkroom musical journey.",
+      "highlights": ["Extended set", "Guest DJs", "Immersive vibe"],
+      "priceFrom": 399,
+      "artists": ["Artist X", "Artist Y", "Artist Z"]
+    }
+  },
+  {
     "id": "love-lies-2026",
     "title": "LOVE LIES",
     "image": "assets/events/love_lies_vertical.jpg",

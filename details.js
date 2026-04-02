@@ -90,6 +90,11 @@ async function loadEventDetails(eventId) {
       return;
     }
 
+    if (event.isSplitEvent) {
+      showSplitEventSelector(event, events, artistsData);
+      return;
+    }
+
     currentEvent = event;
     populateEventDetails(event);
     populateEventArtists(event.details?.artists || [], artistsData);
@@ -353,6 +358,87 @@ function showError(message) {
   if (stickyBar) {
     stickyBar.style.display = "none";
   }
+}
+
+function showSplitEventSelector(parentEvent, allEvents, artistsData) {
+  const splitSection = document.getElementById("splitVariantSection");
+  const variantContainer = document.getElementById("splitVariantContainer");
+  const mediaContainer = document.getElementById("mediaContainer");
+  const detailsContent = document.querySelector(".details-content-wrapper");
+  const stickyBar = document.querySelector(".sticky-bottom-bar");
+
+  if (
+    !splitSection ||
+    !variantContainer ||
+    !mediaContainer ||
+    !detailsContent
+  ) {
+    showError("Split event selector could not be displayed.");
+    return;
+  }
+
+  splitSection.style.display = "block";
+  mediaContainer.style.display = "none";
+  detailsContent.style.display = "none";
+  if (stickyBar) {
+    stickyBar.style.display = "none";
+  }
+
+  document.getElementById("headerTitle").textContent = parentEvent.title;
+
+  const variants = (parentEvent.variantIds || [])
+    .map((id) => allEvents.find((e) => e.id === id))
+    .filter(Boolean);
+
+  if (variants.length === 0) {
+    variantContainer.innerHTML =
+      "<p style='color:#fff; text-align:center; width:100%;'>No volumes available.</p>";
+    return;
+  }
+
+  variantContainer.innerHTML = "";
+
+  variants.forEach((variant) => {
+    const card = document.createElement("div");
+    card.className = "event-card";
+    card.style.cursor = "pointer";
+
+    const img = variant.image ? variant.image : "";
+    card.innerHTML = `
+      <div class="event-card__image" style="--bg-image:url('${img}')">
+        <img src="${img}" alt="${variant.title}" loading="lazy" />
+      </div>
+      <div class="event-card__content">
+        <h3 class="event-card__title">${variant.title}</h3>
+        <p class="event-card__date">${variant.date}</p>
+        <button class="event-card__btn event-card__btn--view">Select</button>
+      </div>
+    `;
+
+    const activateVariant = () => {
+      splitSection.style.display = "none";
+      mediaContainer.style.display = "block";
+      detailsContent.style.display = "block";
+      if (stickyBar) {
+        stickyBar.style.display = "flex";
+      }
+
+      currentEvent = variant;
+      populateEventDetails(variant);
+      populateEventArtists(variant.details?.artists || [], artistsData);
+    };
+
+    card.addEventListener("click", activateVariant);
+    const btn = card.querySelector(".event-card__btn");
+    if (btn) {
+      btn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        activateVariant();
+      });
+    }
+
+    variantContainer.appendChild(card);
+  });
 }
 
 function shareEvent() {
