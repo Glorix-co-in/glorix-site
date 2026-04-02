@@ -417,10 +417,10 @@ function showSplitEventSelector(parentEvent, allEvents, artistsData) {
 
     const activateVariant = () => {
       splitSection.style.display = "none";
-      mediaContainer.style.display = "block";
-      detailsContent.style.display = "block";
+      mediaContainer.style.display = "";
+      detailsContent.style.display = "";
       if (stickyBar) {
-        stickyBar.style.display = "flex";
+        stickyBar.style.display = "";
       }
 
       currentEvent = variant;
