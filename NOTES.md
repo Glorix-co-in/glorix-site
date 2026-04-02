@@ -90,3 +90,39 @@ This is a temporary solution until a full backend/API integration is ready.
   if (rzpContainer) rzpContainer.style.display = "block";
 }
 ```
+
+<!-- NOTES 02/04/2026 -->
+
+18 and 19 april -> Dark Room vol 1 and Dark Room vol 2
+
+add another page in between when click on this dark room booking we see a page with 2 posters left is dark room vol1 and dark room vol2 poster on right
+
+description for the dark room theme
+sirf ek spotlight on the artist unique style of this dark room theme event
+
+4 hrs ka show hai
+16+ audience age limit
+timing 3pm
+venue : Bar Exchange: Hauz Khas
+genre: ....
+
+399 rupees -> price from
+
+https://maps.app.goo.gl/za2H946uHZm8DPns8
+
+25 April 2026 -> 360 hip hop vol 4
+all same details
+just venue TBA
+tickets available soon dikhana hai no link yet
+
+499 rupees -> price from
+
+1st May 2026
+
+DJ pratham -> dj night event
+timing 8pm onwards
+
+description generate for playing various genres of music on dj
+venue : TBA
+
+999 rupees -> price from
