@@ -447,6 +447,38 @@
     }
   },
   {
+    "id": "dj-pratham-2026",
+    "title": "DJ Pratham Night",
+    "image": "assets/events/dj_pratham.jpg",
+    "date": "1st May 2026",
+    "status": "soon",
+    "bookingLink": null,
+    "details": {
+      "tags": ["DJ Night", "Live Performance", "Multi-Genre"],
+      "dateRange": null,
+      "time": "8:00 PM onwards",
+      "duration": "6 Hours",
+      "ageLimit": "18+",
+      "languages": "Hindi, English",
+      "genre": "Multi-genre DJ set",
+      "venue": "TBA",
+      "venueLink": null,
+      "detailsImage": {
+        "landscape": "assets/events/dj_pratham_horizontal.jpg",
+        "portrait": "assets/events/dj_pratham_vertical.jpg"
+      },
+      "aboutEvent": "DJ Pratham brings an electrifying night of genre-spanning music, from hip hop and electronic to Bollywood remixes and club anthems. Expect seamless blending of tracks, high energy lighting, and a crowd-driven experience.",
+      "highlights": [
+        "Multi-genre DJ set",
+        "Live crowd interactions",
+        "Late-night party vibe",
+        "Exclusive beats and remixes"
+      ],
+      "priceFrom": 999,
+      "artists": ["DJ Pratham"]
+    }
+  },
+  {
     "id": "love-lies-2026",
     "title": "LOVE LIES",
     "image": "assets/events/love_lies_vertical.jpg",
