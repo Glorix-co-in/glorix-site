@@ -400,6 +400,53 @@
     }
   },
   {
+    "id": "360-hiphop-v4",
+    "title": "360 HIP HOP VOL 4",
+    "image": "assets/events/360_vol4_vertical.jpg",
+    "date": "25th April 2026",
+    "status": "soon",
+    "bookingLink": null,
+    "details": {
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
+      "dateRange": null,
+      "time": "3:00 PM onwards",
+      "duration": "4 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Hip Hop / DJ",
+      "venue": "TBA",
+      "venueLink": null,
+      "detailsImage": {
+        "landscape": "assets/events/360_vol4_horizontal.jpg",
+        "portrait": "assets/events/360_vol4_vertical.jpg"
+      },
+      "aboutEvent": "360 HIP HOP VOL 4 returns with the same high-energy format as earlier editions. Expect a close-up 360° experience with top underground artists and DJs.",
+      "highlights": [
+        "360 degree live experience",
+        "Handpicked underground artists",
+        "Intimate high energy connection",
+        "Live DJ sets"
+      ],
+      "priceFrom": 499,
+      "artists": [
+        "Nagity",
+        "Biggy brat",
+        "Armadok",
+        "Babbar",
+        "Ashant",
+        "Shawn",
+        "Ulti Zindagi",
+        "Mrityu",
+        "Red",
+        "Sherdill",
+        "Jaze",
+        "Volt",
+        "Rudra",
+        "DJ Mayankk"
+      ]
+    }
+  },
+  {
     "id": "love-lies-2026",
     "title": "LOVE LIES",
     "image": "assets/events/love_lies_vertical.jpg",
