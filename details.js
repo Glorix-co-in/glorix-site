@@ -398,13 +398,29 @@ function showSplitEventSelector(parentEvent, allEvents, artistsData) {
 
   variantContainer.innerHTML = "";
 
+  const isMobile = window.innerWidth <= 768;
+
   variants.forEach((variant) => {
     const card = document.createElement("div");
-    card.className = "event-card";
+    card.className = isMobile ? "event-card-mobile" : "event-card";
     card.style.cursor = "pointer";
 
     const img = variant.image ? variant.image : "";
-    card.innerHTML = `
+    if (isMobile) {
+      card.innerHTML = `
+      <div class="event-card-mobile__image" style="--bg-image:url('${img}')">
+        <img src="${img}" alt="${variant.title}" loading="lazy" />
+      </div>
+      <div class="event-card-mobile__info">
+        <div class="event-card-mobile__text">
+          <h3 class="event-card-mobile__title">${variant.title}</h3>
+          <p class="event-card-mobile__date">${variant.date}</p>
+        </div>
+        <button class="event-card-mobile__btn event-card-mobile__btn--view">Select</button>
+      </div>
+    `;
+    } else {
+      card.innerHTML = `
       <div class="event-card__image" style="--bg-image:url('${img}')">
         <img src="${img}" alt="${variant.title}" loading="lazy" />
       </div>
@@ -414,6 +430,7 @@ function showSplitEventSelector(parentEvent, allEvents, artistsData) {
         <button class="event-card__btn event-card__btn--view">Select</button>
       </div>
     `;
+    }
 
     const activateVariant = () => {
       splitSection.style.display = "none";
