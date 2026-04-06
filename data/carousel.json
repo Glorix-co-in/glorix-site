@@ -1,12 +1,12 @@
 [
   {
-    "desktopImage": "assets/events/dark room series landscape.png",
-    "mobileImage": "assets/events/dark room series portrait.png",
+    "desktopImage": "assets/events/dark room series landscape.jpg",
+    "mobileImage": "assets/events/dark room series portrait.jpg",
     "alt": "Dark Room Series"
   },
   {
-    "desktopImage": "assets/events/360_vol4_horizontal.png",
-    "mobileImage": "assets/events/360_vol4_vertical.png",
+    "desktopImage": "assets/events/360_vol4_horizontal.jpg",
+    "mobileImage": "assets/events/360_vol4_vertical.jpg",
     "alt": "360 HIP HOP VOL 4"
   }
 ]
