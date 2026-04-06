@@ -119,8 +119,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let dateText = event.date;
       if (isMobile) {
-        // Extract day (e.g., 24th) and short month (e.g., Dec)
-        const match = event.date.match(/(\d+(?:st|nd|rd|th))\s+([A-Za-z]+)/);
+        // Preserve date ranges like "18th & 19th April" or "18th - 19th April" on mobile
+        const match = event.date.match(
+          /(\d+(?:st|nd|rd|th)(?:\s*(?:&|-)?\s*\d+(?:st|nd|rd|th))?)\s+([A-Za-z]+)/,
+        );
         if (match) {
           dateText = `${match[1]} ${match[2].substring(0, 3)}`;
         }
