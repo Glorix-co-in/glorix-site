@@ -25,7 +25,7 @@ async function loadEventData(eventId) {
     const events = await response.json();
     currentEvent = events.find((e) => e.id === eventId);
 
-    if (!currentEvent) {
+    if (!currentEvent || currentEvent.status === "hidden") {
       window.location.href = "bookings.html";
       return;
     }

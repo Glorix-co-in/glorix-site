@@ -85,7 +85,7 @@ async function loadEventDetails(eventId) {
     const artistsData = await artistsResponse.json();
     const event = events.find((e) => e.id === eventId);
 
-    if (!event) {
+    if (!event || event.status === "hidden") {
       showError("Event not found");
       return;
     }

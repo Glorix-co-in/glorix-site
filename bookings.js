@@ -50,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!eventCardTemplate) return;
 
+    function isEventVisible(event) {
+      return event.hiddenFromBookings !== true && event.status !== "hidden";
+    }
+
     // Clear containers
     upcomingContainer.innerHTML = "";
     pastContainer.innerHTML = "";
@@ -57,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const upcomingEvents = allEvents
       .filter(
         (e) =>
-          e.hiddenFromBookings !== true &&
+          isEventVisible(e) &&
           (e.status === "open" ||
             e.status === "available" ||
             e.status === "filling-fast" ||
@@ -69,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const pastEvents = allEvents
       .filter(
         (e) =>
-          e.hiddenFromBookings !== true &&
+          isEventVisible(e) &&
           !(
             e.status === "open" ||
             e.status === "available" ||

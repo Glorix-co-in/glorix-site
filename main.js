@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const carouselTrack = document.getElementById("carouselTrack");
   const carouselTemplate = document.getElementById("carouselTemplate");
 
+  const originalYoutubeWrapper = document.getElementById("youtube-original");
+
   if (carouselTrack && carouselTemplate) {
     fetch("data/carousel.json")
       .then((response) => response.json())
@@ -13,11 +15,21 @@ document.addEventListener("DOMContentLoaded", function () {
           slidesData = [];
         }
 
-        // add YouTube slide at beginning
-        slidesData.unshift({
-          youtube: "https://www.youtube.com/embed/agFeZEmPKL4",
-          alt: "GLORIX Promo Video",
-        });
+        const hasCarouselSlides = slidesData.length > 0;
+
+        if (hasCarouselSlides) {
+          if (originalYoutubeWrapper) {
+            originalYoutubeWrapper.style.display = "flex";
+          }
+        } else {
+          if (originalYoutubeWrapper) {
+            originalYoutubeWrapper.style.display = "none";
+          }
+          slidesData.unshift({
+            youtube: "https://www.youtube.com/embed/agFeZEmPKL4",
+            alt: "GLORIX Promo Video",
+          });
+        }
 
         function renderCarousel() {
           carouselTrack.innerHTML = "";
@@ -34,7 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
               const mainVideo = clone.querySelector(".main-video");
               const bgVideo = clone.querySelector(".bg-video");
               const ytContainer = clone.querySelector(".youtube-container");
-              const ytIframe = ytContainer && ytContainer.querySelector("iframe");
+              const ytIframe =
+                ytContainer && ytContainer.querySelector("iframe");
 
               if (mainImg) mainImg.style.display = "none";
               if (bgImg) bgImg.style.display = "none";

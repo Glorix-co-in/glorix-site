@@ -402,7 +402,7 @@
   {
     "id": "360-hiphop-v4",
     "title": "360 HIP HOP VOL 4",
-    "image": "assets/events/360_vol4_vertical.jpg",
+    "image": "assets/events/360_vol4_vertical.png",
     "date": "25th April 2026",
     "status": "soon",
     "bookingLink": null,
@@ -417,10 +417,10 @@
       "venue": "TBA",
       "venueLink": null,
       "detailsImage": {
-        "landscape": "assets/events/360_vol4_horizontal.jpg",
-        "portrait": "assets/events/360_vol4_vertical.jpg"
+        "landscape": "assets/events/360_vol4_horizontal.png",
+        "portrait": "assets/events/360_vol4_vertical.png"
       },
-      "aboutEvent": "360 HIP HOP VOL 4 returns with the same high-energy format as earlier editions. Expect a close-up 360° experience with top underground artists and DJs.",
+      "aboutEvent": "360 HIP HOP is an inspirational hip hop series by TEAM GLORIX covering some of the best underground talents from Delhi and other regions. Volume 4 brings handpicked artists, DJs and a tight crowd into a 360 degree live experience. The format breaks the barrier between artists and the audience, with performers delivering their sets up close for a high energy connection.",
       "highlights": [
         "360 degree live experience",
         "Handpicked underground artists",
@@ -451,7 +451,7 @@
     "title": "DJ Pratham Night",
     "image": "assets/events/dj_pratham.jpg",
     "date": "1st May 2026",
-    "status": "soon",
+    "status": "hidden",
     "bookingLink": null,
     "details": {
       "tags": ["DJ Night", "Live Performance", "Multi-Genre"],
@@ -481,7 +481,7 @@
   {
     "id": "dark-room",
     "title": "DARK ROOM SERIES",
-    "image": "assets/events/dark_room_combo.jpg",
+    "image": "assets/events/dark room series portrait.png",
     "date": "18th & 19th April 2026",
     "status": "soon",
     "bookingLink": null,
@@ -498,14 +498,14 @@
       "venue": "Bar Exchange: Hauz Khas",
       "venueLink": "https://maps.app.goo.gl/za2H946uHZm8DPns8",
       "detailsImage": {
-        "landscape": "assets/events/dark_room_horizontal.jpg",
-        "portrait": "assets/events/dark_room_vertical.jpg"
+        "landscape": "assets/events/dark room series landscape.png",
+        "portrait": "assets/events/dark room series portrait.png"
       },
-      "aboutEvent": "Click to choose Dark Room Vol 1 or Vol 2 at the event selector page.",
+      "aboutEvent": "Dark Room is an immersive underground performance series by TEAM GLORIX built around a single spotlight on the main performer and full darkness everywhere else. This format makes every beat, lyric, and movement feel intensely intimate, turning the show into a raw, secret performance rather than a traditional stage event. Choose Dark Room Vol 1 or Vol 2 on the event selector page to step into the shadowed atmosphere of the series.",
       "highlights": [
         "2-night curated series",
-        "Click to choose your volume",
-        "Dark-themed live sets",
+        "Choose your volume",
+        "Spotlight-only performance",
         "Exclusive underground talent"
       ],
       "priceFrom": 399,
@@ -515,7 +515,7 @@
   {
     "id": "dark-room-vol1",
     "title": "DARK ROOM VOL 1",
-    "image": "assets/events/dark_room_v1_vertical.jpg",
+    "image": "assets/events/dark room vol 1.png",
     "date": "18th April 2026",
     "status": "soon",
     "bookingLink": null,
@@ -531,8 +531,8 @@
       "venue": "Bar Exchange: Hauz Khas",
       "venueLink": "https://maps.app.goo.gl/za2H946uHZm8DPns8",
       "detailsImage": {
-        "landscape": "assets/events/dark_room_v1_horizontal.jpg",
-        "portrait": "assets/events/dark_room_v1_vertical.jpg"
+        "landscape": "assets/events/dark room volume 1 landscape.png",
+        "portrait": "assets/events/dark room vol 1.png"
       },
       "aboutEvent": "Dark Room Volume 1 focuses on intimate spotlight performances and underground heavy hitters.",
       "highlights": ["Spotlight freestyle", "VIP vibes", "Unique visuals"],
@@ -543,7 +543,7 @@
   {
     "id": "dark-room-vol2",
     "title": "DARK ROOM VOL 2",
-    "image": "assets/events/dark_room_v2_vertical.jpg",
+    "image": "assets/events/dark room volume 2.png",
     "date": "19th April 2026",
     "status": "soon",
     "bookingLink": null,
@@ -559,8 +559,8 @@
       "venue": "Bar Exchange: Hauz Khas",
       "venueLink": "https://maps.app.goo.gl/za2H946uHZm8DPns8",
       "detailsImage": {
-        "landscape": "assets/events/dark_room_v2_horizontal.jpg",
-        "portrait": "assets/events/dark_room_v2_vertical.jpg"
+        "landscape": "assets/events/dark room vol. 2 landscape.png",
+        "portrait": "assets/events/dark room volume 2.png"
       },
       "aboutEvent": "Dark Room Volume 2 has alternate selection of performers and a fresh darkroom musical journey.",
       "highlights": ["Extended set", "Guest DJs", "Immersive vibe"],
