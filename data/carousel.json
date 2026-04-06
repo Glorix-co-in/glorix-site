@@ -3,5 +3,10 @@
     "desktopImage": "assets/events/dark room series landscape.png",
     "mobileImage": "assets/events/dark room series portrait.png",
     "alt": "Dark Room Series"
+  },
+  {
+    "desktopImage": "assets/events/360_vol4_horizontal.png",
+    "mobileImage": "assets/events/360_vol4_vertical.png",
+    "alt": "360 HIP HOP VOL 4"
   }
 ]
