@@ -468,7 +468,7 @@
     "title": "DARK ROOM SERIES",
     "image": "assets/events/dark room series portrait.jpg",
     "date": "18th & 19th April 2026",
-    "status": "soon",
+    "status": "hidden",
     "bookingLink": null,
     "isSplitEvent": true,
     "variantIds": ["dark-room-vol1", "dark-room-vol2"],
