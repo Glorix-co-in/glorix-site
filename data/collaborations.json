@@ -58,5 +58,9 @@
   {
     "name": "Underpass",
     "logo": "assets/brands/underpass.png"
+  },
+  {
+    "name": "AllEvents",
+    "logo": "assets/brands/AllEvents.png"
   }
 ]
