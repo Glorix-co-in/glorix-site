@@ -254,7 +254,11 @@ function populateEventDetails(event) {
   // Price
   const priceFrom = document.getElementById("priceFrom");
   if (priceFrom) {
-    priceFrom.textContent = details.priceFrom || "TBA";
+    const priceValue = details.priceFrom;
+    priceFrom.textContent =
+      priceValue === 0 || priceValue === "0"
+        ? "Free Entry"
+        : priceValue || "TBA";
   }
 
   // Availability and booking button
