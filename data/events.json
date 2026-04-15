@@ -404,7 +404,7 @@
     "title": "360 HIP HOP VOL 4",
     "image": "assets/events/360_vol4_vertical.jpg",
     "date": "26th April 2026",
-    "status": "soon",
+    "status": "open",
     "bookingLink": "https://allevents.in/new-delhi/360-hip-hop-vol04-dark-room-edition-tickets/80003000510252",
     "details": {
       "tags": ["Live Performance", "360 HH", "DJ Sets"],
@@ -414,8 +414,8 @@
       "ageLimit": "16+",
       "languages": "Hindi, English",
       "genre": "Hip Hop / DJ",
-      "venue": "TBA",
-      "venueLink": null,
+      "venue": "RESET STUDIO MALVIYA NAGAR",
+      "venueLink": "https://maps.app.goo.gl/9Jm35YXJ3HE1nEi27",
       "detailsImage": {
         "landscape": "assets/events/360_vol4_horizontal.jpg",
         "portrait": "assets/events/360_vol4_vertical.jpg"

@@ -253,12 +253,21 @@ function populateEventDetails(event) {
 
   // Price
   const priceFrom = document.getElementById("priceFrom");
+  const currencySymbol = document.querySelector(".currency-symbol");
+  const priceSuffix = document.querySelector(".price-suffix");
   if (priceFrom) {
     const priceValue = details.priceFrom;
-    priceFrom.textContent =
-      priceValue === 0 || priceValue === "0"
-        ? "Free Entry"
-        : priceValue || "TBA";
+    const isFreeEntry =
+      priceValue === 0 || priceValue === "0" || priceValue === "Free Entry";
+
+    priceFrom.textContent = isFreeEntry ? "Free Entry" : priceValue || "TBA";
+
+    if (currencySymbol) {
+      currencySymbol.style.display = isFreeEntry ? "none" : "inline";
+    }
+    if (priceSuffix) {
+      priceSuffix.style.display = isFreeEntry ? "none" : "inline";
+    }
   }
 
   // Availability and booking button
