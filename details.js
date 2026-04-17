@@ -97,26 +97,28 @@ async function loadEventDetails(eventId) {
 
     currentEvent = event;
     populateEventDetails(event);
-    populateEventArtists(event.details?.artists || [], artistsData);
+    populateEventArtists(event, artistsData);
   } catch (error) {
     console.error("Error loading event details:", error);
     showError("Failed to load event details");
   }
 }
 
-function populateEventArtists(eventArtistNames, artistsData) {
+function populateEventArtists(event, artistsData) {
+  const eventArtistNames = event.details?.artists || [];
   const section = document.getElementById("artistsSection");
   const container = document.getElementById("eventArtists");
 
   if (!section || !container) return;
 
-  // These 3 artists are always at the start
-  const constantArtists = ["Saksham", "Nagity", "DJ Rick"];
+  const defaultArtists = event.details?.defaultArtists || [
+    "Saksham",
+    "Nagity",
+    "DJ Rick",
+  ];
 
   // Combine with event-specific artists and remove duplicates
-  const allArtistNames = [
-    ...new Set([...constantArtists, ...(eventArtistNames || [])]),
-  ];
+  const allArtistNames = [...new Set([...defaultArtists, ...eventArtistNames])];
 
   // Map names to artist data to preserve the desired order
   const featuredArtists = allArtistNames
@@ -455,7 +457,7 @@ function showSplitEventSelector(parentEvent, allEvents, artistsData) {
 
       currentEvent = variant;
       populateEventDetails(variant);
-      populateEventArtists(variant.details?.artists || [], artistsData);
+      populateEventArtists(variant, artistsData);
     };
 
     card.addEventListener("click", activateVariant);

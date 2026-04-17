@@ -428,7 +428,17 @@
         "Live DJ sets"
       ],
       "priceFrom": 0,
-      "artists": []
+      "defaultArtists": ["Saksham"],
+      "artists": [
+        "Jaze",
+        "BC Gang",
+        "Toshi Music",
+        "Mrityu",
+        "Akki",
+        "Tera Toxic",
+        "Poetic kc",
+        "God's Child"
+      ]
     }
   },
   {
