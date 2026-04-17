@@ -133,7 +133,7 @@ function populateEventArtists(event, artistsData) {
   section.style.display = "block";
   const artistHtml = featuredArtists
     .map((artist) => {
-      const isFeatured = constantArtists.includes(artist.name);
+      const isFeatured = defaultArtists.includes(artist.name);
       return `
     <a href="${artist.link || "#"}" class="event-artist-card" target="_blank" ${
       artist.link ? "" : 'onclick="return false;"'
