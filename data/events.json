@@ -2,7 +2,7 @@
   {
     "id": "360-hiphop-v1",
     "title": "360 HIP HOP VOL 1",
-    "image": "assets/events/360_vertical.jpg",
+    "image": "assets/events/360_vertical.avif",
     "date": "17th January 2026",
     "status": "closed",
     "bookingLink": "null",
@@ -17,8 +17,8 @@
       "venue": "OSO - The Panda Club: Ansal Plaza, Delhi",
       "venueLink": "https://maps.app.goo.gl/iTQuDJhCgu1m2cwj9",
       "detailsImage": {
-        "landscape": "assets/events/360_horizontal.jpg",
-        "portrait": "assets/events/360_vertical.jpg"
+        "landscape": "assets/events/360_horizontal.avif",
+        "portrait": "assets/events/360_vertical.avif"
       },
       "aboutEvent": "360 HIP HOP is an inspirational hip hop series by TEAM GLORIX covering some of the best underground talents from Delhi and other regions. Volume 1 brings handpicked artists, DJs and a tight crowd into a 360 degree live experience. The format breaks the barrier between artists and the audience, with performers delivering their sets up close for a high energy connection.",
       "highlights": [
@@ -49,7 +49,7 @@
   {
     "id": "bali-2025",
     "title": "BALI PERFORMING LIVE",
-    "image": "assets/events/bali.jpg",
+    "image": "assets/events/bali.avif",
     "date": "24th December 2025",
     "status": "closed",
     "bookingLink": null,
@@ -64,8 +64,8 @@
       "venue": "Panache Club: Dwarka",
       "venueLink": "https://maps.app.goo.gl/BLoKAaXFBxhxCbok9",
       "detailsImage": {
-        "mobile": "assets/events/bali.jpg",
-        "desktop": "assets/events/bali.jpg"
+        "mobile": "assets/events/bali.avif",
+        "desktop": "assets/events/bali.avif"
       },
       "aboutEvent": "Experience the magic of BALI performing live! Get ready for an unforgettable night filled with chart-topping hits and electrifying performances. This is your chance to witness one of the most talented artists of our generation live on stage.",
       "highlights": [
@@ -90,7 +90,7 @@
   {
     "id": "seasons-2025",
     "title": "SEASONS",
-    "image": "assets/events/seasons.jpg",
+    "image": "assets/events/seasons.avif",
     "date": "22nd November 2025",
     "status": "closed",
     "bookingLink": null,
@@ -105,8 +105,8 @@
       "venue": "Classy Cafe Bar: South Extension",
       "venueLink": "https://maps.app.goo.gl/5Wfw58kaVakwSuMY7",
       "detailsImage": {
-        "mobile": "assets/events/seasons.jpg",
-        "desktop": "assets/events/seasons.jpg"
+        "mobile": "assets/events/seasons.avif",
+        "desktop": "assets/events/seasons.avif"
       },
       "aboutEvent": "SEASONS 2025 is the ultimate music festival featuring multiple artists across various genres. A celebration of music, art, and culture that brings together the best talent for an extraordinary experience.",
       "highlights": [
@@ -147,7 +147,7 @@
   {
     "id": "flair-2025",
     "title": "FLAIR",
-    "image": "assets/events/flair.png",
+    "image": "assets/events/flair.avif",
     "date": "20th September 2025",
     "status": "closed",
     "bookingLink": null,
@@ -163,8 +163,8 @@
       "venue": "Studio One.6: Kailash Colony",
       "venueLink": "https://maps.app.goo.gl/SAdGuaQCo99vWxzr7",
       "detailsImage": {
-        "mobile": "assets/events/flair.png",
-        "desktop": "assets/events/flair.png"
+        "mobile": "assets/events/flair.avif",
+        "desktop": "assets/events/flair.avif"
       },
       "aboutEvent": "FLAIR brings you an evening of dance, music, and pure entertainment. Get ready to groove to the beats of the best DJs and live performances.",
       "highlights": [
@@ -205,7 +205,7 @@
   {
     "id": "bloom-2025",
     "title": "BLOOM",
-    "image": "assets/events/bloom.jpg",
+    "image": "assets/events/bloom.avif",
     "date": "31st July 2025",
     "status": "closed",
     "bookingLink": null,
@@ -220,8 +220,8 @@
       "venue": "The Beer Cafe: Faridabad",
       "venueLink": "https://maps.app.goo.gl/KcASp71JRrgEc6fHA",
       "detailsImage": {
-        "mobile": "assets/events/bloom.jpg",
-        "desktop": "assets/events/bloom.jpg"
+        "mobile": "assets/events/bloom.avif",
+        "desktop": "assets/events/bloom.avif"
       },
       "aboutEvent": "An electrifying rap battle that promises to ignite your passion for hip-hop and leave you in awe. Experience the best underground rap artists perform live, showcasing their lyrical prowess. An evening with music, energy, and unforgettable performances awaits you.",
       "highlights": [
@@ -260,7 +260,7 @@
   {
     "id": "gulabi-kafan",
     "title": "GULABI KAFAN",
-    "image": "assets/events/gulabi_kafan_vertical.jpg",
+    "image": "assets/events/gulabi_kafan_vertical.avif",
     "date": "7th February 2026",
     "status": "closed",
     "bookingLink": null,
@@ -275,8 +275,8 @@
       "venue": "Moonshine Cafe: Hauz Khas, Delhi",
       "venueLink": "https://maps.app.goo.gl/bdLrR6Ey6rEJJHvd6",
       "detailsImage": {
-        "landscape": "assets/events/gulabi_kafan_horizontal.jpg",
-        "portrait": "assets/events/gulabi_kafan_vertical.jpg"
+        "landscape": "assets/events/gulabi_kafan_horizontal.avif",
+        "portrait": "assets/events/gulabi_kafan_vertical.avif"
       },
       "aboutEvent": "A new chapter begins with the official launch party of God’s Child. This night is a celebration of music, energy, and raw expression. The event will feature live performances, DJ sets, and an exclusive experience of God’s Child’s full EP “Gulabi Kafan”, performed live for the audience. The night will also be opened by some amazing artists, setting the vibe and bringing their own unique energy to the stage before the main act. From powerful tracks to immersive sounds, this isn’t just a show it’s a statement. If you’re here for authentic music and unforgettable vibes, this is where you belong.",
       "highlights": [
@@ -302,7 +302,7 @@
   {
     "id": "360-hiphop-v2",
     "title": "360 HIP HOP VOL 2",
-    "image": "assets/events/360_vol2_vertical.jpg",
+    "image": "assets/events/360_vol2_vertical.avif",
     "date": "28th February 2026",
     "status": "closed",
     "bookingLink": null,
@@ -325,8 +325,8 @@
       "venue": "Tizoe : Ansal Plaza",
       "venueLink": "https://maps.app.goo.gl/kCz5uKdgWFMYH8LR8",
       "detailsImage": {
-        "landscape": "assets/events/360_vol2_horizontal.jpg",
-        "portrait": "assets/events/360_vol2_vertical.jpg"
+        "landscape": "assets/events/360_vol2_horizontal.avif",
+        "portrait": "assets/events/360_vol2_vertical.avif"
       },
       "aboutEvent": "360 HIP HOP is an inspirational hip hop series by TEAM GLORIX covering some of the best underground talents from Delhi and other regions. Volume 2 brings handpicked artists, DJs and a tight crowd into a 360 degree live experience. The format breaks the barrier between artists and the audience, with performers delivering their sets up close for a high energy connection.",
       "highlights": [
@@ -354,7 +354,7 @@
   {
     "id": "360-hh-vol3",
     "title": "360 HIP HOP VOL 3",
-    "image": "assets/events/360_vol3_vertical.jpeg",
+    "image": "assets/events/360_vol3_vertical.avif",
     "date": "28th March 2026",
     "status": "closed",
     "bookingLink": null,
@@ -377,8 +377,8 @@
       "venue": "Underpass Cafe: Defence Colony",
       "venueLink": "https://maps.app.goo.gl/54TYNDVXXxJ1zAbH8",
       "detailsImage": {
-        "landscape": "assets/events/360_vol3_horizontal.jpeg",
-        "portrait": "assets/events/360_vol3_vertical.jpeg"
+        "landscape": "assets/events/360_vol3_horizontal.avif",
+        "portrait": "assets/events/360_vol3_vertical.avif"
       },
       "aboutEvent": "After the explosive success of VOL 1 and VOL 2, 360 HIP HOP returns for VOL 3 with even bigger energy! Team Glorix has built a reputation for spotlighting the best underground hip hop talent from Delhi and beyond, and the hype around this edition is unstoppable. Prepare for tighter crowds, more intense performances, and the same barrier‑breaking 360° format that brings artists right into the heart of the audience. This isn’t just another show—it’s the crescendo of a series that’s already making history.",
       "highlights": [
@@ -417,7 +417,7 @@
       "venue": "Reset Studio: Malviya Nagar",
       "venueLink": "https://maps.app.goo.gl/9Jm35YXJ3HE1nEi27",
       "detailsImage": {
-        "landscape": "assets/events/360_vol4_horizontal.jpg",
+        "landscape": "assets/events/360_vol4_horizontal.avif",
         "portrait": "assets/events/360_vol4_vertical.avif"
       },
       "aboutEvent": "360 HIP HOP is an inspirational hip hop series by TEAM GLORIX covering some of the best underground talents from Delhi and other regions. Volume 4 brings handpicked artists, DJs and a tight crowd into a 360 degree live experience. The format breaks the barrier between artists and the audience, with performers delivering their sets up close for a high energy connection.",
@@ -447,7 +447,7 @@
   {
     "id": "dj-pratham-2026",
     "title": "DJ Pratham Night",
-    "image": "assets/events/dj_pratham.jpg",
+    "image": "assets/events/dj_pratham.avif",
     "date": "1st May 2026",
     "status": "hidden",
     "bookingLink": null,
@@ -462,8 +462,8 @@
       "venue": "TBA",
       "venueLink": null,
       "detailsImage": {
-        "landscape": "assets/events/dj_pratham_horizontal.jpg",
-        "portrait": "assets/events/dj_pratham_vertical.jpg"
+        "landscape": "assets/events/dj_pratham_horizontal.avif",
+        "portrait": "assets/events/dj_pratham_vertical.avif"
       },
       "aboutEvent": "DJ Pratham brings an electrifying night of genre-spanning music, from hip hop and electronic to Bollywood remixes and club anthems. Expect seamless blending of tracks, high energy lighting, and a crowd-driven experience.",
       "highlights": [
@@ -479,7 +479,7 @@
   {
     "id": "dark-room",
     "title": "DARK ROOM SERIES",
-    "image": "assets/events/dark room series portrait.jpg",
+    "image": "assets/events/dark room series portrait.avif",
     "date": "18th & 19th April 2026",
     "status": "hidden",
     "bookingLink": null,
@@ -496,8 +496,8 @@
       "venue": "Bar Exchange: Hauz Khas",
       "venueLink": "https://maps.app.goo.gl/za2H946uHZm8DPns8",
       "detailsImage": {
-        "landscape": "assets/events/dark room series landscape.jpg",
-        "portrait": "assets/events/dark room series portrait.jpg"
+        "landscape": "assets/events/dark room series landscape.avif",
+        "portrait": "assets/events/dark room series portrait.avif"
       },
       "aboutEvent": "Dark Room by Glorix is an underground hip-hop experience where low lighting, heavy bass, and raw energy take over no distractions, just pure vibe. The space stays dim with flashes, strobes, and blackout moments synced to beat drops, while artists perform unpredictably from within the crowd, creating a sense of chaos and immersion. It’s not just a show, it’s a high-intensity atmosphere where the focus is on music, movement, and connection no lights, no limits, just rage.",
       "highlights": [
@@ -513,7 +513,7 @@
   {
     "id": "dark-room-vol1",
     "title": "DARK ROOM VOL 1",
-    "image": "assets/events/dark room vol 1.jpg",
+    "image": "assets/events/dark room vol 1.avif",
     "date": "18th April 2026",
     "status": "soon",
     "bookingLink": null,
@@ -529,8 +529,8 @@
       "venue": "Bar Exchange: Hauz Khas",
       "venueLink": "https://maps.app.goo.gl/za2H946uHZm8DPns8",
       "detailsImage": {
-        "landscape": "assets/events/dark room volume 1 landscape.jpg",
-        "portrait": "assets/events/dark room vol 1.jpg"
+        "landscape": "assets/events/dark room volume 1 landscape.avif",
+        "portrait": "assets/events/dark room vol 1.avif"
       },
       "aboutEvent": "Dark Room by Glorix is an underground hip-hop experience where low lighting, heavy bass, and raw energy take over no distractions, just pure vibe. The space stays dim with flashes, strobes, and blackout moments synced to beat drops, while artists perform unpredictably from within the crowd, creating a sense of chaos and immersion. It’s not just a show, it’s a high-intensity atmosphere where the focus is on music, movement, and connection no lights, no limits, just rage.",
       "highlights": ["Spotlight freestyle", "VIP vibes", "Unique visuals"],
@@ -541,7 +541,7 @@
   {
     "id": "dark-room-vol2",
     "title": "DARK ROOM VOL 2",
-    "image": "assets/events/dark room volume 2.jpg",
+    "image": "assets/events/dark room volume 2.avif",
     "date": "19th April 2026",
     "status": "soon",
     "bookingLink": null,
@@ -557,8 +557,8 @@
       "venue": "Bar Exchange: Hauz Khas",
       "venueLink": "https://maps.app.goo.gl/za2H946uHZm8DPns8",
       "detailsImage": {
-        "landscape": "assets/events/dark room vol. 2 landscape.jpg",
-        "portrait": "assets/events/dark room volume 2.jpg"
+        "landscape": "assets/events/dark room vol. 2 landscape.avif",
+        "portrait": "assets/events/dark room volume 2.avif"
       },
       "aboutEvent": "Dark Room by Glorix is an underground hip-hop experience where low lighting, heavy bass, and raw energy take over no distractions, just pure vibe. The space stays dim with flashes, strobes, and blackout moments synced to beat drops, while artists perform unpredictably from within the crowd, creating a sense of chaos and immersion. It’s not just a show, it’s a high-intensity atmosphere where the focus is on music, movement, and connection no lights, no limits, just rage.",
       "highlights": ["Extended set", "Guest DJs", "Immersive vibe"],
@@ -569,7 +569,7 @@
   {
     "id": "love-lies-2026",
     "title": "LOVE LIES",
-    "image": "assets/events/love_lies_vertical.jpg",
+    "image": "assets/events/love_lies_vertical.avif",
     "date": "14th February 2026",
     "status": "closed",
     "bookingLink": null,
@@ -598,8 +598,8 @@
       "venue": "Lara: New Delhi",
       "venueLink": "https://maps.app.goo.gl/gseEXj2fQfyr9rna9",
       "detailsImage": {
-        "landscape": "assets/events/love_lies_horizontal.jpg",
-        "portrait": "assets/events/love_lies_vertical.jpg"
+        "landscape": "assets/events/love_lies_horizontal.avif",
+        "portrait": "assets/events/love_lies_vertical.avif"
       },
       "aboutEvent": "Join us this Valentine's Day for LOVE LIES, a high-octane rap event featuring the rawest talent and electrifying DJ sets. Experience an afternoon and evening filled with music that speaks to the soul and energy that keeps you moving.",
       "highlights": [
