@@ -402,7 +402,7 @@
   {
     "id": "360-hiphop-v4",
     "title": "360 HIP HOP VOL 4",
-    "image": "assets/events/360_vol4_vertical.jpg",
+    "image": "assets/events/360_vol4_vertical.avif",
     "date": "26th April 2026",
     "status": "open",
     "bookingLink": "https://allevents.in/new-delhi/360-hip-hop-vol04-dark-room-edition-tickets/80003000510252",
@@ -418,7 +418,7 @@
       "venueLink": "https://maps.app.goo.gl/9Jm35YXJ3HE1nEi27",
       "detailsImage": {
         "landscape": "assets/events/360_vol4_horizontal.jpg",
-        "portrait": "assets/events/360_vol4_vertical.jpg"
+        "portrait": "assets/events/360_vol4_vertical.avif"
       },
       "aboutEvent": "360 HIP HOP is an inspirational hip hop series by TEAM GLORIX covering some of the best underground talents from Delhi and other regions. Volume 4 brings handpicked artists, DJs and a tight crowd into a 360 degree live experience. The format breaks the barrier between artists and the audience, with performers delivering their sets up close for a high energy connection.",
       "highlights": [
