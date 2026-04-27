@@ -62,5 +62,21 @@
   {
     "name": "AllEvents",
     "logo": "assets/brands/AllEvents.png"
+  },
+  {
+    "name": "ठ'nda Drinks",
+    "logo": "assets/brands/ठ'nda Drinks.avif"
+  },
+  {
+    "name": "Reset Cafe",
+    "logo": "assets/brands/Reset Cafe.avif"
+  },
+  {
+    "name": "AJKICKS",
+    "logo": "assets/brands/AJKICKS.avif"
+  },
+  {
+    "name": "Terascene",
+    "logo": "assets/brands/Terascene.avif"
   }
 ]
