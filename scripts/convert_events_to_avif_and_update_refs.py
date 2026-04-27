@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Convert images under assets/events to AVIF and update repository references.
+"""Convert images under assets/ to AVIF and update repository references.
 
 This script:
-  1) Walks assets/events recursively and converts each source image to a sibling .avif file
+  1) Walks assets/ recursively and converts each source image to a sibling .avif file
      using ImageMagick's `magick` command.
-    2) Rewrites text references in the repository so paths like assets/events/foo.avif remain
-     assets/events/foo.avif.
+    2) Rewrites text references in the repository so paths like assets/foo.avif remain
+     assets/foo.avif.
 
 Usage:
   python scripts/convert_events_to_avif_and_update_refs.py
@@ -13,7 +13,7 @@ Usage:
 
 Options:
   --quality          AVIF quality passed to ImageMagick (default: 50)
-  --events-root      Folder to scan for source images (default: assets/events)
+  --assets-root      Folder to scan for source images (default: assets)
   --overwrite        Recreate .avif files even when they already exist
   --dry-run          Show intended conversions and edits without writing changes
   --no-update-refs   Convert files but do not rewrite text references
@@ -39,8 +39,8 @@ TEXT_EXTENSIONS = {
     ".txt",
 }
 
-EVENT_IMAGE_REF_PATTERN = re.compile(
-    r"assets/events/([^\"'\n\r]+?)\.(jpg|jpeg|png|JPG|JPEG|PNG)"
+IMAGE_REF_PATTERN = re.compile(
+    r"assets/([^\"'\n\r]+?)\.(jpg|jpeg|png|JPG|JPEG|PNG)"
 )
 
 
@@ -102,10 +102,10 @@ def update_text_file(path: Path, replacements: Dict[str, str], dry_run: bool) ->
             updated = updated.replace(source, target)
             changed = True
 
-    def replace_event_image(match: re.Match[str]) -> str:
-        return f"assets/events/{match.group(1)}.avif"
+    def replace_image(match: re.Match[str]) -> str:
+        return f"assets/{match.group(1)}.avif"
 
-    regex_updated = EVENT_IMAGE_REF_PATTERN.sub(replace_event_image, updated)
+    regex_updated = IMAGE_REF_PATTERN.sub(replace_image, updated)
     if regex_updated != updated:
         updated = regex_updated
         changed = True
@@ -134,22 +134,22 @@ def iter_text_files(root: Path) -> Iterable[Path]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--quality", type=int, default=50)
-    parser.add_argument("--events-root", default="assets/events")
+    parser.add_argument("--assets-root", default="assets")
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--no-update-refs", action="store_true")
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parent.parent
-    events_root = (repo_root / args.events_root).resolve()
+    assets_root = (repo_root / args.assets_root).resolve()
 
-    if not events_root.exists():
-        print(f"Events folder not found: {events_root}")
+    if not assets_root.exists():
+        print(f"Assets folder not found: {assets_root}")
         return 1
 
-    replacements = collect_image_map(repo_root, events_root)
+    replacements = collect_image_map(repo_root, assets_root)
     if not replacements:
-        print(f"No source images found in {events_root}")
+        print(f"No source images found in {assets_root}")
         return 0
 
     converted = 0

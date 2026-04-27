@@ -32,8 +32,8 @@ def get_group_key(src: str) -> str:
     """Return a grouping key for a gallery item based on its folder.
 
     For example:
-      assets/gallery/bali photos/IMG.jpg -> 'bali photos'
-      assets/gallery/IMG.jpg -> 'root'
+      assets/gallery/bali photos/IMG.avif -> 'bali photos'
+      assets/gallery/IMG.avif -> 'root'
 
     """
     # Normalize to forward slashes for consistent splitting.
