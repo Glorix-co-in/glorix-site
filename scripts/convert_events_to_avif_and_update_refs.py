@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import Dict, Iterable
 
 
-SOURCE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG"}
+SOURCE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"}
 TEXT_EXTENSIONS = {
     ".css",
     ".html",
@@ -40,7 +40,7 @@ TEXT_EXTENSIONS = {
 }
 
 IMAGE_REF_PATTERN = re.compile(
-    r"assets/([^\"'\n\r]+?)\.(jpg|jpeg|png|JPG|JPEG|PNG)"
+    r"assets/([^\"'\n\r]+?)\.(jpg|jpeg|png|webp|JPG|JPEG|PNG|WEBP)"
 )
 
 
