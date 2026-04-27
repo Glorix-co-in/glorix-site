@@ -7,7 +7,11 @@
     "status": "closed",
     "bookingLink": "null",
     "details": {
-      "tags": ["Live Performance", "360 HH", "DJ Sets"],
+      "tags": [
+        "Live Performance",
+        "360 HH",
+        "DJ Sets"
+      ],
       "dateRange": null,
       "time": "4:00 PM onwards",
       "duration": "3 Hours",
@@ -54,7 +58,11 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": ["Live Performance", "Hindi", "English"],
+      "tags": [
+        "Live Performance",
+        "Hindi",
+        "English"
+      ],
       "dateRange": null,
       "time": "6:00 PM",
       "duration": "4 Hours",
@@ -95,7 +103,11 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": ["Music Festival", "Multi-Artist", "Cultural Event"],
+      "tags": [
+        "Music Festival",
+        "Multi-Artist",
+        "Cultural Event"
+      ],
       "dateRange": null,
       "time": "4:00 PM",
       "duration": "5 Hours",
@@ -152,7 +164,11 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": ["Rap Event", "Live Music", "Party"],
+      "tags": [
+        "Rap Event",
+        "Live Music",
+        "Party"
+      ],
       "date": "20th September 2025",
       "dateRange": null,
       "time": "4:00 PM",
@@ -210,7 +226,11 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": ["Rap Event", "Underground Music", "Live Performance"],
+      "tags": [
+        "Rap Event",
+        "Underground Music",
+        "Live Performance"
+      ],
       "dateRange": null,
       "time": "3:00 PM",
       "duration": "6 Hours",
@@ -265,7 +285,11 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": ["Live Performance", "Success Party", "DJ Sets"],
+      "tags": [
+        "Live Performance",
+        "Success Party",
+        "DJ Sets"
+      ],
       "dateRange": null,
       "time": "5:00 PM onwards",
       "duration": "3 Hours",
@@ -315,7 +339,11 @@
       }
     ],
     "details": {
-      "tags": ["Live Performance", "360 HH", "DJ Sets"],
+      "tags": [
+        "Live Performance",
+        "360 HH",
+        "DJ Sets"
+      ],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -367,7 +395,11 @@
       }
     ],
     "details": {
-      "tags": ["Live Performance", "360 HH", "DJ Sets"],
+      "tags": [
+        "Live Performance",
+        "360 HH",
+        "DJ Sets"
+      ],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -404,10 +436,14 @@
     "title": "360 HIP HOP VOL 4",
     "image": "assets/events/360_vol4_vertical.avif",
     "date": "26th April 2026",
-    "status": "sold-out",
-    "bookingLink": "https://allevents.in/new-delhi/360-hip-hop-vol04-dark-room-edition-tickets/80003000510252",
+    "status": "closed",
+    "bookingLink": null,
     "details": {
-      "tags": ["Live Performance", "360 HH", "DJ Sets"],
+      "tags": [
+        "Live Performance",
+        "360 HH",
+        "DJ Sets"
+      ],
       "dateRange": null,
       "time": "4:00 PM onwards",
       "duration": "4 Hours",
@@ -428,7 +464,9 @@
         "Live DJ sets"
       ],
       "priceFrom": 0,
-      "defaultArtists": ["Saksham"],
+      "defaultArtists": [
+        "Saksham"
+      ],
       "artists": [
         "Jaze",
         "BC Gang",
@@ -452,7 +490,11 @@
     "status": "hidden",
     "bookingLink": null,
     "details": {
-      "tags": ["DJ Night", "Live Performance", "Multi-Genre"],
+      "tags": [
+        "DJ Night",
+        "Live Performance",
+        "Multi-Genre"
+      ],
       "dateRange": null,
       "time": "8:00 PM onwards",
       "duration": "6 Hours",
@@ -473,7 +515,9 @@
         "Exclusive beats and remixes"
       ],
       "priceFrom": 999,
-      "artists": ["DJ Pratham"]
+      "artists": [
+        "DJ Pratham"
+      ]
     }
   },
   {
@@ -484,9 +528,16 @@
     "status": "hidden",
     "bookingLink": null,
     "isSplitEvent": true,
-    "variantIds": ["dark-room-vol1", "dark-room-vol2"],
+    "variantIds": [
+      "dark-room-vol1",
+      "dark-room-vol2"
+    ],
     "details": {
-      "tags": ["Dark Room", "Live Performance", "Underground"],
+      "tags": [
+        "Dark Room",
+        "Live Performance",
+        "Underground"
+      ],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -519,7 +570,10 @@
     "bookingLink": null,
     "hiddenFromBookings": true,
     "details": {
-      "tags": ["Dark Room", "Live Performance"],
+      "tags": [
+        "Dark Room",
+        "Live Performance"
+      ],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -533,9 +587,17 @@
         "portrait": "assets/events/dark room vol 1.avif"
       },
       "aboutEvent": "Dark Room by Glorix is an underground hip-hop experience where low lighting, heavy bass, and raw energy take over no distractions, just pure vibe. The space stays dim with flashes, strobes, and blackout moments synced to beat drops, while artists perform unpredictably from within the crowd, creating a sense of chaos and immersion. It’s not just a show, it’s a high-intensity atmosphere where the focus is on music, movement, and connection no lights, no limits, just rage.",
-      "highlights": ["Spotlight freestyle", "VIP vibes", "Unique visuals"],
+      "highlights": [
+        "Spotlight freestyle",
+        "VIP vibes",
+        "Unique visuals"
+      ],
       "priceFrom": 399,
-      "artists": ["Artist A", "Artist B", "Artist C"]
+      "artists": [
+        "Artist A",
+        "Artist B",
+        "Artist C"
+      ]
     }
   },
   {
@@ -547,7 +609,10 @@
     "bookingLink": null,
     "hiddenFromBookings": true,
     "details": {
-      "tags": ["Dark Room", "Live Performance"],
+      "tags": [
+        "Dark Room",
+        "Live Performance"
+      ],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -561,9 +626,17 @@
         "portrait": "assets/events/dark room volume 2.avif"
       },
       "aboutEvent": "Dark Room by Glorix is an underground hip-hop experience where low lighting, heavy bass, and raw energy take over no distractions, just pure vibe. The space stays dim with flashes, strobes, and blackout moments synced to beat drops, while artists perform unpredictably from within the crowd, creating a sense of chaos and immersion. It’s not just a show, it’s a high-intensity atmosphere where the focus is on music, movement, and connection no lights, no limits, just rage.",
-      "highlights": ["Extended set", "Guest DJs", "Immersive vibe"],
+      "highlights": [
+        "Extended set",
+        "Guest DJs",
+        "Immersive vibe"
+      ],
       "priceFrom": 399,
-      "artists": ["Artist X", "Artist Y", "Artist Z"]
+      "artists": [
+        "Artist X",
+        "Artist Y",
+        "Artist Z"
+      ]
     }
   },
   {
@@ -588,9 +661,16 @@
       }
     ],
     "details": {
-      "tags": ["Rap Event", "Live Music", "DJ Sets"],
+      "tags": [
+        "Rap Event",
+        "Live Music",
+        "DJ Sets"
+      ],
       "dateRange": null,
-      "time": ["02:00 PM", "05:00 PM"],
+      "time": [
+        "02:00 PM",
+        "05:00 PM"
+      ],
       "duration": "6 Hours",
       "ageLimit": "16+",
       "languages": "Hindi, English",
