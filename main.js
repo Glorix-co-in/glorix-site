@@ -654,5 +654,26 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.removeChild(tempLink);
       });
     }
+
+    // Event Announcement Popup
+    const eventPopup = document.getElementById("eventPopup");
+    const closeEventPopup = document.getElementById("closeEventPopup");
+    if (eventPopup && closeEventPopup) {
+      const shownKey = "glory26_popup_shown";
+      if (!sessionStorage.getItem(shownKey)) {
+        setTimeout(() => {
+          eventPopup.showModal();
+          sessionStorage.setItem(shownKey, "1");
+        }, 1500);
+      }
+      closeEventPopup.addEventListener("click", () => {
+        eventPopup.close();
+      });
+      eventPopup.addEventListener("click", (e) => {
+        if (e.target === eventPopup) {
+          eventPopup.close();
+        }
+      });
+    }
   }
 });

@@ -885,3 +885,97 @@
   opacity: 0;
   visibility: hidden;
 }
+
+/* ===== Event Popup ===== */
+.event-popup {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: 420px;
+  width: 90%;
+}
+
+.event-popup::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.event-popup__content {
+  background: #111;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #222;
+}
+
+.event-popup__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.event-popup__close:hover {
+  background: rgba(255, 191, 0, 0.8);
+  color: #000;
+}
+
+.event-popup__image {
+  width: 100%;
+  display: block;
+}
+
+.event-popup__info {
+  padding: 20px;
+  text-align: center;
+}
+
+.event-popup__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffbf00;
+  margin: 0 0 10px;
+}
+
+.event-popup__date,
+.event-popup__venue {
+  font-size: 14px;
+  color: #ccc;
+  margin: 0 0 6px;
+}
+
+.event-popup__booking {
+  font-size: 13px;
+  color: #ffbf00;
+  margin: 12px 0 16px;
+  font-weight: 600;
+}
+
+.event-popup__cta {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: #ffbf00;
+  color: #000;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background 0.2s;
+}
+
+.event-popup__cta:hover {
+  background: #fff;
+}
