@@ -664,6 +664,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const shownKey = "glory26_popup_shown";
     let countdownInterval;
 
+    // Force the right column to the popup's visible height and let it scroll
+    // internally, so the Book Now button is always reachable instead of being
+    // clipped by the content's overflow:hidden when the left image is tall.
+    const popupContent = eventPopup.querySelector(".event-popup__content");
+    const popupRight = eventPopup.querySelector(".event-popup__right");
+    const fitPopupRightColumn = () => {
+      if (!popupContent || !popupRight) return;
+      if (!eventPopup.open) return;
+      popupRight.style.height = popupContent.clientHeight + "px";
+      popupRight.style.overflowY = "auto";
+    };
+
+
     const startCountdownTimer = () => {
       const countdownElements = {
         days: document.getElementById("countdownDays"),
@@ -716,8 +729,11 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(() => {
         eventPopup.showModal();
         sessionStorage.setItem(shownKey, "1");
+        fitPopupRightColumn();
       }, 300);
     }
+
+    window.addEventListener("resize", fitPopupRightColumn);
 
     closeEventPopup.addEventListener("click", () => {
       eventPopup.close();
