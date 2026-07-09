@@ -664,7 +664,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
           eventPopup.showModal();
           sessionStorage.setItem(shownKey, "1");
-        }, 1500);
+        }, 300);
       }
       closeEventPopup.addEventListener("click", () => {
         eventPopup.close();
