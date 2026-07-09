@@ -10,6 +10,12 @@
   margin-block: 15px 10px;
 }
 
+@media (min-width: 769px) {
+  .events-section .section-title:first-child {
+    margin-block: 8px 0px;
+  }
+}
+
 .section-title.past-title {
   margin-top: 60px;
 }
