@@ -444,6 +444,10 @@ body {
   transform: none;
 }
 
+.book-now-btn.full-width {
+  width: 100%;
+}
+
 /* ===== Loading State ===== */
 .loading {
   display: flex;

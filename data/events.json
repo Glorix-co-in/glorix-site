@@ -1,5 +1,42 @@
 [
   {
+    "id": "glory-26",
+    "title": "GLORY\"26 : The Big Line-Up !",
+    "image": "assets/poster2.avif",
+    "date": "31st July 2026",
+    "status": "soon",
+    "bookingLink": null,
+    "details": {
+      "tags": [
+        "Concert",
+        "Music",
+        "Performances"
+      ],
+      "dateRange": null,
+      "time": "05:00 - 10:00 PM",
+      "duration": "4 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi",
+      "genre": "Concert, Music, Performances",
+      "venue": "Start Studios : Ghitorni",
+      "venueLink": "https://maps.app.goo.gl/e4xrFFMLuTFGuybz8",
+      "detailsImage": {
+        "landscape": "assets/poster2.avif",
+        "portrait": "assets/poster2.avif"
+      },
+      "aboutEvent": "GLORY'26 brings you The Big Line-Up! An electrifying concert experience featuring top artists and unforgettable performances. Get ready for a night of music, energy, and pure entertainment.",
+      "highlights": [
+        "Live concert performances",
+        "Top artists lineup",
+        "Premium sound experience",
+        "Unforgettable vibes"
+      ],
+      "priceFrom": 499,
+      "artists": [],
+      "bookingOpensAt": "11 July, 11:11 AM"
+    }
+  },
+  {
     "id": "360-hiphop-v1",
     "title": "360 HIP HOP VOL 1",
     "image": "assets/events/360_vertical.avif",

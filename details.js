@@ -329,15 +329,23 @@ function populateEventDetails(event) {
     }
   } else if (status === "soon") {
     if (rzpContainer) rzpContainer.style.display = "none";
+    const bookingOpensAt = event.details?.bookingOpensAt;
+    const priceInfo = document.querySelector(".price-info");
+    if (bookingOpensAt && priceInfo) {
+      priceInfo.style.display = "none";
+    }
     if (availability) {
-      availability.textContent = "Opening Soon";
+      availability.textContent = bookingOpensAt ? `Bookings open ${bookingOpensAt}` : "Opening Soon";
       availability.className = "availability soon";
     }
     if (bookNowBtn) {
       bookNowBtn.style.display = "block";
-      bookNowBtn.textContent = "Opening Soon";
+      bookNowBtn.textContent = bookingOpensAt ? `Bookings open ${bookingOpensAt}` : "Opening Soon";
       bookNowBtn.disabled = true;
       bookNowBtn.classList.add("disabled");
+      if (bookingOpensAt) {
+        bookNowBtn.classList.add("full-width");
+      }
     }
   } else {
     if (rzpContainer) rzpContainer.style.display = "none";
