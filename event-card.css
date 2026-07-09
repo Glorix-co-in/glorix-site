@@ -131,10 +131,12 @@
 .event-card--featured {
   grid-column: 1 / -1;
   max-width: 100%;
+  max-height: 350px;
 }
 
 .event-card--featured .event-card__image {
   aspect-ratio: 21 / 9;
+  max-height: 200px;
 }
 
 @media (max-width: 768px) {
