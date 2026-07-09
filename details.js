@@ -111,6 +111,16 @@ function populateEventArtists(event, artistsData) {
 
   if (!section || !container) return;
 
+  if (event.details?.artistsRevealMessage) {
+    section.style.display = "block";
+    container.innerHTML = `
+      <div class="artists-reveal-soon">
+        ${event.details.artistsRevealMessage}
+      </div>
+    `;
+    return;
+  }
+
   const defaultArtists = event.details?.defaultArtists || [
     "Saksham",
     "Nagity",
@@ -251,6 +261,7 @@ function populateEventDetails(event) {
   const aboutText = document.getElementById("aboutText");
   if (aboutText) {
     aboutText.textContent = details.aboutEvent;
+    setupAboutReadMore();
   }
 
   // Price
@@ -276,6 +287,7 @@ function populateEventDetails(event) {
   const availability = document.getElementById("availability");
   const bookNowBtn = document.getElementById("bookNowBtn");
   const rzpContainer = document.getElementById("razorpayButtonContainer");
+  const stickyBar = document.querySelector(".sticky-bottom-bar");
 
   const status = event.status || "closed";
   const hasBookingMethod =
@@ -305,6 +317,8 @@ function populateEventDetails(event) {
     }
 
     if (bookNowBtn) {
+      bookNowBtn.classList.remove("full-width");
+      if (stickyBar) stickyBar.classList.remove("sticky-bottom-bar--full-action");
       if (isSoldOut) {
         bookNowBtn.textContent = "Sold Out";
         bookNowBtn.disabled = true;
@@ -345,6 +359,7 @@ function populateEventDetails(event) {
       bookNowBtn.classList.add("disabled");
       if (bookingOpensAt) {
         bookNowBtn.classList.add("full-width");
+        if (stickyBar) stickyBar.classList.add("sticky-bottom-bar--full-action");
       }
     }
   } else {
@@ -354,11 +369,48 @@ function populateEventDetails(event) {
       availability.className = "availability closed";
     }
     if (bookNowBtn) {
+      bookNowBtn.classList.remove("full-width");
+      if (stickyBar) stickyBar.classList.remove("sticky-bottom-bar--full-action");
       bookNowBtn.textContent = "Bookings Closed";
       bookNowBtn.disabled = true;
       bookNowBtn.classList.add("disabled");
     }
   }
+}
+
+function setupAboutReadMore() {
+  const aboutText = document.getElementById("aboutText");
+  const readMore = document.getElementById("aboutReadMore");
+
+  if (!aboutText || !readMore) return;
+
+  aboutText.classList.remove("is-collapsed");
+  readMore.classList.remove("is-visible");
+  readMore.textContent = "READ MORE";
+  readMore.onclick = null;
+
+  const updateReadMoreState = () => {
+    aboutText.classList.add("is-collapsed");
+
+    const computedStyle = window.getComputedStyle(aboutText);
+    const lineHeight = parseFloat(computedStyle.lineHeight);
+    const lineCount = Math.round(aboutText.scrollHeight / lineHeight);
+
+    if (lineCount <= 5) {
+      aboutText.classList.remove("is-collapsed");
+      readMore.classList.remove("is-visible");
+      return;
+    }
+
+    readMore.classList.add("is-visible");
+    readMore.onclick = () => {
+      aboutText.classList.remove("is-collapsed");
+      readMore.classList.remove("is-visible");
+    };
+  };
+
+  requestAnimationFrame(updateReadMoreState);
+  setTimeout(updateReadMoreState, 100);
 }
 
 function showError(message) {

@@ -369,18 +369,20 @@
         </button>
 
         <div class="event-popup__left">
-          <img
-            src="assets/poster2.avif"
-            alt="GLORY'26"
-            class="event-popup__image"
-          />
+          <picture>
+            <source
+              srcset="assets/poster2_horizontal.avif"
+              media="(max-width: 640px)"
+            />
+            <img
+              src="assets/poster2.avif"
+              alt="GLORY'26"
+              class="event-popup__image"
+            />
+          </picture>
         </div>
 
         <div class="event-popup__right">
-          <div class="event-popup__tag">
-            <i class="fas fa-crown"></i> LINEUP REVEAL EVENT
-          </div>
-
           <h2 class="event-popup__title" id="eventPopupTitle">
             <span>GLORY'26 :</span><br /><span
               class="event-popup__title-highlight"

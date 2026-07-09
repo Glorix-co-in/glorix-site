@@ -240,6 +240,33 @@ body {
   font-size: 14px;
   color: #ccc;
   line-height: 1.7;
+  white-space: pre-line;
+}
+
+.about-text.is-collapsed {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
+.about-read-more {
+  display: none;
+  margin-top: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffbf00;
+  font-family: "Inter", "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.about-read-more.is-visible {
+  display: inline-flex;
 }
 
 /* ===== Artists Section ===== */
@@ -287,6 +314,25 @@ body {
   gap: 20px;
   padding: 10px 0;
   width: max-content;
+}
+
+.artists-reveal-soon {
+  width: min(100%, 520px);
+  padding: 22px 24px;
+  border: 1px solid rgba(255, 191, 0, 0.45);
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, rgba(255, 191, 0, 0.1), rgba(17, 24, 39, 0.55)),
+    #0d0d0d;
+  color: #ffcf45;
+  font-family: "Inter", "Open Sans", sans-serif;
+  font-size: clamp(1.1rem, 3vw, 1.45rem);
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.26);
 }
 
 .event-artist-card {
@@ -445,6 +491,24 @@ body {
 }
 
 .book-now-btn.full-width {
+  width: 100%;
+}
+
+.sticky-bottom-bar:has(.book-now-btn.full-width) {
+  justify-content: stretch;
+}
+
+.sticky-bottom-bar:has(.book-now-btn.full-width) .booking-action-wrapper {
+  flex: 1 1 100%;
+  width: 100%;
+}
+
+.sticky-bottom-bar--full-action {
+  justify-content: stretch;
+}
+
+.sticky-bottom-bar--full-action .booking-action-wrapper {
+  flex: 1 1 100%;
   width: 100%;
 }
 
