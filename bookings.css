@@ -47,7 +47,7 @@
 
 @media (max-width: 480px) {
   .bookings-hero {
-    min-height: 80px;
+  min-height: 70px;
   }
 
   .bookings-hero__title {
