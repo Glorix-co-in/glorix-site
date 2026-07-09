@@ -353,18 +353,120 @@
     </main>
 
     <!-- Event Announcement Popup -->
-    <dialog id="eventPopup" class="event-popup">
+    <dialog
+      id="eventPopup"
+      class="event-popup"
+      aria-labelledby="eventPopupTitle"
+    >
       <div class="event-popup__content">
-        <button class="event-popup__close" id="closeEventPopup">
+        <button
+          class="event-popup__close"
+          id="closeEventPopup"
+          type="button"
+          aria-label="Close event announcement"
+        >
           <i class="fas fa-times"></i>
         </button>
-        <img src="assets/poster2.avif" alt="GLORY'26" class="event-popup__image" />
-        <div class="event-popup__info">
-          <h2 class="event-popup__title">GLORY'26 : The Big Line-Up !</h2>
-          <p class="event-popup__date">31st July 2026 | 05:00 - 10:00 PM</p>
-          <p class="event-popup__venue">Start Studios : Ghitorni</p>
-          <p class="event-popup__booking">Bookings open 11 July, 11:11 AM</p>
-          <a href="details.html?id=glory-26" class="event-popup__cta">Book Now</a>
+
+        <div class="event-popup__left">
+          <img
+            src="assets/poster2.avif"
+            alt="GLORY'26"
+            class="event-popup__image"
+          />
+        </div>
+
+        <div class="event-popup__right">
+          <div class="event-popup__tag">
+            <i class="fas fa-crown"></i> LINEUP REVEAL EVENT
+          </div>
+
+          <h2 class="event-popup__title" id="eventPopupTitle">
+            <span>GLORY'26 :</span><br /><span
+              class="event-popup__title-highlight"
+              >THE BIG LINE-UP!</span
+            >
+          </h2>
+
+          <p class="event-popup__description">
+            The stage is set. The names are locked in. Be the first to witness
+            the ultimate rap experience.
+          </p>
+
+          <div class="event-popup__meta">
+            <div class="event-popup__meta-item">
+              <i class="fas fa-calendar"></i>
+              <div class="event-popup__meta-copy">
+                <div class="event-popup__meta-label">31st July 2026</div>
+              </div>
+              <div class="event-popup__meta-time">05:00 - 10:00 PM</div>
+            </div>
+
+            <div class="event-popup__meta-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="event-popup__meta-copy">
+                <div class="event-popup__meta-label">
+                  Start Studios - Ghitorni
+                </div>
+              </div>
+            </div>
+
+            <div class="event-popup__meta-item">
+              <i class="fas fa-clock"></i>
+              <div class="event-popup__meta-copy">
+                <div class="event-popup__meta-label">Bookings open</div>
+              </div>
+              <div class="event-popup__meta-highlight">11 July, 11:11 AM</div>
+            </div>
+          </div>
+
+          <div class="event-popup__countdown-container">
+            <div class="event-popup__countdown-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="event-popup__countdown-copy">
+              <div class="event-popup__countdown-label">MARK YOUR CALENDAR</div>
+              <div class="event-popup__countdown-label-sub">
+                Bookings open in
+              </div>
+            </div>
+            <div class="event-popup__countdown" id="eventCountdown">
+              <div class="event-popup__countdown-item">
+                <div class="event-popup__countdown-value" id="countdownDays">
+                  09
+                </div>
+                <div class="event-popup__countdown-label-small">DAYS</div>
+              </div>
+              <div class="event-popup__countdown-item">
+                <div class="event-popup__countdown-value" id="countdownHours">
+                  23
+                </div>
+                <div class="event-popup__countdown-label-small">HRS</div>
+              </div>
+              <div class="event-popup__countdown-item">
+                <div class="event-popup__countdown-value" id="countdownMins">
+                  59
+                </div>
+                <div class="event-popup__countdown-label-small">MINS</div>
+              </div>
+              <div class="event-popup__countdown-item">
+                <div class="event-popup__countdown-value" id="countdownSecs">
+                  12
+                </div>
+                <div class="event-popup__countdown-label-small">SECS</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-popup__buttons">
+            <a
+              href="details.html?id=glory-26"
+              class="event-popup__btn event-popup__btn--primary"
+            >
+              <span>BOOK NOW</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
       </div>
     </dialog>

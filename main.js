@@ -654,26 +654,79 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.removeChild(tempLink);
       });
     }
+  }
 
-    // Event Announcement Popup
-    const eventPopup = document.getElementById("eventPopup");
-    const closeEventPopup = document.getElementById("closeEventPopup");
-    if (eventPopup && closeEventPopup) {
-      const shownKey = "glory26_popup_shown";
-      if (!sessionStorage.getItem(shownKey)) {
-        setTimeout(() => {
-          eventPopup.showModal();
-          sessionStorage.setItem(shownKey, "1");
-        }, 300);
-      }
-      closeEventPopup.addEventListener("click", () => {
-        eventPopup.close();
-      });
-      eventPopup.addEventListener("click", (e) => {
-        if (e.target === eventPopup) {
-          eventPopup.close();
+  // Event Announcement Popup
+  const eventPopup = document.getElementById("eventPopup");
+  const closeEventPopup = document.getElementById("closeEventPopup");
+
+  if (eventPopup && closeEventPopup) {
+    const shownKey = "glory26_popup_shown";
+    let countdownInterval;
+
+    const startCountdownTimer = () => {
+      const countdownElements = {
+        days: document.getElementById("countdownDays"),
+        hours: document.getElementById("countdownHours"),
+        mins: document.getElementById("countdownMins"),
+        secs: document.getElementById("countdownSecs"),
+      };
+
+      const updateCountdown = () => {
+        const targetDate = new Date("2026-07-11T11:11:00").getTime();
+        const now = Date.now();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+          Object.values(countdownElements).forEach((element) => {
+            if (element) element.textContent = "00";
+          });
+          return;
         }
-      });
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        if (countdownElements.days) {
+          countdownElements.days.textContent = String(days).padStart(2, "0");
+        }
+        if (countdownElements.hours) {
+          countdownElements.hours.textContent = String(hours).padStart(2, "0");
+        }
+        if (countdownElements.mins) {
+          countdownElements.mins.textContent = String(minutes).padStart(2, "0");
+        }
+        if (countdownElements.secs) {
+          countdownElements.secs.textContent = String(seconds).padStart(2, "0");
+        }
+      };
+
+      updateCountdown();
+      clearInterval(countdownInterval);
+      countdownInterval = setInterval(updateCountdown, 1000);
+    };
+
+    startCountdownTimer();
+
+    if (!sessionStorage.getItem(shownKey)) {
+      setTimeout(() => {
+        eventPopup.showModal();
+        sessionStorage.setItem(shownKey, "1");
+      }, 300);
     }
+
+    closeEventPopup.addEventListener("click", () => {
+      eventPopup.close();
+    });
+
+    eventPopup.addEventListener("click", (e) => {
+      if (e.target === eventPopup) {
+        eventPopup.close();
+      }
+    });
   }
 });
