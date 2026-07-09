@@ -389,6 +389,17 @@ function setupAboutReadMore() {
   readMore.textContent = "READ MORE";
   readMore.onclick = null;
 
+  const collapse = () => {
+    aboutText.classList.add("is-collapsed");
+    readMore.textContent = "READ MORE";
+    aboutText.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  };
+
+  const expand = () => {
+    aboutText.classList.remove("is-collapsed");
+    readMore.textContent = "READ LESS";
+  };
+
   const updateReadMoreState = () => {
     aboutText.classList.add("is-collapsed");
 
@@ -403,9 +414,14 @@ function setupAboutReadMore() {
     }
 
     readMore.classList.add("is-visible");
+    readMore.textContent = "READ MORE";
     readMore.onclick = () => {
-      aboutText.classList.remove("is-collapsed");
-      readMore.classList.remove("is-visible");
+      const isCollapsed = aboutText.classList.contains("is-collapsed");
+      if (isCollapsed) {
+        expand();
+      } else {
+        collapse();
+      }
     };
   };
 
