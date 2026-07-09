@@ -127,16 +127,13 @@
   color: #000;
 }
 
-/* Featured event card - full width */
+/* Featured event card - wider on desktop */
 .event-card--featured {
-  grid-column: 1 / -1;
-  max-width: 100%;
-  max-height: 350px;
+  grid-column: span 2;
 }
 
 .event-card--featured .event-card__image {
-  aspect-ratio: 21 / 9;
-  max-height: 200px;
+  aspect-ratio: 3 / 2;
 }
 
 @media (max-width: 768px) {
@@ -270,6 +267,10 @@
     background: #ffbf00;
     color: #000;
     box-shadow: 0 4px 12px rgba(255, 191, 0, 0.3);
+  }
+
+  .event-card--featured {
+    grid-column: 1 / -1;
   }
 
   .event-card--featured .event-card-mobile__image {
