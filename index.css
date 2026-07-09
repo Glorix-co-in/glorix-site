@@ -911,8 +911,6 @@
   position: relative;
   display: grid;
   grid-template-columns: minmax(420px, 0.92fr) minmax(430px, 1.08fr);
-  height: min(740px, calc(100vh - 96px));
-  min-height: 0;
   max-height: min(740px, calc(100vh - 96px));
   overflow: hidden;
   border: 1px solid rgba(120, 153, 218, 0.75);
@@ -961,7 +959,6 @@
 
 .event-popup__left {
   position: relative;
-  min-height: 0;
   border-right: 2px solid rgba(130, 153, 193, 0.32);
   background: #02050b;
 }
@@ -970,9 +967,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  max-height: min(740px, calc(100vh - 96px));
   object-fit: contain;
-  object-position: center top;
 }
 
 .event-popup__left picture {
@@ -1270,15 +1265,15 @@
 
   .event-popup__left {
     flex: 1 1 auto;
-    height: auto;
-    min-height: 220px;
+    /* height: auto; */
+    /* min-height: 220px; */
     border-bottom: 1px solid rgba(130, 153, 193, 0.32);
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   .event-popup__image {
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center top;
   }
 
