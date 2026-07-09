@@ -110,9 +110,16 @@ document.addEventListener("DOMContentLoaded", function () {
         // Replace image with video
         imgContainer.replaceChild(video, imageEl);
       } else {
-        imageEl.src = event.image;
-        imageEl.alt = event.title;
-        imgContainer.style.setProperty("--bg-image", `url('${event.image}')`);
+        // Edge case: GLORY'26 uses horizontal poster
+        if (event.id === "glory-26") {
+          imageEl.src = "assets/poster2_horizontal.avif";
+          imgContainer.style.setProperty("--bg-image", "url('assets/poster2_horizontal.avif')");
+          imgContainer.closest(`${prefix}`)?.classList.add("event-card--featured");
+        } else {
+          imageEl.src = event.image;
+          imageEl.alt = event.title;
+          imgContainer.style.setProperty("--bg-image", `url('${event.image}')`);
+        }
       }
 
       clone.querySelector(`${prefix}__title`).textContent = event.title;

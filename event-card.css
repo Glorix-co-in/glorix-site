@@ -127,6 +127,16 @@
   color: #000;
 }
 
+/* Featured event card - full width */
+.event-card--featured {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
+.event-card--featured .event-card__image {
+  aspect-ratio: 16 / 9;
+}
+
 @media (max-width: 768px) {
   .events-section {
     padding-block: 0;
