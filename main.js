@@ -686,7 +686,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       const updateCountdown = () => {
-        const targetDate = new Date("2026-07-11T11:11:00").getTime();
+        const targetDate = new Date("2026-07-11T23:11:00").getTime();
         const now = Date.now();
         const distance = targetDate - now;
 
