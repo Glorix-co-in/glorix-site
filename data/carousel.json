@@ -1,7 +1,12 @@
 [
   {
-    "desktopImage": "assets/poster2_horizontal.avif",
-    "mobileImage": "assets/poster2.avif",
-    "alt": "Latest Event Poster"
+    "desktopImage": "assets/poster3.jpeg",
+    "mobileImage": "assets/poster3.jpeg",
+    "alt": "Event Poster 3"
+  },
+  {
+    "desktopImage": "assets/poster4.jpeg",
+    "mobileImage": "assets/poster4.jpeg",
+    "alt": "Event Poster 4"
   }
 ]

@@ -617,6 +617,12 @@ function updateEventMedia(event) {
     slides.push({ type: "image", src: imgSrc });
   }
 
+  if (details.carouselSlides && Array.isArray(details.carouselSlides)) {
+    details.carouselSlides.forEach((src) => {
+      if (src) slides.push({ type: "image", src });
+    });
+  }
+
   slides.forEach((slide) => {
     const slideEl = document.createElement("div");
     slideEl.className = "carousel-slide";
@@ -663,4 +669,6 @@ function updateEventMedia(event) {
     slideEl.appendChild(content);
     track.appendChild(slideEl);
   });
+
+  carouselInterval = GlorixCarousel.init(track, 3000);
 }

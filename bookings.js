@@ -112,8 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         // Edge case: GLORY'26 uses horizontal poster
         if (event.id === "glory-26") {
-          imageEl.src = "assets/poster2_horizontal.avif";
-          imgContainer.style.setProperty("--bg-image", "url('assets/poster2_horizontal.avif')");
+          imageEl.src = "assets/poster3.jpeg";
+          imgContainer.style.setProperty("--bg-image", "url('assets/poster3.jpeg')");
           imgContainer.closest(`${prefix}`)?.classList.add("event-card--featured");
         } else {
           imageEl.src = event.image;
