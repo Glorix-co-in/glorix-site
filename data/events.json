@@ -4,8 +4,8 @@
     "title": "GLORY\"26 : The Big Line-Up !",
     "image": "assets/poster3.jpeg",
     "date": "31 July 2026",
-    "status": "soon",
-    "bookingLink": null,
+    "status": "open",
+    "bookingLink": "https://all.events/go/80001978180458",
     "details": {
       "tags": [
         "Concert",
@@ -35,7 +35,8 @@
       "priceFrom": 499,
       "artists": [],
       "artistsRevealMessage": "REVEALING SOON",
-      "bookingOpensAt": "11 July, 11:11 PM"
+      "bookingOpensAt": "11 July, 11:11 PM",
+      "stageLayoutImage": "assets/event_layout.jpeg"
     }
   },
   {

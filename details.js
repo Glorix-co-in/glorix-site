@@ -68,6 +68,37 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  // Stage Layout Modal handlers
+  const stageLayoutSection = document.getElementById("stageLayoutSection");
+  const stageLayoutModal = document.getElementById("stageLayoutModal");
+  const closeStageLayout = document.getElementById("closeStageLayout");
+
+  const openStageLayout = () => {
+    stageLayoutModal.classList.add("active");
+    document.body.classList.add("modal-open");
+  };
+
+  const closeStageLayoutModal = () => {
+    stageLayoutModal.classList.remove("active");
+    document.body.classList.remove("modal-open");
+  };
+
+  if (stageLayoutSection && stageLayoutModal) {
+    stageLayoutSection.addEventListener("click", openStageLayout);
+  }
+
+  if (closeStageLayout) {
+    closeStageLayout.addEventListener("click", closeStageLayoutModal);
+  }
+
+  if (stageLayoutModal) {
+    stageLayoutModal.addEventListener("click", (e) => {
+      if (e.target === stageLayoutModal) {
+        closeStageLayoutModal();
+      }
+    });
+  }
 });
 
 async function loadEventDetails(eventId) {
@@ -280,6 +311,18 @@ function populateEventDetails(event) {
     }
     if (priceSuffix) {
       priceSuffix.style.display = isFreeEntry ? "none" : "inline";
+    }
+  }
+
+  // Stage Layout (only for events that provide a layout image)
+  const stageLayoutSection = document.getElementById("stageLayoutSection");
+  const stageLayoutImage = document.getElementById("stageLayoutImage");
+  if (stageLayoutSection && stageLayoutImage) {
+    if (details.stageLayoutImage) {
+      stageLayoutImage.src = details.stageLayoutImage;
+      stageLayoutSection.style.display = "flex";
+    } else {
+      stageLayoutSection.style.display = "none";
     }
   }
 
