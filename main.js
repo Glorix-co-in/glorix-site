@@ -670,6 +670,11 @@ document.addEventListener("DOMContentLoaded", function () {
       bookingOpenParams.get("bookingopen") === "1" ||
       bookingOpenParams.get("bookingopen") === "true";
 
+    const DETAILS_PAGE = "details.html";
+    const popupBookBtn = document.getElementById("eventPopupBookBtn");
+    const popupBookBtnText = document.getElementById("eventPopupBookBtnText");
+    const popupBookLink = "https://all.events/go/80001978180458";
+
     const startCountdownTimer = () => {
       const countdownElements = {
         days: document.getElementById("countdownDays"),
@@ -694,7 +699,22 @@ document.addEventListener("DOMContentLoaded", function () {
           if (bookingOpenLabel) bookingOpenLabel.textContent = "Bookings open now";
           const countdownLabelSub = document.getElementById("countdownLabelSub");
           if (countdownLabelSub) countdownLabelSub.textContent = "Bookings open now";
+          const bookingOpenDate = document.getElementById("bookingOpenDate");
+          if (bookingOpenDate) bookingOpenDate.style.display = "none";
+          if (popupBookBtn) {
+            popupBookBtn.href = popupBookLink;
+            popupBookBtn.target = "_blank";
+            popupBookBtn.rel = "noopener noreferrer";
+          }
+          if (popupBookBtnText) popupBookBtnText.textContent = "BOOK NOW";
           return;
+        }
+
+        // Timer still running: button redirects to details page
+        if (popupBookBtn) {
+          popupBookBtn.href = DETAILS_PAGE;
+          popupBookBtn.removeAttribute("target");
+          popupBookBtn.removeAttribute("rel");
         }
 
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -740,42 +760,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (e.target === eventPopup) {
         eventPopup.close();
       }
-    });
-  }
-
-  // ===== Home Stage Layout Box =====
-  const homeStageLayoutSection = document.getElementById("homeStageLayoutSection");
-  const homeStageLayoutModal = document.getElementById("homeStageLayoutModal");
-  const homeStageLayoutImage = document.getElementById("homeStageLayoutImage");
-  const closeHomeStageLayout = document.getElementById("closeHomeStageLayout");
-
-  const openHomeStageLayout = () => {
-    if (homeStageLayoutModal) homeStageLayoutModal.classList.add("active");
-  };
-  const closeHomeStageLayoutModal = () => {
-    if (homeStageLayoutModal) homeStageLayoutModal.classList.remove("active");
-  };
-
-  if (homeStageLayoutSection && homeStageLayoutModal && homeStageLayoutImage) {
-    fetch("data/events.json")
-      .then((response) => response.json())
-      .then((events) => {
-        if (!Array.isArray(events)) events = [];
-        const eventWithLayout = events.find((ev) => ev.details && ev.details.stageLayoutImage);
-        if (eventWithLayout) {
-          homeStageLayoutImage.src = eventWithLayout.details.stageLayoutImage;
-          homeStageLayoutSection.style.display = "flex";
-        }
-      })
-      .catch((error) => console.error("Error loading events:", error));
-
-    homeStageLayoutSection.addEventListener("click", openHomeStageLayout);
-
-    if (closeHomeStageLayout) {
-      closeHomeStageLayout.addEventListener("click", closeHomeStageLayoutModal);
-    }
-    homeStageLayoutModal.addEventListener("click", (e) => {
-      if (e.target === homeStageLayoutModal) closeHomeStageLayoutModal();
     });
   }
 });

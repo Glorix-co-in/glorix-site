@@ -125,35 +125,6 @@
         </section>
       </div>
 
-      <!-- Stage Layout Box -->
-      <section class="stage-layout-box full-bleed">
-        <div class="terms-section" id="homeStageLayoutSection" style="display: none">
-          <span class="terms-text">Stage Layout</span>
-          <i class="fas fa-chevron-right"></i>
-        </div>
-      </section>
-
-      <!-- Stage Layout Modal -->
-      <div class="modal-overlay" id="homeStageLayoutModal">
-        <div class="bottom-sheet">
-          <div class="bottom-sheet__header">
-            <h2 class="bottom-sheet__title">Stage Layout</h2>
-            <button class="bottom-sheet__close" id="closeHomeStageLayout">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-          <div class="bottom-sheet__content">
-            <img
-              id="homeStageLayoutImage"
-              class="stage-layout-image"
-              src=""
-              alt="Stage Layout"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-
       <!-- Join Family Banner -->
       <section class="join-banner full-bleed">
         <div class="join-container">
@@ -447,7 +418,7 @@
               <div class="event-popup__meta-copy">
                 <div class="event-popup__meta-label" id="bookingOpenLabel">Bookings open</div>
               </div>
-              <div class="event-popup__meta-highlight">11 July, 11:11 PM</div>
+              <div class="event-popup__meta-highlight" id="bookingOpenDate">11 July, 11:11 PM</div>
             </div>
           </div>
 
@@ -494,9 +465,10 @@
               href="https://all.events/go/80001978180458"
               target="_blank"
               rel="noopener noreferrer"
+              id="eventPopupBookBtn"
               class="event-popup__btn event-popup__btn--primary"
             >
-              <span>BOOK NOW</span>
+              <span id="eventPopupBookBtnText">BOOK NOW</span>
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>

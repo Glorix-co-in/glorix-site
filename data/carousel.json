@@ -1,7 +1,17 @@
 [
   {
-    "desktopImage": "assets/poster3_landscape.jpeg",
-    "mobileImage": "assets/poster3.jpeg",
+    "desktopImage": "assets/poster3_landscape.avif",
+    "mobileImage": "assets/poster3.avif",
     "alt": "Event Poster 3"
+  },
+  {
+    "desktopImage": "assets/poster5.avif",
+    "mobileImage": "assets/poster5.avif",
+    "alt": "Event Poster 5"
+  },
+  {
+    "desktopImage": "assets/event_layout.avif",
+    "mobileImage": "assets/event_layout.avif",
+    "alt": "Event Layout"
   }
 ]
