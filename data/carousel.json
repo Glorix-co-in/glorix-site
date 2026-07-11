@@ -3,10 +3,5 @@
     "desktopImage": "assets/poster3_landscape.jpeg",
     "mobileImage": "assets/poster3.jpeg",
     "alt": "Event Poster 3"
-  },
-  {
-    "desktopImage": "assets/poster4.jpeg",
-    "mobileImage": "assets/poster4.jpeg",
-    "alt": "Event Poster 4"
   }
 ]

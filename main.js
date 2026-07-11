@@ -664,6 +664,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const shownKey = "glory26_popup_shown";
     let countdownInterval;
 
+    // Feature flag: ?bookingopen=1 forces the finished ("Bookings open now") state
+    const bookingOpenParams = new URLSearchParams(window.location.search);
+    const forceBookingOpen =
+      bookingOpenParams.get("bookingopen") === "1" ||
+      bookingOpenParams.get("bookingopen") === "true";
+
     const startCountdownTimer = () => {
       const countdownElements = {
         days: document.getElementById("countdownDays"),
@@ -676,11 +682,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const targetDate = new Date("2026-07-11T23:11:00").getTime();
         const now = Date.now();
         const distance = targetDate - now;
+        const finished = forceBookingOpen || distance < 0;
 
-        if (distance < 0) {
-          Object.values(countdownElements).forEach((element) => {
-            if (element) element.textContent = "00";
-          });
+        if (finished) {
+          clearInterval(countdownInterval);
+          const countdownContainer = document.querySelector(
+            ".event-popup__countdown-container",
+          );
+          if (countdownContainer) countdownContainer.style.display = "none";
+          const bookingOpenLabel = document.getElementById("bookingOpenLabel");
+          if (bookingOpenLabel) bookingOpenLabel.textContent = "Bookings open now";
+          const countdownLabelSub = document.getElementById("countdownLabelSub");
+          if (countdownLabelSub) countdownLabelSub.textContent = "Bookings open now";
           return;
         }
 
@@ -727,6 +740,42 @@ document.addEventListener("DOMContentLoaded", function () {
       if (e.target === eventPopup) {
         eventPopup.close();
       }
+    });
+  }
+
+  // ===== Home Stage Layout Box =====
+  const homeStageLayoutSection = document.getElementById("homeStageLayoutSection");
+  const homeStageLayoutModal = document.getElementById("homeStageLayoutModal");
+  const homeStageLayoutImage = document.getElementById("homeStageLayoutImage");
+  const closeHomeStageLayout = document.getElementById("closeHomeStageLayout");
+
+  const openHomeStageLayout = () => {
+    if (homeStageLayoutModal) homeStageLayoutModal.classList.add("active");
+  };
+  const closeHomeStageLayoutModal = () => {
+    if (homeStageLayoutModal) homeStageLayoutModal.classList.remove("active");
+  };
+
+  if (homeStageLayoutSection && homeStageLayoutModal && homeStageLayoutImage) {
+    fetch("data/events.json")
+      .then((response) => response.json())
+      .then((events) => {
+        if (!Array.isArray(events)) events = [];
+        const eventWithLayout = events.find((ev) => ev.details && ev.details.stageLayoutImage);
+        if (eventWithLayout) {
+          homeStageLayoutImage.src = eventWithLayout.details.stageLayoutImage;
+          homeStageLayoutSection.style.display = "flex";
+        }
+      })
+      .catch((error) => console.error("Error loading events:", error));
+
+    homeStageLayoutSection.addEventListener("click", openHomeStageLayout);
+
+    if (closeHomeStageLayout) {
+      closeHomeStageLayout.addEventListener("click", closeHomeStageLayoutModal);
+    }
+    homeStageLayoutModal.addEventListener("click", (e) => {
+      if (e.target === homeStageLayoutModal) closeHomeStageLayoutModal();
     });
   }
 });
