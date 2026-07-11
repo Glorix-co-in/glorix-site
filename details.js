@@ -314,11 +314,15 @@ function populateEventDetails(event) {
     }
   }
 
-  // Stage Layout (only for events that provide a layout image)
+  // Stage Layout (only for events that provide a layout image AND bookings are open)
   const stageLayoutSection = document.getElementById("stageLayoutSection");
   const stageLayoutImage = document.getElementById("stageLayoutImage");
   if (stageLayoutSection && stageLayoutImage) {
-    if (details.stageLayoutImage) {
+    const bookingOpened =
+      window.GLORIX_CONFIG.forceOpen ||
+      (details.bookingOpensAtISO &&
+        Date.now() >= new Date(details.bookingOpensAtISO).getTime());
+    if (details.stageLayoutImage && bookingOpened) {
       stageLayoutImage.src = details.stageLayoutImage;
       stageLayoutSection.style.display = "flex";
     } else {
@@ -338,8 +342,14 @@ function populateEventDetails(event) {
       ? true
       : event.bookingOptions && event.bookingOptions.length > 0;
 
-  const isActuallyOpen =
-    status !== "closed" && status !== "soon" && hasBookingMethod;
+  const bookingOpened =
+    window.GLORIX_CONFIG.forceOpen ||
+    (details.bookingOpensAtISO &&
+      Date.now() >= new Date(details.bookingOpensAtISO).getTime());
+
+  const bookable = hasBookingMethod && status !== "closed" && status !== "sold-out";
+  const isActuallyOpen = bookable && bookingOpened;
+  const showSoonState = status === "soon" || (bookable && !bookingOpened);
   const isSoldOut = status === "sold-out";
 
   if (isActuallyOpen || isSoldOut) {
@@ -384,7 +394,7 @@ function populateEventDetails(event) {
         });
       }
     }
-  } else if (status === "soon") {
+  } else if (showSoonState) {
     if (rzpContainer) rzpContainer.style.display = "none";
     const bookingOpensAt = event.details?.bookingOpensAt;
     const priceInfo = document.querySelector(".price-info");
@@ -418,6 +428,44 @@ function populateEventDetails(event) {
       bookNowBtn.disabled = true;
       bookNowBtn.classList.add("disabled");
     }
+  }
+
+  // Live-flip to the open state if bookings open while this page is already open
+  // (no reload needed). Mirrors the active "isActuallyOpen" branch without
+  // duplicating listeners, since the soon/closed branches never attach one.
+  clearInterval(window.__glorixBookingWatcher);
+  if (!bookingOpened) {
+    let watcherWasOpen = false;
+    window.__glorixBookingWatcher = setInterval(() => {
+      if (!watcherWasOpen && window.GLORIX_CONFIG.isBookingOpen()) {
+        clearInterval(window.__glorixBookingWatcher);
+        watcherWasOpen = true;
+
+        if (availability) {
+          availability.textContent = "Available";
+          availability.className = "availability available";
+        }
+        if (bookNowBtn) {
+          bookNowBtn.textContent = "Book Now";
+          bookNowBtn.disabled = false;
+          bookNowBtn.classList.remove("disabled");
+          bookNowBtn.style.display = "block";
+          bookNowBtn.addEventListener("click", () => {
+            if (event.bookingOptions && event.bookingOptions.length > 1) {
+              window.location.href = `select-slot.html?id=${event.id}`;
+            } else {
+              window.open(event.bookingLink, "_blank");
+            }
+          });
+        }
+        if (rzpContainer) rzpContainer.style.display = "none";
+
+        if (stageLayoutSection && stageLayoutImage && details.stageLayoutImage) {
+          stageLayoutImage.src = details.stageLayoutImage;
+          stageLayoutSection.style.display = "flex";
+        }
+      }
+    }, 1000);
   }
 }
 

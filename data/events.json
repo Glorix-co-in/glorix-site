@@ -36,6 +36,7 @@
       "artists": [],
       "artistsRevealMessage": "REVEALING SOON",
       "bookingOpensAt": "11 July, 11:11 PM",
+      "bookingOpensAtISO": "2026-07-11T23:11:00+05:30",
       "stageLayoutImage": "assets/event_layout.avif"
     }
   },

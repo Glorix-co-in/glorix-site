@@ -31,11 +31,20 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         }
 
+        function getVisibleSlides() {
+          const opened = window.GLORIX_CONFIG.isBookingOpen();
+          return slidesData.filter((slide) => {
+            if (slide.hideWhenBookingOpen && opened) return false;
+            if (slide.showWhenBookingOpen && !opened) return false;
+            return true;
+          });
+        }
+
         function renderCarousel() {
           carouselTrack.innerHTML = "";
           const isMobile = window.innerWidth <= 768;
 
-          slidesData.forEach((slide) => {
+          getVisibleSlides().forEach((slide) => {
             const clone = carouselTemplate.content.cloneNode(true);
 
             // handle YouTube embed specially
@@ -105,7 +114,12 @@ document.addEventListener("DOMContentLoaded", function () {
           carouselInterval = GlorixCarousel.init(carouselTrack, 3000);
         }
 
-        renderCarousel();
+        // Wait for the global booking-open date to load, then render.
+        // (isBookingOpen() is safe before that, but this guarantees correct gating.)
+        window.GLORIX_CONFIG.ready.then(renderCarousel);
+
+        // Live re-render when bookings open (no page reload needed)
+        document.addEventListener("booking-opened", () => renderCarousel());
 
         // Re-render on resize to switch images if needed
         let resizeTimeout;
@@ -664,12 +678,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const shownKey = "glory26_popup_shown";
     let countdownInterval;
 
-    // Feature flag: ?bookingopen=1 forces the finished ("Bookings open now") state
-    const bookingOpenParams = new URLSearchParams(window.location.search);
-    const forceBookingOpen =
-      bookingOpenParams.get("bookingopen") === "1" ||
-      bookingOpenParams.get("bookingopen") === "true";
-
+    // Global booking-open flag/date comes from site-config.js (events.json)
     const DETAILS_PAGE = "details.html";
     const popupBookBtn = document.getElementById("eventPopupBookBtn");
     const popupBookBtnText = document.getElementById("eventPopupBookBtnText");
@@ -684,10 +693,8 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       const updateCountdown = () => {
-        const targetDate = new Date("2026-07-11T23:11:00").getTime();
         const now = Date.now();
-        const distance = targetDate - now;
-        const finished = forceBookingOpen || distance < 0;
+        const finished = window.GLORIX_CONFIG.isBookingOpen();
 
         if (finished) {
           clearInterval(countdownInterval);
@@ -707,6 +714,8 @@ document.addEventListener("DOMContentLoaded", function () {
             popupBookBtn.rel = "noopener noreferrer";
           }
           if (popupBookBtnText) popupBookBtnText.textContent = "BOOK NOW";
+          // Notify other components (e.g. carousel) to reveal open-state content
+          document.dispatchEvent(new Event("booking-opened"));
           return;
         }
 
@@ -717,6 +726,10 @@ document.addEventListener("DOMContentLoaded", function () {
           popupBookBtn.removeAttribute("rel");
         }
 
+        const targetDate = new Date(
+          window.GLORIX_CONFIG.getBookingOpensAtISO(),
+        ).getTime();
+        const distance = targetDate - now;
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor(
           (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
@@ -743,7 +756,8 @@ document.addEventListener("DOMContentLoaded", function () {
       countdownInterval = setInterval(updateCountdown, 1000);
     };
 
-    startCountdownTimer();
+    // Wait for the global booking-open date to load before starting the timer
+    window.GLORIX_CONFIG.ready.then(startCountdownTimer);
 
     if (!sessionStorage.getItem(shownKey)) {
       setTimeout(() => {

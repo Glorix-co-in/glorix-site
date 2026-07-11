@@ -5,13 +5,21 @@
     "alt": "Event Poster 3"
   },
   {
+    "desktopImage": "assets/poster4_landscape.avif",
+    "mobileImage": "assets/poster4.avif",
+    "alt": "Event Poster 4",
+    "hideWhenBookingOpen": true
+  },
+  {
     "desktopImage": "assets/poster5.avif",
     "mobileImage": "assets/poster5.avif",
-    "alt": "Event Poster 5"
+    "alt": "Event Poster 5",
+    "showWhenBookingOpen": true
   },
   {
     "desktopImage": "assets/event_layout.avif",
     "mobileImage": "assets/event_layout.avif",
-    "alt": "Event Layout"
+    "alt": "Event Layout",
+    "showWhenBookingOpen": true
   }
 ]
