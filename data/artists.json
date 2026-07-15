@@ -90,6 +90,11 @@
     "link": "https://www.instagram.com/chirag_parjan?igsh=MTBmOTgwdnNxODZ0ZA=="
   },
   {
+    "name": "Cold Kalam",
+    "image": "assets/artists/cold_kalam.avif",
+    "link": "https://www.instagram.com/coldkalam?utm_source=qr&igsh=d2U2MGNzbGh5YTQx"
+  },
+  {
     "name": "Daggar",
     "image": "assets/artists/Daggar.avif",
     "link": "https://www.instagram.com/official_daggar?igsh=b3BuaDlhMWZvMmVp"
@@ -354,6 +359,11 @@
     "name": "Tera Toxic",
     "image": "assets/artists/Tera_Toxic.avif",
     "link": "https://www.instagram.com/teratoxicc?igsh=MTVnaWd6YnVrM2ZmOQ=="
+  },
+  {
+    "name": "Tejas",
+    "image": "assets/artists/tejas.avif",
+    "link": "https://www.instagram.com/tejas_musicx?igsh=MXBha2JsaGluZzdyeQ=="
   },
   {
     "name": "The Harxhz",
