@@ -17,6 +17,12 @@
     "showWhenBookingOpen": true
   },
   {
+    "desktopImage": "assets/poster6.avif",
+    "mobileImage": "assets/poster6.avif",
+    "alt": "Event Poster 6",
+    "showWhenBookingOpen": true
+  },
+  {
     "desktopImage": "assets/event_layout.avif",
     "mobileImage": "assets/event_layout.avif",
     "alt": "Event Layout",
