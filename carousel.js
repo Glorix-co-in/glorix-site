@@ -1,50 +1,126 @@
-/**
- * GLORIX Carousel Engine
- * A simple, reusable horizontal slider for hero banners and media tracks.
- */
-
 window.GlorixCarousel = {
-  /**
-   * Initializes a carousel on a given track element.
-   * @param {HTMLElement} track - The element containing .carousel-slide items.
-   * @param {number} duration - Time in milliseconds between transitions.
-   * @returns {number|null} - The interval ID or null if not applicable.
-   */
   init: function (track, duration = 3000) {
     if (!track) return null;
 
-    // Reset position
     track.style.transform = "translateX(0)";
     track.style.transition = "transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)";
 
     const slides = Array.from(track.querySelectorAll(".carousel-slide"));
     if (slides.length <= 1) return null;
 
-    // Clone the first slide and append it to the track for a seamless loop
     const firstClone = slides[0].cloneNode(true);
     track.appendChild(firstClone);
 
-    const totalSlidesWithClone = slides.length + 1;
+    const totalSlides = slides.length;
     let currentSlide = 0;
+    let isTransitioning = false;
 
-    const interval = setInterval(() => {
+    const container = track.parentElement;
+    let dotsContainer = container.querySelector(".carousel-dots");
+    if (dotsContainer) dotsContainer.remove();
+    dotsContainer = document.createElement("div");
+    dotsContainer.className = "carousel-dots";
+    container.appendChild(dotsContainer);
+
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement("button");
+      dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+      dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+      dot.addEventListener("click", () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+
+    function updateDots() {
+      const dots = dotsContainer.querySelectorAll(".carousel-dot");
+      dots.forEach((d, i) => d.classList.toggle("active", i === currentSlide));
+    }
+
+    function goToSlide(index) {
+      if (isTransitioning || index === currentSlide) return;
+      isTransitioning = true;
+      currentSlide = index;
+      track.style.transition = "transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)";
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      updateDots();
+      setTimeout(() => { isTransitioning = false; }, 600);
+    }
+
+    function advanceSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
       currentSlide++;
 
-      // Move to the next slide (including the clone)
       track.style.transition = "transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)";
       track.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-      // If we are at the clone, teleport back to the first slide after the transition
-      if (currentSlide === slides.length) {
+      if (currentSlide === totalSlides) {
         setTimeout(() => {
           track.style.transition = "none";
           currentSlide = 0;
           track.style.transform = "translateX(0)";
-          // Force a reflow before re-enabling transition for next time
           track.offsetHeight;
-        }, 600); // This delay should match the transition duration
+          updateDots();
+          isTransitioning = false;
+        }, 600);
+      } else {
+        updateDots();
+        setTimeout(() => { isTransitioning = false; }, 600);
       }
-    }, duration);
+    }
+
+    function prevSlide() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      if (currentSlide === 0) {
+        track.style.transition = "none";
+        currentSlide = totalSlides;
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        track.offsetHeight;
+        currentSlide--;
+        track.style.transition = "transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)";
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        updateDots();
+        setTimeout(() => { isTransitioning = false; }, 600);
+      } else {
+        currentSlide--;
+        track.style.transition = "transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)";
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        updateDots();
+        setTimeout(() => { isTransitioning = false; }, 600);
+      }
+    }
+
+    const interval = setInterval(advanceSlide, duration);
+
+    let startX = 0;
+    let startY = 0;
+    let isDragging = false;
+
+    track.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      isDragging = true;
+    }, { passive: true });
+
+    track.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+    }, { passive: false });
+
+    track.addEventListener("touchend", (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
+      const diffX = startX - endX;
+      const diffY = startY - endY;
+
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+        if (diffX > 0) advanceSlide();
+        else prevSlide();
+      }
+    }, { passive: true });
 
     return interval;
   },
