@@ -437,7 +437,7 @@ function populateEventDetails(event) {
   if (!bookingOpened) {
     let watcherWasOpen = false;
     window.__glorixBookingWatcher = setInterval(() => {
-      if (!watcherWasOpen && window.GLORIX_CONFIG.isBookingOpen()) {
+      if (!watcherWasOpen && (window.GLORIX_CONFIG.forceOpen || (details.bookingOpensAtISO && Date.now() >= new Date(details.bookingOpensAtISO).getTime()))) {
         clearInterval(window.__glorixBookingWatcher);
         watcherWasOpen = true;
 
