@@ -7,11 +7,7 @@
     "status": "open",
     "bookingLink": "https://all.events/go/80001978180458",
     "details": {
-      "tags": [
-        "Concert",
-        "Music",
-        "Performances"
-      ],
+      "tags": ["Concert", "Music", "Performances"],
       "dateRange": null,
       "time": "Gates Open at 4:00 PM",
       "duration": "4 Hours",
@@ -24,7 +20,12 @@
         "landscape": "assets/poster3_landscape.avif",
         "portrait": "assets/poster3.avif"
       },
-      "carouselSlides": ["assets/poster7.avif"],
+      "carouselSlides": [
+        {
+          "desktopImage": "assets/poster7.avif",
+          "mobileImage": "assets/poster7_landscape.avif"
+        }
+      ],
       "aboutEvent": "GLORY'26 : The Big Line-Up !\n\nTHE BIG LINE-UP! | GLORIX 1st Anniversary\nOne Night. One Stage. 20+ Artists. Unlimited Energy.\n\nThis isn't just another music event—it's a celebration of a movement.\n\nAfter an incredible year of building one of Delhi NCR's fastest-growing underground music communities, GLORIX is back with its biggest event ever. Join us as we celebrate our 1st Anniversary with an unforgettable night featuring 20+ of the hottest underground rappers, singers, DJs, and performers from across the scene.\n\nFrom hard-hitting rap sets and melodic live performances to explosive DJ sets, every minute of the night is designed to keep the energy at its peak. Whether you're a hardcore hip-hop fan or simply love discovering fresh talent, this is the place to be.\n\nWhat Awaits You?\n\n🎤 20+ Live Performances\n🔥 Non-stop Hip-Hop, Rap & Live Music\n🎧 High-Energy DJ Sets\n💡 Massive Stage Production with Professional Lights & Sound\n📸 Instagram-Worthy Photo Spots\n🎁 Brand Giveaways & Surprise Hampers\n🍔 Food & Beverage Stalls\n🤝 Meet Artists, Creators & Music Lovers\n⚡ An Electric Crowd & Unmatched Vibes\nExpect raw talent, unforgettable performances, surprise moments, and an atmosphere you'll be talking about long after the night ends.\n\nEvent Details\n\n📅 Date: 31 July 2026 (Friday)\n🕕 Time: Gates Open at 4:00 PM\n📍 Venue: Start Studios, Ghitorni, New Delhi\n\nTickets\n\n🎟️ General Admission & VIP Passes Available\nBook early—ticket prices increase as phases sell out.\nWhether you're coming with your crew or flying solo, you'll leave with new memories, new favourite artists, and an experience unlike any other.\n\nThis is more than an event. It's where the next generation of artists takes the stage.\nSee you in the crowd.\nSee you at GLORY.",
       "highlights": [
         "Live concert performances",
@@ -37,6 +38,7 @@
         "Aastik",
         "Akki",
         "Armadok",
+        "Asadhya",
         "Bhav",
         "Biggy brat",
         "Cold Kalam",
@@ -45,16 +47,16 @@
         "Jaze",
         "DJ Mayankk",
         "Nagity",
-        "One mix",
+        "Onemix",
         "Poetic kc",
         "Ashant",
         "Shawn",
         "Real Tanishk",
         "Red",
         "Rinisha",
+        "Tejas",
         "Tera Toxic",
-        "Ulti Zindagi",
-        "Tejas"
+        "Ulti Zindagi"
       ],
       "bookingOpensAt": "11 July, 11:11 PM",
       "bookingOpensAtISO": "2026-07-11T23:11:00+05:30",
@@ -70,11 +72,7 @@
     "status": "closed",
     "bookingLink": "null",
     "details": {
-      "tags": [
-        "Live Performance",
-        "360 HH",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
       "dateRange": null,
       "time": "4:00 PM onwards",
       "duration": "3 Hours",
@@ -121,11 +119,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Live Performance",
-        "Hindi",
-        "English"
-      ],
+      "tags": ["Live Performance", "Hindi", "English"],
       "dateRange": null,
       "time": "6:00 PM",
       "duration": "4 Hours",
@@ -166,11 +160,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Music Festival",
-        "Multi-Artist",
-        "Cultural Event"
-      ],
+      "tags": ["Music Festival", "Multi-Artist", "Cultural Event"],
       "dateRange": null,
       "time": "4:00 PM",
       "duration": "5 Hours",
@@ -227,11 +217,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Rap Event",
-        "Live Music",
-        "Party"
-      ],
+      "tags": ["Rap Event", "Live Music", "Party"],
       "date": "20th September 2025",
       "dateRange": null,
       "time": "4:00 PM",
@@ -289,11 +275,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Rap Event",
-        "Underground Music",
-        "Live Performance"
-      ],
+      "tags": ["Rap Event", "Underground Music", "Live Performance"],
       "dateRange": null,
       "time": "3:00 PM",
       "duration": "6 Hours",
@@ -348,11 +330,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Live Performance",
-        "Success Party",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "Success Party", "DJ Sets"],
       "dateRange": null,
       "time": "5:00 PM onwards",
       "duration": "3 Hours",
@@ -402,11 +380,7 @@
       }
     ],
     "details": {
-      "tags": [
-        "Live Performance",
-        "360 HH",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -458,11 +432,7 @@
       }
     ],
     "details": {
-      "tags": [
-        "Live Performance",
-        "360 HH",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -502,11 +472,7 @@
     "status": "closed",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "Live Performance",
-        "360 HH",
-        "DJ Sets"
-      ],
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
       "dateRange": null,
       "time": "4:00 PM onwards",
       "duration": "4 Hours",
@@ -527,9 +493,7 @@
         "Live DJ sets"
       ],
       "priceFrom": 0,
-      "defaultArtists": [
-        "Saksham"
-      ],
+      "defaultArtists": ["Saksham"],
       "artists": [
         "Jaze",
         "BC Gang",
@@ -553,11 +517,7 @@
     "status": "hidden",
     "bookingLink": null,
     "details": {
-      "tags": [
-        "DJ Night",
-        "Live Performance",
-        "Multi-Genre"
-      ],
+      "tags": ["DJ Night", "Live Performance", "Multi-Genre"],
       "dateRange": null,
       "time": "8:00 PM onwards",
       "duration": "6 Hours",
@@ -578,9 +538,7 @@
         "Exclusive beats and remixes"
       ],
       "priceFrom": 999,
-      "artists": [
-        "DJ Pratham"
-      ]
+      "artists": ["DJ Pratham"]
     }
   },
   {
@@ -591,16 +549,9 @@
     "status": "hidden",
     "bookingLink": null,
     "isSplitEvent": true,
-    "variantIds": [
-      "dark-room-vol1",
-      "dark-room-vol2"
-    ],
+    "variantIds": ["dark-room-vol1", "dark-room-vol2"],
     "details": {
-      "tags": [
-        "Dark Room",
-        "Live Performance",
-        "Underground"
-      ],
+      "tags": ["Dark Room", "Live Performance", "Underground"],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -633,10 +584,7 @@
     "bookingLink": null,
     "hiddenFromBookings": true,
     "details": {
-      "tags": [
-        "Dark Room",
-        "Live Performance"
-      ],
+      "tags": ["Dark Room", "Live Performance"],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -650,17 +598,9 @@
         "portrait": "assets/events/dark room vol 1.avif"
       },
       "aboutEvent": "Dark Room by Glorix is an underground hip-hop experience where low lighting, heavy bass, and raw energy take over no distractions, just pure vibe. The space stays dim with flashes, strobes, and blackout moments synced to beat drops, while artists perform unpredictably from within the crowd, creating a sense of chaos and immersion. It’s not just a show, it’s a high-intensity atmosphere where the focus is on music, movement, and connection no lights, no limits, just rage.",
-      "highlights": [
-        "Spotlight freestyle",
-        "VIP vibes",
-        "Unique visuals"
-      ],
+      "highlights": ["Spotlight freestyle", "VIP vibes", "Unique visuals"],
       "priceFrom": 399,
-      "artists": [
-        "Artist A",
-        "Artist B",
-        "Artist C"
-      ]
+      "artists": ["Artist A", "Artist B", "Artist C"]
     }
   },
   {
@@ -672,10 +612,7 @@
     "bookingLink": null,
     "hiddenFromBookings": true,
     "details": {
-      "tags": [
-        "Dark Room",
-        "Live Performance"
-      ],
+      "tags": ["Dark Room", "Live Performance"],
       "dateRange": null,
       "time": "3:00 PM onwards",
       "duration": "4 Hours",
@@ -689,17 +626,9 @@
         "portrait": "assets/events/dark room volume 2.avif"
       },
       "aboutEvent": "Dark Room by Glorix is an underground hip-hop experience where low lighting, heavy bass, and raw energy take over no distractions, just pure vibe. The space stays dim with flashes, strobes, and blackout moments synced to beat drops, while artists perform unpredictably from within the crowd, creating a sense of chaos and immersion. It’s not just a show, it’s a high-intensity atmosphere where the focus is on music, movement, and connection no lights, no limits, just rage.",
-      "highlights": [
-        "Extended set",
-        "Guest DJs",
-        "Immersive vibe"
-      ],
+      "highlights": ["Extended set", "Guest DJs", "Immersive vibe"],
       "priceFrom": 399,
-      "artists": [
-        "Artist X",
-        "Artist Y",
-        "Artist Z"
-      ]
+      "artists": ["Artist X", "Artist Y", "Artist Z"]
     }
   },
   {
@@ -724,16 +653,9 @@
       }
     ],
     "details": {
-      "tags": [
-        "Rap Event",
-        "Live Music",
-        "DJ Sets"
-      ],
+      "tags": ["Rap Event", "Live Music", "DJ Sets"],
       "dateRange": null,
-      "time": [
-        "02:00 PM",
-        "05:00 PM"
-      ],
+      "time": ["02:00 PM", "05:00 PM"],
       "duration": "6 Hours",
       "ageLimit": "16+",
       "languages": "Hindi, English",

@@ -17,7 +17,7 @@
     "showWhenBookingOpen": true
   },
   {
-    "desktopImage": "assets/poster7.avif",
+    "desktopImage": "assets/poster7_landscape.avif",
     "mobileImage": "assets/poster7.avif",
     "alt": "Event Poster 7",
     "showWhenBookingOpen": true

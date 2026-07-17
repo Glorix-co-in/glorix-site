@@ -709,8 +709,14 @@ function updateEventMedia(event) {
   }
 
   if (details.carouselSlides && Array.isArray(details.carouselSlides)) {
-    details.carouselSlides.forEach((src) => {
-      if (src) slides.push({ type: "image", src });
+    details.carouselSlides.forEach((slide) => {
+      if (!slide) return;
+      if (typeof slide === "object") {
+        const src = isMobile ? (slide.mobileImage || slide.desktopImage) : (slide.desktopImage || slide.mobileImage);
+        if (src) slides.push({ type: "image", src });
+      } else {
+        slides.push({ type: "image", src: slide });
+      }
     });
   }
 
