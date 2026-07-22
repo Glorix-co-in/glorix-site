@@ -180,11 +180,6 @@
     "link": "https://www.instagram.com/mc._.serv/"
   },
   {
-    "name": "indie visual",
-    "image": "assets/artists/indie_visual.avif",
-    "link": "https://www.instagram.com/indie__visual__?utm_source=qr&igsh=cHJ2a3dpeDlydTE4"
-  },
-  {
     "name": "Jaze",
     "image": "assets/artists/Jaze.avif",
     "link": "https://www.instagram.com/whatup_jaze?igsh=aDk0bTg2Y2MweXp5"
@@ -260,19 +255,9 @@
     "link": "https://www.instagram.com/og._tehran"
   },
   {
-    "name": "Onemix",
-    "image": "assets/artists/onemix.avif",
-    "link": "https://www.instagram.com/pradum_kohli?igsh=MTFudXM1bzduajNrMQ=="
-  },
-  {
     "name": "Paras",
     "image": "assets/artists/Paras.avif",
     "link": "https://www.instagram.com/nvm.paras/"
-  },
-  {
-    "name": "PharaohX",
-    "image": "assets/artists/PharaohX.avif",
-    "link": "https://www.instagram.com/pharaohx.__1_jbp?utm_source=qr&igsh=a214Z3I1dnJ3Zm5o"
   },
   {
     "name": "Poetic kc",
@@ -330,15 +315,15 @@
     "link": "https://www.instagram.com/ru_hawk?igsh=aDI4NXcxNnhxcWVk"
   },
   {
+    "name": "Sankiii",
+    "image": "assets/artists/Sankiii.avif",
+    "link": "https://www.instagram.com/__sankiii_/"
+  },
+  {
     "name": "Saksham",
     "image": "assets/artists/Saksham.avif",
     "link": "https://www.instagram.com/areesaksham?igsh=MWNjMmE4NXJnZDhjZQ==",
     "hidden": true
-  },
-  {
-    "name": "Sankiii",
-    "image": "assets/artists/Sankiii.avif",
-    "link": "https://www.instagram.com/__sankiii_/"
   },
   {
     "name": "Shawn",
@@ -349,11 +334,6 @@
     "name": "Sherdill",
     "image": "assets/artists/Sherdill.avif",
     "link": "https://www.instagram.com/officialsherdill/"
-  },
-  {
-    "name": "Shore",
-    "image": "assets/artists/Shore.avif",
-    "link": "https://www.instagram.com/shore_is_sure?igsh=ZTVpdnNxbnlmbDRl"
   },
   {
     "name": "SLID",
@@ -376,14 +356,14 @@
     "link": "https://www.instagram.com/swagymusix"
   },
   {
-    "name": "Tejas",
-    "image": "assets/artists/tejas.avif",
-    "link": "https://www.instagram.com/tejas_musicx?igsh=MXBha2JsaGluZzdyeQ=="
-  },
-  {
     "name": "Tera Toxic",
     "image": "assets/artists/Tera_Toxic.avif",
     "link": "https://www.instagram.com/teratoxicc?igsh=MTVnaWd6YnVrM2ZmOQ=="
+  },
+  {
+    "name": "Tejas",
+    "image": "assets/artists/tejas.avif",
+    "link": "https://www.instagram.com/tejas_musicx?igsh=MXBha2JsaGluZzdyeQ=="
   },
   {
     "name": "The Harxhz",
@@ -444,5 +424,25 @@
     "name": "Yusuf",
     "image": "assets/artists/Yusuf.avif",
     "link": "https://www.instagram.com/heyyusuf__?igsh=cWt0Z3BmYzdoYjVw"
+  },
+  {
+    "name": "Shore",
+    "image": "assets/artists/Shore.avif",
+    "link": "https://www.instagram.com/shore_is_sure?igsh=ZTVpdnNxbnlmbDRl"
+  },
+  {
+    "name": "indie visual",
+    "image": "assets/artists/indie_visual.avif",
+    "link": "https://www.instagram.com/indie__visual__?utm_source=qr&igsh=cHJ2a3dpeDlydTE4"
+  },
+  {
+    "name": "Onemix",
+    "image": "assets/artists/onemix.avif",
+    "link": "https://www.instagram.com/pradum_kohli?igsh=MTFudXM1bzduajNrMQ=="
+  },
+  {
+    "name": "PharaohX",
+    "image": "assets/artists/PharaohX.avif",
+    "link": "https://www.instagram.com/pharaohx.__1_jbp?utm_source=qr&igsh=a214Z3I1dnJ3Zm5o"
   }
 ]
