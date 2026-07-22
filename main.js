@@ -693,9 +693,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const updateCountdown = () => {
         const now = Date.now();
-        const finished = window.GLORIX_CONFIG.hasEventStarted();
+        const eventStarted = window.GLORIX_CONFIG.hasEventStarted();
 
-        if (finished) {
+        // Always link to booking site if bookings are open
+        if (window.GLORIX_CONFIG.isBookingOpen() && popupBookBtn) {
+          popupBookBtn.href = popupBookLink;
+          popupBookBtn.target = "_blank";
+          popupBookBtn.rel = "noopener noreferrer";
+        } else if (popupBookBtn) {
+          popupBookBtn.href = DETAILS_PAGE;
+          popupBookBtn.removeAttribute("target");
+          popupBookBtn.removeAttribute("rel");
+        }
+
+        if (eventStarted) {
           clearInterval(countdownInterval);
           const countdownContainer = document.querySelector(
             ".event-popup__countdown-container",
@@ -707,20 +718,8 @@ document.addEventListener("DOMContentLoaded", function () {
           if (countdownLabelSub) countdownLabelSub.textContent = "See you at the event";
           const bookingOpenDate = document.getElementById("bookingOpenDate");
           if (bookingOpenDate) bookingOpenDate.style.display = "none";
-          if (popupBookBtn) {
-            popupBookBtn.href = popupBookLink;
-            popupBookBtn.target = "_blank";
-            popupBookBtn.rel = "noopener noreferrer";
-          }
           if (popupBookBtnText) popupBookBtnText.textContent = "BOOK NOW";
           return;
-        }
-
-        // Timer still running: button redirects to details page
-        if (popupBookBtn) {
-          popupBookBtn.href = DETAILS_PAGE;
-          popupBookBtn.removeAttribute("target");
-          popupBookBtn.removeAttribute("rel");
         }
 
         const targetDate = new Date(
