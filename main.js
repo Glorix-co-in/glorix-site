@@ -678,7 +678,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const shownKey = "glory26_popup_shown";
     let countdownInterval;
 
-    // Global booking-open flag/date comes from site-config.js (events.json)
     const DETAILS_PAGE = "details.html";
     const popupBookBtn = document.getElementById("eventPopupBookBtn");
     const popupBookBtnText = document.getElementById("eventPopupBookBtnText");
@@ -694,40 +693,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const updateCountdown = () => {
         const now = Date.now();
-        const finished = window.GLORIX_CONFIG.isBookingOpen();
+        const eventStarted = window.GLORIX_CONFIG.hasEventStarted();
 
-        if (finished) {
+        // Always link to booking site if bookings are open
+        if (window.GLORIX_CONFIG.isBookingOpen() && popupBookBtn) {
+          popupBookBtn.href = popupBookLink;
+          popupBookBtn.target = "_blank";
+          popupBookBtn.rel = "noopener noreferrer";
+        } else if (popupBookBtn) {
+          popupBookBtn.href = DETAILS_PAGE;
+          popupBookBtn.removeAttribute("target");
+          popupBookBtn.removeAttribute("rel");
+        }
+
+        if (eventStarted) {
           clearInterval(countdownInterval);
           const countdownContainer = document.querySelector(
             ".event-popup__countdown-container",
           );
           if (countdownContainer) countdownContainer.style.display = "none";
           const bookingOpenLabel = document.getElementById("bookingOpenLabel");
-          if (bookingOpenLabel) bookingOpenLabel.textContent = "Bookings open now";
+          if (bookingOpenLabel) bookingOpenLabel.textContent = "Event is here!";
           const countdownLabelSub = document.getElementById("countdownLabelSub");
-          if (countdownLabelSub) countdownLabelSub.textContent = "Bookings open now";
+          if (countdownLabelSub) countdownLabelSub.textContent = "See you at the event";
           const bookingOpenDate = document.getElementById("bookingOpenDate");
           if (bookingOpenDate) bookingOpenDate.style.display = "none";
-          if (popupBookBtn) {
-            popupBookBtn.href = popupBookLink;
-            popupBookBtn.target = "_blank";
-            popupBookBtn.rel = "noopener noreferrer";
-          }
           if (popupBookBtnText) popupBookBtnText.textContent = "BOOK NOW";
-          // Notify other components (e.g. carousel) to reveal open-state content
-          document.dispatchEvent(new Event("booking-opened"));
           return;
         }
 
-        // Timer still running: button redirects to details page
-        if (popupBookBtn) {
-          popupBookBtn.href = DETAILS_PAGE;
-          popupBookBtn.removeAttribute("target");
-          popupBookBtn.removeAttribute("rel");
-        }
-
         const targetDate = new Date(
-          window.GLORIX_CONFIG.getBookingOpensAtISO(),
+          window.GLORIX_CONFIG.getEventStartsAtISO(),
         ).getTime();
         const distance = targetDate - now;
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -756,8 +752,21 @@ document.addEventListener("DOMContentLoaded", function () {
       countdownInterval = setInterval(updateCountdown, 1000);
     };
 
-    // Wait for the global booking-open date to load before starting the timer
+    // Wait for the event start date to load before starting the timer
     window.GLORIX_CONFIG.ready.then(startCountdownTimer);
+
+    // Independent watcher: dispatch booking-opened when bookings first open
+    // (keeps carousel live-render working irrespective of the popup timer)
+    window.GLORIX_CONFIG.ready.then(() => {
+      let wasOpen = window.GLORIX_CONFIG.isBookingOpen();
+      setInterval(() => {
+        const nowOpen = window.GLORIX_CONFIG.isBookingOpen();
+        if (nowOpen && !wasOpen) {
+          document.dispatchEvent(new Event("booking-opened"));
+          wasOpen = true;
+        }
+      }, 1000);
+    });
 
     if (!sessionStorage.getItem(shownKey)) {
       setTimeout(() => {
