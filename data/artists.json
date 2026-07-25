@@ -100,6 +100,11 @@
     "link": "https://www.instagram.com/official_daggar?igsh=b3BuaDlhMWZvMmVp"
   },
   {
+    "name": "Dash",
+    "image": "assets/artists/Dash.avif",
+    "link": "https://www.instagram.com/dash.music_a?igsh=em1na2dkYjkyYWVz"
+  },
+  {
     "name": "Davedevv",
     "image": "assets/artists/Davedevv.avif",
     "link": "https://www.instagram.com/davedevv?igsh=bzRpbWl4MTlyNjk4"
@@ -439,6 +444,11 @@
     "name": "WrigVedd",
     "image": "assets/artists/WrigVedd.avif",
     "link": "https://www.instagram.com/wrigvedd/"
+  },
+  {
+    "name": "Ykm Lucky",
+    "image": "assets/artists/Ykm_Lucky.avif",
+    "link": "https://www.instagram.com/ykm_lucky?igsh=Zm83MHV6ZGt5NmQ5"
   },
   {
     "name": "Yusuf",
