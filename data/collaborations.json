@@ -78,5 +78,33 @@
   {
     "name": "Terascene",
     "logo": "assets/brands/Terascene.avif"
+  },
+  {
+    "name": "Ambrova",
+    "logo": "assets/brands/Ambrova.avif"
+  },
+  {
+    "name": "BENQ",
+    "logo": "assets/brands/BENQ Logo.avif"
+  },
+  {
+    "name": "START",
+    "logo": "assets/brands/START logo .avif"
+  },
+  {
+    "name": "Satya",
+    "logo": "assets/brands/Satya.avif"
+  },
+  {
+    "name": "Bhukkad Cafe",
+    "logo": "assets/brands/bhukkad cafe.avif"
+  },
+  {
+    "name": "The Dream Brush",
+    "logo": "assets/brands/the dream brush.avif"
+  },
+  {
+    "name": "W",
+    "logo": "assets/brands/w.avif"
   }
 ]

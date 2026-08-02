@@ -768,11 +768,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 1000);
     });
 
-    if (!sessionStorage.getItem(shownKey)) {
-      setTimeout(() => {
-        eventPopup.showModal();
-        sessionStorage.setItem(shownKey, "1");
-      }, 300);
+    if (false) {
+      if (!sessionStorage.getItem(shownKey)) {
+        setTimeout(() => {
+          eventPopup.showModal();
+          sessionStorage.setItem(shownKey, "1");
+        }, 300);
+      }
     }
 
     closeEventPopup.addEventListener("click", () => {
