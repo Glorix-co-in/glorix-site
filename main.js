@@ -675,13 +675,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeEventPopup = document.getElementById("closeEventPopup");
 
   if (eventPopup && closeEventPopup) {
-    const shownKey = "glory26_popup_shown";
+    const shownKey = "inder_sahani_popup_shown";
     let countdownInterval;
 
     const DETAILS_PAGE = "details.html";
     const popupBookBtn = document.getElementById("eventPopupBookBtn");
     const popupBookBtnText = document.getElementById("eventPopupBookBtnText");
-    const popupBookLink = "https://all.events/go/80001978180458";
+    const popupBookLink = "https://r.swiggy.com/v1/swiggy/scenes/comms/100107236";
 
     const startCountdownTimer = () => {
       const countdownElements = {
@@ -768,13 +768,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 1000);
     });
 
-    if (false) {
-      if (!sessionStorage.getItem(shownKey)) {
-        setTimeout(() => {
-          eventPopup.showModal();
-          sessionStorage.setItem(shownKey, "1");
-        }, 300);
-      }
+    if (!sessionStorage.getItem(shownKey)) {
+      setTimeout(() => {
+        eventPopup.showModal();
+        sessionStorage.setItem(shownKey, "1");
+      }, 300);
     }
 
     closeEventPopup.addEventListener("click", () => {

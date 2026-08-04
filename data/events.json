@@ -705,6 +705,7 @@
     "date": "29th August 2026",
     "status": "available",
     "bookingLink": "https://r.swiggy.com/v1/swiggy/scenes/comms/100107236",
+    "isFeatured": true,
     "details": {
       "tags": ["Stand Up Comedy", "Live Show", "Comedy"],
       "dateRange": null,
@@ -727,7 +728,9 @@
         "Non-stop laughter"
       ],
       "bookingOpensAtISO": "2026-08-01T12:00:00+05:30",
+      "eventStartsAtISO": "2026-08-29T18:00:00+05:30",
       "priceFrom": 499,
+      "defaultArtists": ["Inder Sahani"],
       "artists": ["Inder Sahani"]
     }
   }

@@ -16,14 +16,29 @@ window.GLORIX_CONFIG = (function () {
     .then((response) => response.json())
     .then((events) => {
       if (!Array.isArray(events)) return;
-      const event = events.find(
-        (e) => e.details && e.details.bookingOpensAtISO,
-      );
-      if (event) bookingOpensAtISO = event.details.bookingOpensAtISO;
-      const eventStart = events.find(
-        (e) => e.details && e.details.eventStartsAtISO,
-      );
-      if (eventStart) eventStartsAtISO = eventStart.details.eventStartsAtISO;
+      // Featured event = the one with the latest start (the current upcoming event).
+      let featured = null;
+      events.forEach((e) => {
+        if (!e.details) return;
+        const start = e.details.eventStartsAtISO
+          ? new Date(e.details.eventStartsAtISO).getTime()
+          : -Infinity;
+        const currentBest = featured?.details?.eventStartsAtISO
+          ? new Date(featured.details.eventStartsAtISO).getTime()
+          : -Infinity;
+        if (start > currentBest) featured = e;
+      });
+      if (!featured) {
+        featured = events.find(
+          (e) => e.details && e.details.bookingOpensAtISO,
+        );
+      }
+      if (featured?.details?.bookingOpensAtISO) {
+        bookingOpensAtISO = featured.details.bookingOpensAtISO;
+      }
+      if (featured?.details?.eventStartsAtISO) {
+        eventStartsAtISO = featured.details.eventStartsAtISO;
+      }
     })
     .catch(() => {})
     .finally(() => readyResolve());

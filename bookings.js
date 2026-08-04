@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const clone = eventCardTemplate.content.cloneNode(true);
       const prefix = isMobile ? ".event-card-mobile" : ".event-card";
+      const isFeatured = !!event.isFeatured;
 
       const imgContainer = clone.querySelector(`${prefix}__image`);
       const imageEl = imgContainer.querySelector("img");
@@ -110,15 +111,17 @@ document.addEventListener("DOMContentLoaded", function () {
         // Replace image with video
         imgContainer.replaceChild(video, imageEl);
       } else {
-        // Edge case: GLORY'26 uses horizontal poster
-        if (event.id === "glory-26") {
-          imageEl.src = "assets/poster2_horizontal.avif";
-          imgContainer.style.setProperty("--bg-image", "url('assets/poster2_horizontal.avif')");
-          imgContainer.closest(`${prefix}`)?.classList.add("event-card--featured");
-        } else {
-          imageEl.src = event.image;
-          imageEl.alt = event.title;
-          imgContainer.style.setProperty("--bg-image", `url('${event.image}')`);
+        // Featured events use their landscape poster to fit the wider card
+        const imageSrc = isFeatured
+          ? event.details?.detailsImage?.landscape || event.image
+          : event.image;
+        imageEl.src = imageSrc;
+        imageEl.alt = event.title;
+        imgContainer.style.setProperty("--bg-image", `url('${imageSrc}')`);
+        if (isFeatured) {
+          imgContainer
+            .closest(`${prefix}`)
+            ?.classList.add("event-card--featured");
         }
       }
 
