@@ -1,5 +1,20 @@
 [
   {
+    "desktopImage": "assets/events/inder_sahani_1_vertical.avif",
+    "mobileImage": "assets/events/inder_sahani_1_vertical.avif",
+    "alt": "Inder Sahani Poster 1"
+  },
+  {
+    "desktopImage": "assets/events/inder_sahani_2_vertical.avif",
+    "mobileImage": "assets/events/inder_sahani_2_vertical.avif",
+    "alt": "Inder Sahani Poster 2"
+  },
+  {
+    "desktopImage": "assets/events/inder_sahani_3_vertical.avif",
+    "mobileImage": "assets/events/inder_sahani_3_vertical.avif",
+    "alt": "Inder Sahani Poster 3"
+  },
+  {
     "desktopImage": "assets/events/inder_sahani_horizontal.avif",
     "mobileImage": "assets/events/inder_sahani_vertical.avif",
     "alt": "Inder Sahani - Live In Delhi"
