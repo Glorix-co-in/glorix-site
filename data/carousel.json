@@ -1,11 +1,11 @@
 [
   {
-    "desktopImage": "assets/events/inder_sahani_1_vertical.avif",
+    "desktopImage": "assets/events/inder_sahani_1_horizontal.avif",
     "mobileImage": "assets/events/inder_sahani_1_vertical.avif",
     "alt": "Inder Sahani Poster 1"
   },
   {
-    "desktopImage": "assets/events/inder_sahani_2_vertical.avif",
+    "desktopImage": "assets/events/inder_sahani_2_horizontal.avif",
     "mobileImage": "assets/events/inder_sahani_2_vertical.avif",
     "alt": "Inder Sahani Poster 2"
   },
