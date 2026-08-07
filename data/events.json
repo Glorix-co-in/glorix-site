@@ -732,6 +732,10 @@
         {
           "mobileImage": "assets/events/inder_sahani_horizontal.avif",
           "desktopImage": "assets/events/inder_sahani_vertical.avif"
+        },
+        {
+          "mobileImage": "assets/inder_stage_layout.avif",
+          "desktopImage": "assets/inder_stage_layout.avif"
         }
       ],
       "aboutEvent": "Get ready for an unforgettable evening of laughter as Inder Sahani brings his brand-new stand-up special to Delhi.\n\nKnown for his sharp observational comedy, expressive storytelling, and spontaneous crowd interactions, Inder has become one of India's fastest-growing comedy acts with performances across the country and appearances on television and digital platforms.\n\nFrom hilarious everyday moments to unexpected twists, this 2-hour live experience is packed with relatable humor, high-energy performances, and non-stop laughter.\n\nWhether you're a long-time fan or watching him live for the first time, this is a comedy night you won't want to miss.\n\n🗓️ Date: 29 August 2026\n📍 Venue: Shah Auditorium, Delhi\n🕕 Time: 06 PM onwards\n⏰ Duration: 2 Hours\n🎟️ Age Limit: 5+ (Recommended)\n🪑 Seating: First Come, First Served (within your ticket category)\n\nCome with your friends, family, or colleagues—and leave with sore cheeks from laughing! 😄",
@@ -743,6 +747,7 @@
       ],
       "bookingOpensAtISO": "2026-08-01T12:00:00+05:30",
       "eventStartsAtISO": "2026-08-29T18:00:00+05:30",
+      "stageLayoutImage": "assets/inder_stage_layout.avif",
       "priceFrom": 499,
       "defaultArtists": ["Inder Sahani"],
       "artists": ["Inder Sahani"]

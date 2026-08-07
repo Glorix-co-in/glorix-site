@@ -18,5 +18,10 @@
     "desktopImage": "assets/events/inder_sahani_horizontal.avif",
     "mobileImage": "assets/events/inder_sahani_vertical.avif",
     "alt": "Inder Sahani - Live In Delhi"
+  },
+  {
+    "desktopImage": "assets/inder_stage_layout.avif",
+    "mobileImage": "assets/inder_stage_layout.avif",
+    "alt": "Inder Sahani - Stage Layout"
   }
 ]
