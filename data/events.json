@@ -701,7 +701,7 @@
   {
     "id": "inder-sahani-2026",
     "title": "Inder Sahani - Live In Delhi",
-    "image": "assets/events/inder_sahani_3_vertical.avif",
+    "image": "assets/events/inder_sahani_4_vertical.avif",
     "date": "29th August 2026",
     "status": "filling-fast",
     "bookingLink": "https://r.swiggy.com/v1/swiggy/scenes/comms/100107236",
@@ -721,6 +721,10 @@
         "portrait": "assets/events/inder_sahani_3_vertical.avif"
       },
       "carouselSlides": [
+        {
+          "mobileImage": "assets/events/inder_sahani_4_horizontal.avif",
+          "desktopImage": "assets/events/inder_sahani_4_vertical.avif"
+        },
         {
           "mobileImage": "assets/events/inder_sahani_1_horizontal.avif",
           "desktopImage": "assets/events/inder_sahani_1_vertical.avif"
