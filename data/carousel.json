@@ -1,5 +1,10 @@
 [
   {
+    "desktopImage": "assets/events/inder_sahani_4_horizontal.avif",
+    "mobileImage": "assets/events/inder_sahani_4_vertical.avif",
+    "alt": "Inder Sahani Poster 4"
+  },
+  {
     "desktopImage": "assets/events/inder_sahani_1_horizontal.avif",
     "mobileImage": "assets/events/inder_sahani_1_vertical.avif",
     "alt": "Inder Sahani Poster 1"
