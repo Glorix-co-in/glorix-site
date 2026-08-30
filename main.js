@@ -670,7 +670,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Event Announcement Popup
+  // Event Announcement Popup - DISABLED (kept in DOM for future re-enable, set to true to show again)
+  const EVENT_POPUP_ENABLED = false;
   const eventPopup = document.getElementById("eventPopup");
   const closeEventPopup = document.getElementById("closeEventPopup");
 
@@ -768,7 +769,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 1000);
     });
 
-    if (!sessionStorage.getItem(shownKey)) {
+    if (EVENT_POPUP_ENABLED && !sessionStorage.getItem(shownKey)) {
       setTimeout(() => {
         eventPopup.showModal();
         sessionStorage.setItem(shownKey, "1");

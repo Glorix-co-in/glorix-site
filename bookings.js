@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const clone = eventCardTemplate.content.cloneNode(true);
       const prefix = isMobile ? ".event-card-mobile" : ".event-card";
-      const isFeatured = !!event.isFeatured;
+      const isFeatured = !!event.isFeatured && isUpcoming;
 
       const imgContainer = clone.querySelector(`${prefix}__image`);
       const imageEl = imgContainer.querySelector("img");

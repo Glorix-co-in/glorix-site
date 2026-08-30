@@ -703,9 +703,9 @@
     "title": "Inder Sahani - Live In Delhi",
     "image": "assets/events/inder_sahani_4_vertical.avif",
     "date": "29th August 2026",
-    "status": "filling-fast",
+    "status": "closed",
     "bookingLink": "https://r.swiggy.com/v1/swiggy/scenes/comms/100107236",
-    "isFeatured": true,
+    "isFeatured": false,
     "details": {
       "tags": ["Stand Up Comedy", "Live Show", "Comedy"],
       "dateRange": null,
