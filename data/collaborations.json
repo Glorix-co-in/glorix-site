@@ -106,5 +106,33 @@
   {
     "name": "Vivid Sneakers",
     "logo": "assets/brands/w.avif"
+  },
+  {
+    "name": "Awarno Digital",
+    "logo": "assets/brands/awarnodigital.png"
+  },
+  {
+    "name": "Cookie Garage",
+    "logo": "assets/brands/cookiegarage.PNG"
+  },
+  {
+    "name": "Frozen Fun",
+    "logo": "assets/brands/frozenfun.png"
+  },
+  {
+    "name": "Nirgen",
+    "logo": "assets/brands/nirgen.png"
+  },
+  {
+    "name": "Silver Caelus",
+    "logo": "assets/brands/silvercaelus.png"
+  },
+  {
+    "name": "Swadee India",
+    "logo": "assets/brands/swadeeindia.png"
+  },
+  {
+    "name": "Tritya Jewels",
+    "logo": "assets/brands/trityajewels.png"
   }
 ]
