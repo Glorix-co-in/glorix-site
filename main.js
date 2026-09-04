@@ -276,99 +276,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ===== Load Artists Dynamically =====
-  const artistsGrid = document.getElementById("artistsGrid");
-  const artistTemplate = document.getElementById("artistTemplate");
-
-  if (artistsGrid && artistTemplate) {
-    const seeAllBtn = document.querySelector(".see-all-btn");
-
-    fetch("data/artists.json")
-      .then((response) => response.json())
-      .then((artists) => {
-        // exclude entries marked hidden (e.g. Saksham)
-        const visibleArtists = artists.filter((a) => !a.hidden);
-
-        function renderArtists() {
-          artistsGrid.innerHTML = "";
-          let limit = null;
-
-          if (seeAllBtn) {
-            if (window.innerWidth <= 768) {
-              limit = 8;
-            } else {
-              // Let the browser calculate the columns first, then count them
-              // We temporarily add one item to ensure the grid layout is computed
-              const temp = document.createElement("div");
-              temp.style.visibility = "hidden";
-              artistsGrid.appendChild(temp);
-
-              const style = window.getComputedStyle(artistsGrid);
-              const gridCols = style
-                .getPropertyValue("grid-template-columns")
-                .split(" ").length;
-              artistsGrid.removeChild(temp);
-
-              limit = Math.max(gridCols * 2, 4); // Show at least 2 rows, minimum 4 items
-            }
-          }
-
-          const artistsToShow = limit
-            ? visibleArtists.slice(0, limit)
-            : visibleArtists;
-          artistsToShow.forEach((artist) => {
-            const clone = artistTemplate.content.cloneNode(true);
-            const card = clone.querySelector(".artist-card");
-            const img = clone.querySelector("img");
-            const name = clone.querySelector("h3");
-
-            card.href = artist.link || "#";
-            img.src = artist.image;
-            img.alt = artist.name;
-            name.textContent = artist.name;
-
-            artistsGrid.appendChild(clone);
-          });
-        }
-
-        renderArtists();
-
-        if (seeAllBtn) {
-          let resizeTimeout;
-          window.addEventListener("resize", () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(renderArtists, 200);
-          });
-        }
-      })
-      .catch((error) => console.error("Error loading artists:", error));
-  }
-
-  // ===== Load Team Dynamically =====
-  const teamGrid = document.getElementById("teamGrid");
-  const teamTemplate = document.getElementById("teamTemplate");
-
-  if (teamGrid && teamTemplate) {
-    fetch("data/teams.json")
-      .then((response) => response.json())
-      .then((teams) => {
-        teams.forEach((member) => {
-          const clone = teamTemplate.content.cloneNode(true);
-          const card = clone.querySelector(".artist-card");
-          const img = clone.querySelector("img");
-          const name = clone.querySelector("h3");
-
-          card.href = member.link || "#";
-          img.src = member.image;
-          img.alt = member.role;
-          name.textContent = member.name;
-
-          teamGrid.appendChild(clone);
-        });
-      })
-      .catch((error) => console.error("Error loading team:", error));
-  }
-
   // ===== Collaboration Marquee =====
   const collabMarquee = document.getElementById("collaborationMarquee");
   const collabTemplate = document.getElementById("collaborationTemplate");
@@ -415,8 +322,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const gridElements = [
       ".review-slider-wrapper",
       ".gallery-grid",
-      ".artists-grid",
-      ".team-grid",
       ".marquee",
     ];
     gridElements.forEach((selector) => {
@@ -550,42 +455,6 @@ document.addEventListener("DOMContentLoaded", function () {
       gsap.to(".review-slider-wrapper", {
         scrollTrigger: {
           trigger: "#testimonials",
-          start: "top 75%",
-          once: true,
-        },
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-      });
-    }
-
-    // Artists Grid
-    if (
-      document.querySelector("#artists") &&
-      document.querySelector(".artists-grid")
-    ) {
-      gsap.to(".artists-grid", {
-        scrollTrigger: {
-          trigger: "#artists",
-          start: "top 75%",
-          once: true,
-        },
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power2.out",
-      });
-    }
-
-    // Team Grid
-    if (
-      document.querySelector("#team") &&
-      document.querySelector(".team-grid")
-    ) {
-      gsap.to(".team-grid", {
-        scrollTrigger: {
-          trigger: "#team",
           start: "top 75%",
           once: true,
         },

@@ -175,5 +175,49 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/Flip.min.js"></script>
     <script src="script.js"></script>
     <script src="main.js"></script>
+    <script>
+      // Team page-specific logic (extracted from main.js to avoid dead code on index)
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof gsap !== "undefined" && document.querySelector(".team-grid")) {
+          gsap.set(".team-grid", { y: 50, autoAlpha: 0 });
+        }
+        const teamGrid = document.getElementById("teamGrid");
+        const teamTemplate = document.getElementById("teamTemplate");
+        if (teamGrid && teamTemplate) {
+          fetch("data/teams.json")
+            .then((response) => response.json())
+            .then((teams) => {
+              teams.forEach((member) => {
+                const clone = teamTemplate.content.cloneNode(true);
+                const card = clone.querySelector(".artist-card");
+                const img = clone.querySelector("img");
+                const name = clone.querySelector("h3");
+                card.href = member.link || "#";
+                img.src = member.image;
+                img.alt = member.role;
+                name.textContent = member.name;
+                teamGrid.appendChild(clone);
+              });
+              if (typeof gsap !== "undefined" && document.querySelector(".team-grid")) {
+                if (typeof ScrollTrigger !== "undefined" && typeof gsap.registerPlugin === "function") {
+                  try { gsap.registerPlugin(ScrollTrigger); } catch(e) {}
+                }
+                gsap.to(".team-grid", {
+                  scrollTrigger: {
+                    trigger: "#team",
+                    start: "top 75%",
+                    once: true,
+                  },
+                  autoAlpha: 1,
+                  y: 0,
+                  duration: 0.6,
+                  ease: "power2.out",
+                });
+              }
+            })
+            .catch((error) => console.error("Error loading team:", error));
+        }
+      });
+    </script>
   </body>
 </html>

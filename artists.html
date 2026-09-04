@@ -170,5 +170,78 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/Flip.min.js"></script>
     <script src="script.js"></script>
     <script src="main.js"></script>
+    <script>
+      // Artists page-specific logic (extracted from main.js to avoid dead code on index)
+      document.addEventListener("DOMContentLoaded", function () {
+        const artistsGrid = document.getElementById("artistsGrid");
+        const artistTemplate = document.getElementById("artistTemplate");
+        if (typeof gsap !== "undefined" && document.querySelector(".artists-grid")) {
+          gsap.set(".artists-grid", { y: 50, autoAlpha: 0 });
+        }
+        if (artistsGrid && artistTemplate) {
+          const seeAllBtn = document.querySelector(".see-all-btn");
+          fetch("data/artists.json")
+            .then((response) => response.json())
+            .then((artists) => {
+              const visibleArtists = artists.filter((a) => !a.hidden);
+              function renderArtists() {
+                artistsGrid.innerHTML = "";
+                let limit = null;
+                if (seeAllBtn) {
+                  if (window.innerWidth <= 768) {
+                    limit = 8;
+                  } else {
+                    const temp = document.createElement("div");
+                    temp.style.visibility = "hidden";
+                    artistsGrid.appendChild(temp);
+                    const style = window.getComputedStyle(artistsGrid);
+                    const gridCols = style
+                      .getPropertyValue("grid-template-columns")
+                      .split(" ").length;
+                    artistsGrid.removeChild(temp);
+                    limit = Math.max(gridCols * 2, 4);
+                  }
+                }
+                const artistsToShow = limit
+                  ? visibleArtists.slice(0, limit)
+                  : visibleArtists;
+                artistsToShow.forEach((artist) => {
+                  const clone = artistTemplate.content.cloneNode(true);
+                  const card = clone.querySelector(".artist-card");
+                  const img = clone.querySelector("img");
+                  const name = clone.querySelector("h3");
+                  card.href = artist.link || "#";
+                  img.src = artist.image;
+                  img.alt = artist.name;
+                  name.textContent = artist.name;
+                  artistsGrid.appendChild(clone);
+                });
+                if (typeof gsap !== "undefined" && document.querySelector(".artists-grid")) {
+                  gsap.to(".artists-grid", {
+                    scrollTrigger: {
+                      trigger: "#artists",
+                      start: "top 75%",
+                      once: true,
+                    },
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "power2.out",
+                  });
+                }
+              }
+              renderArtists();
+              if (seeAllBtn) {
+                let resizeTimeout;
+                window.addEventListener("resize", () => {
+                  clearTimeout(resizeTimeout);
+                  resizeTimeout = setTimeout(renderArtists, 200);
+                });
+              }
+            })
+            .catch((error) => console.error("Error loading artists:", error));
+        }
+      });
+    </script>
   </body>
 </html>
