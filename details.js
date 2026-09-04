@@ -337,10 +337,31 @@ function populateEventDetails(event) {
   const stickyBar = document.querySelector(".sticky-bottom-bar");
 
   const status = event.status || "closed";
-  const hasBookingMethod =
-    event.bookingLink && event.bookingLink !== "null"
-      ? true
-      : event.bookingOptions && event.bookingOptions.length > 0;
+  const bookingOptions = Array.isArray(event.bookingOptions)
+    ? event.bookingOptions
+    : [];
+  const availableBookingOptions = bookingOptions.filter(
+    (option) =>
+      option?.link &&
+      option.status !== "closed" &&
+      option.status !== "sold-out",
+  );
+  const shouldSelectSlot = availableBookingOptions.length > 1;
+  const directBookingLink =
+    availableBookingOptions.length === 1
+      ? availableBookingOptions[0].link
+      : event.bookingLink && event.bookingLink !== "null"
+        ? event.bookingLink
+        : null;
+  const hasBookingMethod = shouldSelectSlot || Boolean(directBookingLink);
+
+  const openBooking = () => {
+    if (shouldSelectSlot) {
+      window.location.href = `select-slot.html?id=${event.id}`;
+    } else if (directBookingLink) {
+      window.open(directBookingLink, "_blank");
+    }
+  };
 
   const bookingOpened =
     window.GLORIX_CONFIG.forceOpen ||
@@ -385,13 +406,7 @@ function populateEventDetails(event) {
         bookNowBtn.style.display = "block";
         if (rzpContainer) rzpContainer.style.display = "none";
 
-        bookNowBtn.addEventListener("click", () => {
-          if (event.bookingOptions && event.bookingOptions.length > 1) {
-            window.location.href = `select-slot.html?id=${event.id}`;
-          } else {
-            window.open(event.bookingLink, "_blank");
-          }
-        });
+        bookNowBtn.addEventListener("click", openBooking);
       }
     }
   } else if (showSoonState) {
@@ -450,13 +465,7 @@ function populateEventDetails(event) {
           bookNowBtn.disabled = false;
           bookNowBtn.classList.remove("disabled");
           bookNowBtn.style.display = "block";
-          bookNowBtn.addEventListener("click", () => {
-            if (event.bookingOptions && event.bookingOptions.length > 1) {
-              window.location.href = `select-slot.html?id=${event.id}`;
-            } else {
-              window.open(event.bookingLink, "_blank");
-            }
-          });
+          bookNowBtn.addEventListener("click", openBooking);
         }
         if (rzpContainer) rzpContainer.style.display = "none";
 
