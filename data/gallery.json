@@ -1,5 +1,177 @@
 [
   {
+    "src": "assets/gallery/standup photos/standup-01.avif",
+    "alt": "Stand-up event photo 1"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_01.avif",
+    "alt": "Event 2 photo 1"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-02.avif",
+    "alt": "Stand-up event photo 2"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_02.avif",
+    "alt": "Event 2 photo 2"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-03.avif",
+    "alt": "Stand-up event photo 3"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_03.avif",
+    "alt": "Event 2 photo 3"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-04.avif",
+    "alt": "Stand-up event photo 4"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_04.avif",
+    "alt": "Event 2 photo 4"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-05.avif",
+    "alt": "Stand-up event photo 5"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_05.avif",
+    "alt": "Event 2 photo 5"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-06.avif",
+    "alt": "Stand-up event photo 6"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_06.avif",
+    "alt": "Event 2 photo 6"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-07.avif",
+    "alt": "Stand-up event photo 7"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_07.avif",
+    "alt": "Event 2 photo 7"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-08.avif",
+    "alt": "Stand-up event photo 8"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_08.avif",
+    "alt": "Event 2 photo 8"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-09.avif",
+    "alt": "Stand-up event photo 9"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_09.avif",
+    "alt": "Event 2 photo 9"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-10.avif",
+    "alt": "Stand-up event photo 10"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_10.avif",
+    "alt": "Event 2 photo 10"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-11.avif",
+    "alt": "Stand-up event photo 11"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_11.avif",
+    "alt": "Event 2 photo 11"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-12.avif",
+    "alt": "Stand-up event photo 12"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_12.avif",
+    "alt": "Event 2 photo 12"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-13.avif",
+    "alt": "Stand-up event photo 13"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_13.avif",
+    "alt": "Event 2 photo 13"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-14.avif",
+    "alt": "Stand-up event photo 14"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_14.avif",
+    "alt": "Event 2 photo 14"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-15.avif",
+    "alt": "Stand-up event photo 15"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_15.avif",
+    "alt": "Event 2 photo 15"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-16.avif",
+    "alt": "Stand-up event photo 16"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_16.avif",
+    "alt": "Event 2 photo 16"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-17.avif",
+    "alt": "Stand-up event photo 17"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_17.avif",
+    "alt": "Event 2 photo 17"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-18.avif",
+    "alt": "Stand-up event photo 18"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_18.avif",
+    "alt": "Event 2 photo 18"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-19.avif",
+    "alt": "Stand-up event photo 19"
+  },
+  {
+    "src": "assets/gallery/event_2/event_2_19.avif",
+    "alt": "Event 2 photo 19"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-20.avif",
+    "alt": "Stand-up event photo 20"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-21.avif",
+    "alt": "Stand-up event photo 21"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-22.avif",
+    "alt": "Stand-up event photo 22"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-23.avif",
+    "alt": "Stand-up event photo 23"
+  },
+  {
+    "src": "assets/gallery/standup photos/standup-24.avif",
+    "alt": "Stand-up event photo 24"
+  },
+  {
     "src": "assets/gallery/new_event/IMG-20260306-WA0080.avif",
     "alt": "Gallery Image"
   },

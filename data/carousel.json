@@ -1,32 +1,27 @@
 [
   {
-    "desktopImage": "assets/events/inder_sahani_4_horizontal.avif",
-    "mobileImage": "assets/events/inder_sahani_4_vertical.avif",
-    "alt": "Inder Sahani Poster 4"
+    "desktopImage": "assets/gallery/standup photos/standup-12.avif",
+    "mobileImage": "assets/gallery/standup photos/standup-12.avif",
+    "alt": "Stand-up event photo 12"
   },
   {
-    "desktopImage": "assets/events/inder_sahani_1_horizontal.avif",
-    "mobileImage": "assets/events/inder_sahani_1_vertical.avif",
-    "alt": "Inder Sahani Poster 1"
+    "desktopImage": "assets/gallery/standup photos/standup-08.avif",
+    "mobileImage": "assets/gallery/standup photos/standup-08.avif",
+    "alt": "Stand-up event photo 8"
   },
   {
-    "desktopImage": "assets/events/inder_sahani_2_horizontal.avif",
-    "mobileImage": "assets/events/inder_sahani_2_vertical.avif",
-    "alt": "Inder Sahani Poster 2"
+    "desktopImage": "assets/gallery/standup photos/standup-02.avif",
+    "mobileImage": "assets/gallery/standup photos/standup-02.avif",
+    "alt": "Stand-up event photo 2"
   },
   {
-    "desktopImage": "assets/events/inder_sahani_3_horizontal.avif",
-    "mobileImage": "assets/events/inder_sahani_3_vertical.avif",
-    "alt": "Inder Sahani Poster 3"
+    "desktopImage": "assets/gallery/standup photos/standup-21.avif",
+    "mobileImage": "assets/gallery/standup photos/standup-21.avif",
+    "alt": "Stand-up event photo 21"
   },
   {
-    "desktopImage": "assets/events/inder_sahani_horizontal.avif",
-    "mobileImage": "assets/events/inder_sahani_vertical.avif",
-    "alt": "Inder Sahani - Live In Delhi"
-  },
-  {
-    "desktopImage": "assets/inder_stage_layout.avif",
-    "mobileImage": "assets/inder_stage_layout.avif",
-    "alt": "Inder Sahani - Stage Layout"
+    "desktopImage": "assets/gallery/standup photos/standup-13.avif",
+    "mobileImage": "assets/gallery/standup photos/standup-13.avif",
+    "alt": "Stand-up event photo 13"
   }
 ]
