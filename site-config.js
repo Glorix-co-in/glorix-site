@@ -16,23 +16,51 @@ window.GLORIX_CONFIG = (function () {
     .then((response) => response.json())
     .then((events) => {
       if (!Array.isArray(events)) return;
-      // Featured event = the one with the latest start (the current upcoming event).
-      let featured = null;
-      events.forEach((e) => {
-        if (!e.details) return;
-        const start = e.details.eventStartsAtISO
-          ? new Date(e.details.eventStartsAtISO).getTime()
-          : -Infinity;
-        const currentBest = featured?.details?.eventStartsAtISO
-          ? new Date(featured.details.eventStartsAtISO).getTime()
-          : -Infinity;
-        if (start > currentBest) featured = e;
-      });
-      if (!featured) {
-        featured = events.find(
-          (e) => e.details && e.details.bookingOpensAtISO,
-        );
-      }
+      const activeStatuses = new Set([
+        "open",
+        "available",
+        "filling-fast",
+        "sold-out",
+        "soon",
+      ]);
+      const now = Date.now();
+      const candidates = events
+        .filter((event) => {
+          if (
+            !event.details ||
+            event.hiddenFromBookings === true ||
+            event.status === "hidden" ||
+            !activeStatuses.has(event.status)
+          ) {
+            return false;
+          }
+
+          const eventStart = event.details.eventStartsAtISO
+            ? new Date(event.details.eventStartsAtISO).getTime()
+            : null;
+          const hasValidStart = Number.isFinite(eventStart);
+          const hasBookingDate = Boolean(event.details.bookingOpensAtISO);
+
+          return (hasValidStart || hasBookingDate) &&
+            (!hasValidStart || eventStart > now);
+        })
+        .sort((a, b) => {
+          if (Boolean(a.isFeatured) !== Boolean(b.isFeatured)) {
+            return a.isFeatured ? -1 : 1;
+          }
+
+          const getRelevantDate = (event) => {
+            const value =
+              event.details.eventStartsAtISO ||
+              event.details.bookingOpensAtISO;
+            const timestamp = new Date(value).getTime();
+            return Number.isFinite(timestamp) ? timestamp : Infinity;
+          };
+
+          return getRelevantDate(a) - getRelevantDate(b);
+        });
+      const featured = candidates[0] || null;
+
       if (featured?.details?.bookingOpensAtISO) {
         bookingOpensAtISO = featured.details.bookingOpensAtISO;
       }
