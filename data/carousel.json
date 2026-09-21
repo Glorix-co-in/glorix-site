@@ -1,12 +1,12 @@
 [
   {
-    "desktopImage": "assets/events/differental_advisory_yellow_horizontal.avif",
-    "mobileImage": "assets/events/differental_advisory_yellow_vertical.avif",
+    "desktopImage": "assets/events/differental_advisory_horizontal.avif",
+    "mobileImage": "assets/events/differental_advisory_vertical.avif",
     "alt": "Differental Advisory: Lakshay_93 EP Launch Party"
   },
   {
-    "desktopImage": "assets/events/differental_advisory_horizontal.avif",
-    "mobileImage": "assets/events/differental_advisory_vertical.avif",
+    "desktopImage": "assets/events/differental_advisory_yellow_horizontal.avif",
+    "mobileImage": "assets/events/differental_advisory_yellow_vertical.avif",
     "alt": "Differental Advisory: Lakshay_93 EP Launch Party"
   }
 ]
