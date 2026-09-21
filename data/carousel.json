@@ -1,27 +1,12 @@
 [
   {
-    "desktopImage": "assets/events/inder_sahani_4_horizontal.avif",
-    "mobileImage": "assets/events/inder_sahani_4_vertical.avif",
-    "alt": "Inder Sahani Poster 4"
+    "desktopImage": "assets/events/differental_advisory_yellow_horizontal.avif",
+    "mobileImage": "assets/events/differental_advisory_yellow_vertical.avif",
+    "alt": "Differental Advisory: Lakshay_93 EP Launch Party"
   },
   {
-    "desktopImage": "assets/events/inder_sahani_1_horizontal.avif",
-    "mobileImage": "assets/events/inder_sahani_1_vertical.avif",
-    "alt": "Inder Sahani Poster 1"
-  },
-  {
-    "desktopImage": "assets/events/inder_sahani_2_horizontal.avif",
-    "mobileImage": "assets/events/inder_sahani_2_vertical.avif",
-    "alt": "Inder Sahani Poster 2"
-  },
-  {
-    "desktopImage": "assets/events/inder_sahani_3_horizontal.avif",
-    "mobileImage": "assets/events/inder_sahani_3_vertical.avif",
-    "alt": "Inder Sahani Poster 3"
-  },
-  {
-    "desktopImage": "assets/events/inder_sahani_horizontal.avif",
-    "mobileImage": "assets/events/inder_sahani_vertical.avif",
-    "alt": "Inder Sahani - Live In Delhi"
+    "desktopImage": "assets/events/differental_advisory_horizontal.avif",
+    "mobileImage": "assets/events/differental_advisory_vertical.avif",
+    "alt": "Differental Advisory: Lakshay_93 EP Launch Party"
   }
 ]
