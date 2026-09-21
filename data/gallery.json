@@ -213,7 +213,8 @@
   },
   {
     "src": "assets/gallery/new_event/IMG-20260306-WA0070.avif",
-    "alt": "Gallery Image"
+    "alt": "Gallery Image",
+    "homeOrder": 5
   },
   {
     "src": "assets/gallery/seasons photos/SKP05858.webp",
@@ -233,7 +234,8 @@
   },
   {
     "src": "assets/gallery/IMG-20251230-WA0082.avif",
-    "alt": "Gallery Image"
+    "alt": "Gallery Image",
+    "homeOrder": 7
   },
   {
     "src": "assets/gallery/new_event/IMG-20260306-WA0065.avif",
@@ -257,7 +259,8 @@
   },
   {
     "src": "assets/gallery/IMG-20251230-WA0078.avif",
-    "alt": "Gallery Image"
+    "alt": "Gallery Image",
+    "homeOrder": 6
   },
   {
     "src": "assets/gallery/new_event/IMG-20260306-WA0054.avif",
@@ -325,7 +328,8 @@
   },
   {
     "src": "assets/gallery/new_event/IMG-20260306-WA0022.avif",
-    "alt": "Gallery Image"
+    "alt": "Gallery Image",
+    "homeOrder": 1
   },
   {
     "src": "assets/gallery/IMG-20251230-WA0061.avif",
@@ -333,7 +337,8 @@
   },
   {
     "src": "assets/gallery/seasons photos/SKP05743.avif",
-    "alt": "Gallery Image"
+    "alt": "Gallery Image",
+    "homeOrder": 4
   },
   {
     "src": "assets/gallery/bali photos/DSC09242.avif",
@@ -377,11 +382,13 @@
   },
   {
     "src": "assets/gallery/new_event/IMG-20260306-WA0011.avif",
-    "alt": "Gallery Image"
+    "alt": "Gallery Image",
+    "homeOrder": 10
   },
   {
     "src": "assets/gallery/IMG-20251230-WA0057.avif",
-    "alt": "Gallery Image"
+    "alt": "Gallery Image",
+    "homeOrder": 9
   },
   {
     "src": "assets/gallery/seasons photos/SKP05696.avif",
@@ -397,7 +404,8 @@
   },
   {
     "src": "assets/gallery/new_event/IMG-20260306-WA0009.avif",
-    "alt": "Gallery Image"
+    "alt": "Gallery Image",
+    "homeOrder": 2
   },
   {
     "src": "assets/gallery/IMG-20251230-WA0056.avif",
@@ -425,7 +433,8 @@
   },
   {
     "src": "assets/gallery/IMG-20251230-WA0055.avif",
-    "alt": "Gallery Image"
+    "alt": "Gallery Image",
+    "homeOrder": 11
   },
   {
     "src": "assets/gallery/seasons photos/SKP05672.webp",
@@ -493,11 +502,14 @@
   },
   {
     "src": "assets/gallery/new_event/IMG-20260306-WA0002.avif",
-    "alt": "Gallery Image"
+    "alt": "Gallery Image",
+    "homeOrder": 8
   },
   {
     "src": "assets/gallery/IMG-20251030-WA0006.avif",
-    "alt": "Gallery Image"
+    "alt": "Gallery Image",
+    "homeOrder": 3,
+    "homeObjectPosition": "center bottom"
   },
   {
     "src": "assets/gallery/seasons photos/SKP05627.avif",

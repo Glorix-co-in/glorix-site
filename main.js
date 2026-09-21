@@ -276,6 +276,67 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // ===== Load Homepage Gallery from data/gallery.json =====
+  const homeGalleryGrid = document.getElementById("homeGalleryGrid");
+
+  if (homeGalleryGrid) {
+    const homeGalleryLayoutClasses = [
+      "item-l1",
+      "item-l2",
+      "item-l3",
+      "item-l4",
+      "gallery-logo",
+      "item-m1",
+      "item-tall",
+      "item-r1",
+      "item-r2",
+      "item-r3",
+      "item-r4",
+    ];
+
+    fetch("data/gallery.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to load gallery data");
+        }
+        return response.json();
+      })
+      .then((galleryData) => {
+        const homeGalleryItems = galleryData
+          .filter(
+            (item) =>
+              Number.isInteger(item.homeOrder) &&
+              item.homeOrder >= 1 &&
+              item.homeOrder <= homeGalleryLayoutClasses.length,
+          )
+          .sort((a, b) => a.homeOrder - b.homeOrder);
+
+        const fragment = document.createDocumentFragment();
+        homeGalleryItems.forEach((item) => {
+          const galleryItem = document.createElement("div");
+          galleryItem.className =
+            `gallery-item ${homeGalleryLayoutClasses[item.homeOrder - 1]}`;
+
+          const image = document.createElement("img");
+          image.src = item.src;
+          image.alt = item.alt || `Gallery image ${item.homeOrder}`;
+          image.loading = "lazy";
+          image.fetchPriority = "low";
+          if (item.homeObjectPosition) {
+            image.style.objectPosition = item.homeObjectPosition;
+          }
+
+          galleryItem.appendChild(image);
+          fragment.appendChild(galleryItem);
+        });
+
+        homeGalleryGrid.appendChild(fragment);
+      })
+      .catch((error) =>
+        console.error("Error loading homepage gallery:", error),
+      );
+  }
+
   // ===== Collaboration Marquee =====
   const collabMarquee = document.getElementById("collaborationMarquee");
   const collabTemplate = document.getElementById("collaborationTemplate");
