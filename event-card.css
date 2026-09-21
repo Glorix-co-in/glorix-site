@@ -139,7 +139,7 @@
 }
 
 .event-card--featured .event-card__image {
-  aspect-ratio: 3 / 1.7;
+  aspect-ratio: 16 / 9;
 }
 
 @media (max-width: 768px) {
@@ -280,6 +280,6 @@
   }
 
   .event-card--featured .event-card-mobile__image {
-    aspect-ratio: 1 / 0.8;
+    aspect-ratio: 16 / 9;
   }
 }
