@@ -304,7 +304,7 @@
         "Prodxraj",
         "Aastik",
         "Hitserv",
-        "Lil Broke",
+        "Lakshay",
         "Lil Edward",
         "Kalamkar lucky",
         "Volt",
@@ -633,6 +633,39 @@
       "priceFrom": 499,
       "defaultArtists": ["Inder Sahani"],
       "artists": ["Inder Sahani"]
+    }
+  },
+  {
+    "id": "differental-advisory-lakshay93-ep-launch",
+    "title": "Differental Advisory - Lakshay_93 EP Launch Party",
+    "image": "assets/artists/Lil Broke.avif",
+    "date": "27th September 2026",
+    "status": "soon",
+    "bookingLink": null,
+    "details": {
+      "tags": ["EP Launch Party", "Hip Hop", "Live Performance"],
+      "dateRange": null,
+      "time": "5:00 PM onwards",
+      "duration": "3 Hours",
+      "ageLimit": "18+",
+      "languages": "Hindi, English",
+      "genre": "Hip Hop, EP Launch Party",
+      "venue": "Tizoe, Ansal Plaza, Delhi",
+      "venueLink": "https://maps.app.goo.gl/kCz5uKdgWFMYH8LR8",
+      "detailsImage": {
+        "landscape": "assets/artists/Lil Broke.avif",
+        "portrait": "assets/artists/Lil Broke.avif"
+      },
+      "aboutEvent": "A new chapter begins with the official launch party of Lakshay's EP \"Lakshay_93\", presented as Differental Advisory.\n\nThis night is a celebration of Hip Hop, energy, and raw expression. Lakshay performs the full EP live for the audience, track by track, in an intimate launch-party setting at Tizoe. From hard-hitting bars to immersive sounds, this isn't just a show — it's a statement. If you're here for authentic underground music and unforgettable vibes, this is where you belong.\n\nDate: 27 September 2026\nVenue: Tizoe, Ansal Plaza, Delhi\nTime: 5:00 PM onwards\nDuration: 3 Hours\nAge Limit: 18+\nLanguages: Hindi, English",
+      "highlights": [
+        "Lakshay_93 EP performed live",
+        "Hip Hop EP launch party",
+        "Live performance at Tizoe, Delhi"
+      ],
+      "priceFrom": 349,
+      "eventStartsAtISO": "2026-09-27T17:00:00+05:30",
+      "defaultArtists": ["Lakshay"],
+      "artists": ["Lakshay"]
     }
   }
 ]
