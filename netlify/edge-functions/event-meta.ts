@@ -30,11 +30,14 @@ export default async (request: Request, context: any) => {
       event.details?.description ||
       `${event.title} by GLORIX. View event details, venue, timings and tickets.`;
 
-    // Prefer landscape event image for social preview
-    const imagePath =
-      event.details?.detailsImage?.landscape ||
-      event.image ||
-      "assets/Poster.avif";
+    // Use the specially cropped Dandiya poster for social cards; it is separate
+    // from the images used in the event pages and booking cards.
+    const isDandiyaEvent = event.id.startsWith("glorix-dandiya-night-2026");
+    const imagePath = isDandiyaEvent
+      ? "assets/events/glorix_dandiya_night_2026_landscape_cropped.avif"
+      : event.details?.detailsImage?.landscape ||
+        event.image ||
+        "assets/Poster.avif";
 
     const imageUrl = new URL(imagePath, `${origin}/`).href;
     const pageUrl = url.href;
