@@ -68,7 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
             e.status === "sold-out" ||
             e.status === "soon"),
       )
-      .sort((a, b) => getEventDate(a, allEvents) - getEventDate(b, allEvents));
+      .sort((a, b) => {
+        const aOrder = Number.isFinite(a.bookingOrder) ? a.bookingOrder : Infinity;
+        const bOrder = Number.isFinite(b.bookingOrder) ? b.bookingOrder : Infinity;
+        return aOrder - bOrder || getEventDate(a, allEvents) - getEventDate(b, allEvents);
+      });
 
     const pastEvents = allEvents
       .filter(
@@ -145,7 +149,9 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.classList.add(`${prefix.substring(1)}__btn--view`);
         btn.addEventListener("click", (e) => {
           e.stopPropagation();
-          window.location.href = `details.html?id=${event.id}`;
+          window.location.href = event.bookingFlow === "date-first"
+            ? `select-slot.html?id=${event.id}`
+            : `details.html?id=${event.id}`;
         });
       }
 
@@ -153,7 +159,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (card) {
         card.style.cursor = "pointer";
         card.addEventListener("click", () => {
-          window.location.href = `details.html?id=${event.id}`;
+          window.location.href = event.bookingFlow === "date-first"
+            ? `select-slot.html?id=${event.id}`
+            : `details.html?id=${event.id}`;
         });
       }
 

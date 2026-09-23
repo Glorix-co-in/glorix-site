@@ -142,6 +142,12 @@ function populateEventArtists(event, artistsData) {
 
   if (!section || !container) return;
 
+  if (event.details?.hideArtists) {
+    section.style.display = "none";
+    container.innerHTML = "";
+    return;
+  }
+
   if (event.details?.artistsRevealMessage) {
     section.style.display = "block";
     container.innerHTML = `

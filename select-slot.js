@@ -101,11 +101,13 @@ function updateTimeSlots(times) {
   times.forEach((option) => {
     const status = option.status || "available";
     const link = typeof option.link === "string" ? option.link.trim() : "";
-    const isUnavailable = ["sold-out", "closed"].includes(status) || !link || link === "null";
+    const detailsEventId = option.detailsEventId || "";
+    const isUnavailable = ["sold-out", "closed"].includes(status) || ((!link || link === "null") && !detailsEventId);
     const card = document.createElement("div");
     card.className = `slot-card ${status}${isUnavailable ? " closed" : ""}`;
     card.dataset.time = option.time || "";
     card.dataset.link = link;
+    card.dataset.detailsEventId = detailsEventId;
     card.setAttribute("aria-disabled", String(isUnavailable));
 
     const timeLabel = document.createElement("span");
@@ -128,8 +130,7 @@ function updateTimeSlots(times) {
     if (
       !card.classList.contains("sold-out") &&
       !card.classList.contains("closed") &&
-      Boolean(card.dataset.link) &&
-      card.dataset.link !== "null"
+      ((Boolean(card.dataset.link) && card.dataset.link !== "null") || Boolean(card.dataset.detailsEventId))
     ) {
       if (!firstAvailable) firstAvailable = card;
     }
@@ -138,8 +139,7 @@ function updateTimeSlots(times) {
       if (
         card.classList.contains("sold-out") ||
         card.classList.contains("closed") ||
-        !card.dataset.link ||
-        card.dataset.link === "null"
+        ((!card.dataset.link || card.dataset.link === "null") && !card.dataset.detailsEventId)
       ) {
         return;
       }
@@ -149,7 +149,11 @@ function updateTimeSlots(times) {
 
       confirmBtn.disabled = false;
       confirmBtn.onclick = () => {
-        if (card.dataset.link) window.open(card.dataset.link, "_blank", "noopener");
+        if (card.dataset.detailsEventId) {
+          window.location.href = `details.html?id=${encodeURIComponent(card.dataset.detailsEventId)}`;
+        } else if (card.dataset.link) {
+          window.open(card.dataset.link, "_blank", "noopener");
+        }
       };
     });
   });
