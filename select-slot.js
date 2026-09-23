@@ -67,8 +67,18 @@ function renderSlots(event) {
     dateSlots.innerHTML = uniqueDates
       .map((date) => {
         const formattedDate = formatDate(date);
+        const dateOptions = options.filter((option) => option.date === date);
+        const bookableOptions = dateOptions.filter((option) => {
+          const status = option.status || "available";
+          const link = typeof option.link === "string" ? option.link.trim() : "";
+          return !["closed", "sold-out"].includes(status) &&
+            ((link && link !== "null") || Boolean(option.detailsEventId));
+        });
+        const dateStatus = bookableOptions.length > 0
+          ? (bookableOptions.some((option) => option.status !== "filling-fast") ? "available" : "filling-fast")
+          : (dateOptions.every((option) => option.status === "sold-out") ? "sold-out" : "closed");
         return `
-                <div class="slot-card" data-date="${date}">
+                <div class="slot-card ${dateStatus}" data-date="${date}">
                     <span class="slot-date-full">${formattedDate}</span>
                 </div>
             `;
