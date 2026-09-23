@@ -13,7 +13,35 @@ document.addEventListener("DOMContentLoaded", function () {
   backBtn.addEventListener("click", () => {
     window.history.back();
   });
+
+  const shareBtn = document.getElementById("shareBtn");
+  if (shareBtn) {
+    shareBtn.addEventListener("click", shareEvent);
+  }
 });
+
+function shareEvent() {
+  const title = document.getElementById("headerTitle")?.textContent || "Event";
+  const url = window.location.href;
+
+  if (navigator.share) {
+    navigator.share({
+      title: `${title} - GLORIX`,
+      text: `Choose a date and time for ${title}`,
+      url,
+    }).catch((error) => {
+      if (error.name !== "AbortError") {
+        console.error("Failed to share event:", error);
+      }
+    });
+    return;
+  }
+
+  navigator.clipboard
+    .writeText(url)
+    .then(() => alert("Link copied to clipboard!"))
+    .catch((error) => console.error("Failed to copy event link:", error));
+}
 
 let currentEvent = null;
 let selectedDate = null;

@@ -30,14 +30,33 @@ body {
   justify-content: center;
 }
 
+.share-btn {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.share-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .header-title {
   flex: 1;
   text-align: center;
   font-size: 16px;
   font-weight: 700;
   color: #fff;
-  margin-right: 40px;
-  /* Balance the back button */
+  margin: 0 8px;
   letter-spacing: 1px;
 }
 
