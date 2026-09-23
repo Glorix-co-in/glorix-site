@@ -680,7 +680,7 @@
   {
     "id": "glorix-dandiya-night-2026",
     "title": "Glorix Dandiya Night 2026",
-    "image": "assets/events/glorix_dandiya_night_2026.avif",
+    "image": "assets/events/glorix_dandiya_night_2026_portrait.avif",
     "date": "17th & 18th October 2026",
     "status": "open",
     "bookingLink": null,
@@ -712,8 +712,8 @@
       "genre": "Dandiya Night",
       "venue": "Select a date to view the venue",
       "detailsImage": {
-        "landscape": "assets/events/glorix_dandiya_night_2026.avif",
-        "portrait": "assets/events/glorix_dandiya_night_2026.avif"
+        "landscape": "assets/events/glorix_dandiya_night_2026_landscape.avif",
+        "portrait": "assets/events/glorix_dandiya_night_2026_portrait.avif"
       },
       "aboutEvent": "Celebrate Dandiya Night with live DJ and dhol, Garba, and authentic Indian food. Choose your event date to view that day's venue and booking details.",
       "highlights": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
@@ -725,7 +725,7 @@
   {
     "id": "glorix-dandiya-night-2026-oct-17",
     "title": "Glorix Dandiya Night 2026",
-    "image": "assets/events/glorix_dandiya_night_2026.avif",
+    "image": "assets/events/glorix_dandiya_night_2026_portrait.avif",
     "date": "17th October 2026",
     "status": "open",
     "hiddenFromBookings": true,
@@ -742,8 +742,8 @@
       "venue": "Immense Residency, Sec-28, Faridabad",
       "venueLink": "https://maps.app.goo.gl/TSWmGFQbp48wzZNX8",
       "detailsImage": {
-        "landscape": "assets/events/glorix_dandiya_night_2026.avif",
-        "portrait": "assets/events/glorix_dandiya_night_2026.avif"
+        "landscape": "assets/events/glorix_dandiya_night_2026_landscape.avif",
+        "portrait": "assets/events/glorix_dandiya_night_2026_portrait.avif"
       },
       "aboutEvent": "Join us for Glorix Dandiya Night 2026, an evening of live DJxDhol, Garba, and authentic Indian food.\n\nDate: 17 October 2026\nTime: 5:00 PM onwards\nDuration: 4 Hours\nAge Limit: 5+\nLanguages: Hindi, English\nVenue: Immense Residency, Sec-28, Faridabad",
       "highlights": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
@@ -755,7 +755,7 @@
   {
     "id": "glorix-dandiya-night-2026-oct-18",
     "title": "Glorix Dandiya Night 2026",
-    "image": "assets/events/glorix_dandiya_night_2026.avif",
+    "image": "assets/events/glorix_dandiya_night_2026_portrait.avif",
     "date": "18th October 2026",
     "status": "open",
     "hiddenFromBookings": true,
@@ -772,8 +772,8 @@
       "venue": "Rosewood Grand Hotel, Sec-34, Faridabad",
       "venueLink": "https://maps.app.goo.gl/pasg8S4h87nitraG9",
       "detailsImage": {
-        "landscape": "assets/events/glorix_dandiya_night_2026.avif",
-        "portrait": "assets/events/glorix_dandiya_night_2026.avif"
+        "landscape": "assets/events/glorix_dandiya_night_2026_landscape.avif",
+        "portrait": "assets/events/glorix_dandiya_night_2026_portrait.avif"
       },
       "aboutEvent": "Join us for Glorix Dandiya Night 2026, an evening of live DJxDhol, Garba, and authentic Indian food.\n\nDate: 18 October 2026\nTime: 5:00 PM onwards\nDuration: 4 Hours\nAge Limit: 5+\nLanguages: Hindi, English\nVenue: Rosewood Grand Hotel, Sec-34, Faridabad",
       "highlights": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
