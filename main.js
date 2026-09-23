@@ -600,19 +600,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Event Announcement Popup - DISABLED (kept in DOM for future re-enable, set to true to show again)
-  const EVENT_POPUP_ENABLED = false;
+  // Dandiya announcement popup appears when the featured event's bookings open.
+  const EVENT_POPUP_ENABLED = true;
   const eventPopup = document.getElementById("eventPopup");
   const closeEventPopup = document.getElementById("closeEventPopup");
 
   if (eventPopup && closeEventPopup) {
-    const shownKey = "inder_sahani_popup_shown";
+    const shownKey = "dandiya_night_popup_shown";
     let countdownInterval;
 
-    const DETAILS_PAGE = "details.html";
+    const DETAILS_PAGE = "select-slot.html?id=glorix-dandiya-night-2026";
     const popupBookBtn = document.getElementById("eventPopupBookBtn");
     const popupBookBtnText = document.getElementById("eventPopupBookBtnText");
-    const popupBookLink = "https://r.swiggy.com/v1/swiggy/scenes/comms/100107236";
+    const popupBookLink = "select-slot.html?id=glorix-dandiya-night-2026";
+
+    const showPopupIfOpen = () => {
+      if (
+        EVENT_POPUP_ENABLED &&
+        window.GLORIX_CONFIG.isBookingOpen() &&
+        !sessionStorage.getItem(shownKey)
+      ) {
+        setTimeout(() => {
+          if (!eventPopup.open) eventPopup.showModal();
+          sessionStorage.setItem(shownKey, "1");
+        }, 300);
+      }
+    };
 
     const startCountdownTimer = () => {
       const countdownElements = {
@@ -626,13 +639,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const now = Date.now();
         const eventStarted = window.GLORIX_CONFIG.hasEventStarted();
 
-        // Always link to booking site if bookings are open
-        if (window.GLORIX_CONFIG.isBookingOpen() && popupBookBtn) {
-          popupBookBtn.href = popupBookLink;
-          popupBookBtn.target = "_blank";
-          popupBookBtn.rel = "noopener noreferrer";
-        } else if (popupBookBtn) {
-          popupBookBtn.href = DETAILS_PAGE;
+        if (popupBookBtn) {
+          popupBookBtn.href = window.GLORIX_CONFIG.isBookingOpen()
+            ? popupBookLink
+            : DETAILS_PAGE;
           popupBookBtn.removeAttribute("target");
           popupBookBtn.removeAttribute("rel");
         }
@@ -690,21 +700,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // (keeps carousel live-render working irrespective of the popup timer)
     window.GLORIX_CONFIG.ready.then(() => {
       let wasOpen = window.GLORIX_CONFIG.isBookingOpen();
+      showPopupIfOpen();
       setInterval(() => {
         const nowOpen = window.GLORIX_CONFIG.isBookingOpen();
         if (nowOpen && !wasOpen) {
           document.dispatchEvent(new Event("booking-opened"));
           wasOpen = true;
+          showPopupIfOpen();
         }
       }, 1000);
     });
-
-    if (EVENT_POPUP_ENABLED && !sessionStorage.getItem(shownKey)) {
-      setTimeout(() => {
-        eventPopup.showModal();
-        sessionStorage.setItem(shownKey, "1");
-      }, 300);
-    }
 
     closeEventPopup.addEventListener("click", () => {
       eventPopup.close();

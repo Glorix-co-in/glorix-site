@@ -114,6 +114,7 @@ async function loadEventDetails(eventId) {
 
     const events = await eventsResponse.json();
     const artistsData = await artistsResponse.json();
+    await window.GLORIX_CONFIG.ready;
     const event = events.find((e) => e.id === eventId);
 
     if (!event || event.status === "hidden") {
@@ -324,10 +325,7 @@ function populateEventDetails(event) {
   const stageLayoutSection = document.getElementById("stageLayoutSection");
   const stageLayoutImage = document.getElementById("stageLayoutImage");
   if (stageLayoutSection && stageLayoutImage) {
-    const bookingOpened =
-      window.GLORIX_CONFIG.forceOpen ||
-      (details.bookingOpensAtISO &&
-        Date.now() >= new Date(details.bookingOpensAtISO).getTime());
+    const bookingOpened = window.GLORIX_CONFIG.isBookingOpenFor(event.id);
     if (details.stageLayoutImage && bookingOpened) {
       stageLayoutImage.src = details.stageLayoutImage;
       stageLayoutSection.style.display = "flex";
@@ -371,10 +369,7 @@ function populateEventDetails(event) {
     }
   };
 
-  const bookingOpened =
-    window.GLORIX_CONFIG.forceOpen ||
-    (details.bookingOpensAtISO &&
-      Date.now() >= new Date(details.bookingOpensAtISO).getTime());
+  const bookingOpened = window.GLORIX_CONFIG.isBookingOpenFor(event.id);
 
   const bookable = hasBookingMethod && status !== "closed" && status !== "sold-out";
   const isActuallyOpen = bookable && bookingOpened;
@@ -460,7 +455,7 @@ function populateEventDetails(event) {
   if (!bookingOpened) {
     let watcherWasOpen = false;
     window.__glorixBookingWatcher = setInterval(() => {
-      if (!watcherWasOpen && (window.GLORIX_CONFIG.forceOpen || (details.bookingOpensAtISO && Date.now() >= new Date(details.bookingOpensAtISO).getTime()))) {
+      if (!watcherWasOpen && window.GLORIX_CONFIG.isBookingOpenFor(event.id)) {
         clearInterval(window.__glorixBookingWatcher);
         watcherWasOpen = true;
 

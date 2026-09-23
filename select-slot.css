@@ -172,6 +172,15 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.booking-opening-notice {
+  margin: 0;
+  padding: 24px 12px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .selection-container {
   padding: 0;
 }

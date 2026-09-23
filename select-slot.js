@@ -31,9 +31,57 @@ async function loadEventData(eventId) {
     }
 
     populateInfo(currentEvent);
+    await window.GLORIX_CONFIG.ready;
+    if (!window.GLORIX_CONFIG.isBookingOpenFor(currentEvent.id)) {
+      showBookingOpeningNotice(currentEvent);
+      return;
+    }
     renderSlots(currentEvent);
   } catch (error) {
     console.error("Error loading event:", error);
+  }
+}
+
+function showBookingOpeningNotice(event) {
+  const selectionCard = document.querySelector(".selection-card");
+  const confirmBtn = document.getElementById("confirmBtn");
+  const dateSection = document.getElementById("dateSection");
+  const timeSection = document.getElementById("timeSection");
+  const legend = document.querySelector(".legend-container");
+  const opensAt = window.GLORIX_CONFIG.getBookingOpensAtISOFor(event.id);
+  const formattedOpenTime = opensAt
+    ? new Date(opensAt).toLocaleString("en-IN", {
+        timeZone: "Asia/Kolkata",
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      })
+    : "soon";
+
+  if (dateSection) dateSection.style.display = "none";
+  if (timeSection) timeSection.style.display = "none";
+  if (legend) legend.style.display = "none";
+  if (selectionCard) {
+    const notice = document.createElement("p");
+    notice.className = "booking-opening-notice";
+    notice.textContent = `Bookings open ${formattedOpenTime} IST.`;
+    selectionCard.prepend(notice);
+
+    const bookingWatcher = setInterval(() => {
+      if (window.GLORIX_CONFIG.isBookingOpenFor(event.id)) {
+        clearInterval(bookingWatcher);
+        notice.remove();
+        if (legend) legend.style.display = "";
+        renderSlots(event);
+      }
+    }, 1000);
+  }
+  if (confirmBtn) {
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = `Bookings open ${formattedOpenTime}`;
   }
 }
 
