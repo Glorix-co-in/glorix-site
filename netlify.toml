@@ -1,3 +1,7 @@
 [[edge_functions]]
 function = "event-meta"
-path = ["/details.html", "/select-slot.html"]
+path = "/details.html"
+
+[[edge_functions]]
+function = "event-meta"
+path = "/select-slot.html"
