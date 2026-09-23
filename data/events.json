@@ -690,13 +690,13 @@
     "bookingOptions": [
       {
         "date": "17th October 2026",
-        "time": "5:00 PM onwards",
+        "time": "6:00 PM onwards",
         "detailsEventId": "glorix-dandiya-night-2026-oct-17",
         "status": "available"
       },
       {
         "date": "18th October 2026",
-        "time": "5:00 PM onwards",
+        "time": "6:00 PM onwards",
         "detailsEventId": "glorix-dandiya-night-2026-oct-18",
         "status": "available"
       }
@@ -705,8 +705,8 @@
       "hideArtists": true,
       "tags": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
       "dateRange": "17th & 18th October 2026",
-      "time": "5:00 PM onwards",
-      "duration": "4 Hours",
+      "time": "6:00 PM onwards",
+      "duration": "3 Hours",
       "ageLimit": "5+",
       "languages": "Hindi, English",
       "genre": "Dandiya Night",
@@ -720,7 +720,7 @@
       "highlights": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
       "priceFrom": 199,
       "bookingOpensAtISO": "2026-09-23T00:00:00+05:30",
-      "eventStartsAtISO": "2026-10-17T17:00:00+05:30"
+      "eventStartsAtISO": "2026-10-17T18:00:00+05:30"
     }
   },
   {
@@ -735,8 +735,8 @@
       "hideArtists": true,
       "tags": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
       "dateRange": null,
-      "time": "5:00 PM onwards",
-      "duration": "4 Hours",
+      "time": "6:00 PM onwards",
+      "duration": "3 Hours",
       "ageLimit": "5+",
       "languages": "Hindi, English",
       "genre": "Dandiya Night",
@@ -746,11 +746,11 @@
         "landscape": "assets/events/glorix_dandiya_night_2026_landscape.avif",
         "portrait": "assets/events/glorix_dandiya_night_2026_portrait.avif"
       },
-      "aboutEvent": "Join us for Glorix Dandiya Night 2026, an evening of live DJxDhol, Garba, and authentic Indian food.\n\nDate: 17 October 2026\nTime: 5:00 PM onwards\nDuration: 4 Hours\nAge Limit: 5+\nLanguages: Hindi, English\nVenue: Immense Residency, Sec-28, Faridabad",
+      "aboutEvent": "Join us for Glorix Dandiya Night 2026, an evening of live DJxDhol, Garba, and authentic Indian food.\n\nDate: 17 October 2026\nTime: 6:00 PM onwards\nDuration: 3 Hours\nAge Limit: 5+\nLanguages: Hindi, English\nVenue: Immense Residency, Sec-28, Faridabad",
       "highlights": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
       "priceFrom": 199,
       "bookingOpensAtISO": "2026-09-23T00:00:00+05:30",
-      "eventStartsAtISO": "2026-10-17T17:00:00+05:30"
+      "eventStartsAtISO": "2026-10-17T18:00:00+05:30"
     }
   },
   {
@@ -765,8 +765,8 @@
       "hideArtists": true,
       "tags": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
       "dateRange": null,
-      "time": "5:00 PM onwards",
-      "duration": "4 Hours",
+      "time": "6:00 PM onwards",
+      "duration": "3 Hours",
       "ageLimit": "5+",
       "languages": "Hindi, English",
       "genre": "Dandiya Night",
@@ -776,11 +776,11 @@
         "landscape": "assets/events/glorix_dandiya_night_2026_landscape.avif",
         "portrait": "assets/events/glorix_dandiya_night_2026_portrait.avif"
       },
-      "aboutEvent": "Join us for Glorix Dandiya Night 2026, an evening of live DJxDhol, Garba, and authentic Indian food.\n\nDate: 18 October 2026\nTime: 5:00 PM onwards\nDuration: 4 Hours\nAge Limit: 5+\nLanguages: Hindi, English\nVenue: Rosewood Grand Hotel, Sec-34, Faridabad",
+      "aboutEvent": "Join us for Glorix Dandiya Night 2026, an evening of live DJxDhol, Garba, and authentic Indian food.\n\nDate: 18 October 2026\nTime: 6:00 PM onwards\nDuration: 3 Hours\nAge Limit: 5+\nLanguages: Hindi, English\nVenue: Rosewood Grand Hotel, Sec-34, Faridabad",
       "highlights": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
       "priceFrom": 199,
       "bookingOpensAtISO": "2026-09-23T00:00:00+05:30",
-      "eventStartsAtISO": "2026-10-18T17:00:00+05:30"
+      "eventStartsAtISO": "2026-10-18T18:00:00+05:30"
     }
   }
 ]
