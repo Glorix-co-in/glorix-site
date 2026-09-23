@@ -27,7 +27,6 @@ function shareEvent() {
   if (navigator.share) {
     navigator.share({
       title: `${title} - GLORIX`,
-      text: `Choose a date and time for ${title}`,
       url,
     }).catch((error) => {
       if (error.name !== "AbortError") {
