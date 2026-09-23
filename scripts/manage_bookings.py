@@ -97,11 +97,12 @@ def manage_event_status(events_data, marquee_data, carousel_data):
     # Update event status
     event['status'] = new_status
     
+    booking_options = event.get('bookingOptions') or []
+
     if is_closed:
         event['bookingLink'] = None
-        if 'bookingOptions' in event:
-            for opt in event['bookingOptions']:
-                opt['status'] = 'closed'
+        for opt in booking_options:
+            opt['status'] = 'closed'
         
         if not keep_upcoming:
             # Remove from Marquee
@@ -116,16 +117,19 @@ def manage_event_status(events_data, marquee_data, carousel_data):
         else:
             print(f"Set {event['title']} to CLOSED but keeping in UPCOMING section.")
     else:
-        # If opening or filling fast, check booking link
+        # Multi-slot events use each option's own link; only single-link events
+        # need a root bookingLink.
         if new_status in ["open", "filling-fast"]:
-            if not event.get('bookingLink') or event['bookingLink'] == "null":
+            if not booking_options and (not event.get('bookingLink') or event['bookingLink'] == "null"):
                 link = input(f"Enter booking link for {event['title']}: ")
                 event['bookingLink'] = link
             
-            if 'bookingOptions' in event:
-                for opt in event['bookingOptions']:
-                    if opt.get('status') == 'closed':
-                        opt['status'] = 'available' if new_status == 'open' else 'filling-fast'
+            for opt in booking_options:
+                if opt.get('status') in ('closed', 'sold-out'):
+                    opt['status'] = 'available' if new_status == 'open' else 'filling-fast'
+        elif new_status == "sold-out":
+            for opt in booking_options:
+                opt['status'] = 'sold-out'
 
         # Manage Marquee
         in_marquee = any(m.get('id') == event['id'] for m in marquee_data)

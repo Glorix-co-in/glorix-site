@@ -48,7 +48,7 @@ function populateInfo(event) {
 function renderSlots(event) {
   const options = event.bookingOptions || [];
   if (options.length === 0) {
-    if (event.bookingLink) {
+    if (event.bookingLink && event.bookingLink !== "null") {
       window.location.href = event.bookingLink;
     }
     return;
@@ -60,7 +60,7 @@ function renderSlots(event) {
   const timeSlots = document.getElementById("timeSlots");
 
   // Get unique dates
-  const uniqueDates = [...new Set(options.map((opt) => opt.date))];
+  const uniqueDates = [...new Set(options.map((opt) => opt.date).filter(Boolean))];
 
   if (uniqueDates.length >= 1) {
     dateSection.style.display = "block";
@@ -97,17 +97,29 @@ function updateTimeSlots(times) {
   const confirmBtn = document.getElementById("confirmBtn");
 
   timeSection.style.display = "block";
-  timeSlots.innerHTML = times
-    .map(
-      (opt) => `
-        <div class="slot-card ${opt.status || "available"}" data-time="${
-          opt.time
-        }" data-link="${opt.link}">
-            <span class="slot-time">${opt.time}</span>
-        </div>
-    `,
-    )
-    .join("");
+  timeSlots.innerHTML = "";
+  times.forEach((option) => {
+    const status = option.status || "available";
+    const link = typeof option.link === "string" ? option.link.trim() : "";
+    const isUnavailable = ["sold-out", "closed"].includes(status) || !link || link === "null";
+    const card = document.createElement("div");
+    card.className = `slot-card ${status}${isUnavailable ? " closed" : ""}`;
+    card.dataset.time = option.time || "";
+    card.dataset.link = link;
+    card.setAttribute("aria-disabled", String(isUnavailable));
+
+    const timeLabel = document.createElement("span");
+    timeLabel.className = "slot-time";
+    timeLabel.textContent = option.time || "Time TBA";
+    card.appendChild(timeLabel);
+    if (isUnavailable) {
+      const statusLabel = document.createElement("span");
+      statusLabel.className = "slot-status";
+      statusLabel.textContent = status === "sold-out" ? "Sold Out" : "Unavailable";
+      card.appendChild(statusLabel);
+    }
+    timeSlots.appendChild(card);
+  });
 
   const timeCards = timeSlots.querySelectorAll(".slot-card");
   let firstAvailable = null;
@@ -115,7 +127,9 @@ function updateTimeSlots(times) {
   timeCards.forEach((card) => {
     if (
       !card.classList.contains("sold-out") &&
-      !card.classList.contains("closed")
+      !card.classList.contains("closed") &&
+      Boolean(card.dataset.link) &&
+      card.dataset.link !== "null"
     ) {
       if (!firstAvailable) firstAvailable = card;
     }
@@ -123,7 +137,9 @@ function updateTimeSlots(times) {
     card.addEventListener("click", () => {
       if (
         card.classList.contains("sold-out") ||
-        card.classList.contains("closed")
+        card.classList.contains("closed") ||
+        !card.dataset.link ||
+        card.dataset.link === "null"
       ) {
         return;
       }
@@ -133,12 +149,12 @@ function updateTimeSlots(times) {
 
       confirmBtn.disabled = false;
       confirmBtn.onclick = () => {
-        window.open(card.dataset.link, "_blank");
+        if (card.dataset.link) window.open(card.dataset.link, "_blank", "noopener");
       };
     });
   });
 
-  if (firstAvailable && times.length === 1) {
+  if (firstAvailable && timeCards.length === 1) {
     firstAvailable.click();
   } else {
     confirmBtn.disabled = true;

@@ -346,11 +346,13 @@ function populateEventDetails(event) {
       option.status !== "closed" &&
       option.status !== "sold-out",
   );
-  const shouldSelectSlot = availableBookingOptions.length > 1;
+  // Keep the date/time picker whenever multiple options are configured so
+  // users can see unavailable dates alongside the slots that can still be booked.
+  const shouldSelectSlot = bookingOptions.length > 1;
   const directBookingLink =
     availableBookingOptions.length === 1
       ? availableBookingOptions[0].link
-      : event.bookingLink && event.bookingLink !== "null"
+      : bookingOptions.length === 0 && event.bookingLink && event.bookingLink !== "null"
         ? event.bookingLink
         : null;
   const hasBookingMethod = shouldSelectSlot || Boolean(directBookingLink);
