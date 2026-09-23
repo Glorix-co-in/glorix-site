@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let allEvents = [];
   let isMobileLocal = window.innerWidth <= 768;
+  let bookingGateWatcher;
 
   function parseDate(dateStr) {
     if (!dateStr) return new Date(0);
@@ -51,7 +52,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!eventCardTemplate) return;
 
     function isEventVisible(event) {
-      return event.hiddenFromBookings !== true && event.status !== "hidden";
+      const bookingGateOpen =
+        !event.details?.bookingOpensAtISO ||
+        window.GLORIX_CONFIG.isBookingOpenFor(event.id);
+      return event.hiddenFromBookings !== true &&
+        event.status !== "hidden" &&
+        bookingGateOpen;
     }
 
     // Clear containers
@@ -171,6 +177,27 @@ document.addEventListener("DOMContentLoaded", function () {
     upcomingEvents.forEach((event) => processEvent(event, true));
     pastEvents.forEach((event) => processEvent(event, false));
 
+    clearInterval(bookingGateWatcher);
+    const waitingForBookingGate = allEvents.filter(
+      (event) =>
+        event.hiddenFromBookings !== true &&
+        event.status !== "hidden" &&
+        event.details?.bookingOpensAtISO &&
+        !window.GLORIX_CONFIG.isBookingOpenFor(event.id),
+    );
+    if (waitingForBookingGate.length > 0) {
+      bookingGateWatcher = setInterval(() => {
+        if (
+          waitingForBookingGate.some((event) =>
+            window.GLORIX_CONFIG.isBookingOpenFor(event.id),
+          )
+        ) {
+          clearInterval(bookingGateWatcher);
+          renderEvents();
+        }
+      }, 1000);
+    }
+
     // Show messages if no events
     if (upcomingEvents.length === 0) {
       upcomingContainer.innerHTML =
@@ -188,7 +215,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (upcomingContainer && pastContainer) {
     fetch("data/events.json")
       .then((response) => response.json())
-      .then((events) => {
+      .then(async (events) => {
+        await window.GLORIX_CONFIG.ready;
         allEvents = events;
         renderEvents();
       })
