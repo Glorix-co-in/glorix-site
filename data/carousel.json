@@ -6,11 +6,6 @@
     "showWhenBookingOpen": true
   },
   {
-    "desktopImage": "assets/events/differental_advisory_horizontal.avif",
-    "mobileImage": "assets/events/differental_advisory_vertical.avif",
-    "alt": "Differental Advisory: Lakshay_93 EP Launch Party"
-  },
-  {
     "desktopImage": "assets/events/dandiya_1H.avif",
     "mobileImage": "assets/events/dandiya_1V.avif",
     "alt": "Dandiya Night 2026"
@@ -24,5 +19,9 @@
     "desktopImage": "assets/events/dandiya_3H.avif",
     "mobileImage": "assets/events/dandiya_3V.avif",
     "alt": "Dandiya Night 2026"
+  },{
+    "desktopImage": "assets/events/differental_advisory_horizontal.avif",
+    "mobileImage": "assets/events/differental_advisory_vertical.avif",
+    "alt": "Differental Advisory: Lakshay_93 EP Launch Party"
   }
 ]
