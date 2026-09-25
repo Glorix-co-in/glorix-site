@@ -22,12 +22,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function shareEvent() {
   const title = document.getElementById("headerTitle")?.textContent || "Event";
-  const url = window.location.href;
+  const url = new URL(window.location.href);
+  url.searchParams.delete("slot");
+  const selectedDateCard = document.querySelector("#dateSlots .slot-card.selected");
+  const selectedDate = selectedDateCard?.dataset.date;
+  const selectedOption = currentEvent?.bookingOptions?.find(
+    (option) => option.date === selectedDate && option.detailsEventId,
+  );
+  if (selectedOption) {
+    url.searchParams.set("slot", selectedOption.detailsEventId);
+  }
+  const shareUrl = url.href;
 
   if (navigator.share) {
     navigator.share({
       title: `${title} - GLORIX`,
-      url,
+      url: shareUrl,
     }).catch((error) => {
       if (error.name !== "AbortError") {
         console.error("Failed to share event:", error);
@@ -37,7 +47,7 @@ function shareEvent() {
   }
 
   navigator.clipboard
-    .writeText(url)
+    .writeText(shareUrl)
     .then(() => alert("Link copied to clipboard!"))
     .catch((error) => console.error("Failed to copy event link:", error));
 }
@@ -171,8 +181,13 @@ function renderSlots(event) {
       });
     });
 
-    // Auto-select first date
-    dateCards[0].click();
+    // Honor a date-specific shared URL and keep its date selected on open.
+    const sharedSlotId = new URLSearchParams(window.location.search).get("slot");
+    const sharedSlot = options.find((option) => option.detailsEventId === sharedSlotId);
+    const initialDateCard = dateCards.find((card) =>
+      sharedSlot && card.dataset.date === sharedSlot.date,
+    ) || dateCards[0];
+    initialDateCard?.click();
   }
 }
 

@@ -1,6 +1,7 @@
 export default async (request: Request, context: any) => {
   const url = new URL(request.url);
   const eventId = url.searchParams.get("id");
+  const slotEventId = url.searchParams.get("slot");
 
   // No event id → normal page
   if (!eventId) {
@@ -24,19 +25,32 @@ export default async (request: Request, context: any) => {
     const response = await context.next();
     let html = await response.text();
 
-    const title = `${event.title} | GLORIX`;
+    // A slot may point at a date-specific detail record. Use it for social
+    // metadata while leaving the page's `id` as the parent booking event.
+    const slotEvent = slotEventId
+      ? events.find((e: any) =>
+          e.id === slotEventId &&
+          (event.bookingOptions || []).some(
+            (option: any) => option.detailsEventId === e.id,
+          ),
+        )
+      : undefined;
+    const metadataEvent = slotEvent || event;
+    const title = `${metadataEvent.title} | GLORIX`;
 
     const description =
-      event.details?.description ||
-      `${event.title} by GLORIX. View event details, venue, timings and tickets.`;
+      metadataEvent.details?.description ||
+      `${metadataEvent.title} by GLORIX. View event details, venue, timings and tickets.`;
 
     // Use the specially cropped Dandiya poster for social cards; it is separate
     // from the images used in the event pages and booking cards.
-    const isDandiyaEvent = event.id.startsWith("glorix-dandiya-night-2026");
-    const imagePath = isDandiyaEvent
+    const isDandiyaParent = event.id === "glorix-dandiya-night-2026";
+    const imagePath = slotEvent
+      ? slotEvent.details?.detailsImage?.landscape || slotEvent.image
+      : isDandiyaParent
       ? "assets/events/glorix_dandiya_night_2026_landscape_cropped.avif"
-      : event.details?.detailsImage?.landscape ||
-        event.image ||
+      : metadataEvent.details?.detailsImage?.landscape ||
+        metadataEvent.image ||
         "assets/Poster.avif";
 
     const imageUrl = new URL(imagePath, `${origin}/`).href;
