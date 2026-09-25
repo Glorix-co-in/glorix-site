@@ -42,14 +42,14 @@ export default async (request: Request, context: any) => {
       metadataEvent.details?.description ||
       `${metadataEvent.title} by GLORIX. View event details, venue, timings and tickets.`;
 
-    // Use the specially cropped Dandiya poster for social cards; it is separate
-    // from the images used in the event pages and booking cards.
+    // Use the specially cropped shared poster for the parent listing. The
+    // date-specific Dandiya detail pages should use their own landscape art.
     const isDandiyaParent = event.id === "glorix-dandiya-night-2026";
     const imagePath = slotEvent
       ? slotEvent.details?.detailsImage?.landscape || slotEvent.image
       : isDandiyaParent
       ? "assets/events/glorix_dandiya_night_2026_landscape_cropped.avif"
-      : metadataEvent.details?.detailsImage?.landscape ||
+      : event.details?.detailsImage?.landscape ||
         metadataEvent.image ||
         "assets/Poster.avif";
 
