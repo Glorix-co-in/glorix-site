@@ -122,9 +122,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // Replace image with video
         imgContainer.replaceChild(video, imageEl);
       } else {
-        // Featured events use their landscape poster to fit the wider card
+        // Featured events use their landscape poster; past events use portrait art.
         const imageSrc = isFeatured
           ? event.details?.detailsImage?.landscape || event.image
+          : !isUpcoming
+          ? event.details?.detailsImage?.portrait || event.image
           : event.image;
         imageEl.src = imageSrc;
         imageEl.alt = event.title;
