@@ -640,8 +640,8 @@
     "title": "Differental Advisory: Lakshay_93 EP Launch Party",
     "image": "assets/events/differental_advisory_yellow_horizontal.avif",
     "date": "27th September 2026",
-    "status": "open",
-    "bookingLink": "https://thumpn.com/event/ENL6JK/differental-advisory",
+    "status": "closed",
+    "bookingLink": null,
     "isFeatured": true,
     "bookingOrder": 2,
     "details": {
