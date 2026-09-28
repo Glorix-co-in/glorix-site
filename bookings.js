@@ -52,12 +52,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!eventCardTemplate) return;
 
     function isEventVisible(event) {
-      const bookingGateOpen =
+      const bookingGateHasOpened =
         !event.details?.bookingOpensAtISO ||
-        window.GLORIX_CONFIG.isBookingOpenFor(event.id);
+        window.GLORIX_CONFIG.hasBookingOpenedFor(event.id);
       return event.hiddenFromBookings !== true &&
         event.status !== "hidden" &&
-        bookingGateOpen;
+        bookingGateHasOpened;
     }
 
     // Clear containers

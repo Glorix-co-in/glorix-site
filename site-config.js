@@ -127,6 +127,10 @@ window.GLORIX_CONFIG = (function () {
 
   function isBookingOpenFor(eventId) {
     if (hasBookingEndedFor(eventId)) return false;
+    return hasBookingOpenedFor(eventId);
+  }
+
+  function hasBookingOpenedFor(eventId) {
     const override = getBookingOverride();
     if (override === "private") return false;
     if (override === "public" || forceOpen) return true;
@@ -149,6 +153,7 @@ window.GLORIX_CONFIG = (function () {
     isBookingOpen,
     getBookingOpensAtISO: () => bookingOpensAtISO,
     isBookingOpenFor,
+    hasBookingOpenedFor,
     hasBookingEndedFor,
     getBookingOpensAtISOFor,
     hasEventStarted,
