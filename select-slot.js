@@ -69,6 +69,10 @@ async function loadEventData(eventId) {
 
     populateInfo(currentEvent);
     await window.GLORIX_CONFIG.ready;
+    if (window.GLORIX_CONFIG.hasBookingEndedFor(currentEvent.id)) {
+      showBookingsClosedNotice(currentEvent);
+      return;
+    }
     if (!window.GLORIX_CONFIG.isBookingOpenFor(currentEvent.id)) {
       showBookingOpeningNotice(currentEvent);
       return;
@@ -76,6 +80,27 @@ async function loadEventData(eventId) {
     renderSlots(currentEvent);
   } catch (error) {
     console.error("Error loading event:", error);
+  }
+}
+
+function showBookingsClosedNotice(event) {
+  const selectionCard = document.querySelector(".selection-card");
+  const confirmBtn = document.getElementById("confirmBtn");
+  const dateSection = document.getElementById("dateSection");
+  const timeSection = document.getElementById("timeSection");
+  const legend = document.querySelector(".legend-container");
+  if (dateSection) dateSection.style.display = "none";
+  if (timeSection) timeSection.style.display = "none";
+  if (legend) legend.style.display = "none";
+  if (selectionCard) {
+    const notice = document.createElement("p");
+    notice.className = "booking-opening-notice";
+    notice.textContent = "Bookings are closed for this event.";
+    selectionCard.prepend(notice);
+  }
+  if (confirmBtn) {
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = "Bookings Closed";
   }
 }
 

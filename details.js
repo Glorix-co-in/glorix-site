@@ -371,7 +371,7 @@ function populateEventDetails(event) {
 
   const bookingOpened = window.GLORIX_CONFIG.isBookingOpenFor(event.id);
 
-  const bookable = hasBookingMethod && status !== "closed" && status !== "sold-out";
+  const bookable = hasBookingMethod && status !== "closed" && status !== "sold-out" && !window.GLORIX_CONFIG.hasBookingEndedFor(event.id);
   const isActuallyOpen = bookable && bookingOpened;
   const showSoonState = status === "soon" || (bookable && !bookingOpened);
   const isSoldOut = status === "sold-out";
@@ -412,7 +412,7 @@ function populateEventDetails(event) {
         bookNowBtn.addEventListener("click", openBooking);
       }
     }
-  } else if (showSoonState) {
+  } else if (showSoonState && !window.GLORIX_CONFIG.hasBookingEndedFor(event.id)) {
     if (rzpContainer) rzpContainer.style.display = "none";
     const bookingOpensAt = event.details?.bookingOpensAt;
     const priceInfo = document.querySelector(".price-info");
@@ -452,7 +452,7 @@ function populateEventDetails(event) {
   // (no reload needed). Mirrors the active "isActuallyOpen" branch without
   // duplicating listeners, since the soon/closed branches never attach one.
   clearInterval(window.__glorixBookingWatcher);
-  if (!bookingOpened) {
+  if (!bookingOpened && !window.GLORIX_CONFIG.hasBookingEndedFor(event.id)) {
     let watcherWasOpen = false;
     window.__glorixBookingWatcher = setInterval(() => {
       if (!watcherWasOpen && window.GLORIX_CONFIG.isBookingOpenFor(event.id)) {

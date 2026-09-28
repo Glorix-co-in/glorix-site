@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         function getVisibleSlides() {
           const opened = window.GLORIX_CONFIG.isBookingOpen();
           return slidesData.filter((slide) => {
+            if (slide.eventId && window.GLORIX_CONFIG.hasBookingEndedFor(slide.eventId)) return false;
             if (slide.hideWhenBookingOpen && opened) return false;
             if (slide.showWhenBookingOpen && !opened) return false;
             return true;

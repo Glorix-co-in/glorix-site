@@ -118,7 +118,15 @@ window.GLORIX_CONFIG = (function () {
     return Date.now() >= new Date(eventStartsAtISO).getTime();
   }
 
+  function hasBookingEndedFor(eventId) {
+    const eventEndAt = eventsById.get(eventId)?.details?.bookingEndsAtISO;
+    if (!eventEndAt) return false;
+    const timestamp = new Date(eventEndAt).getTime();
+    return Number.isFinite(timestamp) && Date.now() >= timestamp;
+  }
+
   function isBookingOpenFor(eventId) {
+    if (hasBookingEndedFor(eventId)) return false;
     const override = getBookingOverride();
     if (override === "private") return false;
     if (override === "public" || forceOpen) return true;
@@ -141,6 +149,7 @@ window.GLORIX_CONFIG = (function () {
     isBookingOpen,
     getBookingOpensAtISO: () => bookingOpensAtISO,
     isBookingOpenFor,
+    hasBookingEndedFor,
     getBookingOpensAtISOFor,
     hasEventStarted,
     getEventStartsAtISO: () => eventStartsAtISO,

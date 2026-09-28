@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .filter(
         (e) =>
           isEventVisible(e) &&
+          !window.GLORIX_CONFIG.hasBookingEndedFor(e.id) &&
           (e.status === "open" ||
             e.status === "available" ||
             e.status === "filling-fast" ||
@@ -84,13 +85,13 @@ document.addEventListener("DOMContentLoaded", function () {
       .filter(
         (e) =>
           isEventVisible(e) &&
-          !(
+          (window.GLORIX_CONFIG.hasBookingEndedFor(e.id) || !(
             e.status === "open" ||
             e.status === "available" ||
             e.status === "filling-fast" ||
             e.status === "sold-out" ||
             e.status === "soon"
-          ),
+          )),
       )
       .sort((a, b) => getEventDate(b, allEvents) - getEventDate(a, allEvents));
 

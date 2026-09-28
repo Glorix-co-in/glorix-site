@@ -672,6 +672,7 @@
       ],
       "priceFrom": 349,
       "bookingOpensAtISO": "2026-09-20T12:00:00+05:30",
+      "bookingEndsAtISO": "2026-09-27T20:00:00+05:30",
       "eventStartsAtISO": "2026-09-27T17:00:00+05:30",
       "defaultArtists": ["Lakshay"],
       "artists": ["Lakshay"]
@@ -720,6 +721,7 @@
       "highlights": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
       "priceFrom": 199,
       "bookingOpensAtISO": "2026-09-24T11:00:00+05:30",
+      "bookingEndsAtISO": "2026-10-18T22:00:00+05:30",
       "eventStartsAtISO": "2026-10-17T18:00:00+05:30"
     }
   },
