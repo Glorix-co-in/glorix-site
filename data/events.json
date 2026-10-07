@@ -699,7 +699,7 @@
         "date": "18th October 2026",
         "time": "6:00 PM onwards",
         "detailsEventId": "glorix-dandiya-night-2026-oct-18",
-        "status": "available"
+        "status": "filling-fast"
       }
     ],
     "details": {
@@ -760,7 +760,7 @@
     "title": "Glorix Dandiya Night 2026",
     "image": "assets/events/dandiya18-vertical.avif",
     "date": "18th October 2026",
-    "status": "soon",
+    "status": "filling-fast",
     "hiddenFromBookings": true,
     "bookingLink": "https://all.events/go/80002915231930",
     "details": {
