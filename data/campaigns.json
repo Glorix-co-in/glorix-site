@@ -2,7 +2,7 @@
   {
     "id": "dandiya-24hr-offer",
     "enabled": true,
-    "startsAt": "2026-10-10T23:59:00+05:30",
+    "startsAt": "2026-10-10T23:55:00+05:30",
     "endsAt": "2026-10-11T23:59:00+05:30",
     "eventIds": [
       "glorix-dandiya-night-2026",
