@@ -20,6 +20,9 @@ window.GLORIX_CONFIG = (function () {
   let bookingOpensAtISO = null;
   let eventStartsAtISO = null;
   const eventsById = new Map();
+  let campaigns = [];
+  let campaignTimer;
+  let activeCampaignKey = "";
   let readyResolve;
   const ready = new Promise((resolve) => {
     readyResolve = resolve;
@@ -35,9 +38,20 @@ window.GLORIX_CONFIG = (function () {
     }
   }
 
-  fetch("data/events.json")
-    .then((response) => response.json())
-    .then((events) => {
+  async function loadJson(path) {
+    try {
+      const response = await fetch(path);
+      if (!response.ok) throw new Error(`Failed to load ${path}`);
+      return await response.json();
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  Promise.all([loadJson("data/events.json"), loadJson("data/campaigns.json")])
+    .then(([events, campaignData]) => {
+      campaigns = Array.isArray(campaignData) ? campaignData : [];
       if (!Array.isArray(events)) return;
       events.forEach((event) => eventsById.set(event.id, event));
       const activeStatuses = new Set([
@@ -103,7 +117,82 @@ window.GLORIX_CONFIG = (function () {
       }
     })
     .catch(() => {})
-    .finally(() => readyResolve());
+    .finally(() => {
+      activeCampaignKey = getActiveCampaigns().map((campaign) => campaign.id).join("|");
+      readyResolve();
+      watchCampaigns();
+    });
+
+  function getActiveCampaigns(now = Date.now()) {
+    return campaigns.filter((campaign) => {
+      const start = Date.parse(campaign.startsAt);
+      const end = Date.parse(campaign.endsAt);
+      return campaign.enabled === true && Number.isFinite(start) &&
+        Number.isFinite(end) && start < end && start <= now && now < end;
+    });
+  }
+
+  // First matching config entry wins when campaign windows overlap.
+  function getActiveCampaignFor(eventId, now = Date.now()) {
+    return getActiveCampaigns(now).find((campaign) =>
+      campaign.eventIds?.includes(eventId),
+    ) || null;
+  }
+
+  function getEvent(eventId, now = Date.now()) {
+    const base = eventsById.get(eventId);
+    if (!base) return null;
+    const event = structuredClone(base);
+    const price = getActiveCampaignFor(eventId, now)?.effects?.priceFrom;
+    if (Number.isFinite(price) && price >= 0) {
+      event.details = { ...event.details, priceFrom: price };
+    }
+    return event;
+  }
+
+  function getEvents(now = Date.now()) {
+    return Array.from(eventsById.keys(), (id) => getEvent(id, now));
+  }
+
+  function getHomeSlides(baseSlides, now = Date.now()) {
+    const first = [];
+    const last = [];
+    getActiveCampaigns(now).forEach((campaign) => {
+      const slide = campaign.effects?.homeCarousel;
+      if (!slide || !campaign.eventIds?.includes(slide.eventId)) return;
+      (slide.position === "last" ? last : first).push({ ...slide });
+    });
+    return [...first, ...baseSlides, ...last];
+  }
+
+  function getHomePopup(eventId, now = Date.now()) {
+    const campaign = getActiveCampaigns(now).find((item) =>
+      item.eventIds?.includes(eventId) && item.effects?.homePopup?.eventId === eventId,
+    );
+    return campaign ? { ...campaign.effects.homePopup, campaignId: campaign.id } : null;
+  }
+
+  function watchCampaigns() {
+    clearTimeout(campaignTimer);
+    const now = Date.now();
+    const key = getActiveCampaigns(now).map((campaign) => campaign.id).join("|");
+    if (key !== activeCampaignKey) {
+      activeCampaignKey = key;
+      document.dispatchEvent(new Event("campaign-changed"));
+    }
+    const boundaries = campaigns.filter((campaign) => campaign.enabled === true)
+      .flatMap((campaign) => [Date.parse(campaign.startsAt), Date.parse(campaign.endsAt)])
+      .filter((time) => Number.isFinite(time) && time > now);
+    // Recheck clock changes as well as scheduling the exact next boundary.
+    const delay = boundaries.length ? Math.min(60000, Math.min(...boundaries) - now) : 60000;
+    campaignTimer = setTimeout(watchCampaigns, Math.max(1, delay));
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) ready.then(watchCampaigns);
+  });
+  window.addEventListener("pageshow", () => ready.then(watchCampaigns));
+  window.addEventListener("focus", () => ready.then(watchCampaigns));
 
   function isBookingOpen() {
     const override = getBookingOverride();
@@ -150,6 +239,11 @@ window.GLORIX_CONFIG = (function () {
     testOverrideKey: TEST_OVERRIDE_KEY,
     getBookingOverride,
     ready,
+    getEvent,
+    getEvents,
+    getActiveCampaignFor,
+    getHomeSlides,
+    getHomePopup,
     isBookingOpen,
     getBookingOpensAtISO: () => bookingOpensAtISO,
     isBookingOpenFor,

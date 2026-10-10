@@ -216,14 +216,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initial load
   if (upcomingContainer && pastContainer) {
-    fetch("data/events.json")
-      .then((response) => response.json())
-      .then(async (events) => {
-        await window.GLORIX_CONFIG.ready;
-        allEvents = events;
+    window.GLORIX_CONFIG.ready
+      .then(() => {
+        allEvents = window.GLORIX_CONFIG.getEvents();
         renderEvents();
       })
       .catch((error) => console.error("Error loading events:", error));
+    document.addEventListener("campaign-changed", () => {
+      allEvents = window.GLORIX_CONFIG.getEvents();
+      renderEvents();
+    });
   }
 
   // Load marquee from JSON

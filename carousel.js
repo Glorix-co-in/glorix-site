@@ -6,6 +6,8 @@ window.GlorixCarousel = {
     track.style.transition = "transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)";
 
     const slides = Array.from(track.querySelectorAll(".carousel-slide"));
+    // A scheduled slide may disappear, leaving only one slide or none.
+    track.parentElement.querySelector(".carousel-dots")?.remove();
     if (slides.length <= 1) return null;
 
     const firstClone = slides[0].cloneNode(true);

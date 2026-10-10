@@ -1,6 +1,12 @@
 let currentEvent;
 let carouselInterval;
 
+document.addEventListener("campaign-changed", () => {
+  if (!currentEvent) return;
+  currentEvent = window.GLORIX_CONFIG.getEvent(currentEvent.id);
+  if (currentEvent) populateEventPrice(currentEvent);
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   // Get event ID from URL parameter
   const urlParams = new URLSearchParams(window.location.search);
@@ -103,16 +109,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function loadEventDetails(eventId) {
   try {
-    const [eventsResponse, artistsResponse] = await Promise.all([
-      fetch("data/events.json"),
+    const [, artistsResponse] = await Promise.all([
+      window.GLORIX_CONFIG.ready,
       fetch("data/artists.json"),
     ]);
 
-    if (!eventsResponse.ok || !artistsResponse.ok) {
+    if (!artistsResponse.ok) {
       throw new Error("Failed to load required data");
     }
 
-    const events = await eventsResponse.json();
+    const events = window.GLORIX_CONFIG.getEvents();
     const artistsData = await artistsResponse.json();
     await window.GLORIX_CONFIG.ready;
     const event = events.find((e) => e.id === eventId);
@@ -302,24 +308,7 @@ function populateEventDetails(event) {
     setupAboutReadMore();
   }
 
-  // Price
-  const priceFrom = document.getElementById("priceFrom");
-  const currencySymbol = document.querySelector(".currency-symbol");
-  const priceSuffix = document.querySelector(".price-suffix");
-  if (priceFrom) {
-    const priceValue = details.priceFrom;
-    const isFreeEntry =
-      priceValue === 0 || priceValue === "0" || priceValue === "Free Entry";
-
-    priceFrom.textContent = isFreeEntry ? "Free Entry" : priceValue || "TBA";
-
-    if (currencySymbol) {
-      currencySymbol.style.display = isFreeEntry ? "none" : "inline";
-    }
-    if (priceSuffix) {
-      priceSuffix.style.display = isFreeEntry ? "none" : "inline";
-    }
-  }
+  populateEventPrice(event);
 
   // Stage Layout (only for events that provide a layout image AND bookings are open)
   const stageLayoutSection = document.getElementById("stageLayoutSection");
@@ -479,6 +468,17 @@ function populateEventDetails(event) {
       }
     }, 1000);
   }
+}
+
+function populateEventPrice(event) {
+  const priceFrom = document.getElementById("priceFrom");
+  const currencySymbol = document.querySelector(".currency-symbol");
+  const priceSuffix = document.querySelector(".price-suffix");
+  const value = window.GLORIX_CONFIG.getEvent(event.id)?.details?.priceFrom ?? event.details?.priceFrom;
+  const isFree = value === 0 || value === "0" || value === "Free Entry";
+  if (priceFrom) priceFrom.textContent = isFree ? "Free Entry" : value || "TBA";
+  if (currencySymbol) currencySymbol.style.display = isFree ? "none" : "inline";
+  if (priceSuffix) priceSuffix.style.display = isFree ? "none" : "inline";
 }
 
 function setupAboutReadMore() {

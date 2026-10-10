@@ -56,11 +56,16 @@ let currentEvent = null;
 let selectedDate = null;
 let selectedTime = null;
 
+document.addEventListener("campaign-changed", () => {
+  if (!currentEvent) return;
+  currentEvent = window.GLORIX_CONFIG.getEvent(currentEvent.id);
+  if (currentEvent) populateInfo(currentEvent);
+});
+
 async function loadEventData(eventId) {
   try {
-    const response = await fetch("data/events.json");
-    const events = await response.json();
-    currentEvent = events.find((e) => e.id === eventId);
+    await window.GLORIX_CONFIG.ready;
+    currentEvent = window.GLORIX_CONFIG.getEvent(eventId);
 
     if (!currentEvent || currentEvent.status === "hidden") {
       window.location.href = "bookings.html";

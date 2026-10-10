@@ -33,8 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function getVisibleSlides() {
           const opened = window.GLORIX_CONFIG.isBookingOpen();
-          return slidesData.filter((slide) => {
+          return window.GLORIX_CONFIG.getHomeSlides(slidesData).filter((slide) => {
             if (slide.eventId && window.GLORIX_CONFIG.hasBookingEndedFor(slide.eventId)) return false;
+            if (slide.eventId && slide.showWhenBookingOpen && !window.GLORIX_CONFIG.isBookingOpenFor(slide.eventId)) return false;
             if (slide.hideWhenBookingOpen && opened) return false;
             if (slide.showWhenBookingOpen && !opened) return false;
             return true;
@@ -121,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Live re-render when bookings open (no page reload needed)
         document.addEventListener("booking-opened", () => renderCarousel());
+        document.addEventListener("campaign-changed", renderCarousel);
 
         // Re-render on resize to switch images if needed
         let resizeTimeout;
@@ -614,19 +616,62 @@ document.addEventListener("DOMContentLoaded", function () {
     const popupBookBtn = document.getElementById("eventPopupBookBtn");
     const popupBookBtnText = document.getElementById("eventPopupBookBtnText");
     const popupBookLink = "select-slot.html?id=glorix-dandiya-night-2026";
+    const popupEventId = "glorix-dandiya-night-2026";
+    const popupImage = eventPopup.querySelector(".event-popup__image");
+    const popupSource = eventPopup.querySelector("picture source");
+    const defaultPopupImage = popupImage?.getAttribute("src");
+    const defaultPopupSource = popupSource?.getAttribute("srcset");
+    const defaultPopupAlt = popupImage?.getAttribute("alt");
+
+    const updatePopupContent = () => {
+      const offer = window.GLORIX_CONFIG.getHomePopup(popupEventId);
+      if (popupImage) {
+        popupImage.src = offer?.desktopImage || defaultPopupImage;
+        popupImage.alt = offer?.alt || defaultPopupAlt || "Event announcement";
+      }
+      if (popupSource) popupSource.srcset = offer?.mobileImage || defaultPopupSource;
+      const price = window.GLORIX_CONFIG.getEvent(popupEventId)?.details?.priceFrom;
+      const priceElement = document.getElementById("bookingOpenDate");
+      if (priceElement) {
+        const isFree = price === 0 || price === "0" || price === "Free Entry";
+        priceElement.textContent = isFree ? "Free Entry" : price != null ? `₹${price} onwards` : "TBA";
+      }
+    };
+
+    const getShownKey = () => {
+      const offer = window.GLORIX_CONFIG.getHomePopup(popupEventId);
+      return offer ? `glorix_popup_${offer.campaignId}_shown` : shownKey;
+    };
+
+    const hasShownPopup = (key) => {
+      try { return sessionStorage.getItem(key) === "1"; }
+      catch { return false; }
+    };
 
     const showPopupIfOpen = () => {
+      updatePopupContent();
+      const currentShownKey = getShownKey();
       if (
         EVENT_POPUP_ENABLED &&
-        window.GLORIX_CONFIG.isBookingOpen() &&
-        !sessionStorage.getItem(shownKey)
+        window.GLORIX_CONFIG.isBookingOpenFor(popupEventId) &&
+        !hasShownPopup(currentShownKey)
       ) {
         setTimeout(() => {
+          if (getShownKey() !== currentShownKey ||
+            !window.GLORIX_CONFIG.isBookingOpenFor(popupEventId) ||
+            hasShownPopup(currentShownKey)) return;
+          updatePopupContent();
           if (!eventPopup.open) eventPopup.showModal();
-          sessionStorage.setItem(shownKey, "1");
+          try { sessionStorage.setItem(currentShownKey, "1"); } catch {}
         }, 300);
       }
     };
+
+    document.addEventListener("campaign-changed", () => {
+      updatePopupContent();
+      // Reannounce an active campaign once per session, even after the default popup.
+      if (window.GLORIX_CONFIG.getHomePopup(popupEventId)) showPopupIfOpen();
+    });
 
     const startCountdownTimer = () => {
       const countdownElements = {
