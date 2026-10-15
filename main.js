@@ -623,6 +623,30 @@ document.addEventListener("DOMContentLoaded", function () {
     const defaultPopupSource = popupSource?.getAttribute("srcset");
     const defaultPopupAlt = popupImage?.getAttribute("alt");
 
+    const isPopupSoldOut = () => {
+      const popupEvent = window.GLORIX_CONFIG.getEvent(popupEventId);
+      if (!popupEvent) return false;
+      if (popupEvent.status === "sold-out") return true;
+      const bookingOptions = Array.isArray(popupEvent.bookingOptions)
+        ? popupEvent.bookingOptions
+        : [];
+      return bookingOptions.length > 0 &&
+        bookingOptions.every((option) => option?.status === "sold-out");
+    };
+
+    const updatePopupBookBtn = () => {
+      if (!popupBookBtn || !popupBookBtnText) return;
+      if (isPopupSoldOut()) {
+        popupBookBtnText.textContent = "SOLD OUT";
+        popupBookBtn.setAttribute("aria-disabled", "true");
+        popupBookBtn.classList.add("is-disabled");
+      } else {
+        popupBookBtnText.textContent = "BOOK NOW";
+        popupBookBtn.removeAttribute("aria-disabled");
+        popupBookBtn.classList.remove("is-disabled");
+      }
+    };
+
     const updatePopupContent = () => {
       const offer = window.GLORIX_CONFIG.getHomePopup(popupEventId);
       if (popupImage) {
@@ -636,6 +660,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const isFree = price === 0 || price === "0" || price === "Free Entry";
         priceElement.textContent = isFree ? "Free Entry" : price != null ? `₹${price} onwards` : "TBA";
       }
+      updatePopupBookBtn();
     };
 
     const getShownKey = () => {
@@ -691,6 +716,11 @@ document.addEventListener("DOMContentLoaded", function () {
             : DETAILS_PAGE;
           popupBookBtn.removeAttribute("target");
           popupBookBtn.removeAttribute("rel");
+          if (isPopupSoldOut() && popupBookBtnText) {
+            popupBookBtnText.textContent = "SOLD OUT";
+            popupBookBtn.setAttribute("aria-disabled", "true");
+            popupBookBtn.classList.add("is-disabled");
+          }
         }
 
         if (eventStarted) {
@@ -705,7 +735,9 @@ document.addEventListener("DOMContentLoaded", function () {
           if (countdownLabelSub) countdownLabelSub.textContent = "See you at the event";
           const bookingOpenDate = document.getElementById("bookingOpenDate");
           if (bookingOpenDate) bookingOpenDate.style.display = "none";
-          if (popupBookBtnText) popupBookBtnText.textContent = "BOOK NOW";
+          if (popupBookBtnText) {
+            popupBookBtnText.textContent = isPopupSoldOut() ? "SOLD OUT" : "BOOK NOW";
+          }
           return;
         }
 
@@ -741,6 +773,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Wait for the event start date to load before starting the timer
     window.GLORIX_CONFIG.ready.then(startCountdownTimer);
+    window.GLORIX_CONFIG.ready.then(updatePopupBookBtn);
+    document.addEventListener("campaign-changed", updatePopupBookBtn);
+
+    if (popupBookBtn) {
+      popupBookBtn.addEventListener("click", (e) => {
+        if (popupBookBtn.getAttribute("aria-disabled") === "true") {
+          e.preventDefault();
+        }
+      });
+    }
 
     // Independent watcher: dispatch booking-opened when bookings first open
     // (keeps carousel live-render working irrespective of the popup timer)
