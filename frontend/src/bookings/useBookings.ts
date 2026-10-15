@@ -1,85 +1,39 @@
-import { createMemo, createStore, onSettled } from 'solid-js';
+import { createContext, createMemo, createStore, useContext } from 'solid-js';
 import eventSeed from './events.json';
-import type { BookingEvent } from './types';
+import campaignSeed from '../data/campaigns.json';
+import type { BookingEvent, BookingOption } from './types';
+import { canBook, eventDate, hasBookingOpened, isUpcoming, isVisible, bookingUrl, slotAvailable } from './rules';
+import { useBoundaryClock } from '../lib/useBoundaryClock';
 
-const activeStatuses = new Set(['open', 'available', 'filling-fast', 'sold-out', 'soon']);
-const timestamp = (value?: string) => value ? Date.parse(value) : NaN;
-
-// Match Glorix: a start time alone does not close bookings.
-export function hasBookingEnded(event: BookingEvent, now: number) {
-  const end = timestamp(event.details.bookingEndsAtISO);
-  return Number.isFinite(end) && now >= end;
-}
-
-function isVisible(event: BookingEvent, now: number) {
-  if (event.hiddenFromBookings || event.status === 'hidden') return false;
-  const opens = event.details.bookingOpensAtISO;
-  return !opens || now >= timestamp(opens);
-}
-
-function eventDate(event: BookingEvent) {
-  const start = timestamp(event.details.eventStartsAtISO);
-  if (Number.isFinite(start)) return start;
-  const date = event.date.replace(/(\d+)(st|nd|rd|th)/g, '$1')
-    .replace(/(\d+)\s*(?:&|-)\s*\d+/, '$1');
-  return Date.parse(date) || 0;
-}
-
-export function useBookings() {
-  // The JSON is an initial seed; this is the single mutable source of state.
-  const [state, setState] = createStore({
-    events: structuredClone(eventSeed) as BookingEvent[],
-    now: Date.now(),
-    selectedId: null as string | null,
-    menuOpen: false,
-  }, { name: 'bookings' });
-
-  const visible = createMemo(
-    () => state.events.filter((event) => isVisible(event, state.now)),
-    { name: 'visible-bookings' },
-  );
-  const upcoming = createMemo(
-    () => visible().filter((event) => activeStatuses.has(event.status) && !hasBookingEnded(event, state.now))
-      .sort((a, b) => (a.bookingOrder ?? Infinity) - (b.bookingOrder ?? Infinity) || eventDate(a) - eventDate(b)),
-    { name: 'upcoming-bookings' },
-  );
-  const past = createMemo(
-    () => visible().filter((event) => !activeStatuses.has(event.status) || hasBookingEnded(event, state.now))
-      .sort((a, b) => eventDate(b) - eventDate(a)),
-    { name: 'past-bookings' },
-  );
-  const selected = createMemo(
-    () => state.events.find((event) => event.id === state.selectedId),
-    { name: 'selected-booking' },
-  );
-  const bookingUrl = createMemo(() => {
-    const event = selected();
-    if (!event || !activeStatuses.has(event.status) || hasBookingEnded(event, state.now)) return undefined;
-    if (event.details.bookingOpensAtISO && state.now < timestamp(event.details.bookingOpensAtISO)) return undefined;
-    if (event.status === 'sold-out' || !event.bookingLink) return undefined;
-    try {
-      const url = new URL(event.bookingLink);
-      return url.protocol === 'https:' ? url.href : undefined;
-    } catch { return undefined; }
-  }, { name: 'booking-url' });
-
-  onSettled(() => {
-    const updateClock = () => setState((draft) => { draft.now = Date.now(); });
-    const timer = setInterval(updateClock, 1000);
-    window.addEventListener('focus', updateClock);
-    return () => {
-      clearInterval(timer);
-      window.removeEventListener('focus', updateClock);
-    };
-  });
+// The store contains domain records only. Time is managed by a separate helper.
+export function createBookings() {
+  const [state, setState] = createStore({ events: structuredClone(eventSeed) as BookingEvent[] }, { name: 'booking-data' });
+  const boundaries = createMemo(() => [
+    ...state.events.flatMap((event) => [Date.parse(event.details.bookingOpensAtISO || ''), Date.parse(event.details.bookingEndsAtISO || '')]),
+    ...campaignSeed.flatMap((campaign) => [Date.parse(campaign.startsAt), Date.parse(campaign.endsAt)]),
+  ].filter(Number.isFinite).sort((a, b) => a - b), { name: 'booking-boundaries' });
+  const now = useBoundaryClock(boundaries);
+  const sameItems = <T,>(a: T[], b: T[]) => a.length === b.length && a.every((item, index) => item === b[index]);
+  const visible = createMemo(() => state.events.filter((event) => isVisible(event, now())), { name: 'visible-bookings', equals: sameItems });
+  const upcoming = createMemo(() => visible().filter((event) => isUpcoming(event, now()))
+    .sort((a, b) => (a.bookingOrder ?? Infinity) - (b.bookingOrder ?? Infinity) || eventDate(a) - eventDate(b)), { name: 'upcoming-bookings', equals: sameItems });
+  const past = createMemo(() => visible().filter((event) => !isUpcoming(event, now()))
+    .sort((a, b) => eventDate(b) - eventDate(a)), { name: 'past-bookings', equals: sameItems });
+  const campaigns = createMemo(() => campaignSeed.filter((campaign) => campaign.enabled
+    && Date.parse(campaign.startsAt) <= now() && now() < Date.parse(campaign.endsAt)), { name: 'active-campaigns', equals: sameItems });
 
   return {
-    state, upcoming, past, selected, bookingUrl,
-    openEvent: (id: string) => setState((draft) => { draft.selectedId = id; }),
-    closeEvent: () => setState((draft) => { draft.selectedId = null; }),
-    toggleMenu: () => setState((draft) => { draft.menuOpen = !draft.menuOpen; }),
-    closeMenu: () => setState((draft) => { draft.menuOpen = false; }),
+    state, upcoming, past, campaigns,
+    getEvent: (id?: string) => state.events.find((event) => event.id === id && event.status !== 'hidden'),
+    canBook: (event: BookingEvent) => canBook(event, now()),
+    hasOpened: (event: BookingEvent) => hasBookingOpened(event, now()),
+    bookingUrl: (event: BookingEvent) => bookingUrl(event, now()),
+    slotAvailable: (option: BookingOption) => slotAvailable(option, state.events, now()),
+    price: (event: BookingEvent) => campaigns().find((campaign) => campaign.eventIds.includes(event.id))?.effects.priceFrom ?? event.details.priceFrom,
+    // Future loading can replace data here; it has no navigation or dialog state.
+    replaceEvents: (events: BookingEvent[]) => setState((draft) => { draft.events = events; }),
   };
 }
-
-export type Bookings = ReturnType<typeof useBookings>;
+export type Bookings = ReturnType<typeof createBookings>;
+export const BookingsContext = createContext<Bookings>();
+export const useBookings = () => useContext(BookingsContext);

@@ -1,7 +1,8 @@
 export interface BookingOption {
   date: string;
   time: string;
-  detailsEventId: string;
+  detailsEventId?: string;
+  link?: string;
   status: string;
 }
 
@@ -20,6 +21,17 @@ export interface BookingEvent {
   bookingOptions?: BookingOption[];
   details: {
     time?: string;
+    tags?: string[];
+    duration?: string;
+    ageLimit?: string;
+    languages?: string;
+    genre?: string;
+    venueLink?: string;
+    artists?: string[];
+    defaultArtists?: string[];
+    hideArtists?: boolean;
+    stageLayoutImage?: string;
+    carouselSlides?: { desktopImage: string; mobileImage?: string }[];
     venue?: string;
     aboutEvent?: string;
     priceFrom?: number;
