@@ -224,9 +224,7 @@ function renderSlots(event) {
 function updateTimeSlots(times) {
   const timeSection = document.getElementById("timeSection");
   const timeSlots = document.getElementById("timeSlots");
-  const confirmBtn = document.getElementById("confirmBtn");
-
-  timeSection.style.display = "block";
+  const confirmBtn = document.getElementById("confirmBtn");  timeSection.style.display = "block";
   timeSlots.innerHTML = "";
   times.forEach((option) => {
     const status = option.status || "available";
@@ -278,6 +276,7 @@ function updateTimeSlots(times) {
       selectedTime = card.dataset.time;
 
       confirmBtn.disabled = false;
+      confirmBtn.textContent = "Continue to Booking";
       confirmBtn.onclick = () => {
         if (card.dataset.detailsEventId) {
           window.location.href = `details.html?id=${encodeURIComponent(card.dataset.detailsEventId)}`;
@@ -290,8 +289,21 @@ function updateTimeSlots(times) {
 
   if (firstAvailable && timeCards.length === 1) {
     firstAvailable.click();
+  } else if (
+    times.length > 0 &&
+    times.every((option) => (option.status || "available") === "sold-out")
+  ) {
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = "Sold Out";
+    confirmBtn.onclick = null;
   } else {
     confirmBtn.disabled = true;
+    if (currentEvent?.status !== "sold-out") {
+      confirmBtn.textContent = "Continue to Booking";
+    } else {
+      confirmBtn.textContent = "Sold Out";
+    }
+    confirmBtn.onclick = null;
   }
 }
 
