@@ -1,0 +1,788 @@
+[
+  {
+    "id": "glory-26",
+    "title": "GLORY\"26 : The Big Line-Up !",
+    "image": "assets/poster3.avif",
+    "date": "31 July 2026",
+    "status": "closed",
+    "bookingLink": null,
+    "details": {
+      "tags": ["Concert", "Music", "Performances"],
+      "dateRange": null,
+      "time": "Gates Open at 4:00 PM",
+      "duration": "4 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Rap Fest",
+      "venue": "Start Studios, Ghitorni, New Delhi",
+      "venueLink": "https://maps.app.goo.gl/e4xrFFMLuTFGuybz8",
+      "detailsImage": {
+        "landscape": "assets/poster3_landscape.avif",
+        "portrait": "assets/poster3.avif"
+      },
+      "carouselSlides": [
+        {
+          "desktopImage": "assets/poster7.avif",
+          "mobileImage": "assets/poster7_landscape.avif"
+        }
+      ],
+      "aboutEvent": "GLORY'26 : The Big Line-Up !\n\nTHE BIG LINE-UP! | GLORIX 1st Anniversary\nOne Night. One Stage. 20+ Artists. Unlimited Energy.\n\nThis isn't just another music event—it's a celebration of a movement.\n\nAfter an incredible year of building one of Delhi NCR's fastest-growing underground music communities, GLORIX is back with its biggest event ever. Join us as we celebrate our 1st Anniversary with an unforgettable night featuring 20+ of the hottest underground rappers, singers, DJs, and performers from across the scene.\n\nFrom hard-hitting rap sets and melodic live performances to explosive DJ sets, every minute of the night is designed to keep the energy at its peak. Whether you're a hardcore hip-hop fan or simply love discovering fresh talent, this is the place to be.\n\nWhat Awaits You?\n\n🎤 20+ Live Performances\n🔥 Non-stop Hip-Hop, Rap & Live Music\n🎧 High-Energy DJ Sets\n💡 Massive Stage Production with Professional Lights & Sound\n📸 Instagram-Worthy Photo Spots\n🎁 Brand Giveaways & Surprise Hampers\n🍔 Food & Beverage Stalls\n🤝 Meet Artists, Creators & Music Lovers\n⚡ An Electric Crowd & Unmatched Vibes\nExpect raw talent, unforgettable performances, surprise moments, and an atmosphere you'll be talking about long after the night ends.\n\nEvent Details\n\n📅 Date: 31 July 2026 (Friday)\n🕕 Time: Gates Open at 4:00 PM\n📍 Venue: Start Studios, Ghitorni, New Delhi\n\nTickets\n\n🎟️ General Admission & VIP Passes Available\nBook early—ticket prices increase as phases sell out.\nWhether you're coming with your crew or flying solo, you'll leave with new memories, new favourite artists, and an experience unlike any other.\n\nThis is more than an event. It's where the next generation of artists takes the stage.\nSee you in the crowd.\nSee you at GLORY.",
+      "highlights": [
+        "Live concert performances",
+        "Top artists lineup",
+        "Premium sound experience",
+        "Unforgettable vibes"
+      ],
+      "priceFrom": 499,
+      "artists": [
+        "Aastik",
+        "Akki",
+        "Armadok",
+        "Asadhya",
+        "Bhav",
+        "Biggy brat",
+        "Cold Kalam",
+        "Dash",
+        "Divvay",
+        "God's Child",
+        "Jaze",
+        "DJ Mayankk",
+        "Nagity",
+        "Onemix",
+        "PharaohX",
+        "Poetic kc",
+        "Ashant",
+        "Shawn",
+        "Red",
+        "Rinisha",
+        "Real Tanishk",
+        "Tejas",
+        "Tera Toxic",
+        "Ulti Zindagi",
+        "Ykm Lucky"
+      ],
+      "bookingOpensAt": "11 July, 11:11 PM",
+      "bookingOpensAtISO": "2026-07-11T23:11:00+05:30",
+      "eventStartsAtISO": "2026-07-31T16:00:00+05:30",
+      "stageLayoutImage": "assets/event_layout.avif",
+      "defaultArtists": []
+    }
+  },
+  {
+    "id": "360-hiphop-v1",
+    "title": "360 HIP HOP VOL 1",
+    "image": "assets/events/360_vertical.avif",
+    "date": "17th January 2026",
+    "status": "closed",
+    "bookingLink": "null",
+    "details": {
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
+      "dateRange": null,
+      "time": "4:00 PM onwards",
+      "duration": "3 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Hip Hop / DJ",
+      "venue": "OSO - The Panda Club: Ansal Plaza, Delhi",
+      "venueLink": "https://maps.app.goo.gl/iTQuDJhCgu1m2cwj9",
+      "detailsImage": {
+        "landscape": "assets/events/360_horizontal.avif",
+        "portrait": "assets/events/360_vertical.avif"
+      },
+      "aboutEvent": "360 HIP HOP is an inspirational hip hop series by TEAM GLORIX covering some of the best underground talents from Delhi and other regions. Volume 1 brings handpicked artists, DJs and a tight crowd into a 360 degree live experience. The format breaks the barrier between artists and the audience, with performers delivering their sets up close for a high energy connection.",
+      "highlights": [
+        "360 degree live experience",
+        "Handpicked underground artists",
+        "Intimate high energy connection",
+        "Live DJ sets"
+      ],
+      "priceFrom": 499,
+      "artists": [
+        "Nagity",
+        "Biggy brat",
+        "Armadok",
+        "Babbar",
+        "Ashant",
+        "Shawn",
+        "Ulti Zindagi",
+        "Mrityu",
+        "Red",
+        "Sherdill",
+        "Jaze",
+        "Volt",
+        "Rudra",
+        "DJ Mayankk"
+      ]
+    }
+  },
+  {
+    "id": "bali-2025",
+    "title": "BALI PERFORMING LIVE",
+    "image": "assets/events/bali.avif",
+    "date": "24th December 2025",
+    "status": "closed",
+    "bookingLink": null,
+    "details": {
+      "tags": ["Live Performance", "Hindi", "English"],
+      "dateRange": null,
+      "time": "6:00 PM",
+      "duration": "4 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Live Performance",
+      "venue": "Panache Club: Dwarka",
+      "venueLink": "https://maps.app.goo.gl/BLoKAaXFBxhxCbok9",
+      "detailsImage": {
+        "mobile": "assets/events/bali.avif",
+        "desktop": "assets/events/bali.avif"
+      },
+      "aboutEvent": "Experience the magic of BALI performing live! Get ready for an unforgettable night filled with chart-topping hits and electrifying performances. This is your chance to witness one of the most talented artists of our generation live on stage.",
+      "highlights": [
+        "Live performance by BALI",
+        "Chart-topping hits",
+        "VIP meet and greet",
+        "Premium sound experience"
+      ],
+      "priceFrom": 999,
+      "artists": [
+        "Bali",
+        "God's Child",
+        "Poetic kc",
+        "Swagy",
+        "Biggy brat",
+        "Sherdill",
+        "Divvay",
+        "Real Tanishk"
+      ]
+    }
+  },
+  {
+    "id": "seasons-2025",
+    "title": "SEASONS",
+    "image": "assets/events/seasons.avif",
+    "date": "22nd November 2025",
+    "status": "closed",
+    "bookingLink": null,
+    "details": {
+      "tags": ["Music Festival", "Multi-Artist", "Cultural Event"],
+      "dateRange": null,
+      "time": "4:00 PM",
+      "duration": "5 Hours",
+      "ageLimit": "18+",
+      "languages": "Hindi, English",
+      "genre": "Rap",
+      "venue": "Classy Cafe Bar: South Extension",
+      "venueLink": "https://maps.app.goo.gl/5Wfw58kaVakwSuMY7",
+      "detailsImage": {
+        "mobile": "assets/events/seasons.avif",
+        "desktop": "assets/events/seasons.avif"
+      },
+      "aboutEvent": "SEASONS 2025 is the ultimate music festival featuring multiple artists across various genres. A celebration of music, art, and culture that brings together the best talent for an extraordinary experience.",
+      "highlights": [
+        "Multiple artist performances",
+        "Food stalls and vendors",
+        "Art installations",
+        "Interactive zones"
+      ],
+      "priceFrom": 249,
+      "artists": [
+        "Harshit",
+        "Utkarsh",
+        "Bhav",
+        "Biggy brat",
+        "Poetic kc",
+        "Asadhya",
+        "Arshit",
+        "Agyat Music",
+        "Paras",
+        "Aksh",
+        "Divvay",
+        "Toshi Music",
+        "Sherdill",
+        "Freestyle Session",
+        "Real Tanishk",
+        "God's Child",
+        "Mrityu",
+        "Rinisha",
+        "Sankiii",
+        "Raavn",
+        "Rap Ryder",
+        "Kaizer",
+        "Trap Souls",
+        "Ha3t"
+      ]
+    }
+  },
+  {
+    "id": "flair-2025",
+    "title": "FLAIR",
+    "image": "assets/events/flair.avif",
+    "date": "20th September 2025",
+    "status": "closed",
+    "bookingLink": null,
+    "details": {
+      "tags": ["Rap Event", "Live Music", "Party"],
+      "date": "20th September 2025",
+      "dateRange": null,
+      "time": "4:00 PM",
+      "duration": "6 Hours",
+      "ageLimit": "18+",
+      "languages": "Hindi, English",
+      "genre": "Rap",
+      "venue": "Studio One.6: Kailash Colony",
+      "venueLink": "https://maps.app.goo.gl/SAdGuaQCo99vWxzr7",
+      "detailsImage": {
+        "mobile": "assets/events/flair.avif",
+        "desktop": "assets/events/flair.avif"
+      },
+      "aboutEvent": "FLAIR brings you an evening of dance, music, and pure entertainment. Get ready to groove to the beats of the best DJs and live performances.",
+      "highlights": [
+        "DJ performances",
+        "Live music acts",
+        "Dance floor experience",
+        "Premium bar service"
+      ],
+      "priceFrom": 399,
+      "artists": [
+        "Prodxraj",
+        "Bhav",
+        "Rinisha",
+        "PSV",
+        "Hitserv",
+        "Arshit",
+        "Advit",
+        "SLID",
+        "God's Child",
+        "Spidy J",
+        "Rohansbed",
+        "Hemlooo",
+        "Mrityu",
+        "Toshi Music",
+        "Ha3t",
+        "The Harxhz",
+        "Hashant",
+        "Flash Wrld",
+        "Ekaantx",
+        "Boi Mustafa",
+        "Ustola",
+        "WrigVedd",
+        "Paras",
+        "Chirag"
+      ]
+    }
+  },
+  {
+    "id": "bloom-2025",
+    "title": "BLOOM",
+    "image": "assets/events/bloom.avif",
+    "date": "31st July 2025",
+    "status": "closed",
+    "bookingLink": null,
+    "details": {
+      "tags": ["Rap Event", "Underground Music", "Live Performance"],
+      "dateRange": null,
+      "time": "3:00 PM",
+      "duration": "6 Hours",
+      "ageLimit": "18+",
+      "languages": "Hindi, English",
+      "genre": "Rap",
+      "venue": "The Beer Cafe: Faridabad",
+      "venueLink": "https://maps.app.goo.gl/KcASp71JRrgEc6fHA",
+      "detailsImage": {
+        "mobile": "assets/events/bloom.avif",
+        "desktop": "assets/events/bloom.avif"
+      },
+      "aboutEvent": "An electrifying rap battle that promises to ignite your passion for hip-hop and leave you in awe. Experience the best underground rap artists perform live, showcasing their lyrical prowess. An evening with music, energy, and unforgettable performances awaits you.",
+      "highlights": [
+        "Live performances by top underground artists",
+        "Exclusive rap battles",
+        "Food and drinks available",
+        "Meet and greet opportunities"
+      ],
+      "priceFrom": 399,
+      "artists": [
+        "Prodxraj",
+        "Aastik",
+        "Hitserv",
+        "Lakshay",
+        "Lil Edward",
+        "Kalamkar lucky",
+        "Volt",
+        "Tushar",
+        "Kirdaar",
+        "Advit",
+        "Aksh",
+        "Paras",
+        "Ha3t",
+        "Og Tehran",
+        "Chirag",
+        "Mrityu",
+        "Rohansbed",
+        "Avneesh",
+        "aRawVerse",
+        "Toshi Music",
+        "Arshit",
+        "Yusuf"
+      ]
+    }
+  },
+  {
+    "id": "gulabi-kafan",
+    "title": "GULABI KAFAN",
+    "image": "assets/events/gulabi_kafan_vertical.avif",
+    "date": "7th February 2026",
+    "status": "closed",
+    "bookingLink": null,
+    "details": {
+      "tags": ["Live Performance", "Success Party", "DJ Sets"],
+      "dateRange": null,
+      "time": "5:00 PM onwards",
+      "duration": "3 Hours",
+      "ageLimit": "18+",
+      "languages": "Hindi, English",
+      "genre": "Success Party",
+      "venue": "Moonshine Cafe: Hauz Khas, Delhi",
+      "venueLink": "https://maps.app.goo.gl/bdLrR6Ey6rEJJHvd6",
+      "detailsImage": {
+        "landscape": "assets/events/gulabi_kafan_horizontal.avif",
+        "portrait": "assets/events/gulabi_kafan_vertical.avif"
+      },
+      "aboutEvent": "A new chapter begins with the official launch party of God’s Child. This night is a celebration of music, energy, and raw expression. The event will feature live performances, DJ sets, and an exclusive experience of God’s Child’s full EP “Gulabi Kafan”, performed live for the audience. The night will also be opened by some amazing artists, setting the vibe and bringing their own unique energy to the stage before the main act. From powerful tracks to immersive sounds, this isn’t just a show it’s a statement. If you’re here for authentic music and unforgettable vibes, this is where you belong.",
+      "highlights": [
+        "Live performance",
+        "Official Launch Party",
+        "DJ Sets",
+        "Premium Event Experience"
+      ],
+      "priceFrom": 99,
+      "artists": [
+        "Nagity",
+        "DJ Rick",
+        "God's Child",
+        "Rinisha",
+        "Poetic kc",
+        "Biggy brat",
+        "Babbar",
+        "Bhav",
+        "Davedevv"
+      ]
+    }
+  },
+  {
+    "id": "360-hiphop-v2",
+    "title": "360 HIP HOP VOL 2",
+    "image": "assets/events/360_vol2_vertical.avif",
+    "date": "28th February 2026",
+    "status": "closed",
+    "bookingLink": null,
+    "bookingOptions": [
+      {
+        "date": "28th February 2026",
+        "time": "3:00 PM",
+        "link": "https://rzp.io/rzp/LU9sW6r",
+        "status": "closed"
+      }
+    ],
+    "details": {
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
+      "dateRange": null,
+      "time": "3:00 PM onwards",
+      "duration": "4 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Hip Hop / DJ",
+      "venue": "Tizoe : Ansal Plaza",
+      "venueLink": "https://maps.app.goo.gl/kCz5uKdgWFMYH8LR8",
+      "detailsImage": {
+        "landscape": "assets/events/360_vol2_horizontal.avif",
+        "portrait": "assets/events/360_vol2_vertical.avif"
+      },
+      "aboutEvent": "360 HIP HOP is an inspirational hip hop series by TEAM GLORIX covering some of the best underground talents from Delhi and other regions. Volume 2 brings handpicked artists, DJs and a tight crowd into a 360 degree live experience. The format breaks the barrier between artists and the audience, with performers delivering their sets up close for a high energy connection.",
+      "highlights": [
+        "360 degree live experience",
+        "Handpicked underground artists",
+        "Intimate high energy connection",
+        "Live DJ sets"
+      ],
+      "priceFrom": 499,
+      "artists": [
+        "Nagity",
+        "DJ Rick",
+        "God's Child",
+        "Rinisha",
+        "Poetic kc",
+        "Divvay",
+        "Mrityu",
+        "Toshi Music",
+        "Jaze",
+        "BC Gang",
+        "Akki"
+      ]
+    }
+  },
+  {
+    "id": "360-hh-vol3",
+    "title": "360 HIP HOP VOL 3",
+    "image": "assets/events/360_vol3_vertical.avif",
+    "date": "28th March 2026",
+    "status": "closed",
+    "bookingLink": null,
+    "bookingOptions": [
+      {
+        "date": "28th March 2026",
+        "time": "3:00 PM",
+        "link": "https://rzp.io/rzp/2K7aZ7XQ",
+        "status": "closed"
+      }
+    ],
+    "details": {
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
+      "dateRange": null,
+      "time": "3:00 PM onwards",
+      "duration": "4 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Hip Hop / DJ",
+      "venue": "Underpass Cafe: Defence Colony",
+      "venueLink": "https://maps.app.goo.gl/54TYNDVXXxJ1zAbH8",
+      "detailsImage": {
+        "landscape": "assets/events/360_vol3_horizontal.avif",
+        "portrait": "assets/events/360_vol3_vertical.avif"
+      },
+      "aboutEvent": "After the explosive success of VOL 1 and VOL 2, 360 HIP HOP returns for VOL 3 with even bigger energy! Team Glorix has built a reputation for spotlighting the best underground hip hop talent from Delhi and beyond, and the hype around this edition is unstoppable. Prepare for tighter crowds, more intense performances, and the same barrier‑breaking 360° format that brings artists right into the heart of the audience. This isn’t just another show—it’s the crescendo of a series that’s already making history.",
+      "highlights": [
+        "360 degree live experience",
+        "Handpicked underground artists",
+        "Intimate high energy connection",
+        "Live DJ sets"
+      ],
+      "priceFrom": 499,
+      "artists": [
+        "Tera Toxic",
+        "Babbar",
+        "Wazandaar",
+        "Jaze",
+        "BC Gang",
+        "Biggy brat",
+        "vaक्य"
+      ]
+    }
+  },
+  {
+    "id": "360-hiphop-v4",
+    "title": "360 HIP HOP VOL 4",
+    "image": "assets/events/360_vol4_vertical.avif",
+    "date": "26th April 2026",
+    "status": "closed",
+    "bookingLink": null,
+    "details": {
+      "tags": ["Live Performance", "360 HH", "DJ Sets"],
+      "dateRange": null,
+      "time": "4:00 PM onwards",
+      "duration": "4 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Hip Hop / DJ",
+      "venue": "Reset Studio: Malviya Nagar",
+      "venueLink": "https://maps.app.goo.gl/9Jm35YXJ3HE1nEi27",
+      "detailsImage": {
+        "landscape": "assets/events/360_vol4_horizontal.avif",
+        "portrait": "assets/events/360_vol4_vertical.avif"
+      },
+      "aboutEvent": "360 HIP HOP is an inspirational hip hop series by TEAM GLORIX covering some of the best underground talents from Delhi and other regions. Volume 4 brings handpicked artists, DJs and a tight crowd into a 360 degree live experience. The format breaks the barrier between artists and the audience, with performers delivering their sets up close for a high energy connection.",
+      "highlights": [
+        "360 degree live experience",
+        "Handpicked underground artists",
+        "Intimate high energy connection",
+        "Live DJ sets"
+      ],
+      "priceFrom": 0,
+      "defaultArtists": ["Saksham"],
+      "artists": [
+        "Jaze",
+        "BC Gang",
+        "Toshi Music",
+        "Mrityu",
+        "Akki",
+        "Tera Toxic",
+        "Poetic kc",
+        "God's Child",
+        "Shore",
+        "indie visual",
+        "Rinisha"
+      ]
+    }
+  },
+  {
+    "id": "love-lies-2026",
+    "title": "LOVE LIES",
+    "image": "assets/events/love_lies_vertical.avif",
+    "date": "14th February 2026",
+    "status": "closed",
+    "bookingLink": null,
+    "bookingOptions": [
+      {
+        "date": "14th February 2026",
+        "time": "02:00 PM",
+        "link": "https://rzp.io/rzp/zuUIKITY",
+        "status": "closed"
+      },
+      {
+        "date": "14th February 2026",
+        "time": "05:00 PM",
+        "link": "https://rzp.io/rzp/7zczXFc",
+        "status": "closed"
+      }
+    ],
+    "details": {
+      "tags": ["Rap Event", "Live Music", "DJ Sets"],
+      "dateRange": null,
+      "time": ["02:00 PM", "05:00 PM"],
+      "duration": "6 Hours",
+      "ageLimit": "16+",
+      "languages": "Hindi, English",
+      "genre": "Rap",
+      "venue": "Lara: New Delhi",
+      "venueLink": "https://maps.app.goo.gl/gseEXj2fQfyr9rna9",
+      "detailsImage": {
+        "landscape": "assets/events/love_lies_horizontal.avif",
+        "portrait": "assets/events/love_lies_vertical.avif"
+      },
+      "aboutEvent": "Join us this Valentine's Day for LOVE LIES, a high-octane rap event featuring the rawest talent and electrifying DJ sets. Experience an afternoon and evening filled with music that speaks to the soul and energy that keeps you moving.",
+      "highlights": [
+        "Live Rap Performances",
+        "Elite DJ Sets",
+        "Valentine's Day Special",
+        "Unmatchable Vibe"
+      ],
+      "priceFrom": 249,
+      "artists": [
+        "Stoxy",
+        "Daggar",
+        "Gaurav",
+        "Tera Toxic",
+        "Dheeraj",
+        "Lucky",
+        "Armadok",
+        "Harshit",
+        "Utkarsh",
+        "Hardik",
+        "vaक्य",
+        "Aksh",
+        "Paras",
+        "Wazandaar",
+        "Mantra",
+        "Karthetick"
+      ]
+    }
+  },
+  {
+    "id": "inder-sahani-2026",
+    "title": "Inder Sahani - Live In Delhi",
+    "image": "assets/events/inder_sahani_4_vertical.avif",
+    "date": "29th August 2026",
+    "status": "closed",
+    "bookingLink": "https://r.swiggy.com/v1/swiggy/scenes/comms/100107236",
+    "isFeatured": false,
+    "details": {
+      "tags": ["Stand Up Comedy", "Live Show", "Comedy"],
+      "dateRange": null,
+      "time": "6:00 PM onwards",
+      "duration": "2 Hours",
+      "ageLimit": "5+",
+      "languages": "Hinglish",
+      "genre": "Stand Up Comedy",
+      "venue": "Shah Auditorium, Delhi",
+      "venueLink": "https://maps.app.goo.gl/VNBTKxxJPMuisHZdA?g_st=ac",
+      "detailsImage": {
+        "landscape": "assets/events/inder_sahani_3_horizontal.avif",
+        "portrait": "assets/events/inder_sahani_3_vertical.avif"
+      },
+      "carouselSlides": [
+        {
+          "mobileImage": "assets/events/inder_sahani_4_horizontal.avif",
+          "desktopImage": "assets/events/inder_sahani_4_vertical.avif"
+        },
+        {
+          "mobileImage": "assets/events/inder_sahani_1_horizontal.avif",
+          "desktopImage": "assets/events/inder_sahani_1_vertical.avif"
+        },
+        {
+          "mobileImage": "assets/events/inder_sahani_2_horizontal.avif",
+          "desktopImage": "assets/events/inder_sahani_2_vertical.avif"
+        },
+        {
+          "mobileImage": "assets/events/inder_sahani_horizontal.avif",
+          "desktopImage": "assets/events/inder_sahani_vertical.avif"
+        },
+        {
+          "mobileImage": "assets/inder_stage_layout.avif",
+          "desktopImage": "assets/inder_stage_layout.avif"
+        }
+      ],
+      "aboutEvent": "Get ready for an unforgettable evening of laughter as Inder Sahani brings his brand-new stand-up special to Delhi.\n\nKnown for his sharp observational comedy, expressive storytelling, and spontaneous crowd interactions, Inder has become one of India's fastest-growing comedy acts with performances across the country and appearances on television and digital platforms.\n\nFrom hilarious everyday moments to unexpected twists, this 2-hour live experience is packed with relatable humor, high-energy performances, and non-stop laughter.\n\nWhether you're a long-time fan or watching him live for the first time, this is a comedy night you won't want to miss.\n\n🗓️ Date: 29 August 2026\n📍 Venue: Shah Auditorium, Delhi\n🕕 Time: 06 PM onwards\n⏰ Duration: 2 Hours\n🎟️ Age Limit: 5+ (Recommended)\n🪑 Seating: First Come, First Served (within your ticket category)\n\nCome with your friends, family, or colleagues—and leave with sore cheeks from laughing! 😄",
+      "highlights": [
+        "Brand-new stand-up special",
+        "Sharp observational comedy",
+        "Spontaneous crowd interactions",
+        "Non-stop laughter"
+      ],
+      "bookingOpensAtISO": "2026-08-01T12:00:00+05:30",
+      "eventStartsAtISO": "2026-08-29T18:00:00+05:30",
+      "stageLayoutImage": "assets/inder_stage_layout.avif",
+      "priceFrom": 499,
+      "defaultArtists": ["Inder Sahani"],
+      "artists": ["Inder Sahani"]
+    }
+  },
+  {
+    "id": "differental-advisory-lakshay93-ep-launch",
+    "title": "Differental Advisory: Lakshay_93 EP Launch Party",
+    "image": "assets/events/differental_advisory_yellow_horizontal.avif",
+    "date": "27th September 2026",
+    "status": "closed",
+    "bookingLink": null,
+    "isFeatured": true,
+    "bookingOrder": 2,
+    "details": {
+      "tags": ["EP Launch Party", "Hip Hop", "Live Performance"],
+      "dateRange": null,
+      "time": "5:00 PM onwards",
+      "duration": "3 Hours",
+      "ageLimit": "18+",
+      "languages": "Hindi, English",
+      "genre": "EP Launch Party",
+      "venue": "Tizoe, Ansal Plaza, Delhi",
+      "venueLink": "https://maps.app.goo.gl/kCz5uKdgWFMYH8LR8",
+      "detailsImage": {
+        "landscape": "assets/events/differental_advisory_horizontal.avif",
+        "portrait": "assets/events/differental_advisory_vertical.avif"
+      },
+      "carouselSlides": [
+        {
+          "mobileImage": "assets/events/differental_advisory_yellow_horizontal.avif",
+          "desktopImage": "assets/events/differental_advisory_yellow_vertical.avif"
+        }
+      ],
+      "aboutEvent": "A new chapter begins with the official launch party of Lakshay's EP \"Lakshay_93\", presented as Differental Advisory.\n\nThis night is a celebration of Hip Hop, energy, and raw expression. Lakshay performs the full EP live for the audience, track by track, in an intimate launch-party setting at Tizoe. From hard-hitting bars to immersive sounds, this isn't just a show — it's a statement. If you're here for authentic underground music and unforgettable vibes, this is where you belong.\n\nDate: 27 September 2026\nVenue: Tizoe, Ansal Plaza, Delhi\nTime: 5:00 PM onwards\nDuration: 3 Hours\nAge Limit: 18+\nLanguages: Hindi, English",
+      "highlights": [
+        "Lakshay_93 EP performed live",
+        "Hip Hop EP launch party",
+        "Live performance at Tizoe, Delhi"
+      ],
+      "priceFrom": 349,
+      "bookingOpensAtISO": "2026-09-20T12:00:00+05:30",
+      "bookingEndsAtISO": "2026-09-27T20:00:00+05:30",
+      "eventStartsAtISO": "2026-09-27T17:00:00+05:30",
+      "defaultArtists": ["Lakshay"],
+      "artists": ["Lakshay"]
+    }
+  },
+  {
+    "id": "glorix-dandiya-night-2026",
+    "title": "Glorix Dandiya Night 2026",
+    "image": "assets/events/glorix_dandiya_night_2026_portrait.avif",
+    "date": "17th & 18th October 2026",
+    "status": "soon",
+    "bookingLink": null,
+    "bookingFlow": "date-first",
+    "bookingOrder": 1,
+    "isFeatured": true,
+    "bookingOptions": [
+      {
+        "date": "17th October 2026",
+        "time": "6:00 PM onwards",
+        "detailsEventId": "glorix-dandiya-night-2026-oct-17",
+        "status": "filling-fast"
+      },
+      {
+        "date": "18th October 2026",
+        "time": "6:00 PM onwards",
+        "detailsEventId": "glorix-dandiya-night-2026-oct-18",
+        "status": "filling-fast"
+      }
+    ],
+    "details": {
+      "hideArtists": true,
+      "tags": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
+      "dateRange": "17th & 18th October 2026",
+      "time": "6:00 PM onwards",
+      "duration": "4 Hours",
+      "ageLimit": "5+",
+      "languages": "Hindi, English",
+      "genre": "Dandiya Night",
+      "venue": "Select a date to view the venue",
+      "detailsImage": {
+        "landscape": "assets/events/glorix_dandiya_night_2026_landscape.avif",
+        "portrait": "assets/events/glorix_dandiya_night_2026_portrait.avif"
+      },
+      "aboutEvent": "Celebrate Dandiya Night with live DJ and dhol, Garba, and authentic Indian food. Choose your event date to view that day's venue and booking details.",
+      "description": "Join Glorix Dandiya Night 2026 on 17 or 18 October for live DJxDhol, Garba, and authentic Indian food.",
+      "highlights": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
+      "priceFrom": 199,
+      "bookingOpensAtISO": "2026-09-24T11:00:00+05:30",
+      "bookingEndsAtISO": "2026-10-18T22:00:00+05:30",
+      "eventStartsAtISO": "2026-10-17T18:00:00+05:30"
+    }
+  },
+  {
+    "id": "glorix-dandiya-night-2026-oct-17",
+    "title": "Glorix Dandiya Night 2026",
+    "image": "assets/events/dandiya17-vertical.avif",
+    "date": "17th October 2026",
+    "status": "filling-fast",
+    "hiddenFromBookings": true,
+    "bookingLink": "https://all.events/go/80003714523122",
+    "details": {
+      "hideArtists": true,
+      "tags": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
+      "dateRange": null,
+      "time": "6:00 PM onwards",
+      "duration": "4 Hours",
+      "ageLimit": "5+",
+      "languages": "Hindi, English",
+      "genre": "Dandiya Night",
+      "venue": "Immense Residency, Sec-28, Faridabad",
+      "venueLink": "https://maps.app.goo.gl/TSWmGFQbp48wzZNX8",
+      "detailsImage": {
+        "landscape": "assets/events/dandiya17-landscape.avif",
+        "portrait": "assets/events/dandiya17-vertical.avif"
+      },
+      "aboutEvent": "Join us for Glorix Dandiya Night 2026, an evening of live DJxDhol, Garba, and authentic Indian food.\n\nDate: 17 October 2026\nTime: 6:00 PM onwards\nDuration: 4 Hours\nAge Limit: 5+\nLanguages: Hindi, English\nVenue: Immense Residency, Sec-28, Faridabad",
+      "highlights": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
+      "priceFrom": 199,
+      "bookingOpensAtISO": "2026-09-24T11:00:00+05:30",
+      "eventStartsAtISO": "2026-10-17T18:00:00+05:30"
+    }
+  },
+  {
+    "id": "glorix-dandiya-night-2026-oct-18",
+    "title": "Glorix Dandiya Night 2026",
+    "image": "assets/events/dandiya18-vertical.avif",
+    "date": "18th October 2026",
+    "status": "filling-fast",
+    "hiddenFromBookings": true,
+    "bookingLink": "https://all.events/go/80002915231930",
+    "details": {
+      "hideArtists": true,
+      "tags": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
+      "dateRange": null,
+      "time": "6:00 PM onwards",
+      "duration": "4 Hours",
+      "ageLimit": "5+",
+      "languages": "Hindi, English",
+      "genre": "Dandiya Night",
+      "venue": "Rosewood Grand Hotel, Sec-34, Faridabad",
+      "venueLink": "https://maps.app.goo.gl/pasg8S4h87nitraG9",
+      "detailsImage": {
+        "landscape": "assets/events/dandiya18-landscape.avif",
+        "portrait": "assets/events/dandiya18-vertical.avif"
+      },
+      "aboutEvent": "Join us for Glorix Dandiya Night 2026, an evening of live DJxDhol, Garba, and authentic Indian food.\n\nDate: 18 October 2026\nTime: 6:00 PM onwards\nDuration: 4 Hours\nAge Limit: 5+\nLanguages: Hindi, English\nVenue: Rosewood Grand Hotel, Sec-34, Faridabad",
+      "highlights": ["Live DJxDhol", "Garba", "Indian Authentic Food"],
+      "priceFrom": 199,
+      "bookingOpensAtISO": "2026-09-24T11:00:00+05:30",
+      "eventStartsAtISO": "2026-10-18T18:00:00+05:30"
+    }
+  }
+]
