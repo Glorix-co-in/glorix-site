@@ -294,14 +294,14 @@ function updateTimeSlots(times) {
     times.every((option) => (option.status || "available") === "sold-out")
   ) {
     confirmBtn.disabled = true;
-    confirmBtn.textContent = "Sold Out";
+    confirmBtn.textContent = "SOLD OUT";
     confirmBtn.onclick = null;
   } else {
     confirmBtn.disabled = true;
     if (currentEvent?.status !== "sold-out") {
       confirmBtn.textContent = "Continue to Booking";
     } else {
-      confirmBtn.textContent = "Sold Out";
+      confirmBtn.textContent = "SOLD OUT";
     }
     confirmBtn.onclick = null;
   }
