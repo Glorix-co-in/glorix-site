@@ -214,17 +214,30 @@ function renderSlots(event) {
     // Honor a date-specific shared URL and keep its date selected on open.
     const sharedSlotId = new URLSearchParams(window.location.search).get("slot");
     const sharedSlot = options.find((option) => option.detailsEventId === sharedSlotId);
-    const initialDateCard = dateCards.find((card) =>
-      sharedSlot && card.dataset.date === sharedSlot.date,
-    ) || dateCards[0];
+    const dateCardList = Array.from(dateCards);
+    const initialDateCard = (sharedSlot &&
+      dateCardList.find((card) => card.dataset.date === sharedSlot.date)) ||
+      dateCardList[0];
     initialDateCard?.click();
+
+    // If every slot is sold out, show SOLD OUT on the confirm button immediately,
+    // even before any date auto-selection runs.
+    const confirmBtn = document.getElementById("confirmBtn");
+    const allSoldOut = options.length > 0 &&
+      options.every((option) => (option.status || "available") === "sold-out");
+    if ((allSoldOut || event.status === "sold-out") && confirmBtn) {
+      confirmBtn.disabled = true;
+      confirmBtn.textContent = "SOLD OUT";
+      confirmBtn.onclick = null;
+    }
   }
 }
 
 function updateTimeSlots(times) {
   const timeSection = document.getElementById("timeSection");
   const timeSlots = document.getElementById("timeSlots");
-  const confirmBtn = document.getElementById("confirmBtn");  timeSection.style.display = "block";
+  const confirmBtn = document.getElementById("confirmBtn");
+  timeSection.style.display = "block";
   timeSlots.innerHTML = "";
   times.forEach((option) => {
     const status = option.status || "available";
