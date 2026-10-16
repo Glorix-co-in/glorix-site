@@ -1,0 +1,13 @@
+/* Page scope includes the shared shell and portalled content. */
+@scope (body:has(.artists-page, .team-page)) {
+  .artists-page-header,
+  .team-page-header {
+    padding-top: 0;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  .artists-grid,
+  .team-grid {
+    padding-bottom: 100px;
+  }
+}

@@ -22,15 +22,17 @@ File routes live in `frontend/src/routes`, using Solid Router and its filesystem
 - `/events/:id/slots`: date and time selection
 - `/details?id=...` and `/select-slot?id=...`: original query-style URL aliases
 
-The seven original CSS files are preserved unchanged in `src/styles/original`. Route components retain the original HTML structure, classes, inline styles, assets, fonts, icons, and animations. `OriginalStyles` mounts each page's styles for the lifetime of that route so styles from standalone source pages do not leak across navigation.
+Shared CSS in `src/styles/base.css` loads once in App, including on missing routes. Page styles in `src/styles/pages` use native CSS `@scope` with page classes on the existing main elements; normal CSS imports let Vite manage loading. Body-based scope roots include the shared shell and portalled overlays. Component styles use distinct class names; event-card, announcement, and bottom-sheet styles live in `src/components/styles`. Original style declarations are retained to preserve the Glorix design. Native controls use a small typography reset in `src/styles/controls.css`.
 
-`scripts/import-glorix.mjs` copies the original JSON data and referenced assets. `scripts/port-original-markup.mjs` ports source page markup; `scripts/port-original-animations.mjs` extracts the source GSAP animations with component cleanup. Fonts and Font Awesome retain the source CDN URLs.
+The original JSON data and referenced assets were copied into the frontend. Components are maintained directly under `src`; the one-off import tools have been removed. Fonts and Font Awesome retain the source CDN URLs.
 
 ## Data and temporary UI state
 
 `src/bookings/useBookings.ts` creates the one domain `createStore`, seeded from `src/bookings/events.json`. App provides it through context; pages consume `useBookings()` without creating additional stores. Derived lists and booking availability use named memos and pure helpers in `rules.ts`.
 
-Temporary UI state stays with its owning component: navigation, popup visibility, selected dates/times, carousel position, overlays, and music playback use local signals. These values are not mixed into the event records. A separate boundary clock updates booking availability when timestamps change; the announcement countdown owns its one-second clock.
+Temporary UI state stays with its owning component: navigation, popup visibility, carousel position, overlays, and music playback use local signals. Selected dates and times have a single source of truth in URL search parameters, managed by `useSlotSelection`, so deep links and browser history agree. These values are not mixed into the event records. A separate boundary clock updates booking availability when timestamps change; the announcement countdown runs its one-second clock only while open.
+
+`EventHeader`, `EventDescription`, `BottomSheet`, and `Testimonials` own their respective presentation and interaction behavior. Bottom sheets trap focus, make the background inert, close with Escape, and restore focus. Router pending state provides navigation feedback.
 
 The original event visibility, opening and closing gates, ordering, child events, slot availability, and external ticket links are preserved. Runtime data changes do not persist after reload.
 
@@ -46,4 +48,4 @@ The frontend started from the bare TypeScript template:
 pnpm create solid@latest frontend --solid --template bare --ts --no-ssr --no-devtools
 ```
 
-Inside the frontend run `pnpm typecheck`, `pnpm test`, and `pnpm build`. Production files are written to `dist/client`. Inside the backend run `pnpm typecheck` and `pnpm build`.
+Inside the frontend run `pnpm typecheck`, `pnpm lint`, and `pnpm build`. Production files are written to `dist/client`. Inside the backend run `pnpm typecheck` and `pnpm build`.
