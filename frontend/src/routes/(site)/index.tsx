@@ -1,15 +1,14 @@
-import PageTitle from "../components/PageTitle";
-import { useOriginalAnimations } from "../lib/useOriginalAnimations";
-import "../styles/pages/home.css";
+import PageTitle from "../../components/PageTitle";
+import { useOriginalAnimations } from "../../lib/useOriginalAnimations";
+import "../../styles/pages/home.css";
 import {
   HomeCarousel,
   HomeGallery,
   Collaborations,
-} from "../components/HomeContent";
-import HomeAnnouncement from "../components/HomeAnnouncement";
-import Testimonials from "../components/Testimonials";
+} from "../../components/HomeContent";
+import HomeAnnouncement from "../../components/HomeAnnouncement";
+import Testimonials from "../../components/Testimonials";
 
-// Original Glorix markup retained; dynamic slots are Solid components.
 export default function Page() {
   useOriginalAnimations("index");
   return (

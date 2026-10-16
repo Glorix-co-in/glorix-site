@@ -1,6 +1,4 @@
-/* Page scope includes the shared shell and portalled content. */
 @scope (body:has(.bookings-page)) {
-  /* Shared Event Card styles used across bookings */
   .events-section {
     grid-column: 1 / -1;
     background: #000;
@@ -136,7 +134,6 @@
     color: #000;
   }
 
-  /* Featured event card - wider on desktop */
   .event-card--featured {
     grid-column: span 2;
   }

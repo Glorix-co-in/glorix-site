@@ -1,6 +1,6 @@
 import { useSearchParams } from "@solidjs/router";
 import EventPage from "../components/EventPage";
-// Query-string entry retained for links copied from the original HTML pages.
+// Preserve query-string links from the original site.
 export default function Details() {
   const [search] = useSearchParams();
   return (

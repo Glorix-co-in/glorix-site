@@ -1,6 +1,5 @@
-/* Page scope includes the shared shell and portalled content. */
+/* Include the shared shell in the page scope. */
 @scope (body:has(.home-page, .artists-page, .team-page)) {
-  /* ===== Carousel ===== */
   .carousel-wrapper {
     width: 100%;
     height: clamp(500px, 70vh, 1000px);
@@ -61,7 +60,6 @@
     border-radius: 8px;
   }
 
-  /* make iframe fill the carousel slide */
   .carousel-content .youtube-container {
     position: relative;
   }
@@ -108,7 +106,6 @@
     transform: scale(1.2);
   }
 
-  /* ===== Join Banner ===== */
   .join-banner {
     margin-top: 0;
     margin-bottom: 20px;
@@ -161,7 +158,6 @@
     }
   }
 
-  /* ===== Grid & Cards ===== */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -220,7 +216,6 @@
     background: #657686;
   }
 
-  /* ===== New About Us Section ===== */
   .about {
     padding-top: 0px;
     padding-bottom: calc(var(--section-padding-y) / 4);
@@ -351,14 +346,13 @@
     margin: 0;
   }
 
-  /* ===== Gallery Section ===== */
   .gallery-section {
     padding-top: calc(var(--section-padding-y) / 2);
   }
 
   .gallery-grid {
     display: grid;
-    /* 3 main columns, but we use a 12-row grid for precise staggering */
+
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(12, 70px);
     gap: 15px;
@@ -389,9 +383,6 @@
     align-items: center;
   }
 
-  /* Precise Hardcoded Spans for Staggered Effect */
-
-  /* Left Column */
   .item-l1 {
     grid-column: 1;
     grid-row: 1 / 4;
@@ -416,7 +407,6 @@
     grid-row: 10 / 13;
   }
 
-  /* Middle Column */
   .gallery-logo {
     grid-column: 2;
     grid-row: 1 / 3;
@@ -432,7 +422,6 @@
     grid-row: 6 / 13;
   }
 
-  /* Right Column */
   .item-r1 {
     grid-column: 3;
     grid-row: 1 / 4;
@@ -457,7 +446,6 @@
     grid-row: 10 / 13;
   }
 
-  /* Responsive Gallery */
   @media (max-width: 768px) {
     .about {
       translate: 0;
@@ -484,7 +472,6 @@
     }
   }
 
-  /* ===== Testimonials ===== */
   .testimonials {
     background: #0d0d0d;
     position: relative;
@@ -578,7 +565,6 @@
     border-radius: 6px;
   }
 
-  /* ===== Email Section ===== */
   .email-section {
     background: #1a1a1a;
     text-align: center;
@@ -668,7 +654,6 @@
     }
   }
 
-  /* ===== Team Section ===== */
   .team-section {
     text-align: center;
     background: #0d0d0d;
@@ -693,7 +678,6 @@
     }
   }
 
-  /* ===== Mobile Responsive - Index Page ===== */
   @media (max-width: 768px) {
     section {
       padding-block: var(--section-padding-y-mobile);
@@ -712,7 +696,6 @@
 
     .testimonials,
     .team-section {
-      /* Inherits from section baseline */
     }
 
     .about-container {
@@ -736,7 +719,6 @@
       text-align: center;
     }
 
-    /* Make stat containers transparent to grid */
     .stats-right,
     .stats-bottom {
       display: contents;
@@ -771,7 +753,6 @@
     }
   }
 
-  /* ===== Collaboration Section ===== */
   .collaboration-section {
     background: #111;
     padding-block: var(--section-padding-y);
@@ -889,7 +870,7 @@
     }
   }
 
-  /* GSAP Initial States to prevent FOUC */
+  /* Hidden until GSAP initializes to prevent entrance flashes. */
   .navbar .logo,
   .nav-center ul li,
   .call-btn,
@@ -907,7 +888,6 @@
     visibility: hidden;
   }
 
-  /* Bookings Page Initial States */
   .bookings-hero,
   .offer-ticker,
   .events-section__title,

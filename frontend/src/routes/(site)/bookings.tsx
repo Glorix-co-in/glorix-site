@@ -1,13 +1,12 @@
-import PageTitle from "../components/PageTitle";
-import { useOriginalAnimations } from "../lib/useOriginalAnimations";
+import PageTitle from "../../components/PageTitle";
+import { useOriginalAnimations } from "../../lib/useOriginalAnimations";
 import { For } from "solid-js";
-import { useBookings } from "../bookings/useBookings";
-import EventCard from "../components/EventCard";
-import ticker from "../data/marquee.json";
-import "../components/styles/event-card.css";
-import "../styles/pages/bookings.css";
+import { useBookings } from "../../bookings/useBookings";
+import EventCard from "../../components/EventCard";
+import ticker from "../../data/marquee.json";
+import "../../components/styles/event-card.css";
+import "../../styles/pages/bookings.css";
 
-// Original Glorix markup retained; dynamic slots are Solid components.
 export default function Page() {
   useOriginalAnimations("bookings");
   const bookings = useBookings();

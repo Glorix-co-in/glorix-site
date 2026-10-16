@@ -1,10 +1,9 @@
-import PageTitle from "../components/PageTitle";
-import { useOriginalAnimations } from "../lib/useOriginalAnimations";
-import "../styles/pages/gallery.css";
-import GalleryGrid from "../components/GalleryGrid";
-import gallery from "../data/gallery.json";
+import PageTitle from "../../components/PageTitle";
+import { useOriginalAnimations } from "../../lib/useOriginalAnimations";
+import "../../styles/pages/gallery.css";
+import GalleryGrid from "../../components/GalleryGrid";
+import gallery from "../../data/gallery.json";
 
-// Original Glorix markup retained; dynamic slots are Solid components.
 export default function Page() {
   useOriginalAnimations("gallery");
   return (

@@ -1,7 +1,4 @@
-/* Page scope includes the shared shell and portalled content. */
 @scope (body:has(.event-details-page)) {
-  /* ===== Event Details Page Styles ===== */
-
   * {
     margin: 0;
     padding: 0;
@@ -24,7 +21,6 @@
     padding-top: 0;
   }
 
-  /* ===== Header ===== */
   .details-header {
     position: fixed;
     top: 0;
@@ -69,12 +65,10 @@
     color: #fff;
   }
 
-  /* ===== Main Content ===== */
   .details-main {
     padding-top: 56px;
   }
 
-  /* ===== Event Media Carousel ===== */
   .event-image-container {
     width: 100%;
     aspect-ratio: 16/7;
@@ -177,7 +171,6 @@
     }
   }
 
-  /* ===== Tags Section ===== */
   .event-tags {
     display: flex;
     flex-wrap: wrap;
@@ -197,7 +190,6 @@
     text-transform: capitalize;
   }
 
-  /* ===== Event Details List ===== */
   .event-details-list {
     padding: 16px;
     display: flex;
@@ -250,7 +242,6 @@
     width: auto;
   }
 
-  /* ===== About Section ===== */
   .about-section {
     padding: 20px 16px;
     background: #1a1a1a;
@@ -299,7 +290,6 @@
     display: inline-flex;
   }
 
-  /* ===== Artists Section ===== */
   .artists-section {
     padding: 24px 16px;
     background: transparent;
@@ -314,12 +304,10 @@
     -webkit-overflow-scrolling: touch;
     position: relative;
 
-    /* Standard Scrollbar for Firefox */
     scrollbar-width: thin;
     scrollbar-color: #333 #111;
   }
 
-  /* Custom Styled Scrollbar for Chrome, Edge, Safari */
   .artists-carousel-wrapper::-webkit-scrollbar {
     height: 6px;
   }
@@ -374,13 +362,12 @@
     text-decoration: none;
   }
 
-  /* Snap every 3rd card for better intervals */
   .event-artist-card:nth-child(3n + 1) {
     scroll-snap-align: start;
   }
 
   .artist-img-wrapper {
-    width: 100px; /* Consistent size */
+    width: 100px;
     height: 100px;
     border-radius: 12px;
     overflow: hidden;
@@ -404,7 +391,7 @@
 
   .artist-name {
     font-family: "Inter", sans-serif;
-    font-size: 13px; /* Slightly smaller for better fit */
+    font-size: 13px;
     font-weight: 600;
     color: #eee;
     text-align: center;
@@ -415,7 +402,6 @@
     text-overflow: ellipsis;
   }
 
-  /* ===== Terms Section ===== */
   .terms-section {
     display: flex;
     align-items: center;
@@ -443,7 +429,6 @@
     font-size: 14px;
   }
 
-  /* ===== Sticky Bottom Bar ===== */
   .sticky-bottom-bar {
     position: fixed;
     bottom: 0;
@@ -542,7 +527,6 @@
     width: 100%;
   }
 
-  /* ===== Loading State ===== */
   .loading {
     display: flex;
     align-items: center;
@@ -552,7 +536,6 @@
     color: #aaa;
   }
 
-  /* ===== Error State ===== */
   .error-state {
     display: flex;
     flex-direction: column;
@@ -580,7 +563,6 @@
     color: #aaa;
   }
 
-  /* ===== Responsive - Tablet ===== */
   @media (min-width: 768px) and (max-width: 1023px) {
     body {
       padding-top: 56px;
@@ -612,7 +594,6 @@
     }
   }
 
-  /* ===== Responsive - Desktop ===== */
   @media (min-width: 1024px) {
     body {
       padding-top: 56px;
@@ -720,7 +701,6 @@
     }
   }
 
-  /* ===== Animations ===== */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -747,7 +727,7 @@
     animation: fadeIn 0.4s ease forwards;
   }
 
-  /* Exclude sticky-bottom-bar from transform animation on mobile/tablet to fix position:fixed */
+  /* Transforms would change the fixed booking bar's containing block. */
   .details-content-wrapper {
     animation: fadeInSimple 0.4s ease forwards;
   }
@@ -784,7 +764,6 @@
     animation-delay: 0.35s;
   }
 
-  /* Razorpay Button Styling Override - Invisible Overlay */
   .booking-action-wrapper {
     position: relative;
     display: flex;
@@ -821,7 +800,6 @@
     cursor: pointer !important;
   }
 
-  /* Ensure the Razorpay script-injected elements are also stretched */
   #razorpayButtonContainer iframe {
     width: 100% !important;
     height: 100% !important;

@@ -1,4 +1,3 @@
-// Original Glorix animation settings, scoped to a Solid lifecycle.
 import { onSettled } from "solid-js";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,8 +9,6 @@ export function useOriginalAnimations(page) {
         if (typeof gsap !== "undefined") {
           gsap.registerPlugin(ScrollTrigger);
 
-          // Set initial states for bookings page (only on first load)
-
           gsap.set(".navbar .logo", { y: -30 });
           gsap.set(".nav-center ul li", { y: -20 });
           gsap.set(".call-btn", { x: 30 });
@@ -21,7 +18,6 @@ export function useOriginalAnimations(page) {
 
           gsap.set(".event-card, .event-card-mobile", { y: 40, autoAlpha: 0 });
 
-          // Header Animations (on load)
           const headerTl = gsap.timeline();
           headerTl
             .to(".navbar .logo", {
@@ -52,7 +48,6 @@ export function useOriginalAnimations(page) {
               "-=0.2",
             );
 
-          // Hero Banner
           gsap.to(".bookings-hero", {
             autoAlpha: 1,
             scale: 1,
@@ -60,7 +55,6 @@ export function useOriginalAnimations(page) {
             ease: "power2.out",
           });
 
-          // Offer Ticker
           gsap.to(".offer-ticker", {
             autoAlpha: 1,
             y: 0,
@@ -69,7 +63,6 @@ export function useOriginalAnimations(page) {
             ease: "power2.out",
           });
 
-          // Events Title
           gsap.to(".section-title", {
             scrollTrigger: {
               trigger: ".events-section",
@@ -82,7 +75,6 @@ export function useOriginalAnimations(page) {
             ease: "power2.out",
           });
 
-          // Event Cards Stagger
           gsap.to(".event-card, .event-card-mobile", {
             scrollTrigger: {
               trigger: ".events-container",
@@ -97,11 +89,9 @@ export function useOriginalAnimations(page) {
           });
         }
       } else if (page === "gallery") {
-        // Register ScrollTrigger
         if (window.gsap && window.ScrollTrigger) {
           gsap.registerPlugin(ScrollTrigger);
 
-          // Animate Section Title
           gsap.to(".section-title", {
             autoAlpha: 1,
             y: 0,
@@ -109,7 +99,6 @@ export function useOriginalAnimations(page) {
             ease: "power3.out",
           });
 
-          // GSAP Animation for gallery items
           gsap.to(".gallery-grid", {
             autoAlpha: 1,
             duration: 0.8,
@@ -134,7 +123,6 @@ export function useOriginalAnimations(page) {
           });
         }
       } else {
-        // Set initial states for elements that will animate in
         gsap.set(".navbar .logo", { y: -30 });
         gsap.set(".nav-center ul li", { y: -20 });
         gsap.set(".call-btn", { x: 30 });
@@ -155,7 +143,6 @@ export function useOriginalAnimations(page) {
           gsap.set(".email-container > *", { y: 30 });
         }
 
-        // Header Animations (on load)
         const headerTl = gsap.timeline();
         headerTl
           .to(".navbar .logo", {
@@ -186,7 +173,6 @@ export function useOriginalAnimations(page) {
             "-=0.2",
           );
 
-        // Hero Carousel Animation
         if (document.querySelector(".carousel-wrapper")) {
           gsap.to(".carousel-wrapper", {
             autoAlpha: 1,
@@ -196,7 +182,7 @@ export function useOriginalAnimations(page) {
           });
         }
 
-        // Section Titles (Excluding About Section Title which is handled by its card)
+        // The about card animates its own title.
         const sectionTitles = gsap.utils.toArray(
           ".section-title:not(.about .section-title)",
         );
@@ -214,7 +200,6 @@ export function useOriginalAnimations(page) {
           });
         });
 
-        // About Content - Simplified and robust entry
         const aboutMain = document.querySelector(".about-main-card");
         const statCards = gsap.utils.toArray(".stat-card");
 
@@ -222,7 +207,6 @@ export function useOriginalAnimations(page) {
           const aboutTitle = aboutMain.querySelector(".section-title");
           const aboutDesc = aboutMain.querySelector(".about-description");
 
-          // Set initial state immediately to avoid jumps
           gsap.set(aboutMain, { x: -40, autoAlpha: 0 });
           gsap.set(aboutTitle, { y: 20, autoAlpha: 0 });
           gsap.set(aboutDesc, { y: 20, autoAlpha: 0 });
@@ -231,7 +215,7 @@ export function useOriginalAnimations(page) {
           const aboutTl = gsap.timeline({
             scrollTrigger: {
               trigger: "#about",
-              start: "top bottom-=150", // Trigger earlier so it's visible on load/slight scroll
+              start: "top bottom-=150",
               once: true,
             },
           });
@@ -268,7 +252,6 @@ export function useOriginalAnimations(page) {
             );
         }
 
-        // Testimonials Content
         if (
           document.querySelector("#testimonials") &&
           document.querySelector(".review-slider-wrapper")
@@ -286,7 +269,6 @@ export function useOriginalAnimations(page) {
           });
         }
 
-        // Collaboration Section
         const marquee = document.querySelector(".marquee");
         if (marquee) {
           gsap.to(marquee, {
@@ -302,7 +284,6 @@ export function useOriginalAnimations(page) {
           });
         }
 
-        // Gallery Grid
         const galleryGrid = document.querySelector(".gallery-grid");
         if (galleryGrid) {
           gsap.to(galleryGrid, {
@@ -317,7 +298,6 @@ export function useOriginalAnimations(page) {
             ease: "power2.out",
           });
         }
-        // Email Section
         if (
           document.querySelector("#email-subscription") &&
           document.querySelector(".email-container")

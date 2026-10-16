@@ -1,11 +1,10 @@
-import "../styles/pages/people.css";
-import PageTitle from "../components/PageTitle";
-import { useOriginalAnimations } from "../lib/useOriginalAnimations";
-import "../styles/pages/home.css";
-import PeopleGrid from "../components/PeopleGrid";
-import people from "../data/teams.json";
+import "../../styles/pages/people.css";
+import PageTitle from "../../components/PageTitle";
+import { useOriginalAnimations } from "../../lib/useOriginalAnimations";
+import "../../styles/pages/home.css";
+import PeopleGrid from "../../components/PeopleGrid";
+import people from "../../data/teams.json";
 
-// Original Glorix markup retained; dynamic slots are Solid components.
 export default function Page() {
   useOriginalAnimations("team");
   return (

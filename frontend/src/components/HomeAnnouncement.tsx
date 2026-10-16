@@ -1,13 +1,11 @@
 import "./styles/announcement.css";
-import { createEffect, createMemo, createSignal, onSettled } from "solid-js";
+import { createEffect, createMemo, createSignal, For } from "solid-js";
 import { useBookings } from "../bookings/useBookings";
 import { useClock } from "../lib/useClock";
+import { eventHref } from "../bookings/rules";
 export default function HomeAnnouncement() {
   const bookings = useBookings();
-  const event = createMemo(
-    () => bookings.getEvent("glorix-dandiya-night-2026"),
-    { name: "announcement-event" },
-  );
+  const event = bookings.announcement;
   const [open, setOpen] = createSignal(false, { name: "announcement-open" });
   let dialog!: HTMLDialogElement;
   const now = useClock(open);
@@ -27,15 +25,60 @@ export default function HomeAnnouncement() {
     },
     { name: "announcement-visibility" },
   );
-  onSettled(() => {
-    const item = event();
-    if (!item || !bookings.canBook(item)) return;
-    try {
-      if (sessionStorage.getItem("announcement:" + item.id)) return;
-      sessionStorage.setItem("announcement:" + item.id, "seen");
-    } catch {}
-    setOpen(true);
-  });
+  createEffect(
+    event,
+    (item) => {
+      setOpen(false);
+      if (!item || !bookings.canBook(item)) return;
+      try {
+        if (sessionStorage.getItem("announcement:" + item.id)) return;
+        sessionStorage.setItem("announcement:" + item.id, "seen");
+      } catch {}
+      setOpen(true);
+    },
+    { name: "announcement-session" },
+  );
+  const view = createMemo(
+    () => {
+      const item = event();
+      if (!item) return undefined;
+      const [prefix, ...title] = item.title.split(/\s+/);
+      const venues = (item.bookingOptions ?? []).map((option) => {
+        const child = bookings.getEvent(option.detailsEventId);
+        const match = option.date.match(/^(\d+)(?:st|nd|rd|th)?\s+([A-Za-z]+)/);
+        const date = match
+          ? match[1] + " " + match[2].slice(0, 3)
+          : option.date;
+        const address = (child?.details.venue ?? item.details.venue ?? "")
+          .split(",")
+          .map((part) => part.trim());
+        const venue = (
+          address.length > 2 ? address.slice(0, -1) : address
+        ).join(", ");
+        return date + ": " + venue;
+      });
+      return {
+        prefix: prefix.toUpperCase(),
+        title: title.join(" ").toUpperCase(),
+        description:
+          item.announcement?.description ??
+          item.details.description ??
+          item.details.aboutEvent,
+        date: item.details.dateRange ?? item.date,
+        time: Array.isArray(item.details.time)
+          ? item.details.time.join(", ")
+          : item.details.time,
+        venues: venues.length ? venues : [item.details.venue ?? ""],
+        desktopImage: "/" + (item.details.detailsImage?.portrait ?? item.image),
+        mobileImage: "/" + (item.details.detailsImage?.landscape ?? item.image),
+        href: eventHref(item),
+        countdownLabel: item.announcement?.countdownLabel ?? "EVENT COUNTDOWN",
+        countdownDescription:
+          item.announcement?.countdownDescription ?? "Until the event begins",
+      };
+    },
+    { name: "announcement-presentation" },
+  );
   return (
     <dialog
       id="eventPopup"
@@ -60,13 +103,10 @@ export default function HomeAnnouncement() {
 
         <div class="event-popup__left">
           <picture>
-            <source
-              srcset="/assets/events/glorix_dandiya_night_2026_landscape.avif"
-              media="(max-width: 640px)"
-            />
+            <source srcset={view()?.mobileImage} media="(max-width: 640px)" />
             <img
-              src="/assets/events/glorix_dandiya_night_2026_portrait.avif"
-              alt="Glorix Dandiya Night 2026"
+              src={view()?.desktopImage}
+              alt={event()?.title ?? ""}
               class="event-popup__image"
             />
           </picture>
@@ -74,34 +114,34 @@ export default function HomeAnnouncement() {
 
         <div class="event-popup__right">
           <h2 class="event-popup__title" id="eventPopupTitle">
-            <span>GLORIX</span>
+            <span>{view()?.prefix}</span>
             <br />
-            <span class="event-popup__title-highlight">DANDIYA NIGHT 2026</span>
+            <span class="event-popup__title-highlight">{view()?.title}</span>
           </h2>
 
-          <p class="event-popup__description">
-            Celebrate with live DJxDhol, Garba, and authentic Indian food across
-            two nights in Faridabad. Choose your date to see that night's venue.
-          </p>
+          <p class="event-popup__description">{view()?.description}</p>
 
           <div class="event-popup__meta">
             <div class="event-popup__meta-item">
               <i class="fas fa-calendar" />
               <div class="event-popup__meta-copy">
-                <div class="event-popup__meta-label">
-                  17th &amp; 18th October 2026
-                </div>
+                <div class="event-popup__meta-label">{view()?.date}</div>
               </div>
-              <div class="event-popup__meta-time">6:00 PM onwards</div>
+              <div class="event-popup__meta-time">{view()?.time}</div>
             </div>
 
             <div class="event-popup__meta-item">
               <i class="fas fa-map-marker-alt" />
               <div class="event-popup__meta-copy">
                 <div class="event-popup__meta-label">
-                  17 Oct: Immense Residency, Sec-28
-                  <br />
-                  18 Oct: Rosewood Grand Hotel, Sec-34
+                  <For each={view()?.venues}>
+                    {(venue, index) => (
+                      <>
+                        {index() > 0 && <br />}
+                        {venue}
+                      </>
+                    )}
+                  </For>
                 </div>
               </div>
             </div>
@@ -125,13 +165,13 @@ export default function HomeAnnouncement() {
             </div>
             <div class="event-popup__countdown-copy">
               <div class="event-popup__countdown-label">
-                DANDIYA NIGHT COUNTDOWN
+                {view()?.countdownLabel}
               </div>
               <div
                 class="event-popup__countdown-label-sub"
                 id="countdownLabelSub"
               >
-                Until the first night
+                {view()?.countdownDescription}
               </div>
             </div>
             <div class="event-popup__countdown" id="eventCountdown">
@@ -170,7 +210,7 @@ export default function HomeAnnouncement() {
 
           <div class="event-popup__buttons">
             <a
-              href="/events/glorix-dandiya-night-2026/slots"
+              href={view()?.href}
               id="eventPopupBookBtn"
               class="event-popup__btn event-popup__btn--primary"
             >

@@ -1,7 +1,6 @@
 import { createEffect, createSignal, type Accessor } from "solid-js";
 
-// Update time-dependent data only when one of its timestamps is crossed.
-// A countdown can independently use useClock without refiltering every list.
+// Schedule deadlines instead of refiltering every second.
 export function useBoundaryClock(boundaries: Accessor<number[]>) {
   const [now, setNow] = createSignal(Date.now(), {
     name: "booking-boundary-time",

@@ -1,6 +1,5 @@
 import { createEffect, createSignal, type Accessor } from "solid-js";
 
-// A countdown owns its timer and stops it when the countdown is hidden.
 export function useClock(enabled: Accessor<boolean> = () => true) {
   const [now, setNow] = createSignal(Date.now(), { name: "clock" });
   createEffect(

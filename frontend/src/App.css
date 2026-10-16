@@ -1,5 +1,4 @@
-﻿/* Nonvisual accessibility integration; all page styling comes from original CSS. */
-.skip-link {
+﻿.skip-link {
   position: fixed;
   left: 0;
   top: -100px;

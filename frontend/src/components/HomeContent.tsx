@@ -23,7 +23,7 @@ export function HomeCarousel() {
             slide.eventId &&
             Boolean(
               bookings.getEvent(slide.eventId) &&
-                bookings.canBook(bookings.getEvent(slide.eventId)!),
+              bookings.canBook(bookings.getEvent(slide.eventId)!),
             )),
       );
     },

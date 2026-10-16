@@ -1,5 +1,5 @@
 import { createContext, createMemo, createStore, useContext } from "solid-js";
-import eventSeed from "./events.json";
+import eventSeed from "./events";
 import campaignSeed from "../data/campaigns.json";
 import type { BookingEvent, BookingOption } from "./types";
 import {
@@ -13,10 +13,9 @@ import {
 } from "./rules";
 import { useBoundaryClock } from "../lib/useBoundaryClock";
 
-// The store contains domain records only. Time is managed by a separate helper.
 export function createBookings() {
-  const [state, setState] = createStore(
-    { events: structuredClone(eventSeed) as BookingEvent[] },
+  const [state, setState] = createStore<{ events: BookingEvent[] }>(
+    { events: structuredClone(eventSeed) },
     { name: "booking-data" },
   );
   const boundaries = createMemo(
@@ -71,11 +70,18 @@ export function createBookings() {
     { name: "active-campaigns", equals: sameItems },
   );
 
+  const announcement = createMemo(
+    () =>
+      visible().find((event) => event.announcement && canBook(event, now())),
+    { name: "announcement-event" },
+  );
+
   return {
     state,
     upcoming,
     past,
     campaigns,
+    announcement,
     getEvent: (id?: string) =>
       state.events.find(
         (event) => event.id === id && event.status !== "hidden",
@@ -88,7 +94,6 @@ export function createBookings() {
     price: (event: BookingEvent) =>
       campaigns().find((campaign) => campaign.eventIds.includes(event.id))
         ?.effects.priceFrom ?? event.details.priceFrom,
-    // Future loading can replace data here; it has no navigation or dialog state.
     replaceEvents: (events: BookingEvent[]) =>
       setState((draft) => {
         draft.events = events;

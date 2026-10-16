@@ -1,6 +1,6 @@
-import type { BookingEvent, BookingOption } from "./types";
+import type { BookingEvent, BookingOption, BookingStatus } from "./types";
 
-const active = new Set([
+const active = new Set<BookingStatus>([
   "open",
   "available",
   "filling-fast",

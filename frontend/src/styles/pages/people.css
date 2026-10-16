@@ -1,4 +1,3 @@
-/* Page scope includes the shared shell and portalled content. */
 @scope (body:has(.artists-page, .team-page)) {
   .artists-page-header,
   .team-page-header {

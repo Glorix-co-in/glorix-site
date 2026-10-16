@@ -1,4 +1,3 @@
-/* Page scope includes the shared shell and portalled content. */
 @scope (body:has(.slot-selection-page)) {
   :scope {
     display: grid;
@@ -71,7 +70,6 @@
     width: 100%;
   }
 
-  /* Stepper Styles */
   .stepper {
     display: flex;
     align-items: center;
@@ -150,7 +148,6 @@
     line-height: 1.2;
   }
 
-  /* Legend Styles */
   .legend-container {
     display: flex;
     gap: 16px;
@@ -184,7 +181,6 @@
     background: #9e9e9e;
   }
 
-  /* Selection Card Container */
   .selection-card {
     background: rgba(255, 255, 255, 0.02);
     margin: 0 12px;

@@ -1,4 +1,4 @@
-/* Native controls retain the exact typography and geometry of the source divs. */
+/* Match the original typography on native controls. */
 .slot-card {
   appearance: none;
   font: inherit;

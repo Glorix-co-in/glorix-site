@@ -1,8 +1,4 @@
-/* Page scope includes the shared shell and portalled content. */
 @scope (body:has(.bookings-page)) {
-  /* ===== Bookings Page Styles ===== */
-
-  /* Hero Banner */
   .bookings-hero {
     display: grid;
     place-items: center;
@@ -12,7 +8,6 @@
     position: relative;
     overflow: hidden;
     min-height: 80px;
-    /* desktop default */
   }
 
   .bookings-hero__overlay {
@@ -35,7 +30,6 @@
     line-height: 1.1;
   }
 
-  /* Make the hero shorter on narrower screens */
   @media (max-width: 768px) {
     .bookings-hero {
       min-height: 90px;
@@ -57,7 +51,6 @@
     }
   }
 
-  /* Mobile Arrows */
   .mobile-arrows {
     display: none;
     justify-content: center;
@@ -79,7 +72,6 @@
     background: #333;
   }
 
-  /* ===== Responsive Styles ===== */
   @media (max-width: 768px) {
     .bookings-hero img {
       height: 100px;
