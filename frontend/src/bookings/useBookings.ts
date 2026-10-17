@@ -6,6 +6,7 @@ import {
   canBook,
   eventDate,
   hasBookingOpened,
+  hasBookingEnded,
   isUpcoming,
   isVisible,
   bookingUrl,
@@ -72,7 +73,7 @@ export function createBookings() {
 
   const announcement = createMemo(
     () =>
-      visible().find((event) => event.announcement && canBook(event, now())),
+      visible().find((event) => event.announcement && isUpcoming(event, now())),
     { name: "announcement-event" },
   );
 
@@ -88,6 +89,7 @@ export function createBookings() {
       ),
     canBook: (event: BookingEvent) => canBook(event, now()),
     hasOpened: (event: BookingEvent) => hasBookingOpened(event, now()),
+    hasEnded: (event: BookingEvent) => hasBookingEnded(event, now()),
     bookingUrl: (event: BookingEvent) => bookingUrl(event, now()),
     slotAvailable: (option: BookingOption) =>
       slotAvailable(option, state.events, now()),

@@ -1,0 +1,44 @@
+.section {
+  padding: 20px 16px;
+  background: var(--color-surface-raised);
+  border-top: 1px solid var(--color-surface-muted);
+}
+
+.text {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.text.collapsed {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
+.toggle {
+  display: none;
+  margin-top: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-accent);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.toggle.visible {
+  display: inline-flex;
+}
+
+@media (min-width: 1024px) {
+  .section {
+    background: transparent;
+  }
+}

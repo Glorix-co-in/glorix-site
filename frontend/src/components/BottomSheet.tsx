@@ -1,4 +1,4 @@
-import "./styles/bottom-sheet.css";
+import styles from "./BottomSheet.module.css";
 import { createEffect, type ParentProps } from "solid-js";
 import { Portal } from "@solidjs/web";
 
@@ -80,7 +80,7 @@ export default function BottomSheet(props: Props) {
   return (
     <Portal>
       <div
-        class={{ "modal-overlay": true, active: props.open }}
+        class={{ [styles.overlay]: true, [styles.active]: props.open }}
         id={props.id}
         inert={!props.open}
         aria-hidden={props.open ? "false" : "true"}
@@ -89,7 +89,7 @@ export default function BottomSheet(props: Props) {
         }}
       >
         <div
-          class={{ "bottom-sheet": true, "bottom-sheet--tall": props.tall }}
+          class={{ [styles.sheet]: true, [styles.tall]: props.tall }}
           ref={(node) => {
             panel = node;
           }}
@@ -98,13 +98,13 @@ export default function BottomSheet(props: Props) {
           aria-labelledby={props.id + "-title"}
           tabindex="-1"
         >
-          <div class="bottom-sheet__header">
-            <h2 class="bottom-sheet__title" id={props.id + "-title"}>
+          <div class={styles.header}>
+            <h2 class={styles.title} id={props.id + "-title"}>
               {props.title}
             </h2>
             <button
               type="button"
-              class="bottom-sheet__close"
+              class={styles.close}
               id={props.closeId}
               aria-label={"Close " + props.title}
               onClick={() => props.onClose()}
@@ -112,10 +112,8 @@ export default function BottomSheet(props: Props) {
               <i class="fas fa-times" />
             </button>
           </div>
-          <div class="bottom-sheet__content">{props.children}</div>
-          {props.footer && (
-            <div class="bottom-sheet__footer">{props.footer}</div>
-          )}
+          <div class={styles.content}>{props.children}</div>
+          {props.footer && <div class={styles.footer}>{props.footer}</div>}
         </div>
       </div>
     </Portal>

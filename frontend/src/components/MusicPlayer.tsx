@@ -1,3 +1,4 @@
+import styles from "./MusicPlayer.module.css";
 import { createSignal } from "solid-js";
 export default function MusicPlayer() {
   const [playing, setPlaying] = createSignal(false, { name: "music-playing" });
@@ -14,9 +15,10 @@ export default function MusicPlayer() {
       }
   };
   return (
-    <div class="music-player">
+    <div class={styles.player}>
       <button
         id="musicBtn"
+        class={styles.button}
         onClick={toggle}
         aria-label={playing() ? "Pause music" : "Play music"}
       >

@@ -1,4 +1,6 @@
-﻿import { createSignal, For, onSettled, Show } from "solid-js";
+import styles from "./MediaCarousel.module.css";
+import layout from "../styles/site.module.css";
+import { createSignal, For, onSettled, Show } from "solid-js";
 import { useMediaQuery } from "../lib/useMediaQuery";
 export interface Slide {
   desktopImage: string;
@@ -29,7 +31,7 @@ export default function MediaCarousel(props: {
   const content = (
     <>
       <div
-        class="carousel-track"
+        class={styles.track}
         id="carouselTrack"
         style={{
           transform:
@@ -52,21 +54,21 @@ export default function MediaCarousel(props: {
       >
         <For each={props.slides}>
           {(slide) => (
-            <div class="carousel-slide">
-              <div class="carousel-bg-blur">
+            <div class={styles.slide}>
+              <div class={styles.background}>
                 <img
                   src={image(slide)}
                   alt={slide.alt || ""}
-                  class="bg-img"
+                  class={[]}
                   loading="eager"
                   fetchpriority="high"
                 />
               </div>
-              <div class="carousel-content">
+              <div class={styles.content}>
                 <img
                   src={image(slide)}
                   alt={slide.alt || props.label}
-                  class="main-img"
+                  class={[]}
                   loading="eager"
                   fetchpriority="high"
                 />
@@ -76,13 +78,13 @@ export default function MediaCarousel(props: {
         </For>
       </div>
       <Show when={props.slides.length > 1}>
-        <div class="carousel-dots">
+        <div class={styles.dots}>
           <For each={props.slides}>
             {(_, i) => (
               <button
                 class={{
-                  "carousel-dot": true,
-                  active: index() % props.slides.length === i(),
+                  [styles.dot]: true,
+                  [styles.active]: index() % props.slides.length === i(),
                 }}
                 aria-label={"Go to slide " + (i() + 1)}
                 onClick={() => setIndex(i())}
@@ -97,15 +99,17 @@ export default function MediaCarousel(props: {
     <Show
       when={props.home}
       fallback={
-        <div class="event-image-container" id="mediaContainer">
+        <div class={styles.event} id="mediaContainer">
           {content}
         </div>
       }
     >
-      <div id="home" class="carousel-wrapper full-bleed">
-        <section class="carousel" style={{ padding: "0", "max-width": "100%" }}>
-          {content}
-        </section>
+      <div
+        id="home"
+        class={[styles.home, layout.fullBleed]}
+        data-animate="home-carousel"
+      >
+        <section class={styles.viewport}>{content}</section>
       </div>
     </Show>
   );

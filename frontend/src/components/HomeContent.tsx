@@ -1,3 +1,4 @@
+import styles from "./Collaborations.module.css";
 import { createMemo, For } from "solid-js";
 import { useBookings } from "../bookings/useBookings";
 import carousel from "../data/carousel.json";
@@ -41,20 +42,24 @@ export function HomeGallery() {
 }
 export function Collaborations() {
   return (
-    <div class="marquee" id="collaborationMarquee">
+    <div
+      class={styles.marquee}
+      id="collaborationMarquee"
+      data-animate="collaborations"
+    >
       <For each={[0, 1]}>
         {() => (
-          <div class="marquee-content">
+          <div class={styles.content}>
             <For each={brands}>
               {(brand) => (
-                <div class="collaboration-item">
+                <div class={styles.item}>
                   <img
                     src={"/" + brand.logo}
                     alt={brand.name}
-                    class="collab-logo"
+                    class={styles.logo}
                     loading="lazy"
                   />
-                  <span class="collab-name">{brand.name}</span>
+                  <span class={styles.name}>{brand.name}</span>
                 </div>
               )}
             </For>

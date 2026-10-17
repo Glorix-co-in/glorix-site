@@ -1,3 +1,4 @@
+import styles from "./PeopleGrid.module.css";
 import { For } from "solid-js";
 export interface Person {
   name: string;
@@ -12,14 +13,15 @@ export default function PeopleGrid(props: {
 }) {
   return (
     <div
-      class={props.team ? "team-grid" : "artists-grid"}
+      class={[styles.grid, { [styles.team]: props.team }]}
       id={props.team ? "teamGrid" : "artistsGrid"}
+      data-animate="people"
     >
       <For each={props.people.filter((person) => !person.hidden)}>
         {(person) => (
           <a
             href={person.link || "#"}
-            class="artist-card"
+            class={styles.card}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -28,7 +30,7 @@ export default function PeopleGrid(props: {
               alt={props.team ? person.role || person.name : person.name}
               loading="lazy"
             />
-            <div class="artist-info">
+            <div class={styles.info}>
               <h3>{person.name}</h3>
             </div>
           </a>

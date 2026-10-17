@@ -1,0 +1,57 @@
+.stageImage {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 0 0 20px 20px;
+}
+
+.terms {
+  padding-left: 0;
+  list-style: none;
+  counter-reset: item;
+}
+
+.terms li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.terms li::before {
+  counter-increment: item;
+  content: counter(item) ". ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.confirm {
+  width: 100%;
+  padding: 14px;
+  background: var(--color-accent);
+  color: var(--color-black);
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform var(--motion-fast) ease,
+    background var(--motion-fast) ease;
+  box-shadow: 0 4px 12px rgba(255, 191, 0, 0.2);
+}
+
+.confirm:hover {
+  background: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.confirm:active {
+  transform: translateY(0);
+}

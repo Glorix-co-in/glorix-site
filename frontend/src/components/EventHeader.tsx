@@ -1,3 +1,5 @@
+import styles from "./EventHeader.module.css";
+import a11y from "../styles/accessibility.module.css";
 import { useNavigate } from "@solidjs/router";
 import { useShare } from "../lib/useShare";
 
@@ -8,22 +10,24 @@ export default function EventHeader(props: { title: string; slots?: boolean }) {
     window.history.length > 1 ? window.history.back() : navigate("/bookings");
   return (
     <>
-      <header class={props.slots ? "select-slot-header" : "details-header"}>
+      <header
+        class={[styles.header, props.slots ? styles.slots : styles.details]}
+      >
         <button
           type="button"
-          class="back-btn"
+          class={styles.back}
           id="backBtn"
           aria-label="Go back"
           onClick={back}
         >
           <i class="fas fa-chevron-left" />
         </button>
-        <h1 class="header-title" id="headerTitle">
+        <h1 class={styles.title} id="headerTitle">
           {props.title}
         </h1>
         <button
           type="button"
-          class="share-btn"
+          class={styles.share}
           id="shareBtn"
           aria-label="Share event"
           onClick={() => share.share(props.title)}
@@ -31,7 +35,7 @@ export default function EventHeader(props: { title: string; slots?: boolean }) {
           <i class="fas fa-share-alt" />
         </button>
       </header>
-      <span class="sr-only" role="status">
+      <span class={a11y.srOnly} role="status">
         {share.notice()}
       </span>
     </>

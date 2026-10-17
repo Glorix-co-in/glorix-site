@@ -9,7 +9,10 @@
     "build": "vite build",
     "typecheck": "tsc --noEmit",
     "serve": "vite preview",
-    "lint": "oxlint src"
+    "lint": "oxlint src",
+    "format": "prettier --write . --ignore-path ../.prettierignore",
+    "format:check": "prettier --check . --ignore-path ../.prettierignore",
+    "convex": "convex"
   },
   "license": "MIT",
   "devDependencies": {
@@ -18,12 +21,14 @@
     "eslint-plugin-solid": "~0.18.1",
     "filesystem-routing": "0.4.0",
     "oxlint": "~1.79.0",
+    "prettier": "3.9.10",
     "typescript": "^5.9.2",
     "vite": "^8.1.5"
   },
   "dependencies": {
     "@solidjs/router": "2.0.0-next.38",
     "@solidjs/web": "^2.0.0-rc.14",
+    "convex": "^1.47.0",
     "gsap": "3.14.1",
     "solid-js": "^2.0.0-rc.14"
   }

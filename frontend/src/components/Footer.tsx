@@ -1,7 +1,8 @@
-﻿export default function Footer() {
+import styles from "./Footer.module.css";
+export default function Footer() {
   return (
-    <footer>
-      <div class="social-links">
+    <footer class={styles.footer}>
+      <div class={styles.links}>
         <a
           href="https://www.linkedin.com/company/glorix-events/"
           target="_blank"
@@ -35,7 +36,9 @@
           <i class="fab fa-youtube" />
         </a>
       </div>
-      <p class="copyright">Copyright © 2026 GLORIX - All Rights Reserved.</p>
+      <p class={styles.copyright}>
+        Copyright © 2026 GLORIX - All Rights Reserved.
+      </p>
     </footer>
   );
 }

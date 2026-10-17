@@ -1,6 +1,7 @@
 import { createMemo, type Accessor } from "solid-js";
 import { useSearchParams } from "@solidjs/router";
 import { useBookings } from "./useBookings";
+import { allSlotsSoldOut, isSoldOut } from "./rules";
 import {
   selectedSlotDate,
   selectedSlotTime,
@@ -34,6 +35,38 @@ export function useSlotSelection(event: Accessor<BookingEvent | undefined>) {
   const time = createMemo(() => selectedSlotTime(options(), query, available), {
     name: "selected-time",
   });
+  const availability = createMemo(
+    () => {
+      const item = event();
+      const opened = Boolean(item && bookings.hasOpened(item));
+      const ended = Boolean(item && bookings.hasEnded(item));
+      const bookable = Boolean(item && bookings.canBook(item));
+      const soldOut = Boolean(
+        item && (isSoldOut(item) || allSlotsSoldOut(times())),
+      );
+      const opensAt =
+        item?.details.bookingOpensAt ?? item?.details.bookingOpensAtISO;
+      let buttonLabel = "Continue to Booking";
+      if (ended) buttonLabel = "Bookings Closed";
+      else if (soldOut) buttonLabel = "SOLD OUT";
+      else if (!opened)
+        buttonLabel = opensAt ? "Bookings open " + opensAt : "Opening Soon";
+      else if (!bookable) buttonLabel = "Bookings Closed";
+
+      return {
+        showSlots: opened && !ended && (bookable || soldOut),
+        buttonLabel,
+        disabled: !bookable || soldOut || !time(),
+        notice:
+          ended || opened
+            ? "Bookings are closed for this event."
+            : opensAt
+              ? "Bookings open " + opensAt + " IST."
+              : "Bookings open soon.",
+      };
+    },
+    { name: "slot-booking-availability" },
+  );
   const dateStatus = (value: string) =>
     slotDateStatus(
       options().filter((option) => option.date === value),
@@ -66,6 +99,7 @@ export function useSlotSelection(event: Accessor<BookingEvent | undefined>) {
     times,
     time,
     available,
+    availability,
     dateStatus,
     selectDate,
     selectTime,

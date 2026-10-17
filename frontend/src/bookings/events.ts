@@ -695,12 +695,6 @@ const events = [
       defaultArtists: ["Lakshay"],
       artists: ["Lakshay"],
     },
-    announcement: {
-      description:
-        "Celebrate with live DJxDhol, Garba, and authentic Indian food across two nights in Faridabad. Choose your date to see that night's venue.",
-      countdownLabel: "DANDIYA NIGHT COUNTDOWN",
-      countdownDescription: "Until the first night",
-    },
   },
   {
     id: "glorix-dandiya-night-2026",
@@ -749,6 +743,12 @@ const events = [
       bookingOpensAtISO: "2026-09-24T11:00:00+05:30",
       bookingEndsAtISO: "2026-10-18T22:00:00+05:30",
       eventStartsAtISO: "2026-10-17T18:00:00+05:30",
+    },
+    announcement: {
+      description:
+        "Celebrate with live DJxDhol, Garba, and authentic Indian food across two nights in Faridabad. Choose your date to see that night's venue.",
+      countdownLabel: "DANDIYA NIGHT COUNTDOWN",
+      countdownDescription: "Until the first night",
     },
   },
   {

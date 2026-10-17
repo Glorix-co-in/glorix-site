@@ -1,4 +1,5 @@
-﻿import { For } from "solid-js";
+import styles from "./GalleryGrid.module.css";
+import { For } from "solid-js";
 export interface GalleryItem {
   src: string;
   alt: string;
@@ -6,17 +7,17 @@ export interface GalleryItem {
   homeObjectPosition?: string;
 }
 const homeClasses = [
-  "item-l1",
-  "item-l2",
-  "item-l3",
-  "item-l4",
-  "gallery-logo",
-  "item-m1",
-  "item-tall",
-  "item-r1",
-  "item-r2",
-  "item-r3",
-  "item-r4",
+  styles.leftOne,
+  styles.leftTwo,
+  styles.leftThree,
+  styles.leftFour,
+  styles.logo,
+  styles.middle,
+  styles.tall,
+  styles.rightOne,
+  styles.rightTwo,
+  styles.rightThree,
+  styles.rightFour,
 ];
 export default function GalleryGrid(props: {
   items: GalleryItem[];
@@ -24,18 +25,20 @@ export default function GalleryGrid(props: {
 }) {
   return (
     <div
-      class="gallery-grid"
+      class={[styles.grid, props.home ? styles.home : styles.gallery]}
       id={props.home ? "homeGalleryGrid" : "galleryGrid"}
+      data-animate="gallery"
     >
       <For each={props.items}>
         {(item) => (
           <div
             class={[
-              "gallery-item",
+              styles.item,
               props.home && item.homeOrder
                 ? homeClasses[item.homeOrder - 1]
                 : "",
             ]}
+            data-animate="gallery-item"
           >
             <img
               src={"/" + item.src}

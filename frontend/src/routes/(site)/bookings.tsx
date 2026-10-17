@@ -1,35 +1,46 @@
+import styles from "./Bookings.module.css";
+import layout from "../../styles/site.module.css";
 import PageTitle from "../../components/PageTitle";
-import { useOriginalAnimations } from "../../lib/useOriginalAnimations";
+import { useBookingsAnimations } from "../../lib/animations/bookings";
 import { For } from "solid-js";
 import { useBookings } from "../../bookings/useBookings";
 import EventCard from "../../components/EventCard";
 import ticker from "../../data/marquee.json";
-import "../../components/styles/event-card.css";
-import "../../styles/pages/bookings.css";
 
 export default function Page() {
-  useOriginalAnimations("bookings");
+  let root!: HTMLElement;
+  useBookingsAnimations(() => root);
   const bookings = useBookings();
   return (
     <>
       <PageTitle title="Book Event Tickets" />
 
-      <main id="main-content" class="main-content bookings-page">
+      <main
+        ref={(element) => {
+          root = element;
+        }}
+        id="main-content"
+        class={layout.page}
+      >
         <div
-          class="bookings-hero full-bleed"
+          class={[styles.hero, layout.fullBleed]}
           role="img"
           aria-label="Gradient banner"
+          data-animate="bookings-hero"
         >
-          <div class="bookings-hero__overlay">
-            <h1 class="bookings-hero__title">BOOK YOUR TICKETS NOW!</h1>
+          <div class={styles.heroOverlay}>
+            <h1 class={styles.heroTitle}>BOOK YOUR TICKETS NOW!</h1>
           </div>
         </div>
 
-        <div class="offer-ticker full-bleed">
-          <div class="offer-ticker__track" id="marqueeTrack">
+        <div
+          class={[styles.ticker, layout.fullBleed]}
+          data-animate="booking-ticker"
+        >
+          <div class={styles.tickerTrack} id="marqueeTrack">
             <For each={[0, 1]}>
               {() => (
-                <div class="offer-ticker__content">
+                <div class={styles.tickerContent}>
                   <For each={[0, 1, 2, 3]}>
                     {() => (
                       <For each={ticker as { text: string }[]}>
@@ -43,22 +54,19 @@ export default function Page() {
           </div>
         </div>
 
-        <section class="events-section">
-          <h2 class="section-title">
+        <section class={styles.events} data-animate="events">
+          <h2 class={[layout.sectionTitle, styles.title]} data-animate="title">
             <span>UPCOMING</span> EVENTS
           </h2>
-          <div class="events-container" id="upcomingEventsContainer">
+          <div
+            class={styles.list}
+            id="upcomingEventsContainer"
+            data-animate="events-list"
+          >
             <For
               each={bookings.upcoming()}
               fallback={
-                <p
-                  style={{
-                    color: "#666",
-                    "text-align": "center",
-                    "grid-column": "1/-1",
-                    padding: "40px",
-                  }}
-                >
+                <p class={styles.empty}>
                   No upcoming events at the moment. Stay tuned!
                 </p>
               }
@@ -67,10 +75,17 @@ export default function Page() {
             </For>
           </div>
 
-          <h2 class="section-title past-title">
+          <h2
+            class={[layout.sectionTitle, styles.title, styles.past]}
+            data-animate="title"
+          >
             <span>PAST</span> EVENTS
           </h2>
-          <div class="events-container" id="pastEventsContainer">
+          <div
+            class={styles.list}
+            id="pastEventsContainer"
+            data-animate="events-list"
+          >
             <For each={bookings.past()}>
               {(event) => <EventCard event={event} upcoming={false} />}
             </For>

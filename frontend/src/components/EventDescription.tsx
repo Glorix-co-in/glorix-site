@@ -1,3 +1,5 @@
+import typography from "./events/typography.module.css";
+import styles from "./EventDescription.module.css";
 import { createEffect, createSignal, onSettled } from "solid-js";
 
 export default function EventDescription(props: { text?: string }) {
@@ -36,10 +38,10 @@ export default function EventDescription(props: { text?: string }) {
     };
   });
   return (
-    <div class="about-section">
-      <h2 class="about-title">About The Event</h2>
+    <div class={styles.section}>
+      <h2 class={typography.sectionTitle}>About The Event</h2>
       <p
-        class={{ "about-text": true, "is-collapsed": !expanded() }}
+        class={{ [styles.text]: true, [styles.collapsed]: !expanded() }}
         id="aboutText"
         ref={(node) => {
           about = node;
@@ -49,7 +51,7 @@ export default function EventDescription(props: { text?: string }) {
       </p>
       <button
         type="button"
-        class={{ "about-read-more": true, "is-visible": readMore() }}
+        class={{ [styles.toggle]: true, [styles.visible]: readMore() }}
         id="aboutReadMore"
         aria-expanded={expanded() ? "true" : "false"}
         aria-controls="aboutText"

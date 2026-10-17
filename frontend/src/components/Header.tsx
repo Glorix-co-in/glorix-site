@@ -1,9 +1,16 @@
+import styles from "./Header.module.css";
 import { createEffect, createSignal, onSettled } from "solid-js";
 import { useLocation } from "@solidjs/router";
+import { useHeaderAnimations } from "../lib/animations/header";
 
 export default function Header() {
   const [open, setOpen] = createSignal(false, { name: "navigation-open" });
   const location = useLocation();
+  let root!: HTMLElement;
+  useHeaderAnimations(
+    () => root,
+    () => location.pathname,
+  );
   createEffect(
     () => location.pathname,
     () => {
@@ -14,8 +21,8 @@ export default function Header() {
   createEffect(
     open,
     (value) => {
-      document.body.classList.toggle("no-scroll", value);
-      return () => document.body.classList.remove("no-scroll");
+      document.body.classList.toggle(styles.scrollLock, value);
+      return () => document.body.classList.remove(styles.scrollLock);
     },
     { name: "navigation-scroll-lock" },
   );
@@ -28,9 +35,21 @@ export default function Header() {
   });
   const home = () => location.pathname === "/";
   return (
-    <header class="navbar">
+    <header
+      class={[
+        styles.root,
+        {
+          [styles.entrance]: ["/", "/artists", "/team"].includes(
+            location.pathname,
+          ),
+        },
+      ]}
+      ref={(element) => {
+        root = element;
+      }}
+    >
       <div
-        class={{ hamburger: true, active: open() }}
+        class={{ [styles.toggle]: true, [styles.active]: open() }}
         id="hamburger"
         role="button"
         tabindex="0"
@@ -45,19 +64,11 @@ export default function Header() {
           }
         }}
       >
-        <span
-          style={{
-            transform: open() ? "translateY(6px) rotate(45deg)" : undefined,
-          }}
-        />
-        <span style={{ opacity: open() ? 0 : 1 }} />
-        <span
-          style={{
-            transform: open() ? "translateY(-6px) rotate(-45deg)" : undefined,
-          }}
-        />
+        <span />
+        <span />
+        <span />
       </div>
-      <div class="logo">
+      <div class={styles.logo} data-animate="header-logo">
         <a href="/">
           <img
             src="/assets/cropped_logo.avif"
@@ -70,16 +81,18 @@ export default function Header() {
         <p>&nbsp;The X Factor In Everything !</p>
       </div>
       <nav
-        class={{ "nav-center": true, active: open() }}
+        class={{ [styles.navigation]: true, [styles.active]: open() }}
         id="navMenu"
         onClick={() => setOpen(false)}
+        data-animate="header-navigation"
       >
         <ul>
           <li>
             <a
               href="/#home"
               class={{
-                active: home() && (!location.hash || location.hash === "#home"),
+                [styles.active]:
+                  home() && (!location.hash || location.hash === "#home"),
               }}
             >
               Home
@@ -89,7 +102,7 @@ export default function Header() {
             <a
               href={home() ? "/#gallery" : "/gallery"}
               class={{
-                active:
+                [styles.active]:
                   location.pathname === "/gallery" ||
                   (home() && location.hash === "#gallery"),
               }}
@@ -100,7 +113,7 @@ export default function Header() {
           <li>
             <a
               href="/bookings"
-              class={{ active: location.pathname === "/bookings" }}
+              class={{ [styles.active]: location.pathname === "/bookings" }}
             >
               Bookings
             </a>
@@ -108,13 +121,16 @@ export default function Header() {
           <li>
             <a
               href="/artists"
-              class={{ active: location.pathname === "/artists" }}
+              class={{ [styles.active]: location.pathname === "/artists" }}
             >
               Artists
             </a>
           </li>
           <li>
-            <a href="/team" class={{ active: location.pathname === "/team" }}>
+            <a
+              href="/team"
+              class={{ [styles.active]: location.pathname === "/team" }}
+            >
               Team
             </a>
           </li>
@@ -122,7 +138,8 @@ export default function Header() {
             <a
               href="/#email-subscription"
               class={{
-                active: home() && location.hash === "#email-subscription",
+                [styles.active]:
+                  home() && location.hash === "#email-subscription",
               }}
             >
               Contact
@@ -130,7 +147,7 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      <a href="/bookings" class="call-btn">
+      <a href="/bookings" class={styles.action} data-animate="header-action">
         Book Now
       </a>
     </header>

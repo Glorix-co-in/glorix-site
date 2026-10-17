@@ -1,14 +1,15 @@
+import styles from "./App.module.css";
+import "./styles/tokens.css";
+import "./styles/base.css";
 import { Loading, type ParentProps } from "solid-js";
 import { Router } from "./router";
 import { BookingsContext, createBookings } from "./bookings/useBookings";
 import NavigationStatus from "./components/NavigationStatus";
-import "./styles/base.css";
-import "./App.css";
 function AppRoot(props: ParentProps) {
   const bookings = createBookings();
   return (
     <BookingsContext value={bookings}>
-      <a class="skip-link" href="#main-content">
+      <a class={styles.skipLink} href="#main-content">
         Skip to content
       </a>
       <NavigationStatus />

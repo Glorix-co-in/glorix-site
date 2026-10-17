@@ -28,11 +28,20 @@ export function isVisible(event: BookingEvent, now: number) {
 export function isUpcoming(event: BookingEvent, now: number) {
   return active.has(event.status) && !hasBookingEnded(event, now);
 }
+export function allSlotsSoldOut(options: readonly BookingOption[]) {
+  return (
+    options.length > 0 &&
+    options.every((option) => option.status === "sold-out")
+  );
+}
+export function isSoldOut(event: BookingEvent) {
+  return (
+    event.status === "sold-out" || allSlotsSoldOut(event.bookingOptions ?? [])
+  );
+}
 export function canBook(event: BookingEvent, now: number) {
   return (
-    isUpcoming(event, now) &&
-    event.status !== "sold-out" &&
-    hasBookingOpened(event, now)
+    isUpcoming(event, now) && !isSoldOut(event) && hasBookingOpened(event, now)
   );
 }
 export function safeExternalUrl(value?: string | null) {

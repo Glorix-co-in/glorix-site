@@ -1,27 +1,34 @@
-import "../../styles/pages/people.css";
+import layout from "../../styles/site.module.css";
+import styles from "./People.module.css";
 import PageTitle from "../../components/PageTitle";
-import { useOriginalAnimations } from "../../lib/useOriginalAnimations";
-import "../../styles/pages/home.css";
+import { usePeopleAnimations } from "../../lib/animations/people";
 import PeopleGrid from "../../components/PeopleGrid";
 import people from "../../data/teams.json";
 
 export default function Page() {
-  useOriginalAnimations("team");
+  let root!: HTMLElement;
+  usePeopleAnimations(() => root);
   return (
     <>
       <PageTitle title="Our Team" />
 
-      <main id="main-content" class="main-content team-page">
-        <section class="team-page-header">
-          <h2 class="section-title">
+      <main
+        ref={(element) => {
+          root = element;
+        }}
+        id="main-content"
+        class={[layout.page, layout.spacious]}
+      >
+        <section class={styles.header}>
+          <h2 class={[layout.sectionTitle, styles.title]} data-animate="title">
             <span>OUR</span> TEAM
           </h2>
-          <p style={{ color: "#888", "max-width": "600px", margin: "0 auto" }}>
+          <p class={styles.intro}>
             Meet the dedicated professionals behind the GLORIX vision.
           </p>
         </section>
 
-        <section id="team" class="team-section" style={{ "padding-top": "0" }}>
+        <section id="team" class={[styles.section, styles.team]}>
           <PeopleGrid people={people} team />
         </section>
       </main>

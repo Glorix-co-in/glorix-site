@@ -1,0 +1,14 @@
+.status {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3000;
+  padding: 6px 16px;
+  border-radius: 0 0 8px 8px;
+  background: var(--color-surface);
+  color: var(--color-accent);
+  font:
+    14px/1.5 Arial,
+    sans-serif;
+}

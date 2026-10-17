@@ -1,3 +1,4 @@
+import styles from "./Testimonials.module.css";
 import {
   createEffect,
   createMemo,
@@ -42,30 +43,31 @@ export default function Testimonials() {
   return (
     <>
       <div
-        class="review-slider-wrapper"
+        class={styles.slider}
         ref={(el) => {
           wrapper = el;
         }}
         onTouchStart={() => setPaused(true)}
         onMouseDown={() => setPaused(true)}
+        data-animate="testimonials"
       >
-        <div class="review-slides" id="testimonialSlides">
+        <div class={styles.slides} id="testimonialSlides">
           <For each={reviews}>
             {(review) => (
-              <div class="review-item">
-                <div class="review-box">
+              <div class={styles.item}>
+                <div class={styles.card}>
                   <div>
                     <img
                       src={"/" + review.image}
                       alt={review.name}
-                      class="reviewer-img"
+                      class={styles.image}
                       loading="lazy"
                     />
-                    <p class="review-text">"{review.text}"</p>
+                    <p class={styles.text}>"{review.text}"</p>
                   </div>
                   <div>
-                    <h4 class="reviewer-name">{review.name}</h4>
-                    <span class="reviewer-role">{review.role}</span>
+                    <h4 class={styles.name}>{review.name}</h4>
+                    <span class={styles.role}>{review.role}</span>
                   </div>
                 </div>
               </div>
@@ -73,15 +75,15 @@ export default function Testimonials() {
           </For>
         </div>
       </div>
-      <div class="slider-dots" id="testimonialDots">
+      <div class={styles.dots} id="testimonialDots">
         <For each={pages()}>
           {(item) => (
             <span
               role="button"
               tabindex="0"
               class={{
-                dot: true,
-                active: page() % Math.max(1, pages().length) === item,
+                [styles.dot]: true,
+                [styles.active]: page() % Math.max(1, pages().length) === item,
               }}
               aria-label={"Go to testimonial page " + (item + 1)}
               onClick={() => setPage(item)}

@@ -1,0 +1,150 @@
+.ticker {
+  background: #d32f2f;
+  color: var(--color-white);
+  overflow: hidden;
+  width: 100%;
+  padding: 2px 0;
+  text-align: center;
+  position: relative;
+}
+
+.tickerTrack {
+  display: flex;
+  width: max-content;
+  animation: scrollLoop 30s linear infinite;
+}
+
+.tickerContent {
+  display: flex;
+}
+
+.tickerTrack span {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  padding: 0 3rem;
+}
+
+@keyframes scrollLoop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.events {
+  grid-column: 1 / -1;
+  background: var(--color-black);
+  padding-block: 0;
+  font-family: var(--font-display);
+}
+
+.events .title:first-child {
+  margin-block: 15px 10px;
+}
+.title.past {
+  margin-top: 60px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 280px);
+  place-content: center;
+  gap: 30px;
+  padding-block: 10px;
+}
+
+.hero {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #2d12b9 0%, #8a3cbf 50%, #ff5fa1 100%);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 80px;
+}
+
+.heroOverlay {
+  grid-area: 1 / 1;
+  z-index: 1;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.heroTitle {
+  color: #ff0000;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  -webkit-text-stroke: 2px var(--color-black);
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 1.1;
+}
+
+.empty {
+  color: var(--color-text-disabled);
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 40px;
+}
+
+@media (min-width: 769px) {
+  .events .title:first-child {
+    margin-block: 8px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .events {
+    overflow: hidden;
+  }
+  .list {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 182px));
+    gap: 12px;
+    padding: 16px 12px;
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .hero {
+    min-height: 90px;
+  }
+  .heroTitle {
+    font-size: 1.8rem;
+    -webkit-text-stroke: 1px var(--color-black);
+  }
+  .title.past {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .ticker {
+    padding: 5px 0;
+  }
+  .tickerTrack span {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 70px;
+  }
+  .heroTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 448px) {
+  .events {
+    padding-inline: 0;
+  }
+}
