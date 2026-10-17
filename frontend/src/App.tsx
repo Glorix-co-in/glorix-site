@@ -5,6 +5,7 @@ import { Loading, Show, type ParentProps } from "solid-js";
 import { Router } from "./router";
 import { BookingsContext, createBookings } from "./bookings/useBookings";
 import NavigationStatus from "./components/NavigationStatus";
+import LoadingShell from "./components/LoadingShell";
 import { ContentContext, createContent } from "./content/useContent";
 import { useLocation } from "@solidjs/router";
 function PublicContent(props: ParentProps) {
@@ -16,25 +17,17 @@ function PublicContent(props: ParentProps) {
         <Show
           when={content.loaded() && content.state.seeded}
           fallback={
-            <main id="main-content">
-              <p role={content.error() ? "alert" : "status"}>
-                {content.error() ||
-                  (content.loaded()
-                    ? "Site content has not been set up yet."
-                    : "Loading page…")}
-              </p>
-            </main>
+            <LoadingShell
+              error={
+                content.error() ||
+                (content.loaded()
+                  ? "Site content has not been set up yet."
+                  : undefined)
+              }
+            />
           }
         >
-          <Loading
-            fallback={
-              <main id="main-content">
-                <p role="status">Loading page…</p>
-              </main>
-            }
-          >
-            {props.children}
-          </Loading>
+          <Loading fallback={<LoadingShell />}>{props.children}</Loading>
         </Show>
       </ContentContext>
     </BookingsContext>

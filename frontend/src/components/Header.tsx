@@ -3,13 +3,13 @@ import { createEffect, createSignal, onSettled } from "solid-js";
 import { useLocation } from "@solidjs/router";
 import { useHeaderAnimations } from "../lib/animations/header";
 
-export default function Header() {
+export default function Header(props: { animate?: boolean }) {
   const [open, setOpen] = createSignal(false, { name: "navigation-open" });
   const location = useLocation();
   let root!: HTMLElement;
   useHeaderAnimations(
     () => root,
-    () => location.pathname,
+    () => (props.animate === false ? "" : location.pathname),
   );
   createEffect(
     () => location.pathname,
@@ -39,9 +39,9 @@ export default function Header() {
       class={[
         styles.root,
         {
-          [styles.entrance]: ["/", "/artists", "/team"].includes(
-            location.pathname,
-          ),
+          [styles.entrance]:
+            props.animate !== false &&
+            ["/", "/artists", "/team"].includes(location.pathname),
         },
       ]}
       ref={(element) => {
