@@ -1,0 +1,20 @@
+# Magick AVIF Conversion Commands
+# =================================
+# Used to compress/convert images to AVIF using ImageMagick's `magick` CLI.
+# (Pattern taken from scripts/convert_events_to_avif_and_update_refs.py line 62)
+
+# Basic pattern:
+magick <input> -quality <quality> <output>
+
+# Quality values: lower = smaller file / more compression (default used: 50)
+# Recommended quality for web: 50
+
+# Examples actually run in this project:
+magick assets/poster2.png -quality 50 assets/poster2.avif
+magick "assets/WhatsApp Image 2026-07-09 at 8.04.26 PM.jpeg" -quality 50 assets/poster2_horizontal.avif
+
+# Notes:
+# - Input can be .png / .jpg / .jpeg / .webp
+# - Output must end in .avif
+# - Keep input filename in quotes if it contains spaces
+# - For landscape/horizontal variants, just use a different output filename
