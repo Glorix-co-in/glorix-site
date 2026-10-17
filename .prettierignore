@@ -3,5 +3,5 @@
 **/dist/
 **/pnpm-lock.yaml
 **/_generated/
-frontend/file-routes.d.ts
-frontend/public/
+file-routes.d.ts
+public/

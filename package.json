@@ -10,8 +10,8 @@
     "typecheck": "tsc --noEmit",
     "serve": "vite preview",
     "lint": "oxlint src convex server shared netlify/functions",
-    "format": "prettier --write . --ignore-path ../.prettierignore",
-    "format:check": "prettier --check . --ignore-path ../.prettierignore",
+    "format": "prettier --write . --ignore-path .prettierignore",
+    "format:check": "prettier --check . --ignore-path .prettierignore",
     "convex": "convex"
   },
   "license": "MIT",
