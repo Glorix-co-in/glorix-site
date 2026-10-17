@@ -3,9 +3,10 @@ import styles from "./People.module.css";
 import PageTitle from "../../components/PageTitle";
 import { usePeopleAnimations } from "../../lib/animations/people";
 import PeopleGrid from "../../components/PeopleGrid";
-import people from "../../data/artists.json";
+import { useContent } from "../../content/useContent";
 
 export default function Page() {
+  const content = useContent();
   let root!: HTMLElement;
   usePeopleAnimations(() => root);
   return (
@@ -29,7 +30,7 @@ export default function Page() {
         </section>
 
         <section id="artists" class={styles.section}>
-          <PeopleGrid people={people} />
+          <PeopleGrid people={content.artists} />
         </section>
       </main>
     </>

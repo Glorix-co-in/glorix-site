@@ -1,13 +1,12 @@
 import styles from "./Collaborations.module.css";
 import { createMemo, For } from "solid-js";
 import { useBookings } from "../bookings/useBookings";
-import carousel from "../data/carousel.json";
-import gallery from "../data/gallery.json";
-import brands from "../data/collaborations.json";
+import { useContent } from "../content/useContent";
 import MediaCarousel from "./MediaCarousel";
-import GalleryGrid, { type GalleryItem } from "./GalleryGrid";
+import GalleryGrid from "./GalleryGrid";
 export function HomeCarousel() {
   const bookings = useBookings();
+  const content = useContent();
   const slides = createMemo(
     () => {
       const campaigns = bookings
@@ -15,7 +14,7 @@ export function HomeCarousel() {
         .map((campaign) => campaign.effects.homeCarousel);
       return [
         ...campaigns.filter((slide) => slide.position !== "last"),
-        ...carousel,
+        ...content.carousel,
         ...campaigns.filter((slide) => slide.position === "last"),
       ].filter(
         (slide) =>
@@ -33,14 +32,21 @@ export function HomeCarousel() {
   return <MediaCarousel slides={slides()} label="Featured events" home />;
 }
 export function HomeGallery() {
-  const items = (gallery as GalleryItem[])
-    .filter(
-      (item) => item.homeOrder && item.homeOrder >= 1 && item.homeOrder <= 11,
-    )
-    .sort((a, b) => a.homeOrder! - b.homeOrder!);
-  return <GalleryGrid items={items} home />;
+  const content = useContent();
+  const items = createMemo(
+    () =>
+      content.gallery
+        .filter(
+          (item) =>
+            item.homeOrder && item.homeOrder >= 1 && item.homeOrder <= 11,
+        )
+        .sort((a, b) => a.homeOrder! - b.homeOrder!),
+    { name: "home-gallery" },
+  );
+  return <GalleryGrid items={items()} home />;
 }
 export function Collaborations() {
+  const content = useContent();
   return (
     <div
       class={styles.marquee}
@@ -50,7 +56,7 @@ export function Collaborations() {
       <For each={[0, 1]}>
         {() => (
           <div class={styles.content}>
-            <For each={brands}>
+            <For each={content.collaborations}>
               {(brand) => (
                 <div class={styles.item}>
                   <img

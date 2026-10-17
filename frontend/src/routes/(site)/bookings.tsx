@@ -5,12 +5,13 @@ import { useBookingsAnimations } from "../../lib/animations/bookings";
 import { For } from "solid-js";
 import { useBookings } from "../../bookings/useBookings";
 import EventCard from "../../components/EventCard";
-import ticker from "../../data/marquee.json";
+import { useContent } from "../../content/useContent";
 
 export default function Page() {
   let root!: HTMLElement;
   useBookingsAnimations(() => root);
   const bookings = useBookings();
+  const content = useContent();
   return (
     <>
       <PageTitle title="Book Event Tickets" />
@@ -43,7 +44,7 @@ export default function Page() {
                 <div class={styles.tickerContent}>
                   <For each={[0, 1, 2, 3]}>
                     {() => (
-                      <For each={ticker as { text: string }[]}>
+                      <For each={content.marquee}>
                         {(item) => <span>{item.text}</span>}
                       </For>
                     )}

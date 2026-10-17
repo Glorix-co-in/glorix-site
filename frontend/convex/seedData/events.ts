@@ -1,6 +1,6 @@
-import type { BookingEvent } from "./types";
+import type { Infer } from "convex/values";
+import type { bookingEvent } from "../validators";
 
-// Synced from glorix-main/data/events.json; announcement settings are local presentation metadata.
 const events = [
   {
     id: "glory-26",
@@ -813,6 +813,6 @@ const events = [
       eventStartsAtISO: "2026-10-18T18:00:00+05:30",
     },
   },
-] satisfies BookingEvent[];
+] satisfies Infer<typeof bookingEvent>[];
 
 export default events;

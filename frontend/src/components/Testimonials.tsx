@@ -6,9 +6,10 @@ import {
   For,
   onSettled,
 } from "solid-js";
-import reviews from "../data/testimonials.json";
+import { useContent } from "../content/useContent";
 import { useMediaQuery } from "../lib/useMediaQuery";
 export default function Testimonials() {
+  const content = useContent();
   const mobile = useMediaQuery("(max-width: 768px)");
   const [page, setPage] = createSignal(0, { name: "testimonial-page" });
   const [paused, setPaused] = createSignal(false, {
@@ -17,7 +18,7 @@ export default function Testimonials() {
   const pages = createMemo(
     () =>
       Array.from(
-        { length: Math.ceil(reviews.length / (mobile() ? 1 : 2)) },
+        { length: Math.ceil(content.testimonials.length / (mobile() ? 1 : 2)) },
         (_, i) => i,
       ),
     { name: "testimonial-pages" },
@@ -35,7 +36,7 @@ export default function Testimonials() {
   );
   onSettled(() => {
     const timer = setInterval(() => {
-      if (!paused() && !document.hidden)
+      if (!paused() && !document.hidden && pages().length > 0)
         setPage((value) => (value + 1) % pages().length);
     }, 4000);
     return () => clearInterval(timer);
@@ -52,7 +53,7 @@ export default function Testimonials() {
         data-animate="testimonials"
       >
         <div class={styles.slides} id="testimonialSlides">
-          <For each={reviews}>
+          <For each={content.testimonials}>
             {(review) => (
               <div class={styles.item}>
                 <div class={styles.card}>

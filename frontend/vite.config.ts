@@ -1,9 +1,12 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
+import process from "node:process";
 import solid from "@solidjs/vite-plugin";
 import { fileRoutes } from "filesystem-routing/vite";
+import { contentApi } from "./server/contentPlugin.ts";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
+    contentApi(loadEnv(mode, process.cwd()).VITE_CONVEX_URL),
     solid({ start: true, diagnostics: true, extensions: [".jsx", ".tsx"] }),
     fileRoutes({ types: true }),
   ],
@@ -18,4 +21,4 @@ export default defineConfig({
     target: "esnext",
     assetsInlineLimit: 0,
   },
-});
+}));

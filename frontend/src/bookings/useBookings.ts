@@ -1,6 +1,5 @@
-import { createContext, createMemo, createStore, useContext } from "solid-js";
-import eventSeed from "./events";
-import campaignSeed from "../data/campaigns.json";
+import { createContext, createMemo, useContext } from "solid-js";
+import type { SiteContent } from "../content/useContent";
 import type { BookingEvent, BookingOption } from "./types";
 import {
   canBook,
@@ -14,11 +13,7 @@ import {
 } from "./rules";
 import { useBoundaryClock } from "../lib/useBoundaryClock";
 
-export function createBookings() {
-  const [state, setState] = createStore<{ events: BookingEvent[] }>(
-    { events: structuredClone(eventSeed) },
-    { name: "booking-data" },
-  );
+export function createBookings(state: SiteContent) {
   const boundaries = createMemo(
     () =>
       [
@@ -26,7 +21,7 @@ export function createBookings() {
           Date.parse(event.details.bookingOpensAtISO || ""),
           Date.parse(event.details.bookingEndsAtISO || ""),
         ]),
-        ...campaignSeed.flatMap((campaign) => [
+        ...state.campaigns.flatMap((campaign) => [
           Date.parse(campaign.startsAt),
           Date.parse(campaign.endsAt),
         ]),
@@ -62,7 +57,7 @@ export function createBookings() {
   );
   const campaigns = createMemo(
     () =>
-      campaignSeed.filter(
+      state.campaigns.filter(
         (campaign) =>
           campaign.enabled &&
           Date.parse(campaign.startsAt) <= now() &&
@@ -96,10 +91,6 @@ export function createBookings() {
     price: (event: BookingEvent) =>
       campaigns().find((campaign) => campaign.eventIds.includes(event.id))
         ?.effects.priceFrom ?? event.details.priceFrom,
-    replaceEvents: (events: BookingEvent[]) =>
-      setState((draft) => {
-        draft.events = events;
-      }),
   };
 }
 export type Bookings = ReturnType<typeof createBookings>;

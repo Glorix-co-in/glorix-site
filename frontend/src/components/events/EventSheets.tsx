@@ -1,7 +1,7 @@
 import styles from "./EventSheets.module.css";
 import { For } from "solid-js";
 import BottomSheet from "../BottomSheet";
-import terms from "../../data/terms.json";
+import { useContent } from "../../content/useContent";
 
 export type EventSheet = "terms" | "stage" | null;
 
@@ -10,6 +10,7 @@ export default function EventSheets(props: {
   stageImage?: string;
   onClose: () => void;
 }) {
+  const content = useContent();
   return (
     <>
       <BottomSheet
@@ -30,7 +31,7 @@ export default function EventSheets(props: {
         }
       >
         <ol class={styles.terms}>
-          <For each={terms}>{(term) => <li>{term}</li>}</For>
+          <For each={content.terms}>{(term) => <li>{term.text}</li>}</For>
         </ol>
       </BottomSheet>
       <BottomSheet

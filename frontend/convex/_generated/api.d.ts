@@ -8,13 +8,27 @@
  * @module
  */
 
+import type * as content from "../content.js";
+import type * as publishing from "../publishing.js";
+import type * as seed from "../seed.js";
+import type * as seedData_events from "../seedData/events.js";
+import type * as seedData_index from "../seedData/index.js";
+import type * as validators from "../validators.js";
+
 import type {
   ApiFromModules,
   FilterApi,
   FunctionReference,
 } from "convex/server";
 
-declare const fullApi: ApiFromModules<{}>;
+declare const fullApi: ApiFromModules<{
+  content: typeof content;
+  publishing: typeof publishing;
+  seed: typeof seed;
+  "seedData/events": typeof seedData_events;
+  "seedData/index": typeof seedData_index;
+  validators: typeof validators;
+}>;
 
 /**
  * A utility for referencing Convex functions in your app's public API.

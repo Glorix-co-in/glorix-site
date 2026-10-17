@@ -3,9 +3,10 @@ import styles from "./Gallery.module.css";
 import PageTitle from "../../components/PageTitle";
 import { useGalleryAnimations } from "../../lib/animations/gallery";
 import GalleryGrid from "../../components/GalleryGrid";
-import gallery from "../../data/gallery.json";
+import { useContent } from "../../content/useContent";
 
 export default function Page() {
+  const content = useContent();
   let root!: HTMLElement;
   useGalleryAnimations(() => root);
   return (
@@ -23,7 +24,7 @@ export default function Page() {
           <h2 class={[layout.sectionTitle, styles.title]} data-animate="title">
             <span>OUR</span> GALLERY
           </h2>
-          <GalleryGrid items={gallery} />
+          <GalleryGrid items={content.gallery} />
         </section>
       </main>
     </>
