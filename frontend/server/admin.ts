@@ -105,7 +105,8 @@ export function createAdminHandler(config: AdminConfig) {
         !request.headers.get("content-type")?.startsWith("application/json")
       )
         return fail("Use a JSON request body.", 415);
-      if (Number(request.headers.get("content-length")) > 128 * 1024)
+      const bodyLimit = action === "drafts" ? 1024 * 1024 : 128 * 1024;
+      if (Number(request.headers.get("content-length")) > bodyLimit)
         return fail("Request is too large.", 413);
 
       const secret = config.secret;
@@ -219,6 +220,19 @@ export function createAdminHandler(config: AdminConfig) {
       if (action === "publish" && request.method === "POST") {
         await client.mutation(api.admin.publish, { secret });
         return respond({ published: true });
+      }
+      if (action === "drafts" && request.method === "DELETE") {
+        const input = (await request.json()) as Partial<
+          FunctionArgs<typeof api.adminContent.discardDrafts>
+        >;
+        if (!input?.expected || !input.publishedVersion)
+          return fail("Select the saved drafts to discard.", 400);
+        await client.mutation(api.adminContent.discardDrafts, {
+          secret,
+          expected: input.expected,
+          publishedVersion: input.publishedVersion,
+        });
+        return respond({ discarded: true });
       }
       return fail("Admin operation not found.", 404);
     } catch (cause) {

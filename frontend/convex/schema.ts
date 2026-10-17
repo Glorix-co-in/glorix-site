@@ -22,6 +22,7 @@ export default defineSchema({
   publicationState: defineTable({
     key: v.literal("site"),
     version: v.id("publications"),
+    draftBaseline: v.optional(siteContent),
   }).index("by_key", ["key"]),
   adminLoginAttempts: defineTable({
     key: v.string(),

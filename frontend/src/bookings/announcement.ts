@@ -28,11 +28,8 @@ export function toAnnouncementView(
     prefix: prefix.toUpperCase(),
     title: title.join(" ").toUpperCase(),
     imageAlt: event.title,
-    description:
-      event.announcement?.description ??
-      event.details.description ??
-      event.details.aboutEvent,
-    date: event.details.dateRange ?? event.date,
+    description: event.announcement?.description ?? event.details.aboutEvent,
+    date: event.date,
     time: Array.isArray(event.details.time)
       ? event.details.time.join(", ")
       : event.details.time,

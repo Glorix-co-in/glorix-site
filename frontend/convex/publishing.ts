@@ -49,7 +49,11 @@ export async function publishContent(ctx: MutationCtx) {
     .query("publicationState")
     .withIndex("by_key", (q) => q.eq("key", "site"))
     .unique();
-  if (current) await ctx.db.patch("publicationState", current._id, { version });
+  if (current)
+    await ctx.db.patch("publicationState", current._id, {
+      version,
+      draftBaseline: undefined,
+    });
   else await ctx.db.insert("publicationState", { key: "site", version });
   return { version, publishedAt };
 }

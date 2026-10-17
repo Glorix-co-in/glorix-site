@@ -77,12 +77,6 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
-      path: "/admin";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/admin")>;
-      $$route?: undefined;
-    },
-    {
       path: "/details";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/details")>;
@@ -110,6 +104,12 @@ declare module "virtual:file-routes" {
       path: "/select-slot";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/select-slot")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/admin";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/admin")>;
       $$route?: undefined;
     }
   ];

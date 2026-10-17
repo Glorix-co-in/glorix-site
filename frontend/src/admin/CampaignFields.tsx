@@ -2,13 +2,15 @@ import { For } from "solid-js";
 import type { ContentData } from "../../shared/content";
 import type { Doc } from "../../convex/_generated/dataModel";
 import type { CollectionEditorState } from "./useCollectionEditor";
-import { TextField, CheckField, Section } from "./EventFields";
+import { DateTimeField, TextField, ToggleField, Section } from "./EventFields";
+import TagInput from "./TagInput";
 import styles from "./Admin.module.css";
 
 type Campaign = ContentData<"campaigns">;
 type Slide = Campaign["effects"]["homePopup"];
 
 function SlideFields(props: {
+  label: string;
   value: Slide;
   events: Doc<"events">[];
   onChange: (patch: Partial<Slide>) => void;
@@ -16,13 +18,13 @@ function SlideFields(props: {
   return (
     <>
       <TextField
-        label="Desktop image asset path"
+        label={`${props.label} desktop image`}
         required
         value={props.value.desktopImage}
         onChange={(value) => props.onChange({ desktopImage: value })}
       />
       <TextField
-        label="Mobile image asset path"
+        label={`${props.label} mobile image`}
         value={props.value.mobileImage}
         onChange={(value) =>
           props.onChange({ mobileImage: value || undefined })
@@ -52,11 +54,6 @@ function SlideFields(props: {
           </For>
         </select>
       </label>
-      <CheckField
-        label="Show only when the linked event can be booked"
-        checked={props.value.showWhenBookingOpen}
-        onChange={(value) => props.onChange({ showWhenBookingOpen: value })}
-      />
     </>
   );
 }
@@ -66,34 +63,47 @@ export default function CampaignFields(props: {
   editor: CollectionEditorState;
   events: Doc<"events">[];
   isNew: boolean;
+  disabled: boolean;
 }) {
   return (
     <>
-      <Section
-        title="Offer & schedule"
-        description="Use timestamps with a timezone, for example 2026-10-17T18:00:00+05:30."
-      >
-        <TextField
-          label="Campaign ID"
-          required
-          readOnly={!props.isNew}
-          value={props.value.id}
-          onChange={(value) =>
-            props.editor.campaign((draft) => {
-              draft.id = value;
-            })
-          }
-        />
-        <CheckField
-          label="Enable this campaign"
-          checked={props.value.enabled}
-          onChange={(value) =>
-            props.editor.campaign((draft) => {
-              draft.enabled = value;
-            })
-          }
-        />
-        <TextField
+      <Section fieldsClass={styles.campaignFields}>
+        <div class={[styles.wide, styles.campaignIdentity]}>
+          <TextField
+            label="Campaign ID"
+            required
+            readOnly={!props.isNew}
+            value={props.value.id}
+            onChange={(value) =>
+              props.editor.campaign((draft) => {
+                draft.id = value;
+              })
+            }
+          />
+          <TextField
+            label="Offer starting price (₹)"
+            type="number"
+            min={0}
+            step="any"
+            value={props.value.effects.priceFrom}
+            onChange={(value) =>
+              props.editor.campaign((draft) => {
+                draft.effects.priceFrom =
+                  value === "" ? undefined : Number(value);
+              })
+            }
+          />
+          <ToggleField
+            label="Campaign enabled"
+            checked={props.value.enabled}
+            onChange={(value) =>
+              props.editor.campaign((draft) => {
+                draft.enabled = value;
+              })
+            }
+          />
+        </div>
+        <DateTimeField
           label="Starts at"
           required
           value={props.value.startsAt}
@@ -103,7 +113,7 @@ export default function CampaignFields(props: {
             })
           }
         />
-        <TextField
+        <DateTimeField
           label="Ends at"
           required
           value={props.value.endsAt}
@@ -113,86 +123,86 @@ export default function CampaignFields(props: {
             })
           }
         />
-        <TextField
-          label="Offer starting price (₹)"
-          type="number"
-          min={0}
-          step="any"
-          value={props.value.effects.priceFrom}
+        <TagInput
+          label="Apply offer to events"
+          wide
+          disabled={props.disabled}
+          value={props.value.eventIds}
+          options={props.events.map((event) => ({
+            value: event.id,
+            label: `${event.title} · ${event.date}`,
+            image: event.image,
+          }))}
+          placeholder="Search events…"
           onChange={(value) =>
             props.editor.campaign((draft) => {
-              draft.effects.priceFrom =
-                value === "" ? undefined : Number(value);
+              draft.eventIds = value;
             })
           }
         />
       </Section>
-      <Section title="Apply offer to events">
-        <div class={[styles.wide, styles.eventChoices]}>
-          <For
-            each={props.events}
-            fallback={
-              <p class={styles.hint}>
-                Create an event before targeting an offer.
-              </p>
-            }
-          >
-            {(event) => (
-              <CheckField
-                label={`${event.title} · ${event.date}`}
-                checked={props.value.eventIds.includes(event.id)}
-                onChange={(checked) =>
-                  props.editor.campaign((draft) => {
-                    draft.eventIds = checked
-                      ? [...new Set([...draft.eventIds, event.id])]
-                      : draft.eventIds.filter((id) => id !== event.id);
-                  })
-                }
-              />
-            )}
-          </For>
-        </div>
-      </Section>
-      <Section title="Home carousel promotion">
-        <label class={styles.field}>
-          <span>Placement</span>
-          <select
-            value={props.value.effects.homeCarousel.position}
-            onChange={(event) => {
-              const value = event.currentTarget.value as "first" | "last";
+      <div class={styles.campaignPromotions}>
+        <Section fieldsClass={styles.collectionFields}>
+          <SlideFields
+            label="Carousel"
+            value={props.value.effects.homeCarousel}
+            events={props.events}
+            onChange={(patch) =>
               props.editor.campaign((draft) => {
-                draft.effects.homeCarousel.position = value;
-              });
-            }}
-          >
-            <option value="first">Before regular slides</option>
-            <option value="last">After regular slides</option>
-          </select>
-        </label>
-        <SlideFields
-          value={props.value.effects.homeCarousel}
-          events={props.events}
-          onChange={(patch) =>
-            props.editor.campaign((draft) => {
-              Object.assign(draft.effects.homeCarousel, patch);
-            })
-          }
-        />
-      </Section>
-      <Section
-        title="Popup promotion"
-        description="Overrides the active campaign’s event announcement images. Enable the home announcement in that event to display it."
-      >
-        <SlideFields
-          value={props.value.effects.homePopup}
-          events={props.events}
-          onChange={(patch) =>
-            props.editor.campaign((draft) => {
-              Object.assign(draft.effects.homePopup, patch);
-            })
-          }
-        />
-      </Section>
+                Object.assign(draft.effects.homeCarousel, patch);
+              })
+            }
+          />
+          <label class={styles.field}>
+            <span>Carousel placement</span>
+            <select
+              value={props.value.effects.homeCarousel.position}
+              onChange={(event) => {
+                const value = event.currentTarget.value as "first" | "last";
+                props.editor.campaign((draft) => {
+                  draft.effects.homeCarousel.position = value;
+                });
+              }}
+            >
+              <option value="first">Before regular slides</option>
+              <option value="last">After regular slides</option>
+            </select>
+          </label>
+          <ToggleField
+            label="Only while booking is open"
+            checked={props.value.effects.homeCarousel.showWhenBookingOpen}
+            onChange={(value) =>
+              props.editor.campaign((draft) => {
+                draft.effects.homeCarousel.showWhenBookingOpen = value;
+              })
+            }
+          />
+        </Section>
+        <Section fieldsClass={styles.collectionFields}>
+          <SlideFields
+            label="Popup"
+            value={props.value.effects.homePopup}
+            events={props.events}
+            onChange={(patch) =>
+              props.editor.campaign((draft) => {
+                Object.assign(draft.effects.homePopup, patch);
+              })
+            }
+          />
+          <ToggleField
+            label="Only while booking is open"
+            checked={props.value.effects.homePopup.showWhenBookingOpen}
+            onChange={(value) =>
+              props.editor.campaign((draft) => {
+                draft.effects.homePopup.showWhenBookingOpen = value;
+              })
+            }
+          />
+          <small class={styles.hint}>
+            Enable the linked event’s home announcement to show this popup.
+          </small>
+        </Section>
+      </div>
     </>
   );
 }

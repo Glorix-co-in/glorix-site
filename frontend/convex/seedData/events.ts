@@ -11,7 +11,6 @@ const events = [
     bookingLink: null,
     details: {
       tags: ["Concert", "Music", "Performances"],
-      dateRange: null,
       time: "Gates Open at 4:00 PM",
       duration: "4 Hours",
       ageLimit: "16+",
@@ -65,7 +64,6 @@ const events = [
         "Ulti Zindagi",
         "Ykm Lucky",
       ],
-      bookingOpensAt: "11 July, 11:11 PM",
       bookingOpensAtISO: "2026-07-11T23:11:00+05:30",
       eventStartsAtISO: "2026-07-31T16:00:00+05:30",
       stageLayoutImage: "assets/event_layout.avif",
@@ -81,7 +79,6 @@ const events = [
     bookingLink: "null",
     details: {
       tags: ["Live Performance", "360 HH", "DJ Sets"],
-      dateRange: null,
       time: "4:00 PM onwards",
       duration: "3 Hours",
       ageLimit: "16+",
@@ -129,7 +126,6 @@ const events = [
     bookingLink: null,
     details: {
       tags: ["Live Performance", "Hindi", "English"],
-      dateRange: null,
       time: "6:00 PM",
       duration: "4 Hours",
       ageLimit: "16+",
@@ -171,7 +167,6 @@ const events = [
     bookingLink: null,
     details: {
       tags: ["Music Festival", "Multi-Artist", "Cultural Event"],
-      dateRange: null,
       time: "4:00 PM",
       duration: "5 Hours",
       ageLimit: "18+",
@@ -229,8 +224,6 @@ const events = [
     bookingLink: null,
     details: {
       tags: ["Rap Event", "Live Music", "Party"],
-      date: "20th September 2025",
-      dateRange: null,
       time: "4:00 PM",
       duration: "6 Hours",
       ageLimit: "18+",
@@ -288,7 +281,6 @@ const events = [
     bookingLink: null,
     details: {
       tags: ["Rap Event", "Underground Music", "Live Performance"],
-      dateRange: null,
       time: "3:00 PM",
       duration: "6 Hours",
       ageLimit: "18+",
@@ -344,7 +336,6 @@ const events = [
     bookingLink: null,
     details: {
       tags: ["Live Performance", "Success Party", "DJ Sets"],
-      dateRange: null,
       time: "5:00 PM onwards",
       duration: "3 Hours",
       ageLimit: "18+",
@@ -395,7 +386,6 @@ const events = [
     ],
     details: {
       tags: ["Live Performance", "360 HH", "DJ Sets"],
-      dateRange: null,
       time: "3:00 PM onwards",
       duration: "4 Hours",
       ageLimit: "16+",
@@ -448,7 +438,6 @@ const events = [
     ],
     details: {
       tags: ["Live Performance", "360 HH", "DJ Sets"],
-      dateRange: null,
       time: "3:00 PM onwards",
       duration: "4 Hours",
       ageLimit: "16+",
@@ -489,7 +478,6 @@ const events = [
     bookingLink: null,
     details: {
       tags: ["Live Performance", "360 HH", "DJ Sets"],
-      dateRange: null,
       time: "4:00 PM onwards",
       duration: "4 Hours",
       ageLimit: "16+",
@@ -549,7 +537,6 @@ const events = [
     ],
     details: {
       tags: ["Rap Event", "Live Music", "DJ Sets"],
-      dateRange: null,
       time: ["02:00 PM", "05:00 PM"],
       duration: "6 Hours",
       ageLimit: "16+",
@@ -600,7 +587,6 @@ const events = [
     isFeatured: false,
     details: {
       tags: ["Stand Up Comedy", "Live Show", "Comedy"],
-      dateRange: null,
       time: "6:00 PM onwards",
       duration: "2 Hours",
       ageLimit: "5+",
@@ -661,7 +647,6 @@ const events = [
     bookingOrder: 2,
     details: {
       tags: ["EP Launch Party", "Hip Hop", "Live Performance"],
-      dateRange: null,
       time: "5:00 PM onwards",
       duration: "3 Hours",
       ageLimit: "18+",
@@ -723,7 +708,6 @@ const events = [
     details: {
       hideArtists: true,
       tags: ["Live DJxDhol", "Garba", "Indian Authentic Food"],
-      dateRange: "17th & 18th October 2026",
       time: "6:00 PM onwards",
       duration: "4 Hours",
       ageLimit: "5+",
@@ -736,8 +720,6 @@ const events = [
       },
       aboutEvent:
         "Celebrate Dandiya Night with live DJ and dhol, Garba, and authentic Indian food. Choose your event date to view that day's venue and booking details.",
-      description:
-        "Join Glorix Dandiya Night 2026 on 17 or 18 October for live DJxDhol, Garba, and authentic Indian food.",
       highlights: ["Live DJxDhol", "Garba", "Indian Authentic Food"],
       priceFrom: 199,
       bookingOpensAtISO: "2026-09-24T11:00:00+05:30",
@@ -762,7 +744,6 @@ const events = [
     details: {
       hideArtists: true,
       tags: ["Live DJxDhol", "Garba", "Indian Authentic Food"],
-      dateRange: null,
       time: "6:00 PM onwards",
       duration: "4 Hours",
       ageLimit: "5+",
@@ -793,7 +774,6 @@ const events = [
     details: {
       hideArtists: true,
       tags: ["Live DJxDhol", "Garba", "Indian Authentic Food"],
-      dateRange: null,
       time: "6:00 PM onwards",
       duration: "4 Hours",
       ageLimit: "5+",

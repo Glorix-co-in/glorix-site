@@ -11,6 +11,14 @@ import { createEventEditor } from "./useEventEditor";
 import { createCollectionEditor } from "./useCollectionEditor";
 import { useAdminContent } from "./useAdminContent";
 import { recordTitle } from "./collections";
+import { eventDate, isUpcoming } from "../bookings/rules";
+import { useBoundaryClock } from "../lib/useBoundaryClock";
+
+export const eventFilters = ["all", "upcoming", "past", "hidden"] as const;
+export type EventFilter = (typeof eventFilters)[number];
+
+const newestFirst = (events: readonly Doc<"events">[]) =>
+  [...events].sort((a, b) => eventDate(b) - eventDate(a));
 
 export function useAdminWorkspace() {
   const eventEditor = createEventEditor();
@@ -21,10 +29,13 @@ export function useAdminWorkspace() {
   const [search, setSearch] = createSignal("", {
     name: "admin-content-search",
   });
+  const [eventFilter, setEventFilter] = createSignal<EventFilter>("all", {
+    name: "admin-event-filter",
+  });
   const admin = useAdminContent((content) => {
     const table = section();
     if (table === "events" && !eventEditor.form.event && content.events[0])
-      eventEditor.open(content.events[0]);
+      eventEditor.open(newestFirst(content.events)[0]);
     else if (
       table !== "events" &&
       !collectionEditor.form.draft &&
@@ -32,17 +43,41 @@ export function useAdminWorkspace() {
     )
       collectionEditor.open(table, content[table][0]);
   });
-  const rows = createMemo(() => admin.state.content[section()], {
-    name: "admin-section-rows",
-  });
+  const rows = createMemo(
+    () =>
+      section() === "events" && eventFilter() === "all"
+        ? newestFirst(admin.state.content.events)
+        : admin.state.content[section()],
+    { name: "admin-section-rows" },
+  );
+  const boundaries = createMemo(
+    () =>
+      admin.state.content.events
+        .map((event) => Date.parse(event.details.bookingEndsAtISO ?? ""))
+        .filter(Number.isFinite)
+        .sort((a, b) => a - b),
+    { name: "admin-event-boundaries" },
+  );
+  const now = useBoundaryClock(boundaries);
   const filtered = createMemo(
     () => {
       const query = search().trim().toLowerCase();
-      return rows().filter((row) =>
-        `${recordTitle(row)} ${"date" in row ? row.date : ""}`
+      return rows().filter((row) => {
+        if (section() === "events" && "status" in row) {
+          const hidden = row.status === "hidden" || row.hiddenFromBookings;
+          if (eventFilter() === "hidden" && !hidden) return false;
+          if (
+            eventFilter() === "upcoming" &&
+            (hidden || !isUpcoming(row, now()))
+          )
+            return false;
+          if (eventFilter() === "past" && (hidden || isUpcoming(row, now())))
+            return false;
+        }
+        return `${recordTitle(row)} ${"date" in row ? row.date : ""}`
           .toLowerCase()
-          .includes(query),
-      );
+          .includes(query);
+      });
     },
     { name: "admin-filtered-content" },
   );
@@ -78,15 +113,30 @@ export function useAdminWorkspace() {
     clear();
     setSection(table);
     setSearch("");
-    const first = admin.state.content[table][0];
+    setEventFilter("all");
+    const first =
+      table === "events"
+        ? newestFirst(admin.state.content.events)[0]
+        : admin.state.content[table][0];
     if (first) open(first, table);
   };
   const add = () => {
     if (!canDiscard()) return;
     clear();
+    setSearch("");
+    setEventFilter("all");
     const table = section();
     if (table === "events") eventEditor.openNew();
     else collectionEditor.open(table, null);
+  };
+  const reset = () => {
+    if (section() === "events") {
+      if (!eventEditor.form.original) return reopen();
+      const tab = eventEditor.tab();
+      eventEditor.reset();
+      eventEditor.setTab(tab);
+    } else if (collectionEditor.form.draft?.original) collectionEditor.reset();
+    else reopen();
   };
   const reload = async () => {
     if (canDiscard()) {
@@ -94,8 +144,22 @@ export function useAdminWorkspace() {
       if (await admin.reload()) reopen(id);
     }
   };
+  const discardDrafts = async () => {
+    if (
+      admin.pending() ||
+      !admin.state.draftCount ||
+      !admin.state.publishedVersion ||
+      !window.confirm(
+        `Discard all ${admin.state.draftCount} saved unpublished changes across every section? New unpublished items will be removed, and edited or deleted items will return to their published version.${dirty() ? " Your unsaved edits will also be cleared." : ""} The live site will stay unchanged.`,
+      )
+    )
+      return;
+    const id = selectedId();
+    if (await admin.discardDrafts()) reopen(id);
+  };
   const save = async (publish: boolean) => {
     if (section() === "events") {
+      const tab = eventEditor.tab();
       const event = eventEditor.form.event;
       if (!event) return;
       const id = await admin.saveEvent(
@@ -103,7 +167,10 @@ export function useAdminWorkspace() {
         event,
         publish,
       );
-      if (id) reopen(id);
+      if (id) {
+        reopen(id);
+        eventEditor.setTab(tab);
+      }
     } else {
       const draft = collectionEditor.form.draft;
       if (!draft) return;
@@ -111,31 +178,37 @@ export function useAdminWorkspace() {
       if (id) reopen(id);
     }
   };
-  const remove = async () => {
+  const remove = async (row?: Doc<ContentTable>) => {
     const table = section();
     const original =
-      table === "events"
+      row ??
+      (table === "events"
         ? eventEditor.form.original
-        : collectionEditor.form.draft?.original;
+        : collectionEditor.form.draft?.original);
     if (
       !original ||
       !window.confirm(
-        "Delete this saved item? Unsaved edits will be discarded. The live site changes only after publishing.",
+        `Delete “${recordTitle(original)}”? The live site changes only after publishing.${original._id === selectedId() && dirty() ? " Unsaved edits to this item will be discarded." : ""}`,
       )
     )
       return;
-    if (await admin.remove({ table, original } as RecordSelection)) reopen();
+    const deletingSelected = original._id === selectedId();
+    if (await admin.remove({ table, original } as RecordSelection)) {
+      if (deletingSelected) reopen();
+    }
   };
-  const move = async (direction: -1 | 1) => {
+  const move = async (direction: -1 | 1, id = selectedId()) => {
     const table = section();
-    if (table === "events" || !canDiscard()) return;
-    const id = selectedId();
+    if (table === "events") return;
     const ids = rows().map((row) => String(row._id));
     const index = ids.findIndex((value) => value === id);
     const next = index + direction;
     if (index < 0 || next < 0 || next >= ids.length) return;
     [ids[index], ids[next]] = [ids[next], ids[index]];
-    if (await admin.reorder(table, ids)) reopen(id);
+    if (await admin.reorder(table, ids)) {
+      const selected = rows().find((row) => row._id === selectedId());
+      if (selected) collectionEditor.rebasePosition(selected.position);
+    }
   };
   const logout = async () => {
     if (canDiscard() && (await admin.logout())) clear();
@@ -160,6 +233,8 @@ export function useAdminWorkspace() {
     section,
     search,
     setSearch,
+    eventFilter,
+    setEventFilter,
     rows,
     filtered,
     dirty,
@@ -167,7 +242,9 @@ export function useAdminWorkspace() {
     select,
     switchSection,
     add,
+    reset,
     reload,
+    discardDrafts,
     save,
     remove,
     move,

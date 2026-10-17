@@ -8,6 +8,7 @@ import {
   slotDateStatus,
 } from "./selection";
 import type { BookingEvent, BookingOption } from "./types";
+import { formatBookingOpening } from "./formatters";
 
 export function useSlotSelection(event: Accessor<BookingEvent | undefined>) {
   const bookings = useBookings();
@@ -44,8 +45,7 @@ export function useSlotSelection(event: Accessor<BookingEvent | undefined>) {
       const soldOut = Boolean(
         item && (isSoldOut(item) || allSlotsSoldOut(times())),
       );
-      const opensAt =
-        item?.details.bookingOpensAt ?? item?.details.bookingOpensAtISO;
+      const opensAt = formatBookingOpening(item?.details.bookingOpensAtISO);
       let buttonLabel = "Continue to Booking";
       if (ended) buttonLabel = "Bookings Closed";
       else if (soldOut) buttonLabel = "SOLD OUT";

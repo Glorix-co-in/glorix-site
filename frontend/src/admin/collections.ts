@@ -13,60 +13,68 @@ export interface Field {
   kind?: FieldKind;
   required?: boolean;
   hint?: string;
+  placeholder?: string;
+  rows?: number;
+  wide?: boolean;
   min?: number;
   max?: number;
 }
 type Definition<K extends Collection> = {
   label: string;
   singular: string;
-  description: string;
   fields: (Field & { key: Extract<keyof ContentData<K>, string> })[];
   blank: () => ContentData<K>;
 };
-const personFields = [
+const profileFields = [
   { key: "name", label: "Name", required: true },
   { key: "image", label: "Image asset path", required: true },
   { key: "link", label: "Profile link" },
-  { key: "role", label: "Role" },
-  { key: "hidden", label: "Hide from the people page", kind: "checkbox" },
 ] as const;
+const visibilityField = {
+  key: "hidden",
+  kind: "checkbox",
+} as const;
 
 export const collections = {
   artists: {
     label: "Artists",
     singular: "artist",
-    description:
-      "Renaming an artist also updates the names used by event lineups.",
-    fields: [...personFields],
+    fields: [
+      ...profileFields,
+      { ...visibilityField, label: "Hide from artists page" },
+    ],
     blank: () => ({ name: "", image: "" }),
   },
   teams: {
     label: "Team",
     singular: "team member",
-    description: "Manage the people shown on the team page.",
-    fields: [...personFields],
+    fields: [
+      profileFields[0],
+      { key: "role", label: "Role" },
+      profileFields[1],
+      profileFields[2],
+      { ...visibilityField, label: "Hide from team page" },
+    ],
     blank: () => ({ name: "", image: "", role: "" }),
   },
   gallery: {
     label: "Gallery",
     singular: "gallery image",
-    description:
-      "List order controls the gallery page. Home positions 1–11 control the home collage separately.",
     fields: [
       { key: "src", label: "Image asset path", required: true },
       { key: "alt", label: "Image description", required: true },
       {
         key: "homeOrder",
-        label: "Home collage position",
+        label: "Home collage position (1–11)",
         kind: "number",
         min: 1,
         max: 11,
-        hint: "Leave empty to show this image only in the gallery.",
+        placeholder: "Gallery only",
       },
       {
         key: "homeObjectPosition",
         label: "Home image crop position",
-        hint: "For example: center, top, or 50% 30%.",
+        placeholder: "center, top, or 50% 30%",
       },
     ],
     blank: () => ({ src: "", alt: "" }),
@@ -74,8 +82,6 @@ export const collections = {
   carousel: {
     label: "Home carousel",
     singular: "carousel slide",
-    description:
-      "Set the home slides, their order, and optional booking availability rules.",
     fields: [
       {
         key: "desktopImage",
@@ -87,7 +93,7 @@ export const collections = {
       { key: "eventId", label: "Linked event", kind: "event" },
       {
         key: "showWhenBookingOpen",
-        label: "Show only while the linked event can be booked",
+        label: "Only show while booking is open",
         kind: "checkbox",
       },
     ],
@@ -96,7 +102,6 @@ export const collections = {
   collaborations: {
     label: "Collaborations",
     singular: "collaboration",
-    description: "Manage the names and logos in the collaboration strip.",
     fields: [
       { key: "name", label: "Name", required: true },
       { key: "logo", label: "Logo asset path", required: true },
@@ -106,7 +111,6 @@ export const collections = {
   campaigns: {
     label: "Campaigns",
     singular: "campaign",
-    description: "Manage timed offers, event targeting, and campaign imagery.",
     fields: [],
     blank: () => ({
       id: "",
@@ -123,29 +127,45 @@ export const collections = {
   marquee: {
     label: "Marquee",
     singular: "marquee message",
-    description: "Messages shown in the ticker on the bookings page.",
     fields: [
-      { key: "text", label: "Message", kind: "textarea", required: true },
+      {
+        key: "text",
+        label: "Message",
+        kind: "textarea",
+        required: true,
+        rows: 2,
+      },
     ],
     blank: () => ({ text: "" }),
   },
   testimonials: {
     label: "Testimonials",
     singular: "testimonial",
-    description: "Manage the customer reviews shown on the home page.",
     fields: [
       { key: "name", label: "Name", required: true },
       { key: "role", label: "Role or location", required: true },
-      { key: "image", label: "Portrait asset path", required: true },
-      { key: "text", label: "Review", kind: "textarea", required: true },
+      {
+        key: "image",
+        label: "Portrait asset path",
+        required: true,
+        wide: true,
+      },
+      {
+        key: "text",
+        label: "Review",
+        kind: "textarea",
+        required: true,
+        rows: 3,
+      },
     ],
     blank: () => ({ name: "", role: "", image: "", text: "" }),
   },
   terms: {
     label: "Terms & conditions",
     singular: "term",
-    description: "Manage the terms shown in the event booking sheets.",
-    fields: [{ key: "text", label: "Term", kind: "textarea", required: true }],
+    fields: [
+      { key: "text", label: "Term", kind: "textarea", required: true, rows: 3 },
+    ],
     blank: () => ({ text: "" }),
   },
 } satisfies { [K in Collection]: Definition<K> };

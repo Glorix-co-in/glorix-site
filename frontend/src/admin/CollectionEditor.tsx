@@ -3,9 +3,8 @@ import type { CollectionChange } from "../../shared/content";
 import type { Doc } from "../../convex/_generated/dataModel";
 import { collections, fieldValue, type Field } from "./collections";
 import type { CollectionEditorState } from "./useCollectionEditor";
-import { CheckField, TextField, Section } from "./EventFields";
+import { ToggleField, TextField, Section } from "./EventFields";
 import CampaignFields from "./CampaignFields";
-import EditorActions from "./EditorActions";
 import styles from "./Admin.module.css";
 
 function CollectionField(props: {
@@ -39,6 +38,9 @@ function CollectionField(props: {
               multiline={props.field.kind === "textarea"}
               required={props.field.required}
               hint={props.field.hint}
+              placeholder={props.field.placeholder}
+              rows={props.field.rows}
+              wide={props.field.wide}
               min={props.field.min}
               max={props.field.max}
               step="1"
@@ -79,7 +81,7 @@ function CollectionField(props: {
         </Show>
       }
     >
-      <CheckField
+      <ToggleField
         label={props.field.label}
         checked={Boolean(value())}
         onChange={(checked) => props.editor.field(props.field.key, checked)}
@@ -93,49 +95,23 @@ export default function CollectionEditor(props: {
   editor: CollectionEditorState;
   events: Doc<"events">[];
   busy: boolean;
-  saving: boolean;
   onSave: (publish: boolean) => void;
-  onDelete: () => void;
 }) {
   return (
     <form
+      id="content-form"
       class={styles.editor}
       onSubmit={(event) => {
         event.preventDefault();
-        props.onSave(
-          event.submitter instanceof HTMLButtonElement &&
-            event.submitter.value === "publish",
-        );
+        props.onSave(false);
       }}
     >
-      <div class={styles.editorHeading}>
-        <div>
-          <p class={styles.eyebrow}>
-            {props.draft.original ? "EDIT" : "NEW"}{" "}
-            {collections[props.draft.table].singular.toUpperCase()}
-          </p>
-          <h2>{collections[props.draft.table].label}</h2>
-        </div>
-        <Show when={props.draft.original}>
-          <button
-            class={styles.danger}
-            type="button"
-            disabled={props.busy}
-            onClick={() => props.onDelete()}
-          >
-            Delete {collections[props.draft.table].singular}
-          </button>
-        </Show>
-      </div>
       <fieldset class={styles.formFields} disabled={props.busy}>
         <Show
           when={props.draft.table === "campaigns" && props.draft.data}
           keyed
           fallback={
-            <Section
-              title="Content details"
-              description={collections[props.draft.table].description}
-            >
+            <Section fieldsClass={styles.collectionFields}>
               <For each={collections[props.draft.table].fields}>
                 {(field) => (
                   <CollectionField
@@ -155,16 +131,11 @@ export default function CollectionEditor(props: {
               editor={props.editor}
               events={props.events}
               isNew={!props.draft.original}
+              disabled={props.busy}
             />
           )}
         </Show>
       </fieldset>
-      <EditorActions
-        dirty={props.editor.dirty()}
-        busy={props.busy}
-        saving={props.saving}
-        onReset={() => props.editor.reset()}
-      />
     </form>
   );
 }

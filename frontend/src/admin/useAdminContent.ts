@@ -21,7 +21,14 @@ import type { SiteContent } from "../../convex/validators";
 
 type AdminContent = FunctionReturnType<typeof api.adminContent.get>;
 type Operation =
-  "loading" | "login" | "logout" | "save" | "publish" | "delete" | "order";
+  | "loading"
+  | "login"
+  | "logout"
+  | "save"
+  | "publish"
+  | "delete"
+  | "order"
+  | "discard";
 
 export function useAdminContent(onLoad: (content: SiteContent) => void) {
   const initial = () => ({
@@ -29,6 +36,7 @@ export function useAdminContent(onLoad: (content: SiteContent) => void) {
     draftCounts: {},
     draftCount: 0,
     publishedAt: null,
+    publishedVersion: null,
   });
   const [state, setState] = createStore<AdminContent>(initial(), {
     name: "admin-content",
@@ -194,6 +202,15 @@ export function useAdminContent(onLoad: (content: SiteContent) => void) {
       await load();
       setNotice("Saved changes published. The live site is updating.");
     });
+  const discardDrafts = () =>
+    run("discard", async () => {
+      await request("drafts", "DELETE", {
+        expected: state.content,
+        publishedVersion: state.publishedVersion,
+      });
+      await load();
+      setNotice("Saved drafts discarded. The published site is unchanged.");
+    });
 
   return {
     state,
@@ -210,5 +227,6 @@ export function useAdminContent(onLoad: (content: SiteContent) => void) {
     remove,
     reorder,
     publish,
+    discardDrafts,
   };
 }

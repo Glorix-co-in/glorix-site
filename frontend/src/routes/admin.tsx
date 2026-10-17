@@ -1,11 +1,13 @@
 import { For, Show } from "solid-js";
 import PageTitle from "../components/PageTitle";
-import EventEditor, { statuses } from "../admin/EventEditor";
+import EventEditor from "../admin/EventEditor";
+import ContentListItem from "../admin/ContentListItem";
 import CollectionEditor from "../admin/CollectionEditor";
 import AdminLogin from "../admin/AdminLogin";
-import { useAdminWorkspace } from "../admin/useAdminWorkspace";
-import { collections, recordTitle, recordImage } from "../admin/collections";
+import { eventFilters, useAdminWorkspace } from "../admin/useAdminWorkspace";
+import { collections } from "../admin/collections";
 import styles from "../admin/Admin.module.css";
+import a11y from "../styles/accessibility.module.css";
 
 export default function AdminPage() {
   const workspace = useAdminWorkspace();
@@ -18,9 +20,16 @@ export default function AdminPage() {
     workspace.section() === "events"
       ? "event"
       : collections[workspace.section() as keyof typeof collections].singular;
-  const selectedIndex = () =>
-    workspace.rows().findIndex((row) => row._id === workspace.selectedId());
   const busy = () => Boolean(admin.pending());
+  const saving = () => admin.pending() === "save";
+  const editorOpen = () =>
+    workspace.section() === "events"
+      ? Boolean(workspace.eventEditor.form.event)
+      : Boolean(workspace.collectionEditor.form.draft);
+  const editorDirty = () =>
+    workspace.section() === "events"
+      ? workspace.eventEditor.dirty()
+      : workspace.collectionEditor.dirty();
   return (
     <div class={styles.root}>
       <PageTitle title="Content Manager" />
@@ -29,28 +38,104 @@ export default function AdminPage() {
           <img src="/assets/cropped_logo.avif" alt="GLORIX" />
           <span>CONTENT MANAGER</span>
         </div>
+        <Show when={admin.authenticated()}>
+          <div class={styles.headerMeta}>
+            <Show when={editorDirty()}>
+              <span class={styles.unsaved}>Unsaved changes</span>
+            </Show>
+            <Show when={admin.state.publishedAt}>
+              <span class={styles.timestamp}>
+                Last published{" "}
+                {new Intl.DateTimeFormat("en-IN", {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                  timeZone: "Asia/Kolkata",
+                }).format(admin.state.publishedAt!)}{" "}
+                IST
+              </span>
+            </Show>
+          </div>
+        </Show>
         <div class={styles.actions}>
-          <a
-            href="/"
-            class={styles.textLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View site ↗
-          </a>
           <Show when={admin.authenticated()}>
+            <Show when={editorOpen()}>
+              <button
+                class={styles.textButton}
+                type="button"
+                disabled={busy() || !editorDirty()}
+                onClick={workspace.reset}
+              >
+                Discard
+              </button>
+              <button
+                class={styles.primary}
+                type="submit"
+                form="content-form"
+                value="draft"
+                disabled={busy() || !editorDirty()}
+              >
+                {saving() ? "Saving…" : "Save changes"}
+              </button>
+            </Show>
+            <Show when={admin.state.draftCount > 0}>
+              <button
+                class={[styles.textButton, styles.danger]}
+                type="button"
+                disabled={busy() || !admin.state.publishedVersion}
+                title="Discard saved drafts across all sections and restore the published version"
+                onClick={() => void workspace.discardDrafts()}
+              >
+                {admin.pending() === "discard"
+                  ? "Discarding…"
+                  : "Discard saved drafts"}
+              </button>
+            </Show>
             <button
               class={styles.secondary}
               type="button"
+              title={
+                editorDirty()
+                  ? "Save your changes before publishing"
+                  : "Publishes all saved changes across every content section"
+              }
+              disabled={busy() || editorDirty() || !admin.state.draftCount}
+              onClick={() => void admin.publish()}
+            >
+              {admin.pending() === "publish"
+                ? "Publishing…"
+                : `Publish saved changes (${admin.state.draftCount})`}
+            </button>
+            <button
+              class={styles.iconButton}
+              type="button"
+              aria-label="Sign out"
+              title="Sign out"
               disabled={busy()}
               onClick={() => void workspace.logout()}
             >
-              Sign out
+              <svg
+                viewBox="0 0 24 24"
+                width="15"
+                height="15"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-4v-2h3V5h-3V3Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M10.5 7.5 14 11l-3.5 3.5V12H3v-2h7.5V7.5Z"
+                  fill="currentColor"
+                />
+              </svg>
             </button>
           </Show>
         </div>
       </header>
-      <main id="main-content" class={styles.main}>
+      <main
+        id="main-content"
+        class={[styles.main, { [styles.authenticated]: admin.authenticated() }]}
+      >
         <Show when={admin.error()}>
           <p class={styles.error} role="alert">
             {admin.error()}
@@ -73,55 +158,7 @@ export default function AdminPage() {
             when={admin.authenticated()}
             fallback={<AdminLogin admin={admin} />}
           >
-            <div class={styles.toolbar}>
-              <div>
-                <p class={styles.eyebrow}>YOUR WORKSPACE</p>
-                <h1>
-                  Manage <span>content</span>
-                </h1>
-                <p class={styles.hint}>
-                  {admin.state.draftCount
-                    ? `${admin.state.draftCount} items with unpublished changes`
-                    : "All content published"}
-                </p>
-                <Show when={admin.state.publishedAt}>
-                  <p class={styles.timestamp}>
-                    Last published{" "}
-                    {new Intl.DateTimeFormat("en-IN", {
-                      dateStyle: "medium",
-                      timeStyle: "short",
-                      timeZone: "Asia/Kolkata",
-                    }).format(admin.state.publishedAt!)}{" "}
-                    IST
-                  </p>
-                </Show>
-              </div>
-              <div class={styles.publishActions}>
-                <button
-                  class={styles.secondary}
-                  type="button"
-                  disabled={busy()}
-                  onClick={() => void workspace.reload()}
-                >
-                  {admin.pending() === "loading"
-                    ? "Reloading…"
-                    : "Reload content"}
-                </button>
-                <button
-                  class={styles.primary}
-                  type="button"
-                  disabled={
-                    busy() || workspace.dirty() || !admin.state.draftCount
-                  }
-                  onClick={() => void admin.publish()}
-                >
-                  {admin.pending() === "publish"
-                    ? "Publishing…"
-                    : "Publish saved changes"}
-                </button>
-                <small>Publishes all saved site content.</small>
-              </div>
-            </div>
+            <h1 class={a11y.srOnly}>Manage content</h1>
             <nav class={styles.tabs} aria-label="Content sections">
               <For each={workspace.tables}>
                 {(table) => (
@@ -152,123 +189,110 @@ export default function AdminPage() {
             <div class={styles.workspace}>
               <aside class={styles.sidebar} aria-label={label()}>
                 <div class={styles.collectionTools}>
-                  <strong>{label()}</strong>
+                  <label class={styles.search}>
+                    <input
+                      type="search"
+                      aria-label={`Search ${label().toLowerCase()}`}
+                      placeholder={`Search ${label().toLowerCase()}…`}
+                      value={workspace.search()}
+                      onInput={(event) =>
+                        workspace.setSearch(event.currentTarget.value)
+                      }
+                    />
+                  </label>
                   <button
-                    class={styles.primary}
+                    class={[styles.primary, styles.addButton]}
                     type="button"
+                    aria-label={`Add ${singular()}`}
+                    title={`Add ${singular()}`}
                     disabled={busy()}
                     onClick={workspace.add}
                   >
-                    + Add {singular()}
+                    <span aria-hidden="true">+</span>
                   </button>
                 </div>
-                <label class={styles.search}>
-                  <span class={styles.searchLabel}>Find {singular()}</span>
-                  <input
-                    type="search"
-                    placeholder={`Search ${label().toLowerCase()}…`}
-                    value={workspace.search()}
-                    onInput={(event) =>
-                      workspace.setSearch(event.currentTarget.value)
-                    }
-                  />
-                </label>
+                <Show when={workspace.section() === "events"}>
+                  <div
+                    class={styles.filters}
+                    role="group"
+                    aria-label="Filter events"
+                  >
+                    <For each={eventFilters}>
+                      {(filter) => (
+                        <button
+                          type="button"
+                          aria-pressed={
+                            workspace.eventFilter() === filter
+                              ? "true"
+                              : "false"
+                          }
+                          onClick={() => workspace.setEventFilter(filter)}
+                        >
+                          {filter[0].toUpperCase() + filter.slice(1)}
+                        </button>
+                      )}
+                    </For>
+                  </div>
+                </Show>
+                <p class={styles.resultCount} role="status">
+                  {workspace.filtered().length} of {workspace.rows().length}{" "}
+                  {label().toLowerCase()}
+                </p>
                 <div class={styles.eventList}>
                   <For
                     each={workspace.filtered()}
                     fallback={
                       <p class={styles.empty}>
-                        No items found. Add your first {singular()}.
+                        {workspace.rows().length
+                          ? "No matches. Try another search or filter."
+                          : `No items yet. Use + to add a ${singular()}.`}
                       </p>
                     }
                   >
                     {(row) => (
-                      <button
-                        type="button"
-                        class={[
-                          styles.eventItem,
-                          {
-                            [styles.selected]:
-                              workspace.selectedId() === row._id,
-                          },
-                        ]}
-                        disabled={busy()}
-                        aria-pressed={
-                          workspace.selectedId() === row._id ? "true" : "false"
+                      <ContentListItem
+                        row={row}
+                        selected={workspace.selectedId() === row._id}
+                        busy={busy()}
+                        compact={workspace.section() !== "events"}
+                        roundImage={[
+                          "artists",
+                          "teams",
+                          "testimonials",
+                        ].includes(workspace.section())}
+                        wrapTitle={[
+                          "gallery",
+                          "carousel",
+                          "marquee",
+                          "terms",
+                        ].includes(workspace.section())}
+                        itemLabel={singular()}
+                        searching={Boolean(workspace.search().trim())}
+                        onMove={
+                          workspace.section() !== "events"
+                            ? (item, direction) =>
+                                void workspace.move(direction, item._id)
+                            : undefined
                         }
-                        onClick={() => workspace.select(row)}
-                      >
-                        <Show when={recordImage(row)}>
-                          {(image) => (
-                            <img src={`/${image()}`} alt="" loading="lazy" />
-                          )}
-                        </Show>
-                        <div>
-                          <strong class={styles.recordTitle}>
-                            {recordTitle(row)}
-                          </strong>
-                          <Show when={"date" in row && row.date}>
-                            <span class={styles.eventDate}>
-                              {"date" in row ? row.date : ""}
-                            </span>
-                          </Show>
-                          <Show when={"status" in row}>
-                            <span
-                              class={styles.badge}
-                              data-status={"status" in row ? row.status : ""}
-                            >
-                              {"status" in row
-                                ? statuses.find(
-                                    (item) => item.value === row.status,
-                                  )?.label
-                                : ""}
-                            </span>
-                          </Show>
-                          <Show when={"enabled" in row}>
-                            <span class={styles.badge}>
-                              {"enabled" in row && row.enabled
-                                ? "Enabled"
-                                : "Disabled"}
-                            </span>
-                          </Show>
-                        </div>
-                      </button>
+                        canMoveUp={
+                          !workspace.search().trim() &&
+                          workspace
+                            .rows()
+                            .findIndex((item) => item._id === row._id) > 0
+                        }
+                        canMoveDown={
+                          !workspace.search().trim() &&
+                          workspace
+                            .rows()
+                            .findIndex((item) => item._id === row._id) <
+                            workspace.rows().length - 1
+                        }
+                        onSelect={() => workspace.select(row)}
+                        onDelete={(event) => void workspace.remove(event)}
+                      />
                     )}
                   </For>
                 </div>
-                <Show when={workspace.section() !== "events"}>
-                  <div class={styles.orderTools}>
-                    <button
-                      class={styles.secondary}
-                      type="button"
-                      disabled={
-                        busy() ||
-                        Boolean(workspace.search()) ||
-                        selectedIndex() <= 0
-                      }
-                      onClick={() => void workspace.move(-1)}
-                    >
-                      ↑ Move up
-                    </button>
-                    <button
-                      class={styles.secondary}
-                      type="button"
-                      disabled={
-                        busy() ||
-                        Boolean(workspace.search()) ||
-                        selectedIndex() < 0 ||
-                        selectedIndex() >= workspace.rows().length - 1
-                      }
-                      onClick={() => void workspace.move(1)}
-                    >
-                      ↓ Move down
-                    </button>
-                    <small>
-                      Clear search to reorder. Order changes are saved as
-                      drafts.
-                    </small>
-                  </div>
-                </Show>
               </aside>
               <Show
                 when={workspace.section() === "events"}
@@ -290,9 +314,7 @@ export default function AdminPage() {
                         editor={workspace.collectionEditor}
                         events={admin.state.content.events}
                         busy={busy()}
-                        saving={admin.pending() === "save"}
                         onSave={(publish) => void workspace.save(publish)}
-                        onDelete={() => void workspace.remove()}
                       />
                     )}
                   </Show>
@@ -314,11 +336,10 @@ export default function AdminPage() {
                       event={event}
                       editor={workspace.eventEditor}
                       events={admin.state.content.events}
+                      artists={admin.state.content.artists}
                       busy={busy()}
-                      saving={admin.pending() === "save"}
                       isNew={!workspace.eventEditor.form.original}
                       onSave={(publish) => void workspace.save(publish)}
-                      onDelete={() => void workspace.remove()}
                     />
                   )}
                 </Show>

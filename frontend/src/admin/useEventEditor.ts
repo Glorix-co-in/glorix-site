@@ -1,4 +1,4 @@
-import { createMemo, createStore } from "solid-js";
+import { createMemo, createSignal, createStore } from "solid-js";
 import type { Doc } from "../../convex/_generated/dataModel";
 import type {
   BookingAnnouncement,
@@ -8,7 +8,17 @@ import type {
 } from "../bookings/types";
 import { canonical, eventData } from "../../shared/events";
 
+export const editorTabs = [
+  { id: "overview", label: "Overview" },
+  { id: "schedule", label: "Event details" },
+  { id: "media", label: "Media" },
+] as const;
+export type EditorTab = (typeof editorTabs)[number]["id"];
+
 export function createEventEditor() {
+  const [tab, setTab] = createSignal<EditorTab>("overview", {
+    name: "admin-editor-tab",
+  });
   const [form, setForm] = createStore<{
     original?: Doc<"events">;
     event?: BookingEvent;
@@ -22,11 +32,13 @@ export function createEventEditor() {
       ),
     { name: "admin-event-dirty" },
   );
-  const open = (event: Doc<"events">) =>
+  const open = (event: Doc<"events">) => {
+    setTab("overview");
     setForm((draft) => {
       draft.original = JSON.parse(JSON.stringify(event));
       draft.event = eventData(event);
     });
+  };
   const change = <K extends keyof BookingEvent>(
     key: K,
     value: BookingEvent[K],
@@ -102,7 +114,8 @@ export function createEventEditor() {
     if (form.original) open(form.original);
     else openNew();
   };
-  const openNew = () =>
+  const openNew = () => {
+    setTab("overview");
     setForm((draft) => {
       draft.original = undefined;
       draft.event = {
@@ -115,6 +128,7 @@ export function createEventEditor() {
         details: {},
       };
     });
+  };
   const clear = () =>
     setForm((draft) => {
       draft.original = undefined;
@@ -123,6 +137,8 @@ export function createEventEditor() {
 
   return {
     form,
+    tab,
+    setTab,
     dirty,
     open,
     openNew,

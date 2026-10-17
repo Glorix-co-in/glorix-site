@@ -1,5 +1,23 @@
 import type { BookingEvent } from "./types";
 
+const openingDate = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "long",
+  timeZone: "Asia/Kolkata",
+});
+const openingTime = new Intl.DateTimeFormat("en-GB", {
+  hour: "numeric",
+  minute: "2-digit",
+  hour12: true,
+  timeZone: "Asia/Kolkata",
+});
+
+export function formatBookingOpening(value?: string) {
+  const timestamp = Date.parse(value ?? "");
+  if (!Number.isFinite(timestamp)) return undefined;
+  return `${openingDate.format(timestamp)}, ${openingTime.format(timestamp).toUpperCase()}`;
+}
+
 export function eventMedia(event: BookingEvent) {
   return {
     desktopImage: event.details.detailsImage?.portrait || event.image,

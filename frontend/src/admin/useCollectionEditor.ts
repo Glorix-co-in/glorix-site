@@ -56,6 +56,10 @@ export function createCollectionEditor() {
     const draft = form.draft;
     if (draft) open(draft.table, draft.original);
   };
-  return { form, dirty, open, field, campaign, clear, reset };
+  const rebasePosition = (position: number) =>
+    setForm((draft) => {
+      if (draft.draft?.original) draft.draft.original.position = position;
+    });
+  return { form, dirty, open, field, campaign, clear, reset, rebasePosition };
 }
 export type CollectionEditorState = ReturnType<typeof createCollectionEditor>;

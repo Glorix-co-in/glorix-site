@@ -26,8 +26,6 @@ export const bookingAnnouncement = v.object({
   countdownDescription: v.optional(v.string()),
 });
 export const bookingDetails = v.object({
-  date: v.optional(v.string()),
-  dateRange: v.optional(v.union(v.string(), v.null())),
   time: v.optional(v.union(v.string(), v.array(v.string()))),
   tags: v.optional(v.array(v.string())),
   duration: v.optional(v.string()),
@@ -49,10 +47,8 @@ export const bookingDetails = v.object({
     ),
   ),
   aboutEvent: v.optional(v.string()),
-  description: v.optional(v.string()),
   highlights: v.optional(v.array(v.string())),
   priceFrom: v.optional(v.number()),
-  bookingOpensAt: v.optional(v.string()),
   bookingOpensAtISO: v.optional(v.string()),
   bookingEndsAtISO: v.optional(v.string()),
   eventStartsAtISO: v.optional(v.string()),
@@ -85,7 +81,6 @@ const person = v.object({
   name: v.string(),
   image: v.string(),
   link: v.optional(v.string()),
-  role: v.optional(v.string()),
   hidden: v.optional(v.boolean()),
 });
 const slide = v.object({
@@ -99,7 +94,7 @@ const slide = v.object({
 export const contentValidators = {
   events: bookingEvent,
   artists: person,
-  teams: person,
+  teams: v.object({ ...person.fields, role: v.optional(v.string()) }),
   gallery: v.object({
     src: v.string(),
     alt: v.string(),

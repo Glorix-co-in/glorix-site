@@ -1,4 +1,4 @@
-import { For, Show } from "solid-js";
+import { createMemo, For, Show, onSettled, type ParentProps } from "solid-js";
 import type {
   BookingEvent,
   BookingFlow,
@@ -6,11 +6,22 @@ import type {
   BookingOption,
 } from "../bookings/types";
 import type { Doc } from "../../convex/_generated/dataModel";
-import type { EventEditorState } from "./useEventEditor";
-import { CheckField, Section, TextField } from "./EventFields";
+import {
+  editorTabs,
+  type EditorTab,
+  type EventEditorState,
+} from "./useEventEditor";
+import {
+  CalendarField,
+  DateTimeField,
+  CheckField,
+  ToggleField,
+  Section,
+  TextField,
+} from "./EventFields";
 import styles from "./Admin.module.css";
-import EditorActions from "./EditorActions";
 import { fallbackArtists } from "../../shared/content";
+import TagInput from "./TagInput";
 
 export const statuses: { value: BookingStatus; label: string }[] = [
   { value: "open", label: "Open" },
@@ -32,437 +43,271 @@ export default function EventEditor(props: {
   event: BookingEvent;
   editor: EventEditorState;
   events: Doc<"events">[];
+  artists: Doc<"artists">[];
   busy: boolean;
-  saving: boolean;
   onSave: (publish: boolean) => void;
   isNew?: boolean;
-  onDelete?: () => void;
 }) {
+  let form!: HTMLFormElement;
+  const Panel = (panel: ParentProps<{ id: EditorTab }>) => (
+    <div
+      id={`event-panel-${panel.id}`}
+      role="tabpanel"
+      aria-labelledby={`event-tab-${panel.id}`}
+      data-editor-tab={panel.id}
+      hidden={props.editor.tab() !== panel.id}
+    >
+      {panel.children}
+    </div>
+  );
+  // Required fields in another tab still participate in native form validation.
+  onSettled(() => {
+    const revealInvalid = (event: Event) => {
+      const input = event.target as HTMLInputElement;
+      if (
+        input !==
+        form.querySelector("input:invalid, select:invalid, textarea:invalid")
+      )
+        return;
+      const panel = input.closest<HTMLElement>("[data-editor-tab]");
+      if (panel) props.editor.setTab(panel.dataset.editorTab as EditorTab);
+      for (
+        let detail = input.closest("details");
+        detail;
+        detail = detail.parentElement?.closest("details") ?? null
+      )
+        detail.open = true;
+      requestAnimationFrame(() => input.focus());
+    };
+    form.addEventListener("invalid", revealInvalid, true);
+    return () => form.removeEventListener("invalid", revealInvalid, true);
+  });
+  const times = () => {
+    const value = props.event.details.time;
+    return Array.isArray(value) ? value : [value ?? ""];
+  };
+  const artistOptions = createMemo(
+    () =>
+      props.artists.map((artist) => ({
+        value: artist.name,
+        image: artist.image,
+      })),
+    { name: "admin-artist-options" },
+  );
+  const tagOptions = createMemo(
+    () =>
+      props.events.flatMap((event) =>
+        (event.details.tags ?? []).map((value) => ({ value })),
+      ),
+    { name: "admin-tag-options" },
+  );
   return (
     <form
+      ref={(element) => {
+        form = element;
+      }}
+      id="content-form"
       class={styles.editor}
       onSubmit={(event) => {
         event.preventDefault();
-        props.onSave(
-          event.submitter instanceof HTMLButtonElement &&
-            event.submitter.value === "publish",
-        );
+        props.onSave(false);
       }}
     >
-      <div class={styles.editorHeading}>
-        <div>
-          <p class={styles.eyebrow}>EVENT DETAILS</p>
-          <h2>{props.event.title || "New event"}</h2>
-          <code>/{props.event.id}</code>
-        </div>
-        <Show when={!props.isNew}>
-          <div class={styles.actions}>
-            <a
-              class={styles.textLink}
-              href={`/events/${encodeURIComponent(props.event.id)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View live page <span aria-hidden="true">↗</span>
-            </a>
+      <div
+        class={styles.editorTabs}
+        role="tablist"
+        aria-label="Event settings"
+        onKeyDown={(event) => {
+          const index = editorTabs.findIndex(
+            (tab) => tab.id === props.editor.tab(),
+          );
+          const next =
+            event.key === "ArrowRight"
+              ? (index + 1) % editorTabs.length
+              : event.key === "ArrowLeft"
+                ? (index + editorTabs.length - 1) % editorTabs.length
+                : event.key === "Home"
+                  ? 0
+                  : event.key === "End"
+                    ? editorTabs.length - 1
+                    : -1;
+          if (next < 0) return;
+          event.preventDefault();
+          props.editor.setTab(editorTabs[next].id);
+          event.currentTarget
+            .querySelectorAll<HTMLButtonElement>("[role=tab]")
+            [next].focus();
+        }}
+      >
+        <For each={editorTabs}>
+          {(tab) => (
             <button
-              class={styles.danger}
               type="button"
-              disabled={props.busy}
-              onClick={() => props.onDelete?.()}
+              role="tab"
+              id={`event-tab-${tab.id}`}
+              aria-controls={`event-panel-${tab.id}`}
+              aria-selected={props.editor.tab() === tab.id ? "true" : "false"}
+              tabindex={props.editor.tab() === tab.id ? 0 : -1}
+              onClick={() => props.editor.setTab(tab.id)}
             >
-              Delete event
+              {tab.label}
             </button>
-          </div>
-        </Show>
+          )}
+        </For>
       </div>
       <fieldset class={styles.formFields} disabled={props.busy}>
-        <Section title="The essentials">
-          <Show when={props.isNew}>
-            <TextField
-              label="Event URL"
-              required
-              pattern="[a-z0-9]+(-[a-z0-9]+)*"
-              value={props.event.id}
-              placeholder="my-event-2026"
-              hint="Use lowercase letters, numbers, and hyphens. The URL stays fixed after saving."
-              onChange={(value) => props.editor.change("id", value)}
-            />
-          </Show>
-          <TextField
-            label="Event title"
-            value={props.event.title}
-            required
-            onChange={(value) => props.editor.change("title", value)}
-          />
-          <TextField
-            label="Display date"
-            value={props.event.date}
-            required
-            placeholder="17 October 2026"
-            onChange={(value) => props.editor.change("date", value)}
-          />
-          <label class={styles.field}>
-            <span>Booking status</span>
-            <select
-              value={props.event.status}
-              onChange={(event) =>
-                props.editor.change(
-                  "status",
-                  event.currentTarget.value as BookingStatus,
-                )
-              }
-            >
-              <For each={statuses}>
-                {(status) => (
-                  <option value={status.value}>{status.label}</option>
-                )}
-              </For>
-            </select>
-          </label>
-          <TextField
-            label="Starting price (₹)"
-            type="number"
-            min={0}
-            step="any"
-            value={props.event.details.priceFrom}
-            hint="An active offer may override this price on the live site."
-            onChange={(value) =>
-              props.editor.detail(
-                "priceFrom",
-                value === "" ? undefined : Number(value),
-              )
-            }
-          />
-          <TextField
-            label="Poster asset path"
-            value={props.event.image}
-            required
-            placeholder="assets/events/poster.avif"
-            onChange={(value) => props.editor.change("image", value)}
-          />
-          <TextField
-            label="Booking link"
-            type="url"
-            value={props.event.bookingLink}
-            placeholder="https://…"
-            onChange={(value) =>
-              props.editor.change("bookingLink", value || null)
-            }
-          />
-          <TextField
-            label="About the event"
-            multiline
-            value={props.event.details.aboutEvent}
-            onChange={(value) =>
-              props.editor.detail("aboutEvent", optional(value))
-            }
-          />
-          <TextField
-            label="Short description"
-            multiline
-            value={props.event.details.description}
-            onChange={(value) =>
-              props.editor.detail("description", optional(value))
-            }
-          />
-        </Section>
-        <Section title="Schedule & venue">
-          <TextField
-            label="Detail page date"
-            value={props.event.details.date}
-            onChange={(value) => props.editor.detail("date", optional(value))}
-          />
-          <TextField
-            label="Date range"
-            value={props.event.details.dateRange}
-            placeholder="17–18 October 2026"
-            onChange={(value) =>
-              props.editor.detail("dateRange", value || null)
-            }
-          />
-          <TextField
-            label="Display time"
-            multiline
-            value={
-              Array.isArray(props.event.details.time)
-                ? props.event.details.time.join("\n")
-                : props.event.details.time
-            }
-            hint="Use one line per time when there are multiple sessions."
-            onChange={(value) =>
-              props.editor.detail(
-                "time",
-                Array.isArray(props.event.details.time) || value.includes("\n")
-                  ? lines(value)
-                  : optional(value),
-              )
-            }
-          />
-          <TextField
-            label="Venue"
-            value={props.event.details.venue}
-            onChange={(value) => props.editor.detail("venue", optional(value))}
-          />
-          <TextField
-            label="Venue map link"
-            type="url"
-            value={props.event.details.venueLink}
-            onChange={(value) =>
-              props.editor.detail("venueLink", optional(value))
-            }
-          />
-          <TextField
-            label="Duration"
-            value={props.event.details.duration}
-            onChange={(value) =>
-              props.editor.detail("duration", optional(value))
-            }
-          />
-          <TextField
-            label="Age limit"
-            value={props.event.details.ageLimit}
-            onChange={(value) =>
-              props.editor.detail("ageLimit", optional(value))
-            }
-          />
-          <TextField
-            label="Languages"
-            value={props.event.details.languages}
-            onChange={(value) =>
-              props.editor.detail("languages", optional(value))
-            }
-          />
-          <TextField
-            label="Genre"
-            value={props.event.details.genre}
-            onChange={(value) => props.editor.detail("genre", optional(value))}
-          />
-        </Section>
-        <Section
-          title="Booking schedule"
-          description="Timestamps include the timezone. Example: 2026-10-17T18:00:00+05:30"
-        >
-          <TextField
-            label="Bookings open at"
-            value={props.event.details.bookingOpensAtISO}
-            onChange={(value) =>
-              props.editor.detail("bookingOpensAtISO", optional(value))
-            }
-          />
-          <TextField
-            label="Bookings close at"
-            value={props.event.details.bookingEndsAtISO}
-            onChange={(value) =>
-              props.editor.detail("bookingEndsAtISO", optional(value))
-            }
-          />
-          <TextField
-            label="Event starts at"
-            value={props.event.details.eventStartsAtISO}
-            onChange={(value) =>
-              props.editor.detail("eventStartsAtISO", optional(value))
-            }
-          />
-          <TextField
-            label="Booking opening label"
-            value={props.event.details.bookingOpensAt}
-            placeholder="17 October, 6 PM"
-            onChange={(value) =>
-              props.editor.detail("bookingOpensAt", optional(value))
-            }
-          />
-          <label class={styles.field}>
-            <span>Booking flow</span>
-            <select
-              value={props.event.bookingFlow ?? ""}
-              onChange={(event) =>
-                props.editor.change(
-                  "bookingFlow",
-                  optional(event.currentTarget.value) as
-                    BookingFlow | undefined,
-                )
-              }
-            >
-              <option value="">Default</option>
-              <option value="direct">Direct booking</option>
-              <option value="date-first">Choose a date first</option>
-            </select>
-          </label>
-          <TextField
-            label="Listing order"
-            type="number"
-            min={0}
-            step="1"
-            value={props.event.bookingOrder}
-            onChange={(value) =>
-              props.editor.change(
-                "bookingOrder",
-                value === "" ? undefined : Number(value),
-              )
-            }
-          />
-          <CheckField
-            label="Featured event"
-            checked={props.event.isFeatured}
-            onChange={(value) => props.editor.change("isFeatured", value)}
-          />
-          <CheckField
-            label="Hide from booking listings"
-            checked={props.event.hiddenFromBookings}
-            onChange={(value) =>
-              props.editor.change("hiddenFromBookings", value)
-            }
-          />
-        </Section>
-        <Section
-          title="Sessions"
-          description="Control the status, booking link, and linked event for each date and time."
-        >
-          <div class={styles.wide}>
-            <For
-              each={props.event.bookingOptions ?? []}
-              fallback={
-                <p class={styles.hint}>This event has no separate sessions.</p>
-              }
-            >
-              {(option, index) => (
-                <div class={styles.repeatCard}>
-                  <div class={styles.repeatHeading}>
-                    <h4>Session {index() + 1}</h4>
-                    <button
-                      class={styles.danger}
-                      type="button"
-                      onClick={() => props.editor.removeSession(index())}
-                    >
-                      Remove
-                    </button>
-                  </div>
-                  <div class={styles.fields}>
-                    <TextField
-                      label="Date"
-                      required
-                      value={option.date}
-                      onChange={(value) =>
-                        props.editor.session(index(), "date", value)
-                      }
-                    />
-                    <TextField
-                      label="Time"
-                      required
-                      value={option.time}
-                      onChange={(value) =>
-                        props.editor.session(index(), "time", value)
-                      }
-                    />
-                    <label class={styles.field}>
-                      <span>Status</span>
-                      <select
-                        value={option.status}
-                        onChange={(event) =>
-                          props.editor.session(
-                            index(),
-                            "status",
-                            event.currentTarget
-                              .value as BookingOption["status"],
-                          )
-                        }
-                      >
-                        <For
-                          each={statuses.filter(
-                            (status) => status.value !== "hidden",
-                          )}
-                        >
-                          {(status) => (
-                            <option value={status.value}>{status.label}</option>
-                          )}
-                        </For>
-                      </select>
-                    </label>
-                    <label class={styles.field}>
-                      <span>Linked event</span>
-                      <select
-                        value={option.detailsEventId ?? ""}
-                        onChange={(event) =>
-                          props.editor.session(
-                            index(),
-                            "detailsEventId",
-                            optional(event.currentTarget.value),
-                          )
-                        }
-                      >
-                        <option value="">No linked event</option>
-                        <For
-                          each={props.events.filter(
-                            (event) => event.id !== props.event.id,
-                          )}
-                        >
-                          {(event) => (
-                            <option value={event.id}>
-                              {event.title} · {event.date}
-                            </option>
-                          )}
-                        </For>
-                      </select>
-                    </label>
-                    <TextField
-                      label="Booking link"
-                      type="url"
-                      value={option.link}
-                      onChange={(value) =>
-                        props.editor.session(index(), "link", optional(value))
-                      }
-                    />
-                  </div>
-                </div>
-              )}
-            </For>
-            <button
-              class={styles.secondary}
-              type="button"
-              onClick={() => props.editor.addSession()}
-            >
-              + Add session
-            </button>
-          </div>
-        </Section>
-        <details class={styles.advanced}>
-          <summary>Artists, images & announcement</summary>
-          <Section
-            title="Artists & highlights"
-            description="Enter one item per line. Artist names should match the existing artist catalogue."
-          >
-            <TextField
+        <Panel id="overview">
+          <Section fieldsClass={styles.overviewFields}>
+            <div class={styles.eventCopy}>
+              <TextField
+                label="Event title"
+                value={props.event.title}
+                required
+                onChange={(value) => props.editor.change("title", value)}
+              />
+              <TextField
+                label="About the event"
+                multiline
+                rows={8}
+                value={props.event.details.aboutEvent}
+                onChange={(value) =>
+                  props.editor.detail("aboutEvent", optional(value))
+                }
+              />
+              <TextField
+                label="Booking link"
+                type="url"
+                value={props.event.bookingLink}
+                placeholder="https://…"
+                onChange={(value) =>
+                  props.editor.change("bookingLink", value || null)
+                }
+              />
+              <div class={styles.overviewLinks}>
+                <TextField
+                  label="Venue"
+                  value={props.event.details.venue}
+                  onChange={(value) =>
+                    props.editor.detail("venue", optional(value))
+                  }
+                />
+                <TextField
+                  label="Venue map link"
+                  type="url"
+                  value={props.event.details.venueLink}
+                  onChange={(value) =>
+                    props.editor.detail("venueLink", optional(value))
+                  }
+                />
+              </div>
+            </div>
+            <div class={styles.eventSettings}>
+              <CalendarField
+                label="Display date"
+                value={props.event.date}
+                required
+                onChange={(value) => props.editor.change("date", value)}
+              />
+              <label class={styles.field}>
+                <span>Booking status</span>
+                <select
+                  value={props.event.status}
+                  onChange={(event) =>
+                    props.editor.change(
+                      "status",
+                      event.currentTarget.value as BookingStatus,
+                    )
+                  }
+                >
+                  <For each={statuses}>
+                    {(status) => (
+                      <option value={status.value}>{status.label}</option>
+                    )}
+                  </For>
+                </select>
+              </label>
+              <TextField
+                label="Starting price (₹)"
+                type="number"
+                min={0}
+                step="any"
+                value={props.event.details.priceFrom}
+                hint="Active offers can override this price."
+                onChange={(value) =>
+                  props.editor.detail(
+                    "priceFrom",
+                    value === "" ? undefined : Number(value),
+                  )
+                }
+              />
+              <TextField
+                label="Event URL"
+                required
+                readOnly={!props.isNew}
+                pattern="[a-z0-9]+(-[a-z0-9]+)*"
+                value={props.event.id}
+                placeholder="my-event-2026"
+                hint={
+                  props.isNew
+                    ? "Lowercase letters, numbers, and hyphens. Fixed after saving."
+                    : "Fixed after saving."
+                }
+                onChange={(value) => props.editor.change("id", value)}
+              />
+              <div class={styles.eventVisibility}>
+                <ToggleField
+                  label="Featured event"
+                  checked={props.event.isFeatured}
+                  onChange={(value) => props.editor.change("isFeatured", value)}
+                />
+                <ToggleField
+                  label="Hide from booking listings"
+                  checked={props.event.hiddenFromBookings}
+                  onChange={(value) =>
+                    props.editor.change("hiddenFromBookings", value)
+                  }
+                />
+              </div>
+            </div>
+          </Section>
+          <Section>
+            <TagInput
               label="Artists"
-              multiline
-              value={props.event.details.artists?.join("\n")}
+              wide
+              value={props.event.details.artists ?? []}
+              options={artistOptions()}
+              disabled={props.busy}
+              placeholder="Search artists…"
               onChange={(value) =>
-                props.editor.detail("artists", value ? lines(value) : undefined)
+                props.editor.detail("artists", value.length ? value : undefined)
               }
             />
-            <TextField
+            <TagInput
               label="Default artists"
-              multiline
-              value={(
-                props.event.details.defaultArtists ?? fallbackArtists
-              ).join("\n")}
-              onChange={(value) =>
-                props.editor.detail("defaultArtists", lines(value))
-              }
+              value={props.event.details.defaultArtists ?? fallbackArtists}
+              options={artistOptions()}
+              disabled={props.busy}
+              placeholder="Search artists…"
+              onChange={(value) => props.editor.detail("defaultArtists", value)}
             />
-            <CheckField
-              label="Hide artist section"
-              checked={props.event.details.hideArtists}
-              onChange={(value) => props.editor.detail("hideArtists", value)}
-            />
-            <TextField
+            <TagInput
               label="Tags"
-              multiline
-              value={props.event.details.tags?.join("\n")}
+              value={props.event.details.tags ?? []}
+              options={tagOptions()}
+              allowCreate
+              disabled={props.busy}
+              placeholder="Type a tag and press Enter…"
               onChange={(value) =>
-                props.editor.detail("tags", value ? lines(value) : undefined)
+                props.editor.detail("tags", value.length ? value : undefined)
               }
             />
+            <div class={styles.wide}>
+              <CheckField
+                label="Hide artist section"
+                checked={props.event.details.hideArtists}
+                onChange={(value) => props.editor.detail("hideArtists", value)}
+              />
+            </div>
             <TextField
               label="Highlights"
               multiline
@@ -475,10 +320,282 @@ export default function EventEditor(props: {
               }
             />
           </Section>
-          <Section
-            title="Event images"
-            description="Use paths to assets already available on the site."
+        </Panel>
+        <Panel id="schedule">
+          <Section fieldsClass={styles.scheduleFields}>
+            <DateTimeField
+              label="Event starts at"
+              value={props.event.details.eventStartsAtISO}
+              onChange={(value) =>
+                props.editor.detail("eventStartsAtISO", optional(value))
+              }
+            />
+            <div class={styles.timeFields}>
+              <For each={times()} keyed={false}>
+                {(time, index) => (
+                  <div class={styles.timeRow}>
+                    <CalendarField
+                      label={
+                        times().length > 1
+                          ? `Display time ${index + 1}`
+                          : "Display time"
+                      }
+                      type="time"
+                      value={time()}
+                      onChange={(value) => {
+                        const next = [...times()];
+                        next[index] = value;
+                        props.editor.detail(
+                          "time",
+                          Array.isArray(props.event.details.time)
+                            ? next
+                            : optional(value),
+                        );
+                      }}
+                    />
+                    <Show when={times().length > 1}>
+                      <button
+                        type="button"
+                        class={styles.textButton}
+                        aria-label={`Remove display time ${index + 1}`}
+                        onClick={() =>
+                          props.editor.detail(
+                            "time",
+                            times().filter((_, i) => i !== index),
+                          )
+                        }
+                      >
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </Show>
+                  </div>
+                )}
+              </For>
+              <button
+                type="button"
+                class={styles.timeAdd}
+                aria-label="Add display time"
+                title="Add display time"
+                onClick={() => props.editor.detail("time", [...times(), ""])}
+              >
+                <span aria-hidden="true">+</span>
+              </button>
+            </div>
+            <div class={[styles.wide, styles.scheduleFacts]}>
+              <TextField
+                label="Duration"
+                value={props.event.details.duration}
+                onChange={(value) =>
+                  props.editor.detail("duration", optional(value))
+                }
+              />
+              <TextField
+                label="Age limit"
+                value={props.event.details.ageLimit}
+                onChange={(value) =>
+                  props.editor.detail("ageLimit", optional(value))
+                }
+              />
+              <TextField
+                label="Languages"
+                value={props.event.details.languages}
+                onChange={(value) =>
+                  props.editor.detail("languages", optional(value))
+                }
+              />
+              <TextField
+                label="Genre"
+                value={props.event.details.genre}
+                onChange={(value) =>
+                  props.editor.detail("genre", optional(value))
+                }
+              />
+            </div>
+          </Section>
+          <Section fieldsClass={styles.bookingFields}>
+            <div class={styles.bookingRouting}>
+              <label class={styles.field}>
+                <span>Booking flow</span>
+                <select
+                  value={props.event.bookingFlow ?? ""}
+                  onChange={(event) =>
+                    props.editor.change(
+                      "bookingFlow",
+                      optional(event.currentTarget.value) as
+                        BookingFlow | undefined,
+                    )
+                  }
+                >
+                  <option value="">Default</option>
+                  <option value="direct">Direct booking</option>
+                  <option value="date-first">Choose a date first</option>
+                </select>
+              </label>
+              <TextField
+                label="Listing order"
+                type="number"
+                min={0}
+                step="1"
+                value={props.event.bookingOrder}
+                onChange={(value) =>
+                  props.editor.change(
+                    "bookingOrder",
+                    value === "" ? undefined : Number(value),
+                  )
+                }
+              />
+            </div>
+            <div class={styles.bookingDates}>
+              <DateTimeField
+                label="Bookings open at"
+                value={props.event.details.bookingOpensAtISO}
+                onChange={(value) =>
+                  props.editor.detail("bookingOpensAtISO", optional(value))
+                }
+              />
+              <DateTimeField
+                label="Bookings close at"
+                value={props.event.details.bookingEndsAtISO}
+                onChange={(value) =>
+                  props.editor.detail("bookingEndsAtISO", optional(value))
+                }
+              />
+            </div>
+          </Section>
+          <Show
+            when={props.event.bookingOptions?.length}
+            fallback={
+              <button
+                class={[styles.secondary, styles.addSession]}
+                type="button"
+                onClick={() => props.editor.addSession()}
+              >
+                + Add session
+              </button>
+            }
           >
+            <Section>
+              <div class={styles.wide}>
+                <For each={props.event.bookingOptions ?? []}>
+                  {(option, index) => (
+                    <div class={styles.repeatCard}>
+                      <div class={styles.repeatHeading}>
+                        <h4>Session {index() + 1}</h4>
+                        <button
+                          class={styles.danger}
+                          type="button"
+                          onClick={() => props.editor.removeSession(index())}
+                        >
+                          Remove
+                        </button>
+                      </div>
+                      <div class={styles.fields}>
+                        <CalendarField
+                          label="Date"
+                          required
+                          value={option.date}
+                          onChange={(value) =>
+                            props.editor.session(index(), "date", value)
+                          }
+                        />
+                        <CalendarField
+                          label="Time"
+                          type="time"
+                          required
+                          value={option.time}
+                          onChange={(value) =>
+                            props.editor.session(index(), "time", value)
+                          }
+                        />
+                        <label class={styles.field}>
+                          <span>Status</span>
+                          <select
+                            value={option.status}
+                            onChange={(event) =>
+                              props.editor.session(
+                                index(),
+                                "status",
+                                event.currentTarget
+                                  .value as BookingOption["status"],
+                              )
+                            }
+                          >
+                            <For
+                              each={statuses.filter(
+                                (status) => status.value !== "hidden",
+                              )}
+                            >
+                              {(status) => (
+                                <option value={status.value}>
+                                  {status.label}
+                                </option>
+                              )}
+                            </For>
+                          </select>
+                        </label>
+                        <label class={styles.field}>
+                          <span>Linked event</span>
+                          <select
+                            value={option.detailsEventId ?? ""}
+                            onChange={(event) =>
+                              props.editor.session(
+                                index(),
+                                "detailsEventId",
+                                optional(event.currentTarget.value),
+                              )
+                            }
+                          >
+                            <option value="">No linked event</option>
+                            <For
+                              each={props.events.filter(
+                                (event) => event.id !== props.event.id,
+                              )}
+                            >
+                              {(event) => (
+                                <option value={event.id}>
+                                  {event.title} · {event.date}
+                                </option>
+                              )}
+                            </For>
+                          </select>
+                        </label>
+                        <TextField
+                          label="Booking link"
+                          type="url"
+                          value={option.link}
+                          onChange={(value) =>
+                            props.editor.session(
+                              index(),
+                              "link",
+                              optional(value),
+                            )
+                          }
+                        />
+                      </div>
+                    </div>
+                  )}
+                </For>
+                <button
+                  class={styles.secondary}
+                  type="button"
+                  onClick={() => props.editor.addSession()}
+                >
+                  + Add session
+                </button>
+              </div>
+            </Section>
+          </Show>
+        </Panel>
+        <Panel id="media">
+          <Section description="Use paths to assets already available on the site.">
+            <TextField
+              label="Poster asset path"
+              value={props.event.image}
+              required
+              wide
+              placeholder="assets/events/poster.avif"
+              onChange={(value) => props.editor.change("image", value)}
+            />
             <TextField
               label="Landscape image"
               value={props.event.details.detailsImage?.landscape}
@@ -549,7 +666,7 @@ export default function EventEditor(props: {
               </button>
             </div>
           </Section>
-          <Section title="Home announcement">
+          <Section>
             <CheckField
               label="Enable announcement for this event"
               checked={Boolean(props.event.announcement)}
@@ -582,14 +699,8 @@ export default function EventEditor(props: {
               />
             </Show>
           </Section>
-        </details>
+        </Panel>
       </fieldset>
-      <EditorActions
-        dirty={props.editor.dirty()}
-        busy={props.busy}
-        saving={props.saving}
-        onReset={() => props.editor.reset()}
-      />
     </form>
   );
 }

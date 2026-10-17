@@ -1,5 +1,5 @@
 import type { BookingEvent } from "./types";
-import { eventMedia, eventPrice } from "./formatters";
+import { eventMedia, eventPrice, formatBookingOpening } from "./formatters";
 import { isSoldOut, safeExternalUrl } from "./rules";
 import { fallbackArtists } from "../../shared/content";
 
@@ -26,11 +26,10 @@ function eventAvailability(event: BookingEvent, state: BookingState) {
       : "closed";
   let label: string;
   if (soldOut) label = "Sold Out";
-  else if (!state.hasOpened)
-    label = event.details.bookingOpensAt
-      ? "Bookings open " + event.details.bookingOpensAt
-      : "Opening Soon";
-  else if (state.canBook)
+  else if (!state.hasOpened) {
+    const opensAt = formatBookingOpening(event.details.bookingOpensAtISO);
+    label = opensAt ? "Bookings open " + opensAt : "Opening Soon";
+  } else if (state.canBook)
     label = event.status === "filling-fast" ? "Filling Fast" : "Available";
   else label = "Bookings Closed";
 
@@ -62,7 +61,7 @@ export function toEventDetails(
     tags: details.tags,
     description: details.aboutEvent,
     facts: {
-      date: details.dateRange || event.date,
+      date: event.date,
       time: details.time || "TBA",
       duration: details.duration,
       ageLimit: details.ageLimit,

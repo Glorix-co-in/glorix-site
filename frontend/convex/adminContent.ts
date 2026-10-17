@@ -65,6 +65,7 @@ export const get = query({
     content: siteContent,
     draftCounts: v.record(v.string(), v.number()),
     draftCount: v.number(),
+    publishedVersion: v.union(v.id("publications"), v.null()),
     publishedAt: v.union(v.number(), v.null()),
   }),
   handler: async (ctx, { secret }) => {
@@ -80,7 +81,10 @@ export const get = query({
     const draftCounts: Record<string, number> = {};
     for (const table of contentTables) {
       const previous = new Map<string, unknown>(
-        published?.content[table].map((row) => [row._id, row]) ?? [],
+        (state?.draftBaseline ?? published?.content)?.[table].map((row) => [
+          row._id,
+          row,
+        ]) ?? [],
       );
       const currentIds = new Set<string>(content[table].map((row) => row._id));
       draftCounts[table] =
@@ -97,7 +101,52 @@ export const get = query({
         0,
       ),
       publishedAt: published?.publishedAt ?? null,
+      publishedVersion: published?._id ?? null,
     };
+  },
+});
+
+export const discardDrafts = mutation({
+  args: {
+    secret: v.string(),
+    expected: siteContent,
+    publishedVersion: v.id("publications"),
+  },
+  returns: v.null(),
+  handler: async (ctx, { secret, expected, publishedVersion }) => {
+    authorize(secret);
+    const state = await ctx.db
+      .query("publicationState")
+      .withIndex("by_key", (q) => q.eq("key", "site"))
+      .unique();
+    if (!state || state.version !== publishedVersion) conflict();
+    const published = await ctx.db.get("publications", state.version);
+    if (!published) invalid("There is no published version to restore.");
+    const current = await readContent(ctx);
+    if (canonical(current) !== canonical(expected)) conflict();
+    const baseline = state.draftBaseline ?? published.content;
+    for (const table of contentTables) {
+      const savedIds = new Set<string>(baseline[table].map((row) => row._id));
+      const currentRows = new Map<string, unknown>(
+        current[table].map((row) => [row._id, row]),
+      );
+      for (const row of current[table]) {
+        if (!savedIds.has(row._id)) await ctx.db.delete(table, row._id);
+      }
+      for (const row of baseline[table]) {
+        const { _id, _creationTime, ...data } = row;
+        if (currentRows.has(_id)) {
+          if (canonical(currentRows.get(_id)) !== canonical(row))
+            await ctx.db.replace(table, _id, data);
+        } else await ctx.db.insert(table, data);
+      }
+    }
+    // Convex assigns a new ID when restoring a deleted record. Keep the
+    // restored working baseline separate from the immutable live publication.
+    await ctx.db.patch("publicationState", state._id, {
+      draftBaseline: await readContent(ctx),
+    });
+    return null;
   },
 });
 
