@@ -1,6 +1,7 @@
 import type { BookingEvent } from "./types";
 import { eventMedia, eventPrice } from "./formatters";
 import { isSoldOut, safeExternalUrl } from "./rules";
+import { fallbackArtists } from "../../shared/content";
 
 interface Artist {
   name: string;
@@ -48,7 +49,7 @@ export function toEventDetails(
   state: BookingState,
 ) {
   const details = event.details;
-  const defaults = details.defaultArtists ?? ["Saksham", "Nagity", "DJ Rick"];
+  const defaults = details.defaultArtists ?? fallbackArtists;
   const featuredArtists = [
     ...new Set([...defaults, ...(details.artists ?? [])]),
   ].flatMap((name) => {

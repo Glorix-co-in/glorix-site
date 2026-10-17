@@ -6,15 +6,12 @@ import { Router } from "./router";
 import { BookingsContext, createBookings } from "./bookings/useBookings";
 import NavigationStatus from "./components/NavigationStatus";
 import { ContentContext, createContent } from "./content/useContent";
-function AppRoot(props: ParentProps) {
+import { useLocation } from "@solidjs/router";
+function PublicContent(props: ParentProps) {
   const content = createContent();
   const bookings = createBookings(content.state);
   return (
     <BookingsContext value={bookings}>
-      <a class={styles.skipLink} href="#main-content">
-        Skip to content
-      </a>
-      <NavigationStatus />
       <ContentContext value={content.state}>
         <Show
           when={content.loaded() && content.state.seeded}
@@ -41,6 +38,23 @@ function AppRoot(props: ParentProps) {
         </Show>
       </ContentContext>
     </BookingsContext>
+  );
+}
+function AppRoot(props: ParentProps) {
+  const location = useLocation();
+  return (
+    <>
+      <a class={styles.skipLink} href="#main-content">
+        Skip to content
+      </a>
+      <NavigationStatus />
+      <Show
+        when={location.pathname.replace(/\/$/, "") === "/admin"}
+        fallback={<PublicContent>{props.children}</PublicContent>}
+      >
+        {props.children}
+      </Show>
+    </>
   );
 }
 export default function App() {

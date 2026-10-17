@@ -13,7 +13,28 @@ export default function HomeAnnouncement() {
     () => {
       const item = event();
       if (!item) return undefined;
-      return toAnnouncementView(item, bookings.getEvent, bookings.price(item));
+      const view = toAnnouncementView(
+        item,
+        bookings.getEvent,
+        bookings.price(item),
+      );
+      const popup = bookings.campaigns().find((campaign) => {
+        const slide = campaign.effects.homePopup;
+        return (
+          (slide.eventId
+            ? slide.eventId === item.id
+            : campaign.eventIds.includes(item.id)) &&
+          (!slide.showWhenBookingOpen || bookings.canBook(item))
+        );
+      })?.effects.homePopup;
+      return popup
+        ? {
+            ...view,
+            desktopImage: "/" + popup.desktopImage,
+            mobileImage: "/" + (popup.mobileImage || popup.desktopImage),
+            imageAlt: popup.alt,
+          }
+        : view;
     },
     { name: "announcement-presentation" },
   );

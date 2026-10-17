@@ -23,6 +23,11 @@ export default defineSchema({
     key: v.literal("site"),
     version: v.id("publications"),
   }).index("by_key", ["key"]),
+  adminLoginAttempts: defineTable({
+    key: v.string(),
+    startedAt: v.number(),
+    attempts: v.number(),
+  }).index("by_key", ["key"]),
   seeds: defineTable({ key: v.string(), completedAt: v.number() }).index(
     "by_key",
     ["key"],

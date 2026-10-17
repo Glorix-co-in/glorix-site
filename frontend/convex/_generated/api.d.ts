@@ -8,7 +8,10 @@
  * @module
  */
 
+import type * as admin from "../admin.js";
+import type * as adminContent from "../adminContent.js";
 import type * as content from "../content.js";
+import type * as lib_admin from "../lib/admin.js";
 import type * as publishing from "../publishing.js";
 import type * as seed from "../seed.js";
 import type * as seedData_events from "../seedData/events.js";
@@ -22,7 +25,10 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  admin: typeof admin;
+  adminContent: typeof adminContent;
   content: typeof content;
+  "lib/admin": typeof lib_admin;
   publishing: typeof publishing;
   seed: typeof seed;
   "seedData/events": typeof seedData_events;

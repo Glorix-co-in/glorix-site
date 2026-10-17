@@ -77,6 +77,12 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
+      path: "/admin";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/admin")>;
+      $$route?: undefined;
+    },
+    {
       path: "/details";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/details")>;
@@ -111,6 +117,14 @@ declare module "virtual:file-routes" {
 
   /** The page entries, nested by path with grouping segments stripped. */
   export const pageRoutes: readonly [
+    {
+      path: "/admin";
+      id: "/admin";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/admin")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
     {
       path: "/";
       id: "/(site)";
