@@ -1,4 +1,6 @@
 import styles from "./Home.module.css";
+import { createEffect } from "solid-js";
+import { useLocation } from "@solidjs/router";
 import layout from "../../styles/site.module.css";
 import PageTitle from "../../components/PageTitle";
 import { useHomeAnimations } from "../../lib/animations/home";
@@ -12,7 +14,23 @@ import Testimonials from "../../components/Testimonials";
 
 export default function Page() {
   let root!: HTMLElement;
+  const location = useLocation();
   useHomeAnimations(() => root);
+  createEffect(
+    () => location.hash,
+    (hash) => {
+      if (!hash) return;
+      // The router may handle the hash before this async page has mounted.
+      const frame = requestAnimationFrame(() => {
+        const target =
+          hash === "#home" ? root : document.getElementById(hash.slice(1));
+        if (target && root.contains(target))
+          target.scrollIntoView({ block: "start", behavior: "auto" });
+      });
+      return () => cancelAnimationFrame(frame);
+    },
+    { name: "home-section-navigation" },
+  );
   return (
     <>
       <PageTitle title="Glorix Entertainment" />
@@ -22,7 +40,7 @@ export default function Page() {
           root = element;
         }}
         id="main-content"
-        class={[layout.page, layout.spacious]}
+        class={[layout.page, layout.spacious, styles.anchors]}
       >
         <HomeCarousel />
         <section class={[styles.join, layout.fullBleed]}>

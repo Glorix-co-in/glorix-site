@@ -17,6 +17,7 @@ export function toAnnouncementView(
   const [prefix, ...title] = event.title.split(/\s+/);
   const media = eventMedia(event);
   const soldOut = isSoldOut(event);
+  const formattedPrice = eventPrice(price);
   const venues = (event.bookingOptions ?? []).map((option) => {
     const child = getEvent(option.detailsEventId);
     const venue = announcementVenue(
@@ -36,7 +37,10 @@ export function toAnnouncementView(
     venues: venues.length ? venues : [event.details.venue ?? ""],
     desktopImage: "/" + media.desktopImage,
     mobileImage: "/" + media.mobileImage,
-    priceLabel: eventPrice(price).label,
+    priceLabel:
+      price !== undefined && formattedPrice.showSuffix
+        ? `${formattedPrice.label} onwards`
+        : formattedPrice.label,
     href: eventHref(event),
     buttonLabel: soldOut ? "SOLD OUT" : "BOOK NOW",
     disabled: soldOut,
