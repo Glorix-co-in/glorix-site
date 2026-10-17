@@ -1,0 +1,121 @@
+.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--color-black);
+  border-top: 1px solid var(--color-surface-muted);
+  gap: 16px;
+}
+
+.priceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.availability {
+  font-size: 12px;
+  color: var(--color-available);
+  font-weight: 500;
+}
+
+.availability.filling-fast {
+  color: var(--color-filling-fast);
+}
+
+.availability.sold-out {
+  color: var(--color-sold-out);
+}
+
+.availability.soon {
+  color: var(--color-accent);
+}
+
+.availability.closed {
+  color: var(--color-text-disabled);
+}
+
+.button {
+  padding: 14px 40px;
+  background: var(--color-accent);
+  color: var(--color-black);
+  border: none;
+  border-radius: var(--radius-control);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--motion-standard) ease;
+  box-shadow: 0 4px 12px rgba(255, 191, 0, 0.2);
+}
+
+.button:hover,
+.action:hover .button {
+  transform: translateY(-2px);
+  background: var(--color-white);
+}
+
+.button:disabled {
+  background: var(--color-surface-hover);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    width: 100%;
+    max-width: 600px;
+    transform: translateX(-50%);
+    border-radius: 12px 12px 0 0;
+    background: var(--color-black);
+    z-index: 1000;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bar {
+    position: static;
+    transform: none;
+    width: 100%;
+    padding: 20px 32px;
+    background: var(--color-surface-raised);
+    border-top: 1px solid var(--color-surface-muted);
+    border-radius: 0;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+
+  .button {
+    padding: 14px 60px;
+    font-size: 16px;
+  }
+}
+
+.action {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.available {
+  color: var(--color-available);
+}

@@ -1,0 +1,22 @@
+.title {
+  opacity: 0;
+  visibility: hidden;
+}
+.header {
+  padding-top: 0;
+  padding-bottom: 40px;
+  text-align: center;
+}
+.intro {
+  color: var(--color-text-subtle);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.section {
+  text-align: center;
+  background: var(--color-surface);
+  padding-top: 0;
+}
+.team {
+  background: #0d0d0d;
+}

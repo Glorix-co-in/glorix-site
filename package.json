@@ -1,0 +1,36 @@
+{
+  "name": "t1-bookings-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "serve": "vite preview",
+    "lint": "oxlint src convex server shared netlify/functions",
+    "format": "prettier --write . --ignore-path .prettierignore",
+    "format:check": "prettier --check . --ignore-path .prettierignore",
+    "convex": "convex"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@solidjs/diagnostics": "2.0.0-rc.15",
+    "@solidjs/vite-plugin": "3.0.0-next.50",
+    "@types/node": "^26.6.5",
+    "eslint-plugin-solid": "~0.18.1",
+    "filesystem-routing": "0.4.0",
+    "oxlint": "~1.79.0",
+    "prettier": "3.9.10",
+    "typescript": "^5.9.2",
+    "vite": "^8.1.5"
+  },
+  "dependencies": {
+    "@solidjs/router": "2.0.0-next.40",
+    "@solidjs/web": "2.0.0-rc.15",
+    "convex": "^1.47.0",
+    "gsap": "3.14.1",
+    "solid-js": "2.0.0-rc.15"
+  }
+}

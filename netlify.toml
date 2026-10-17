@@ -1,7 +1,25 @@
-[[edge_functions]]
-function = "event-meta"
-path = "/details.html"
+[build]
+  base = "."
+  command = "pnpm build"
+  publish = "dist/client"
 
-[[edge_functions]]
-function = "event-meta"
-path = "/select-slot.html"
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/content"
+  to = "/.netlify/functions/content"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/admin"
+  to = "/.netlify/functions/admin"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

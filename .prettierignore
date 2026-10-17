@@ -1,0 +1,7 @@
+**/.git/
+**/node_modules/
+**/dist/
+**/pnpm-lock.yaml
+**/_generated/
+file-routes.d.ts
+public/

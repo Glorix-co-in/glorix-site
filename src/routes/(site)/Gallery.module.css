@@ -1,0 +1,7 @@
+.title {
+  opacity: 0;
+  visibility: hidden;
+}
+.section {
+  padding-block: var(--section-padding-y);
+}
